@@ -179,8 +179,7 @@
         <!-- VSL Embed -->
         <vturb-smartplayer id="vid-6988ec48ba3ea727caf6cd7e"
           style="display: block; margin: 0 auto; width: 100%; max-width: 400px;"></vturb-smartplayer>
-        <script
-          type="text/javascript"> var s = document.createElement("script"); s.src = "https://scripts.converteai.net/d21a9e1d-910e-4254-b2bc-30b12586d2ef/players/6988ec48ba3ea727caf6cd7e/v4/player.js", s.async = !0, document.head.appendChild(s); </script>
+        <!-- Script lazy loaded via IntersectionObserver -->
       </div>
 
       <!-- Viewer Counter -->
@@ -399,7 +398,39 @@
 
   </main>
 
-  <script src="script.js"></script>
+  <script>
+    // Service Worker Registration
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js').then(reg => {
+          console.log('SW registered:', reg);
+        }).catch(err => {
+          console.log('SW registration failed:', err);
+        });
+      });
+    }
+
+    // Lazy Load VSL
+    document.addEventListener("DOMContentLoaded", function () {
+      const vslContainer = document.querySelector('.vsl-container');
+      if (vslContainer) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              console.log("VSL Container visible - Loading Player");
+              var s = document.createElement("script");
+              s.src = "https://scripts.converteai.net/d21a9e1d-910e-4254-b2bc-30b12586d2ef/players/6988ec48ba3ea727caf6cd7e/v4/player.js";
+              s.async = true;
+              document.head.appendChild(s);
+              observer.disconnect();
+            }
+          });
+        }, { rootMargin: "200px" });
+        observer.observe(vslContainer);
+      }
+    });
+  </script>
+  <script src="script.js" defer></script>
 </body>
 
 </html>

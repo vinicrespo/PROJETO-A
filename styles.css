@@ -141,6 +141,8 @@ img {
   margin-bottom: 16px;
   /* Balanced spacing */
   letter-spacing: -0.5px;
+  /* CLS Optimization */
+  min-height: 3.6em;
 }
 
 .sub-headline {
@@ -183,6 +185,8 @@ img {
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* CLS Optimization */
+  min-height: 400px;
 }
 
 .vsl-container {
@@ -195,6 +199,8 @@ img {
   background-color: #000;
   /* Placeholder bg */
   margin-bottom: 0;
+  /* CLS Optimization: Vertical 9:16 Ratio */
+  aspect-ratio: 9/16;
 }
 
 .video-container {
