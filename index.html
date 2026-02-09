@@ -133,19 +133,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <!-- UTMify Pixel -->
-  <script>
-    window.pixelId = "698924d9c8560883b2cd99fd";
-    var a = document.createElement("script");
-    a.setAttribute("async", "");
-    a.setAttribute("defer", "");
-    a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
-    document.head.appendChild(a);
-  </script>
-
-  <!-- UTMify Integration (MyCheckoutt) -->
-  <script src="https://cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-xcod-sck data-utmify-prevent-subids
-    async defer></script>
+  <!-- UTMify Scripts are loaded dynamically for performance -->
 
   <!-- VTurb Speed Optimization -->
   <script>!function (i, n) { i._plt = i._plt || (n && n.timeOrigin ? n.timeOrigin + n.now() : Date.now()) }(window, performance);</script>
@@ -161,8 +149,12 @@
   <link rel="dns-prefetch" href="https://images.converteai.net">
   <link rel="dns-prefetch" href="https://api.vturb.com.br">
 
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <!-- Font Awesome (Optimized) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" media="print"
+    onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  </noscript>
 </head>
 
 <body>
@@ -240,7 +232,7 @@
             </div>
             <div class="fb-content-wrapper">
               <div class="fb-bubble">
-                <a href="javascript:void(0)" class="fb-name">Sarah Mitchell</a>
+                <a href="#" class="fb-name">Sarah Mitchell</a>
                 <p class="fb-text">Honestly... skeptical at first. But I watched to the end—solid principles, no fluff.
                 </p>
               </div>
@@ -261,7 +253,7 @@
             </div>
             <div class="fb-content-wrapper">
               <div class="fb-bubble">
-                <a href="javascript:void(0)" class="fb-name">Marcus Thompson</a>
+                <a href="#" class="fb-name">Marcus Thompson</a>
                 <p class="fb-text">I'm not Jewish. But these are universal wealth laws. Wish I knew this 10 years ago.
                 </p>
               </div>
@@ -281,7 +273,7 @@
               loading="lazy" role="img" aria-label="David Reynolds"></div>
             <div class="fb-content-wrapper">
               <div class="fb-bubble">
-                <a href="javascript:void(0)" class="fb-name">David Reynolds</a>
+                <a href="#" class="fb-name">David Reynolds</a>
                 <p class="fb-text">Exactly Marcus! It's about the strategy, not your background. It works if you just
                   follow the steps.</p>
               </div>
@@ -302,7 +294,7 @@
             </div>
             <div class="fb-content-wrapper">
               <div class="fb-bubble">
-                <a href="javascript:void(0)" class="fb-name">Jennifer Kim</a>
+                <a href="#" class="fb-name">Jennifer Kim</a>
                 <p class="fb-text">Zero finance knowledge here (I'm a nurse!). Is this too complicated?</p>
               </div>
               <div class="fb-actions">
@@ -322,7 +314,7 @@
               role="img" aria-label="Alex Morgan"></div>
             <div class="fb-content-wrapper">
               <div class="fb-bubble">
-                <a href="javascript:void(0)" class="fb-name">Alex Morgan</a>
+                <a href="#" class="fb-name">Alex Morgan</a>
                 <p class="fb-text">Not at all Jennifer. He explains simply without jargon. Finally I get it.</p>
               </div>
               <div class="fb-actions">
@@ -342,7 +334,7 @@
             </div>
             <div class="fb-content-wrapper">
               <div class="fb-bubble">
-                <a href="javascript:void(0)" class="fb-name">Rachel Stevens</a>
+                <a href="#" class="fb-name">Rachel Stevens</a>
                 <p class="fb-text">For those wondering—it's not religious. Purely financial strategy.</p>
               </div>
               <div class="fb-actions">
@@ -362,7 +354,7 @@
             </div>
             <div class="fb-content-wrapper">
               <div class="fb-bubble">
-                <a href="javascript:void(0)" class="fb-name">Michael Chen</a>
+                <a href="#" class="fb-name">Michael Chen</a>
                 <p class="fb-text">Looking for practical steps, not theory. This actually shows what to do with your
                   income.</p>
               </div>
@@ -383,7 +375,7 @@
             </div>
             <div class="fb-content-wrapper">
               <div class="fb-bubble">
-                <a href="javascript:void(0)" class="fb-name">Tom Williams</a>
+                <a href="#" class="fb-name">Tom Williams</a>
                 <p class="fb-text">Only $29? I've paid thousands for less. Best investment this year.</p>
               </div>
               <div class="fb-actions">
@@ -418,7 +410,39 @@
 
   </main>
 
-  <script src="script.js"></script>
+  <!-- Delayed Tracking Scripts (Smart Delay) -->
+  <script>
+    function loadTrackingScripts() {
+      if (window.scriptsLoaded) return;
+      window.scriptsLoaded = true;
+      console.log("Loading tracking scripts...");
+
+      // UTMify Pixel
+      window.pixelId = "698924d9c8560883b2cd99fd";
+      var p = document.createElement("script");
+      p.src = "https://cdn.utmify.com.br/scripts/pixel/pixel.js";
+      p.async = true;
+      p.defer = true;
+      document.head.appendChild(p);
+
+      // UTMify Integration
+      var u = document.createElement("script");
+      u.src = "https://cdn.utmify.com.br/scripts/utms/latest.js";
+      u.setAttribute("data-utmify-prevent-xcod-sck", "");
+      u.setAttribute("data-utmify-prevent-subids", "");
+      u.async = true;
+      u.defer = true;
+      document.head.appendChild(u);
+    }
+    // Triggers: Interaction or 3.5s Delay
+    window.addEventListener("mousemove", loadTrackingScripts, { passive: true });
+    window.addEventListener("touchmove", loadTrackingScripts, { passive: true });
+    window.addEventListener("touchstart", loadTrackingScripts, { passive: true });
+    setTimeout(loadTrackingScripts, 3500);
+  </script>
+
+  <!-- Main Logic -->
+  <script src="script.js" defer></script>
 </body>
 
 </html>
