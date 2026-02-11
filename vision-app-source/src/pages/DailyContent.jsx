@@ -1,69 +1,7 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import { Button } from '../components/ui/Button';
 import { Card } from '../components/ui/Card';
-
-// Placeholder data - would be moved to a separate data file
-const DAYS_CONTENT = {
-    1: {
-        phase: 1,
-        title: 'Day 1: Foundation & Visual Awareness',
-        date: 'Monday, January 1, 2025',
-        focus: 'Understanding your visual habits',
-        focusText: 'Today is about becoming aware of how you use your eyes. Most of us go through the day on autopilot, not realizing the subtle strain we place on our visual system.',
-        concept: 'Visual Fatigue Definition',
-        conceptText: [
-            'Visual fatigue, or asthenopia, is the eyes\' reaction to prolonged intense use. It\'s a signal that your visual system is working beyond its comfortable capacity.',
-            'Just like your muscles get tired after a long workout, your eyes need recovery time. Recognizing the early signs—dryness, slight blur, or tension—is the first step to prevention.'
-        ],
-        action: {
-            title: 'Complete Visual Awareness Checklist',
-            details: 'Throughout the day, pause three times and ask yourself: Are my eyes tense? Am I frowning? Is my jaw clenched?',
-            steps: [
-                'Set a timer for 10am, 2pm, and 6pm.',
-                'When it rings, close your eyes for 10 seconds.',
-                'Scan your face for tension and release it.',
-            ],
-            time: '5 minutes accumulated'
-        },
-        tips: [
-            'Blink intentionally every time you hit "send" on an email.',
-            'Keep your screen at arm\'s length.'
-        ]
-    },
-    // ... more days would go here
-};
-
-const getDayContent = (id) => {
-    if (DAYS_CONTENT[id]) return DAYS_CONTENT[id];
-
-    // Dynamic fallback for days without specific content
-    return {
-        phase: Math.ceil(id / 30),
-        title: `Day ${id}: Continued Practice`,
-        date: `Day ${id} of 180`,
-        focus: 'Consistecy is key',
-        focusText: `Welcome to Day ${id}. Today, continue reinforcing the visual habits you have learned. The key to long-term improvement is consistency.`,
-        concept: `Daily Concept ${id}`,
-        conceptText: [
-            `This is the focus concept for Day ${id}. As you progress through the program, these concepts build upon each other to create a comprehensive visual wellness lifestyle.`,
-            'Take a moment to reflect on how your vision feels today compared to when you started.'
-        ],
-        action: {
-            title: `Practice for Day ${id}`,
-            details: 'Perform your core 20-20-20 routine and check your posture.',
-            steps: [
-                'Check your viewing distance.',
-                'Take a conscious blink break.',
-                'Ensure your lighting is adequate.'
-            ],
-            time: '5 minutes'
-        },
-        tips: [
-            'Stay hydrated for better eye health.',
-            'Remember to breathe deeply to reduce tension.'
-        ]
-    };
-};
+import { getDayContent } from '../data/dailyContent';
 
 export default function DailyContent() {
     const { dayId } = useParams();
