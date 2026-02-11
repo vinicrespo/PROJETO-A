@@ -33,11 +33,43 @@ const DAYS_CONTENT = {
     // ... more days would go here
 };
 
+const getDayContent = (id) => {
+    if (DAYS_CONTENT[id]) return DAYS_CONTENT[id];
+
+    // Dynamic fallback for days without specific content
+    return {
+        phase: Math.ceil(id / 30),
+        title: `Day ${id}: Continued Practice`,
+        date: `Day ${id} of 180`,
+        focus: 'Consistecy is key',
+        focusText: `Welcome to Day ${id}. Today, continue reinforcing the visual habits you have learned. The key to long-term improvement is consistency.`,
+        concept: `Daily Concept ${id}`,
+        conceptText: [
+            `This is the focus concept for Day ${id}. As you progress through the program, these concepts build upon each other to create a comprehensive visual wellness lifestyle.`,
+            'Take a moment to reflect on how your vision feels today compared to when you started.'
+        ],
+        action: {
+            title: `Practice for Day ${id}`,
+            details: 'Perform your core 20-20-20 routine and check your posture.',
+            steps: [
+                'Check your viewing distance.',
+                'Take a conscious blink break.',
+                'Ensure your lighting is adequate.'
+            ],
+            time: '5 minutes'
+        },
+        tips: [
+            'Stay hydrated for better eye health.',
+            'Remember to breathe deeply to reduce tension.'
+        ]
+    };
+};
+
 export default function DailyContent() {
     const { dayId } = useParams();
     const navigate = useNavigate();
-    const day = DAYS_CONTENT[dayId] || DAYS_CONTENT[1]; // Fallback to Day 1 for demo
-    const currentDay = parseInt(dayId);
+    const currentDay = parseInt(dayId) || 1; // Default to 1 if parsing fails
+    const day = getDayContent(currentDay);
 
     const handleNext = () => {
         if (currentDay < 180) {

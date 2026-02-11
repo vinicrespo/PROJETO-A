@@ -16,7 +16,9 @@ export function Header() {
 
     return (
         <header className="fixed top-0 left-0 right-0 h-[60px] bg-primary flex items-center justify-between px-6 z-50 shadow-md">
-            <div className="text-white font-bold text-lg">Vision 20</div>
+            <div className="flex items-center">
+                <img src="/app/assets/logo.png" alt="Vision 20" className="h-[40px] w-auto" />
+            </div>
             <button
                 onClick={handleLogout}
                 className="text-white hover:text-accent transition-colors p-2"

@@ -8,7 +8,7 @@ export default function Home() {
 
     const handleStartFromDay1 = () => {
         setPhase(1); // Set Phase 1
-        navigate('/app/phase/1'); // Go to Phase 1 Day List
+        navigate('/app/day/1'); // Go directly to Day 1 content
     };
 
     const handleJumpToPhase = () => {

@@ -24,7 +24,8 @@ export default function Login() {
 
     return (
         <div className="min-h-screen flex items-center justify-center p-4 bg-light">
-            <Card className="w-full max-w-[400px]">
+            <Card className="w-full max-w-[400px] flex flex-col items-center">
+                <img src="/app/assets/logo.png" alt="Vision 20" className="h-[60px] w-auto mb-6" />
                 <h1 className="text-2xl font-bold text-primary mb-2 text-center">
                     Enter the email used during purchase.
                 </h1>
