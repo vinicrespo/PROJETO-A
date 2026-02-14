@@ -195,7 +195,42 @@
         <p id="loading-text" class="loading-text">Verifying secure access...</p>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const loginForm = document.getElementById('login-form');
+            if (loginForm) {
+                loginForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const email = document.getElementById('email').value;
+                    if (email) {
+                        simulateLogin();
+                    }
+                });
+            }
+        });
+
+        function simulateLogin() {
+            const overlay = document.getElementById('loading-overlay');
+            const text = document.getElementById('loading-text');
+
+            if (overlay) {
+                overlay.classList.remove('hide');
+
+                // Sequence of loading messages
+                setTimeout(() => {
+                    if (text) text.textContent = "Encrypting session...";
+                }, 1500);
+
+                setTimeout(() => {
+                    if (text) text.textContent = "Preparing frequency interface...";
+                }, 3000);
+
+                setTimeout(() => {
+                    window.location.href = 'dashboard.html';
+                }, 4500);
+            }
+        }
+    </script>
 </body>
 
 </html>
