@@ -80,6 +80,9 @@ function loadFrequency(id) {
     document.getElementById('player-title').textContent = data.title;
     document.getElementById('player-desc').textContent = data.desc;
 
-    // Universal audio source (Placeholder logic, assuming same file)
-    // In a real app, this might change based on ID, but request was for same base audio.
+    // Universal audio source
+    const audioPlayer = document.querySelector('audio');
+    if (audioPlayer) {
+        audioPlayer.load(); // Reloads the audio element to ensure it's ready
+    }
 }
