@@ -1,15 +1,25 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // console.log("Vision 2026 Presentation Loaded");
+document.addEventListener('DOMContentLoaded', function() {
+    // Reveal Time Configuration
+    // 20 minutes * 60 seconds * 1000 milliseconds = 1,200,000 ms
+    // Defaulting to 20 minutes as requested for VSL usually
+    const DELAY_MS = 1200000; 
+    // FOR TESTING: Uncomment below to set 5 seconds
+    // const DELAY_MS = 5000;
 
-    // Future functionality:
-    // - VSL Timer delays for CTA
-    // - Analytics events
-    // - Smooth scroll for anchors
+    const ctaButton = document.getElementById('cta-button');
 
-    const ctaButton = document.querySelector('.cta-button');
     if (ctaButton) {
-        ctaButton.addEventListener('click', (e) => {
-            // Optional: Add tracking logic here before navigation
-        });
+        setTimeout(function() {
+            ctaButton.style.display = 'inline-block';
+            
+            // Add a small fade-in animation for smoothness
+            ctaButton.style.opacity = '0';
+            ctaButton.style.transition = 'opacity 0.5s ease, transform 0.2s ease';
+            
+            // Trigger reflow
+            void ctaButton.offsetWidth;
+            
+            ctaButton.style.opacity = '1';
+        }, DELAY_MS);
     }
 });
