@@ -60,19 +60,26 @@ body {
     width: 100%;
     max-width: 400px;
     /* Constrain for vertical video */
-    margin-bottom: 24px;
+    margin-bottom: 12px;
+    /* Reduced margin to pull button up */
     border-radius: 8px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
     /* Soft Shadow */
     overflow: hidden;
-    /* background: #000; Removed to prevent black bars */
+    background: transparent;
+    /* Ensure no background color bleeds */
+    line-height: 0;
+    /* Fix for potential inline-block spacing */
 }
 
 .vsl-wrapper {
     position: relative;
-    aspect-ratio: 9 / 16;
     width: 100%;
-    height: auto;
+    /* aspect-ratio: 9 / 16;  Removed to let content dictate height if needed, but 9/16 is standard for vertical.
+       However, to fix the specific "black bar" issue which might be due to aspect ratio mismatch,
+       we'll rely on the player filling the width and height being auto-calculated or strictly 9:16 if player matches.
+       Let's stick to 9/16 but ensure object-fit covers it. */
+    aspect-ratio: 9/16;
 }
 
 .vsl-wrapper iframe,
@@ -87,6 +94,8 @@ vturb-smartplayer {
     border: none;
     object-fit: cover;
     /* Ensure video fills content */
+    display: block;
+    /* Removes bottom spacing for inline elements */
 }
 
 .vsl-placeholder {
