@@ -13,17 +13,20 @@ body {
     min-height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: flex-start; /* Start from top on mobile */
+    align-items: flex-start;
+    /* Start from top on mobile */
     padding: 20px;
     -webkit-font-smoothing: antialiased;
 }
 
 .container {
     width: 100%;
-    max-width: 800px; /* Constrain width for desktop readability */
+    max-width: 800px;
+    /* Constrain width for desktop readability */
     margin: 0 auto;
     text-align: center;
-    padding-top: 20px; /* Top margin */
+    padding-top: 20px;
+    /* Top margin */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -38,7 +41,8 @@ body {
     line-height: 1.3;
     letter-spacing: 0.02em;
     margin-bottom: 16px;
-    text-shadow: 0 0 15px rgba(230, 195, 106, 0.3); /* Soft Gold Glow */
+    text-shadow: 0 0 15px rgba(230, 195, 106, 0.3);
+    /* Soft Gold Glow */
     max-width: 90%;
 }
 
@@ -57,18 +61,22 @@ body {
     max-width: 100%;
     margin-bottom: 24px;
     border-radius: 8px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.5); /* Soft Shadow */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    /* Soft Shadow */
     overflow: hidden;
-    background: #000; /* Loading visual */
+    background: #000;
+    /* Loading visual */
 }
 
 .vsl-wrapper {
     position: relative;
-    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    padding-bottom: 177.77%;
+    /* 9:16 Aspect Ratio (Vertical) */
     height: 0;
 }
 
-.vsl-wrapper iframe, .vsl-placeholder {
+.vsl-wrapper iframe,
+.vsl-placeholder {
     position: absolute;
     top: 0;
     left: 0;
@@ -88,7 +96,8 @@ body {
 
 /* CTA Button */
 .cta-button {
-    display: none; /* Hidden strictly by default */
+    display: none;
+    /* Hidden strictly by default */
     background-color: #8B0000;
     color: #ffffff;
     text-decoration: none;
@@ -96,7 +105,8 @@ body {
     font-size: 1.1rem;
     padding: 16px 32px;
     border-radius: 30px;
-    box-shadow: 0 4px 15px rgba(139, 0, 0, 0.4); /* Soft Red Glow */
+    box-shadow: 0 4px 15px rgba(139, 0, 0, 0.4);
+    /* Soft Red Glow */
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     text-transform: uppercase;
     letter-spacing: 0.05em;
