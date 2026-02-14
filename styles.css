@@ -104,8 +104,8 @@ vturb-smartplayer {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    margin-top: -15px;
-    /* Negative margin to pull button up tight */
+    margin-top: 12px;
+    /* Tight spacing without overlap */
     position: relative;
     z-index: 10;
     /* Ensure button stays on top of any video overflow */
