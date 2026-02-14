@@ -9,17 +9,157 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@400;500;600&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* INLINED STYLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #0B0B0F;
+            background-image: radial-gradient(circle at center, #1a1a24 0%, #0B0B0F 70%);
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Cinzel', serif;
+            color: #E6C36A;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        p,
+        label,
+        input,
+        button,
+        a {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .player-container {
+            width: 100%;
+            max-width: 500px;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .back-btn {
+            align-self: flex-start;
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: 30px;
+            display: inline-block;
+            transition: color 0.3s ease;
+        }
+
+        .back-btn:hover {
+            color: #E6C36A;
+        }
+
+        .player-artwork {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #E6C36A 0%, rgba(230, 195, 106, 0.2) 60%, transparent 100%);
+            margin: 0 auto 40px;
+            box-shadow: 0 0 40px rgba(230, 195, 106, 0.15);
+            animation: breathe 6s infinite ease-in-out;
+        }
+
+        @keyframes breathe {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+
+            50% {
+                transform: scale(1.05);
+                opacity: 1;
+            }
+        }
+
+        .player-title {
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+        }
+
+        .player-desc {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+            margin-bottom: 40px;
+        }
+
+        .audio-control {
+            width: 100%;
+            margin-bottom: 30px;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 16px;
+            background: #E6C36A;
+            color: #0B0B0F;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        .login-btn:hover {
+            background: #f0d07d;
+            transform: translateY(-2px);
+        }
+
+        .spinner {
+            width: 30px;
+            height: 30px;
+            border: 2px solid rgba(230, 195, 106, 0.3);
+            border-top: 2px solid #E6C36A;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .hide {
+            display: none !important;
+        }
+    </style>
 </head>
 
 <body>
     <div class="player-container">
-        <a href="dashboard.html" class="back-btn">← Back to Dashboard</a>
+        <a href="./dashboard.html" class="back-btn">&larr; Back to Dashboard</a>
 
         <div class="player-artwork"></div>
 
-        <h1 id="player-title" class="player-title">Frequency Title</h1>
-        <p id="player-desc" class="player-desc">Loading frequency details...</p>
+        <h1 id="player-title" class="player-title">Loading Frequency...</h1>
+        <p id="player-desc" class="player-desc">Please wait while we retrieve the frequency data.</p>
 
         <div class="audio-control">
             <!-- Universal Audio Source - Placeholder for the single audio file -->
@@ -29,7 +169,7 @@
             </button>
 
             <div id="generation-loader" class="hide" style="margin-top: 20px;">
-                <div class="spinner" style="margin: 0 auto 15px; width: 30px; height: 30px; border-width: 2px;"></div>
+                <div class="spinner"></div>
                 <p id="generation-text" style="color: #E6C36A; font-size: 0.9rem;">Initializing harmonic resonance...
                 </p>
             </div>
@@ -41,7 +181,59 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <!-- Inline Script for Robustness -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const frequencyData = {
+                '1': { title: "Frequency of Physical Restoration", desc: "Aligned to promote cellular renewal and physical harmony. Allow the vibrations to scan and soothe your body's energy centers." },
+                '2': { title: "Frequency of Emotional Peace", desc: "Designed to quiet the mind and settle the heart. Let go of anxiety and embrace a state of profound stillness." },
+                '3': { title: "Frequency of Spiritual Strength", desc: "Fortifies your spiritual connection and inner resolve. Feel the grounding energy reinforcing your spirit." },
+                '4': { title: "Frequency of Protection", desc: "Creates an energetic shield around your aura. Visualize a golden light repelling negativity as you listen." },
+                '5': { title: "Frequency of Financial Alignment", desc: "Opens pathways for abundance and prosperity. Align your vibration with the flow of receiving." },
+                '6': { title: "Frequency of Relationship Healing", desc: "Softens conflicts and nurtures connection. Direct this energy towards forgiveness and love." },
+                '7': { title: "Frequency of Energy Renewal", desc: "Revitalizes a weary spirit and recharges your energetic battery. Breathe in fresh energy with every tone." }
+            };
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const freqId = urlParams.get('freq');
+            const data = frequencyData[freqId] || frequencyData['1'];
+
+            document.getElementById('player-title').textContent = data.title;
+            document.getElementById('player-desc').textContent = data.desc;
+
+            // Set text
+            const targetElement = document.getElementById('freq-target');
+            if (targetElement) {
+                let cleanTitle = data.title.replace('Frequency of ', '');
+                targetElement.textContent = cleanTitle;
+            }
+
+            // Handle Generation Button
+            const genBtn = document.getElementById('generate-btn');
+            const loader = document.getElementById('generation-loader');
+            const genText = document.getElementById('generation-text');
+
+            if (genBtn) {
+                genBtn.onclick = function () {
+                    genBtn.style.display = 'none';
+                    loader.classList.remove('hide');
+
+                    // Simulation sequence
+                    setTimeout(() => {
+                        genText.textContent = "Calibrating to " + (data.title.replace('Frequency of ', '')) + "...";
+                    }, 1000);
+
+                    setTimeout(() => {
+                        genText.textContent = "Frequency ready. Opening secure stream...";
+                    }, 2500);
+
+                    setTimeout(() => {
+                        window.location.href = "https://drive.google.com/file/d/1cMzcRtES202uNd5ZhukhijzPf4t6MBP5/view";
+                    }, 4000);
+                };
+            }
+        });
+    </script>
 </body>
 
 </html>

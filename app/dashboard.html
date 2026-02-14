@@ -9,7 +9,111 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@400;500;600&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* INLINED STYLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #0B0B0F;
+            background-image: radial-gradient(circle at center, #1a1a24 0%, #0B0B0F 70%);
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Cinzel', serif;
+            color: #E6C36A;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        p,
+        label,
+        input,
+        button,
+        a {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Dashboard Styles */
+        .dashboard-container {
+            width: 100%;
+            max-width: 600px;
+            padding: 30px 20px;
+        }
+
+        .dashboard-header {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .dashboard-title {
+            font-size: 1.6rem;
+            margin-bottom: 12px;
+        }
+
+        .dashboard-subtitle {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.5;
+        }
+
+        .frequency-grid {
+            display: grid;
+            gap: 16px;
+        }
+
+        .frequency-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 20px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .frequency-card:hover {
+            background: rgba(230, 195, 106, 0.08);
+            border-color: rgba(230, 195, 106, 0.3);
+            transform: translateX(4px);
+        }
+
+        .freq-info h3 {
+            font-size: 1.1rem;
+            text-align: left;
+            margin-bottom: 4px;
+            color: #fff;
+        }
+
+        .freq-info p {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .freq-icon {
+            color: #E6C36A;
+            font-size: 1.5rem;
+            opacity: 0.8;
+        }
+
+        .hide {
+            display: none !important;
+        }
+    </style>
 </head>
 
 <body>
