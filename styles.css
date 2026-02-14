@@ -60,50 +60,41 @@ body {
     width: 100%;
     max-width: 400px;
     /* Constrain for vertical video */
-    margin-bottom: 12px;
-    /* Reduced margin to pull button up */
+    margin: 0 auto;
+    /* Center container */
+    margin-bottom: 0;
+    /* No bottom margin to keep button close */
     border-radius: 8px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
     /* Soft Shadow */
     overflow: hidden;
     background: transparent;
-    /* Ensure no background color bleeds */
     line-height: 0;
-    /* Fix for potential inline-block spacing */
 }
 
 .vsl-wrapper {
     position: relative;
     width: 100%;
-    /* aspect-ratio: 9 / 16;  Removed to let content dictate height if needed, but 9/16 is standard for vertical.
-       However, to fix the specific "black bar" issue which might be due to aspect ratio mismatch,
-       we'll rely on the player filling the width and height being auto-calculated or strictly 9:16 if player matches.
-       Let's stick to 9/16 but ensure object-fit covers it. */
-    aspect-ratio: 9/16;
+    height: auto;
+    /* Removed aspect-ratio to allow player to dictate height and avoid empty space */
 }
 
 .vsl-wrapper iframe,
 .vsl-placeholder,
 vturb-smartplayer {
-    position: absolute;
-    top: 0;
-    left: 0;
+    position: relative;
+    /* Changed from absolute to flow naturally */
     width: 100%;
-    height: 100%;
+    height: auto;
+    /* Allow auto height */
     border-radius: 8px;
     border: none;
-    object-fit: cover;
-    /* Ensure video fills content */
     display: block;
-    /* Removes bottom spacing for inline elements */
 }
 
 .vsl-placeholder {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #444;
-    font-size: 0.9rem;
+    padding-bottom: 177.77%;
+    /* Keep aspect ratio only for placeholder */
     background: #111;
 }
 
@@ -113,7 +104,11 @@ vturb-smartplayer {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    margin-top: 20px;
+    margin-top: -15px;
+    /* Negative margin to pull button up tight */
+    position: relative;
+    z-index: 10;
+    /* Ensure button stays on top of any video overflow */
 }
 
 /* CTA Button */
