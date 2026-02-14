@@ -1,25 +1,28 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Reveal Time Configuration
     // 20 minutes * 60 seconds * 1000 milliseconds = 1,200,000 ms
     // Defaulting to 20 minutes as requested for VSL usually
-    const DELAY_MS = 1200000; 
+    const DELAY_MS = 1200000;
     // FOR TESTING: Uncomment below to set 5 seconds
     // const DELAY_MS = 5000;
 
-    const ctaButton = document.getElementById('cta-button');
+    const ctaContainer = document.getElementById('cta-container');
 
-    if (ctaButton) {
-        setTimeout(function() {
-            ctaButton.style.display = 'inline-block';
-            
+    if (ctaContainer) {
+        setTimeout(function () {
+            ctaContainer.style.display = 'flex'; // Use flex to maintain centering
+
             // Add a small fade-in animation for smoothness
-            ctaButton.style.opacity = '0';
-            ctaButton.style.transition = 'opacity 0.5s ease, transform 0.2s ease';
-            
+            ctaContainer.style.opacity = '0';
+            ctaContainer.style.transition = 'opacity 0.8s ease';
+
             // Trigger reflow
-            void ctaButton.offsetWidth;
-            
-            ctaButton.style.opacity = '1';
+            void ctaContainer.offsetWidth;
+
+            ctaContainer.style.opacity = '1';
+
+            // Gentle smooth scroll to center the CTA
+            ctaContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }, DELAY_MS);
     }
 });
