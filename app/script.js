@@ -79,21 +79,38 @@ function loadFrequency(id) {
 
     document.getElementById('player-title').textContent = data.title;
     document.getElementById('player-desc').textContent = data.desc;
+    document.getElementById('player-desc').textContent = data.desc;
 
-    // Set the specific target text for the explanation note
+    // Set text
     const targetElement = document.getElementById('freq-target');
     if (targetElement) {
-        // Extract just the core name, e.g., "Physical Restoration" from title
-        // Or just map it directly if simpler. Let's use the title for now but lowercased or adapted.
-        // Actually, just using the title is fine: "calibrated for Frequency of Physical Restoration"
-        // Let's make it cleaner: "calibrated for Physical Restoration"
         let cleanTitle = data.title.replace('Frequency of ', '');
         targetElement.textContent = cleanTitle;
     }
 
-    // Universal audio source
-    const audioPlayer = document.querySelector('audio');
-    if (audioPlayer) {
-        audioPlayer.load(); // Reloads the audio element to ensure it's ready
+    // Handle Generation Button
+    const genBtn = document.getElementById('generate-btn');
+    const loader = document.getElementById('generation-loader');
+    const genText = document.getElementById('generation-text');
+
+    if (genBtn) {
+        genBtn.onclick = function () {
+            genBtn.style.display = 'none';
+            loader.classList.remove('hide');
+
+            // Simulation sequence
+            setTimeout(() => {
+                genText.textContent = "Calibrating to " + (data.title.replace('Frequency of ', '')) + "...";
+            }, 1000);
+
+            setTimeout(() => {
+                genText.textContent = "Frequency ready. Opening secure stream...";
+            }, 2500);
+
+            setTimeout(() => {
+                // Redirect to the Google Drive link
+                window.location.href = "https://drive.google.com/file/d/1cMzcRtES202uNd5ZhukhijzPf4t6MBP5/view";
+            }, 4000);
+        };
     }
 }

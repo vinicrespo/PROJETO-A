@@ -23,10 +23,16 @@
 
         <div class="audio-control">
             <!-- Universal Audio Source - Placeholder for the single audio file -->
-            <audio controls style="width: 100%; border-radius: 30px; outline: none;">
-                <source src="frequency_audio.mp3" type="audio/mpeg">
-                Your browser does not support the audio element.
-            </audio>
+            <!-- Action Button instead of Player -->
+            <button id="generate-btn" class="login-btn" style="max-width: 300px; margin: 0 auto; display: block;">
+                Activate Frequency Session
+            </button>
+
+            <div id="generation-loader" class="hide" style="margin-top: 20px;">
+                <div class="spinner" style="margin: 0 auto 15px; width: 30px; height: 30px; border-width: 2px;"></div>
+                <p id="generation-text" style="color: #E6C36A; font-size: 0.9rem;">Initializing harmonic resonance...
+                </p>
+            </div>
             <p style="margin-top: 15px; font-size: 0.8rem; color: rgba(255,255,255,0.5); line-height: 1.5;">
                 <strong>Note:</strong> The audible base harmonic is consistent across all sessions. <br>
                 However, this specific track contains a unique <em>sub-audible frequency layer</em> calibrated for
