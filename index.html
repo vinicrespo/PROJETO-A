@@ -10,7 +10,180 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@400;500;600&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://pay.mycheckoutt.com">
+    <link rel="preconnect" href="https://cdn.utmify.com.br">
+    <link rel="preconnect" href="https://scripts.converteai.net">
+    <link rel="preconnect" href="https://cdn.converteai.net">
+    <link rel="preconnect" href="https://api.vturb.com.br">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        .hide {
+            display: none !important
+        }
+
+        body {
+            background-color: #0B0B0F;
+            background-image: radial-gradient(circle at center, #1a1a24 0%, #0B0B0F 70%);
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 20px;
+            -webkit-font-smoothing: antialiased
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            padding-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center
+        }
+
+        .headline {
+            font-family: 'Cinzel', serif;
+            color: #E6C36A;
+            font-weight: 700;
+            font-size: 2rem;
+            line-height: 1.3;
+            letter-spacing: 0.02em;
+            margin-bottom: 16px;
+            text-shadow: 0 0 15px rgba(230, 195, 106, 0.3);
+            max-width: 90%
+        }
+
+        .subheadline {
+            font-family: 'Inter', sans-serif;
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 32px
+        }
+
+        .vsl-container {
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+            margin-bottom: 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            background: transparent;
+            line-height: 0
+        }
+
+        .vsl-wrapper {
+            position: relative;
+            width: 100%;
+            height: auto
+        }
+
+        .vsl-wrapper iframe,
+        .vsl-placeholder,
+        vturb-smartplayer {
+            position: relative;
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: none;
+            display: block
+        }
+
+        .vsl-placeholder {
+            padding-bottom: 177.77%;
+            background: #111
+        }
+
+        .cta-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            margin-top: 12px;
+            position: relative;
+            z-index: 10
+        }
+
+        .cta-button {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 85%;
+            max-width: 400px;
+            min-height: 58px;
+            background-color: #8B0000;
+            color: #ffffff;
+            text-decoration: none;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border-radius: 30px;
+            animation: breathing-glow 3.5s infinite ease-in-out;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            text-transform: none;
+            letter-spacing: 0.05em;
+            cursor: pointer
+        }
+
+        .cta-button:hover {
+            background-color: #A11212;
+            transform: translateY(-2px)
+        }
+
+        .cta-button:active {
+            transform: translateY(0)
+        }
+
+        @keyframes breathing-glow {
+            0% {
+                box-shadow: 0 0 10px rgba(139, 0, 0, 0.3)
+            }
+
+            50% {
+                box-shadow: 0 0 25px rgba(139, 0, 0, 0.6)
+            }
+
+            100% {
+                box-shadow: 0 0 10px rgba(139, 0, 0, 0.3)
+            }
+        }
+
+        .security-text {
+            font-family: 'Inter', sans-serif;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.8rem;
+            margin-top: 12px;
+            text-align: center
+        }
+
+        @media(max-width:480px) {
+            .headline {
+                font-size: 1.6rem;
+                margin-bottom: 12px
+            }
+
+            .subheadline {
+                font-size: 0.95rem;
+                margin-bottom: 24px;
+                padding: 0 10px
+            }
+
+            .container {
+                padding: 10px
+            }
+        }
+    </style>
 
     <!-- VTurb Preloads & Prefetches -->
     <link rel="preload"
@@ -65,7 +238,7 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
+
 </body>
 
 </html>
