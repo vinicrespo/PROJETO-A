@@ -6,7 +6,7 @@ export default function App() {
   const [currentDate, setCurrentDate] = useState('');
   const [isPrivacyOpen, setIsPrivacyOpen] = useState(false);
   const [isTermsOpen, setIsTermsOpen] = useState(false);
-  const [showBanner, setShowBanner] = useState(false);
+  const [showBanner, setShowBanner] = useState(true);
 
   useEffect(() => {
     const now = new Date();
@@ -16,10 +16,11 @@ export default function App() {
     setCurrentDate(`${day}/${month}/${year}`);
 
     const handleScroll = () => {
-      if (window.scrollY > 100) {
-        setShowBanner(true);
-      } else {
+      // Hide banner when scrolled down, show when at top
+      if (window.scrollY > 50) {
         setShowBanner(false);
+      } else {
+        setShowBanner(true);
       }
     };
 
@@ -28,9 +29,21 @@ export default function App() {
   }, []);
 
   return (
-    <div className="bg-gray-50 font-sans antialiased min-h-screen flex flex-col">
+    <div className="bg-gray-50 font-sans antialiased min-h-screen flex flex-col pt-[28px]">
+      {/* Marquee Banner */}
+      <div className={`bg-[#4a0404] py-1 overflow-hidden transition-all duration-300 fixed top-0 w-full z-50 ${showBanner ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-full pointer-events-none'}`}>
+        <div className="flex whitespace-nowrap animate-marquee">
+          <div className="text-[10px] md:text-xs text-white font-bold uppercase tracking-wider px-4">
+            DAILY UPDATES ON WELLNESS AND HEALTH • DAILY UPDATES ON WELLNESS AND HEALTH • DAILY UPDATES ON WELLNESS AND HEALTH • DAILY UPDATES ON WELLNESS AND HEALTH • DAILY UPDATES ON WELLNESS AND HEALTH
+          </div>
+          <div className="text-[10px] md:text-xs text-white font-bold uppercase tracking-wider px-4">
+            DAILY UPDATES ON WELLNESS AND HEALTH • DAILY UPDATES ON WELLNESS AND HEALTH • DAILY UPDATES ON WELLNESS AND HEALTH • DAILY UPDATES ON WELLNESS AND HEALTH • DAILY UPDATES ON WELLNESS AND HEALTH
+          </div>
+        </div>
+      </div>
+
       {/* Header */}
-      <header className="bg-health-red text-white py-2 px-4 flex justify-between items-center sticky top-0 z-50 shadow-md">
+      <header className={`bg-health-red text-white py-2 px-4 flex justify-between items-center fixed w-full z-40 shadow-md transition-all duration-300 ${showBanner ? 'top-[28px]' : 'top-0'}`}>
         <div className="flex-1"></div>
         <h1 className="text-2xl font-bold tracking-widest">HEALTH</h1>
         <div className="flex-1 flex justify-end">
@@ -40,15 +53,8 @@ export default function App() {
         </div>
       </header>
 
-      {/* Marquee */}
-      <div className={`bg-health-red border-t border-white/20 py-1 overflow-hidden transition-all duration-300 fixed top-[48px] w-full z-40 ${showBanner ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-full pointer-events-none'}`}>
-        <div className="animate-marquee text-[10px] md:text-xs text-white font-bold uppercase tracking-wider">
-          DAILY UPDATES ON WELLNESS AND HEALTH • DAILY UPDATES ON WELLNESS AND HEALTH • DAILY UPDATES ON WELLNESS AND HEALTH • DAILY UPDATES ON WELLNESS AND HEALTH • DAILY UPDATES ON WELLNESS AND HEALTH
-        </div>
-      </div>
-
       {/* Main Content */}
-      <main className="max-w-4xl mx-auto bg-white flex-1 w-full px-4 py-6 md:px-8 shadow-sm">
+      <main className="max-w-4xl mx-auto bg-white flex-1 w-full px-4 pt-20 pb-6 md:px-8 shadow-sm mt-12">
         {/* Author Info */}
         <section className="mb-6">
           <p className="font-bold text-sm">By Dr.</p>
@@ -83,7 +89,7 @@ export default function App() {
 
         {/* Call To Action */}
         <section className="text-center mb-12 flex justify-center w-full">
-          <button className="bg-green-500 hover:bg-green-600 text-white font-bold text-xl md:text-2xl py-4 px-8 rounded-full shadow-lg uppercase tracking-wide transition-all duration-200 w-full sm:w-[90%] md:w-auto mx-auto animate-pulse-fast hover:scale-105 active:scale-95">
+          <button className="bg-[#218838] hover:bg-[#1e7e34] text-white font-bold text-xl md:text-2xl py-4 px-8 rounded-full shadow-lg uppercase tracking-wide transition-all duration-200 w-full sm:w-[90%] md:w-auto mx-auto animate-pulse-fast hover:scale-105 active:scale-95 border-b-4 border-[#1c7430]">
             Adicionar ao carrinho
           </button>
         </section>
