@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useProgress } from '../context/ProgressContext';
 import { Lock, CheckCircle, ChevronLeft, ChevronRight, PlayCircle, Apple, Brain } from 'lucide-react';
+import { programContent } from '../data/programContent';
 
 export default function Program() {
     const { currentDay, completedDays, markDayComplete } = useProgress();
@@ -18,16 +19,24 @@ export default function Program() {
     if (selectedDay !== null) {
         const isCompleted = completedDays.includes(selectedDay);
 
+        // Find content or fallback
+        const dailyData = programContent.find(d => d.day === selectedDay) || {
+            cognitive: "Focus on deep breathing and clearing your mind for 5 minutes.",
+            dietary: "Drink a full glass of water.",
+            practice: "Take a 10-minute walk outside."
+        };
+
         return (
             <div className="p-6 pt-8 max-w-md mx-auto animate-fade-in flex flex-col h-full min-h-[calc(100vh-80px)]">
                 {/* Detail Header */}
                 <div className="flex items-center gap-4 mb-6">
-                    <button onClick={() => setSelectedDay(null)} className="p-2 bg-[#1A1F3C] rounded-full hover:bg-gray-800 transition-colors">
-                        <ChevronLeft className="w-5 h-5 text-white" />
+                    <button onClick={() => setSelectedDay(null)} className="p-2 py-1.5 bg-[#1A1F3C] rounded-xl border border-[#2A3158] hover:border-[#3B82F6] transition-colors flex items-center pr-3">
+                        <ChevronLeft className="w-5 h-5 text-gray-400" />
+                        <span className="text-xs font-bold text-gray-300 ml-1 uppercase tracking-wider">Back to Phases</span>
                     </button>
-                    <div>
-                        <h2 className="text-sm font-bold text-[#F59E0B] tracking-wide uppercase">NeuroLock Protocol</h2>
-                        <h1 className="text-xl font-bold text-white">Day {selectedDay} Session</h1>
+                    <div className="ml-auto text-right">
+                        <h2 className="text-sm font-bold text-[#F59E0B] tracking-wide uppercase">NeuroLock</h2>
+                        <h1 className="text-xl font-bold text-white">Day {selectedDay}</h1>
                     </div>
                 </div>
 
@@ -42,9 +51,7 @@ export default function Program() {
                             <h3 className="font-bold text-white text-base">Cognitive Activation</h3>
                         </div>
                         <p className="text-gray-300 text-sm leading-relaxed mb-4">
-                            {selectedDay <= 30
-                                ? "Today we focus on clearing mental fog. Spend 5 minutes visualizing a complex object in your mind, rotating it and recalling specific details without breaking focus."
-                                : "Pattern recognition drill: Memorize a sequence of 10 random words. Wait 5 minutes, then attempt to write them all down perfectly."}
+                            {dailyData.cognitive}
                         </p>
                         <div className="flex items-center gap-2 text-[#3B82F6] text-xs font-semibold bg-[#3B82F6]/10 w-fit px-3 py-1.5 rounded-full">
                             <PlayCircle className="w-4 h-4" />
@@ -61,7 +68,7 @@ export default function Program() {
                             <h3 className="font-bold text-white text-base">Dietary Trigger</h3>
                         </div>
                         <p className="text-gray-300 text-sm leading-relaxed">
-                            Incorporate 1 tablespoon of raw organic coconut oil or MCT oil into your morning routine today. The medium-chain triglycerides provide instant clean ketone energy specifically for the brain.
+                            {dailyData.dietary}
                         </p>
                     </div>
 
@@ -74,7 +81,7 @@ export default function Program() {
                             <h3 className="font-bold text-white text-base">Daily Practice</h3>
                         </div>
                         <p className="text-gray-300 text-sm leading-relaxed">
-                            Perform 4 cycles of Box Breathing (4 seconds inhale, 4 hold, 4 exhale, 4 hold). This rapidly decreases cortisol levels, allowing optimal hippocampal function for memory retention.
+                            {dailyData.practice}
                         </p>
                     </div>
                 </div>
