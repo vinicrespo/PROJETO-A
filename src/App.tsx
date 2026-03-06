@@ -18,7 +18,7 @@ import Program from './app/pages/Program';
 import BonusAgeless from './app/pages/BonusAgeless';
 import BonusBiohacking from './app/pages/BonusBiohacking';
 import Progress from './app/pages/Progress';
-import Support from './app/pages/Support';
+import DailyTips from './app/pages/DailyTips';
 
 export default function App() {
     return (
@@ -60,7 +60,7 @@ export default function App() {
                 <Route path="bonuses/ageless" element={<BonusAgeless />} />
                 <Route path="bonuses/biohacking" element={<BonusBiohacking />} />
                 <Route path="progress" element={<Progress />} />
-                <Route path="support" element={<Support />} />
+                <Route path="support" element={<DailyTips />} />
             </Route>
         </Routes>
     );

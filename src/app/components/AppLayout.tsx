@@ -1,7 +1,7 @@
 import React from 'react';
 import { Outlet, NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { Home, PlayCircle, Gift, TrendingUp, HelpCircle } from 'lucide-react';
+import { Home, PlayCircle, Gift, TrendingUp, Sparkles } from 'lucide-react';
 
 export default function AppLayout() {
     const { isAuthenticated } = useAuth();
@@ -20,7 +20,7 @@ export default function AppLayout() {
         { name: 'Program', path: '/app/program', icon: PlayCircle },
         { name: 'Bonuses', path: '/app/bonuses', icon: Gift },
         { name: 'Progress', path: '/app/progress', icon: TrendingUp },
-        { name: 'Support', path: '/app/support', icon: HelpCircle },
+        { name: 'Tips', path: '/app/support', icon: Sparkles },
     ];
 
     return (
