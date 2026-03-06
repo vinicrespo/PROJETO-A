@@ -88,9 +88,8 @@ export default function App() {
 
         {/* Video Area */}
         <section className="mb-8 flex justify-center w-full">
-          {/* Vertical Video Container (9:16 Aspect Ratio) */}
-          <div className="w-full max-w-[400px] rounded-xl shadow-2xl overflow-hidden border-4 border-gray-200 relative" style={{ aspectRatio: '9/16' }}>
-            <vturb-smartplayer id="vid-69ab3e0401dc41aee18ccb65" style={{ display: 'block', margin: '0 auto', width: '100%', height: '100%', position: 'absolute', top: 0, left: 0 }}></vturb-smartplayer> 
+          <div className="w-full max-w-[400px] sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl 2xl:max-w-3xl rounded-xl shadow-2xl overflow-hidden border-4 border-gray-200">
+            <vturb-smartplayer id="vid-69ab3e0401dc41aee18ccb65" style={{ display: 'block', margin: '0 auto', width: '100%' }}></vturb-smartplayer>
           </div>
         </section>
 
@@ -133,12 +132,12 @@ export default function App() {
 
               {/* Replies Container */}
               <div className="relative mt-2">
-                
+
 
                 {/* Comment 2 (Reply to 1) */}
                 <div className="flex gap-3 ml-12 relative z-10 pt-2 pb-2">
-                  
-                  
+
+
 
                   <img loading="lazy" alt="Jennifer Davis" className="w-8 h-8 rounded-full bg-gray-200 object-cover mt-1 z-10" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=150&fit=crop" />
                   <div className="flex-1">
