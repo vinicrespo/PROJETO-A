@@ -51,7 +51,6 @@ export default function Login() {
             <div className="w-full max-w-sm relative z-10 flex flex-col items-center text-center">
                 {/* Logo Area */}
                 <div className="mb-8 flex flex-col items-center">
-                    <img src="/logo.png" alt="Neuromax Logo" className="w-24 h-24 mb-4 object-contain" />
                     <h1 className="text-3xl font-bold tracking-tight bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
                         NEUROMAX
                     </h1>
