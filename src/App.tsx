@@ -10,12 +10,11 @@ export default function App() {
   const [showBanner, setShowBanner] = useState(true);
 
   useEffect(() => {
-    // Set dynamic current date
+    // Set dynamic current date (e.g., 6 Mar)
     const now = new Date();
-    const day = String(now.getDate()).padStart(2, '0');
-    const month = String(now.getMonth() + 1).padStart(2, '0');
-    const year = now.getFullYear();
-    setCurrentDate(`${day}/${month}/${year}`);
+    const day = now.getDate();
+    const month = now.toLocaleString('en-US', { month: 'short' });
+    setCurrentDate(`${day} ${month}`);
 
     // Update minutes every 60 seconds
     const intervalId = setInterval(() => {
