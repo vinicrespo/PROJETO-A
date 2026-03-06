@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChevronLeft, Zap, Moon, Sun, Wind, Brain, Activity, Battery, Coffee, Shield, Flame, ActivitySquare, Target, HeartPulse, Fingerprint, Eye, Thermometer, Droplets, Waves, Timer, Hash } from 'lucide-react';
+import { ChevronLeft, Zap, Moon, Sun, Wind, Brain, Activity, Battery, Coffee, Shield, Flame, ActivitySquare, Target, HeartPulse, Fingerprint, Eye, Thermometer, Droplets, Waves, Timer, Hash, Leaf } from 'lucide-react';
 
 const lessons = [
     {
