@@ -70,8 +70,8 @@ export default function App() {
 
         {/* Call To Action */}
         <section className="text-center mb-12">
-          <button className="bg-gradient-to-b from-green-500 to-green-700 hover:from-green-600 hover:to-green-800 text-white font-black text-2xl md:text-3xl py-5 px-10 rounded-full shadow-[0_10px_20px_rgba(0,128,0,0.3)] uppercase tracking-tight transform hover:-translate-y-1 transition-all duration-200 w-full md:w-auto border-b-4 border-green-900">
-            ADD TO CART
+          <button className="bg-gradient-to-b from-green-500 to-green-700 hover:from-green-600 hover:to-green-800 text-white font-black text-2xl md:text-3xl py-5 px-10 rounded-full shadow-[0_10px_20px_rgba(0,128,0,0.3)] uppercase tracking-tight transform hover:-translate-y-1 transition-all duration-200 w-full md:w-auto border-b-4 border-green-900 animate-pulse-fast hover:animate-none">
+            Adicionar ao carrinho
           </button>
         </section>
 
