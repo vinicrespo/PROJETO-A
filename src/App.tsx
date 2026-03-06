@@ -30,8 +30,19 @@ export default function App() {
 
   return (
     <div className="bg-gray-50 font-sans antialiased min-h-screen flex flex-col pt-[28px]">
+      {/* Header */}
+      <header className={`bg-health-red text-white py-2 px-4 flex justify-between items-center fixed w-full z-50 shadow-md transition-all duration-300 top-0`}>
+        <div className="flex-1"></div>
+        <h1 className="text-2xl font-bold tracking-widest">HEALTH</h1>
+        <div className="flex-1 flex justify-end">
+          <button aria-label="Menu" className="p-1">
+            <Menu className="h-8 w-8" />
+          </button>
+        </div>
+      </header>
+
       {/* Marquee Banner */}
-      <div className={`bg-[#4a0404] py-1 overflow-hidden transition-all duration-300 fixed top-0 w-full z-50 ${showBanner ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-full pointer-events-none'}`}>
+      <div className={`bg-[#4a0404] py-1 overflow-hidden transition-all duration-300 fixed w-full z-40 ${showBanner ? 'opacity-100 top-[48px]' : 'opacity-0 top-0 pointer-events-none'}`}>
         <div className="flex whitespace-nowrap animate-marquee">
           <div className="text-[10px] md:text-xs text-white font-bold uppercase tracking-wider px-4">
             DAILY UPDATES ON WELLNESS AND HEALTH • DAILY UPDATES ON WELLNESS AND HEALTH • DAILY UPDATES ON WELLNESS AND HEALTH • DAILY UPDATES ON WELLNESS AND HEALTH • DAILY UPDATES ON WELLNESS AND HEALTH
@@ -42,19 +53,9 @@ export default function App() {
         </div>
       </div>
 
-      {/* Header */}
-      <header className={`bg-health-red text-white py-2 px-4 flex justify-between items-center fixed w-full z-40 shadow-md transition-all duration-300 ${showBanner ? 'top-[28px]' : 'top-0'}`}>
-        <div className="flex-1"></div>
-        <h1 className="text-2xl font-bold tracking-widest">HEALTH</h1>
-        <div className="flex-1 flex justify-end">
-          <button aria-label="Menu" className="p-1">
-            <Menu className="h-8 w-8" />
-          </button>
-        </div>
-      </header>
-
       {/* Main Content */}
-      <main className="max-w-4xl mx-auto bg-white flex-1 w-full px-4 pt-20 pb-6 md:px-8 shadow-sm mt-12">
+      <main className="max-w-4xl mx-auto bg-white flex-1 w-full px-4 pt-24 pb-6 md:px-8 shadow-sm mt-8">
+        {/* ... (Author Info, Headline, Video Area, CTA remain the same) ... */}
         {/* Author Info */}
         <section className="mb-6">
           <p className="font-bold text-sm">By Dr.</p>
@@ -97,12 +98,12 @@ export default function App() {
         {/* Comments Section */}
         <section className="border-t border-gray-200 pt-8 mb-12">
           <h4 className="text-lg font-bold mb-6 text-gray-700">369 Comments</h4>
-          <div className="space-y-6">
-            {/* Comment 1 */}
-            <div className="flex gap-3">
-              <img alt="Samantha Anderson" className="w-10 h-10 rounded-full bg-gray-200 object-cover mt-1" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop" />
+          <div className="space-y-4">
+            {/* Comment 1 (Main) */}
+            <div className="flex gap-3 fb-comment-has-replies">
+              <img alt="Samantha Anderson" className="w-10 h-10 rounded-full bg-gray-200 object-cover mt-1 z-10" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop" />
               <div className="flex-1">
-                <div className="bg-[#f0f2f5] p-3 rounded-2xl">
+                <div className="bg-[#f0f2f5] p-3 rounded-2xl inline-block">
                   <p className="font-bold text-[#385898] text-sm hover:underline cursor-pointer">Samantha Anderson</p>
                   <p className="text-[15px] leading-snug mt-1 text-gray-800">Dr., it's been 15 consecutive days since I started, and I've already noticed a big improvement in my mental clarity and focus. I'll keep going because I'm feeling amazing! 🤩</p>
                 </div>
@@ -114,7 +115,7 @@ export default function App() {
                     <span>·</span>
                     <span className="font-normal text-gray-400">2h</span>
                   </div>
-                  <div className="flex items-center gap-1 bg-white px-1 shadow-sm rounded-full border border-gray-100">
+                  <div className="flex items-center gap-1 bg-white px-1 shadow-sm rounded-full border border-gray-100 z-10 relative">
                     <img src="https://raw.githubusercontent.com/vinicrespo/PROJETO-A/main/like.svg" alt="Like" className="w-4 h-4 bg-blue-500 rounded-full p-0.5" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling!.textContent = '👍'; }} />
                     <img src="https://raw.githubusercontent.com/vinicrespo/PROJETO-A/main/love.svg" alt="Love" className="w-4 h-4 bg-red-500 rounded-full p-0.5 -ml-1" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling!.textContent = '❤️'; }} />
                     <span className="text-gray-500 ml-1 font-normal">23</span>
@@ -123,11 +124,11 @@ export default function App() {
               </div>
             </div>
 
-            {/* Comment 2 */}
-            <div className="flex gap-3 ml-12">
-              <img alt="Jennifer Davis" className="w-10 h-10 rounded-full bg-gray-200 object-cover mt-1" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=150&fit=crop" />
+            {/* Comment 2 (Reply to 1) */}
+            <div className="flex gap-3 ml-12 fb-reply-line fb-reply-line-first fb-reply-line-last pt-2">
+              <img alt="Jennifer Davis" className="w-8 h-8 rounded-full bg-gray-200 object-cover mt-1 z-10" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=150&fit=crop" />
               <div className="flex-1">
-                <div className="bg-[#f0f2f5] p-3 rounded-2xl">
+                <div className="bg-[#f0f2f5] p-3 rounded-2xl inline-block">
                   <p className="font-bold text-[#385898] text-sm hover:underline cursor-pointer">Jennifer Davis</p>
                   <p className="text-[15px] leading-snug mt-1 text-gray-800">FINALLY, SOMEONE WHO DOESN'T BEAT AROUND THE BUSH TO ASK FOR MONEY IN THE END, THANK YOUUUU! I STARTED TODAY 🤍</p>
                 </div>
@@ -139,7 +140,7 @@ export default function App() {
                     <span>·</span>
                     <span className="font-normal text-gray-400">35 min</span>
                   </div>
-                  <div className="flex items-center gap-1 bg-white px-1 shadow-sm rounded-full border border-gray-100">
+                  <div className="flex items-center gap-1 bg-white px-1 shadow-sm rounded-full border border-gray-100 z-10 relative">
                     <img src="https://raw.githubusercontent.com/vinicrespo/PROJETO-A/main/like.svg" alt="Like" className="w-4 h-4 bg-blue-500 rounded-full p-0.5" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling!.textContent = '👍'; }} />
                     <img src="https://raw.githubusercontent.com/vinicrespo/PROJETO-A/main/love.svg" alt="Love" className="w-4 h-4 bg-red-500 rounded-full p-0.5 -ml-1" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling!.textContent = '❤️'; }} />
                     <span className="text-gray-500 ml-1 font-normal">17</span>
@@ -148,11 +149,11 @@ export default function App() {
               </div>
             </div>
 
-            {/* Comment 3 */}
-            <div className="flex gap-3">
-              <img alt="Tommy Thompson" className="w-10 h-10 rounded-full bg-gray-200 object-cover mt-1" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop" />
+            {/* Comment 3 (Main) */}
+            <div className="flex gap-3 mt-4">
+              <img alt="Tommy Thompson" className="w-10 h-10 rounded-full bg-gray-200 object-cover mt-1 z-10" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop" />
               <div className="flex-1">
-                <div className="bg-[#f0f2f5] p-3 rounded-2xl">
+                <div className="bg-[#f0f2f5] p-3 rounded-2xl inline-block">
                   <p className="font-bold text-[#385898] text-sm hover:underline cursor-pointer">Tommy Thompson</p>
                   <p className="text-[15px] leading-snug mt-1 text-gray-800">You explain very well, it's what we, the laypeople, need. I'm going to start using this trick today itself.</p>
                 </div>
@@ -164,7 +165,7 @@ export default function App() {
                     <span>·</span>
                     <span className="font-normal text-gray-400">7 min</span>
                   </div>
-                  <div className="flex items-center gap-1 bg-white px-1 shadow-sm rounded-full border border-gray-100">
+                  <div className="flex items-center gap-1 bg-white px-1 shadow-sm rounded-full border border-gray-100 z-10 relative">
                     <img src="https://raw.githubusercontent.com/vinicrespo/PROJETO-A/main/like.svg" alt="Like" className="w-4 h-4 bg-blue-500 rounded-full p-0.5" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling!.textContent = '👍'; }} />
                     <img src="https://raw.githubusercontent.com/vinicrespo/PROJETO-A/main/love.svg" alt="Love" className="w-4 h-4 bg-red-500 rounded-full p-0.5 -ml-1" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling!.textContent = '❤️'; }} />
                     <span className="text-gray-500 ml-1 font-normal">11</span>
@@ -173,11 +174,11 @@ export default function App() {
               </div>
             </div>
 
-            {/* Comment 4 */}
-            <div className="flex gap-3">
-              <img alt="Cora Martinez" className="w-10 h-10 rounded-full bg-gray-200 object-cover mt-1" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop" />
+            {/* Comment 4 (Main) */}
+            <div className="flex gap-3 mt-4">
+              <img alt="Cora Martinez" className="w-10 h-10 rounded-full bg-gray-200 object-cover mt-1 z-10" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop" />
               <div className="flex-1">
-                <div className="bg-[#f0f2f5] p-3 rounded-2xl">
+                <div className="bg-[#f0f2f5] p-3 rounded-2xl inline-block">
                   <p className="font-bold text-[#385898] text-sm hover:underline cursor-pointer">Cora Martinez</p>
                   <p className="text-[15px] leading-snug mt-1 text-gray-800">I've been applying these tips for 17 days now, and I've already noticed a significant improvement in my memory. I was even surprised by the results; it's impressive how some simple adjustments can make a difference! Loved it ❤️❤️❤️</p>
                 </div>
@@ -189,7 +190,7 @@ export default function App() {
                     <span>·</span>
                     <span className="font-normal text-gray-400">1h</span>
                   </div>
-                  <div className="flex items-center gap-1 bg-white px-1 shadow-sm rounded-full border border-gray-100">
+                  <div className="flex items-center gap-1 bg-white px-1 shadow-sm rounded-full border border-gray-100 z-10 relative">
                     <img src="https://raw.githubusercontent.com/vinicrespo/PROJETO-A/main/like.svg" alt="Like" className="w-4 h-4 bg-blue-500 rounded-full p-0.5" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling!.textContent = '👍'; }} />
                     <img src="https://raw.githubusercontent.com/vinicrespo/PROJETO-A/main/love.svg" alt="Love" className="w-4 h-4 bg-red-500 rounded-full p-0.5 -ml-1" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling!.textContent = '❤️'; }} />
                     <span className="text-gray-500 ml-1 font-normal">34</span>
@@ -198,11 +199,11 @@ export default function App() {
               </div>
             </div>
 
-            {/* Comment 5 */}
-            <div className="flex gap-3">
-              <img alt="Emily Johnson" className="w-10 h-10 rounded-full bg-gray-200 object-cover mt-1" src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&h=150&fit=crop" />
+            {/* Comment 5 (Main) */}
+            <div className="flex gap-3 mt-4">
+              <img alt="Emily Johnson" className="w-10 h-10 rounded-full bg-gray-200 object-cover mt-1 z-10" src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&h=150&fit=crop" />
               <div className="flex-1">
-                <div className="bg-[#f0f2f5] p-3 rounded-2xl">
+                <div className="bg-[#f0f2f5] p-3 rounded-2xl inline-block">
                   <p className="font-bold text-[#385898] text-sm hover:underline cursor-pointer">Emily Johnson</p>
                   <p className="text-[15px] leading-snug mt-1 text-gray-800">Very well explained and straightforward video, no beating around the bush, congratulations Dr. 🤩</p>
                 </div>
@@ -214,7 +215,7 @@ export default function App() {
                     <span>·</span>
                     <span className="font-normal text-gray-400">1h</span>
                   </div>
-                  <div className="flex items-center gap-1 bg-white px-1 shadow-sm rounded-full border border-gray-100">
+                  <div className="flex items-center gap-1 bg-white px-1 shadow-sm rounded-full border border-gray-100 z-10 relative">
                     <img src="https://raw.githubusercontent.com/vinicrespo/PROJETO-A/main/like.svg" alt="Like" className="w-4 h-4 bg-blue-500 rounded-full p-0.5" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling!.textContent = '👍'; }} />
                     <img src="https://raw.githubusercontent.com/vinicrespo/PROJETO-A/main/love.svg" alt="Love" className="w-4 h-4 bg-red-500 rounded-full p-0.5 -ml-1" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling!.textContent = '❤️'; }} />
                     <span className="text-gray-500 ml-1 font-normal">54</span>
@@ -223,11 +224,11 @@ export default function App() {
               </div>
             </div>
 
-            {/* Comment 6 */}
-            <div className="flex gap-3">
-              <img alt="Lauren Brown" className="w-10 h-10 rounded-full bg-gray-200 object-cover mt-1" src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=150&h=150&fit=crop" />
+            {/* Comment 6 (Main) */}
+            <div className="flex gap-3 mt-4">
+              <img alt="Lauren Brown" className="w-10 h-10 rounded-full bg-gray-200 object-cover mt-1 z-10" src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=150&h=150&fit=crop" />
               <div className="flex-1">
-                <div className="bg-[#f0f2f5] p-3 rounded-2xl">
+                <div className="bg-[#f0f2f5] p-3 rounded-2xl inline-block">
                   <p className="font-bold text-[#385898] text-sm hover:underline cursor-pointer">Lauren Brown</p>
                   <p className="text-[15px] leading-snug mt-1 text-gray-800">Dr., you've helped me a lot. A few years ago, I went through a difficult period and started looking for ways to improve my mind and well-being. I started applying your techniques 5 days ago, and I already feel like a different person – more energized, with greater mental clarity, and more desire to face the day. What a blessing!</p>
                 </div>
@@ -239,7 +240,7 @@ export default function App() {
                     <span>·</span>
                     <span className="font-normal text-gray-400">19 min</span>
                   </div>
-                  <div className="flex items-center gap-1 bg-white px-1 shadow-sm rounded-full border border-gray-100">
+                  <div className="flex items-center gap-1 bg-white px-1 shadow-sm rounded-full border border-gray-100 z-10 relative">
                     <img src="https://raw.githubusercontent.com/vinicrespo/PROJETO-A/main/like.svg" alt="Like" className="w-4 h-4 bg-blue-500 rounded-full p-0.5" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling!.textContent = '👍'; }} />
                     <img src="https://raw.githubusercontent.com/vinicrespo/PROJETO-A/main/love.svg" alt="Love" className="w-4 h-4 bg-red-500 rounded-full p-0.5 -ml-1" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling!.textContent = '❤️'; }} />
                     <span className="text-gray-500 ml-1 font-normal">10</span>
