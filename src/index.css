@@ -42,6 +42,11 @@
   animation: pulse-fast 1.5s ease-in-out infinite;
 }
 
+/* VTurb Smartplayer pitch delay class */
+.hide {
+  display: none;
+}
+
 /* Facebook Comment Lines */
 .fb-reply-line {
   position: relative;
