@@ -39,7 +39,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className="bg-gray-50 font-sans antialiased min-h-screen flex flex-col pt-[28px]">
+    <div className="bg-white font-sans antialiased min-h-screen flex flex-col pt-[72px]">
       {/* Header */}
       <header className={`bg-health-red text-white py-2 px-4 flex justify-between items-center fixed w-full z-50 shadow-md transition-all duration-300 top-0`}>
         <div className="flex-1"></div>
@@ -64,7 +64,7 @@ export default function App() {
       </div>
 
       {/* Main Content */}
-      <main className="max-w-4xl mx-auto bg-white flex-1 w-full px-4 pt-[40px] pb-6 md:px-8 shadow-sm mt-20">
+      <main className="max-w-4xl mx-auto bg-white flex-1 w-full px-4 pt-6 pb-6 md:px-8 shadow-sm">
         {/* Author Info */}
         <section className="mb-6">
           <p className="font-bold text-sm">By Dr.</p>
@@ -136,12 +136,12 @@ export default function App() {
 
               {/* Replies Container */}
               <div className="relative mt-2">
-                <div className="absolute left-[19px] top-[-20px] bottom-0 w-[2px] bg-[#E5E7EB] z-0"></div>
+                
 
                 {/* Comment 2 (Reply to 1) */}
                 <div className="flex gap-3 ml-12 relative z-10 pt-2 pb-2">
-                  <div className="absolute left-[-29px] top-[-10px] w-[30px] h-[38px] border-b-2 border-l-2 border-transparent border-b-[#E5E7EB] border-l-[#E5E7EB] rounded-bl-[12px] z-[-1]"></div>
-                  <div className="absolute left-[-31px] top-[28px] bottom-[-100px] w-[8px] bg-white z-[1]"></div>
+                  
+                  
 
                   <img loading="lazy" alt="Jennifer Davis" className="w-8 h-8 rounded-full bg-gray-200 object-cover mt-1 z-10" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=150&fit=crop" />
                   <div className="flex-1">
