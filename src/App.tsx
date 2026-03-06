@@ -90,9 +90,9 @@ export default function App() {
 
         {/* Call To Action */}
         <section className="text-center mb-12 flex justify-center w-full">
-          <button className="bg-[#218838] hover:bg-[#1e7e34] text-white font-bold text-xl md:text-2xl py-4 px-8 rounded-full shadow-lg uppercase tracking-wide transition-all duration-200 w-full sm:w-[90%] md:w-auto mx-auto animate-pulse-fast hover:scale-105 active:scale-95 border-b-4 border-[#1c7430]">
-            Adicionar ao carrinho
-          </button>
+          <a href="https://pay.mycheckoutt.com/019cbe91-76e8-73e1-bac4-51146d60ae7a?ref=" className="bg-[#218838] hover:bg-[#1e7e34] text-white font-bold text-xl md:text-2xl py-4 px-8 rounded-full shadow-lg uppercase tracking-wide transition-all duration-200 w-full sm:w-[90%] md:w-auto mx-auto animate-pulse-fast hover:scale-105 active:scale-95 border-b-4 border-[#1c7430]">
+            Yes, I Want Instant Access
+          </a>
         </section>
 
         {/* Comments Section */}
@@ -103,23 +103,21 @@ export default function App() {
             <div className="flex gap-3 fb-comment-has-replies">
               <img alt="Samantha Anderson" className="w-10 h-10 rounded-full bg-gray-200 object-cover mt-1 z-10" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop" />
               <div className="flex-1">
-                <div className="bg-[#f0f2f5] p-3 rounded-2xl inline-block">
-                  <p className="font-bold text-[#385898] text-sm hover:underline cursor-pointer">Samantha Anderson</p>
-                  <p className="text-[15px] leading-snug mt-1 text-gray-800">Dr., it's been 15 consecutive days since I started, and I've already noticed a big improvement in my mental clarity and focus. I'll keep going because I'm feeling amazing! 🤩</p>
+                <div className="relative inline-block max-w-[85%] sm:max-w-full">
+                  <div className="bg-[#f0f2f5] px-3 py-2 rounded-2xl">
+                    <p className="font-bold text-[#385898] text-[13px] hover:underline cursor-pointer">Samantha Anderson</p>
+                    <p className="text-[15px] leading-snug text-gray-800">Dr., it's been 15 consecutive days since I started, and I've already noticed a big improvement in my mental clarity and focus. I'll keep going because I'm feeling amazing! 🤩</p>
+                  </div>
+                  <div className="absolute -bottom-2.5 right-0 flex items-center bg-white px-[4px] py-[2px] shadow-sm rounded-full border border-gray-200 z-10 cursor-pointer">
+                    <img src="https://raw.githubusercontent.com/vinicrespo/PROJETO-A/main/like.svg" alt="Like" className="w-[18px] h-[18px] bg-blue-500 rounded-full border-2 border-white p-0.5 object-cover z-20" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling!.textContent = '👍'; }} />
+                    <img src="https://raw.githubusercontent.com/vinicrespo/PROJETO-A/main/love.svg" alt="Love" className="w-[18px] h-[18px] bg-red-500 rounded-full border-2 border-white p-0.5 -ml-[6px] relative z-10 object-cover" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling!.textContent = '❤️'; }} />
+                    <span className="text-[#65676B] text-[13px] ml-1 pr-1 font-normal">23</span>
+                  </div>
                 </div>
-                <div className="flex justify-between items-center text-xs mt-1 ml-2 font-bold text-gray-500">
-                  <div className="flex gap-3">
-                    <button className="hover:underline">Like</button>
-                    <span>·</span>
-                    <button className="hover:underline">Reply</button>
-                    <span>·</span>
-                    <span className="font-normal text-gray-400">2h</span>
-                  </div>
-                  <div className="flex items-center gap-1 bg-white px-1 shadow-sm rounded-full border border-gray-100 z-10 relative">
-                    <img src="https://raw.githubusercontent.com/vinicrespo/PROJETO-A/main/like.svg" alt="Like" className="w-4 h-4 bg-blue-500 rounded-full p-0.5" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling!.textContent = '👍'; }} />
-                    <img src="https://raw.githubusercontent.com/vinicrespo/PROJETO-A/main/love.svg" alt="Love" className="w-4 h-4 bg-red-500 rounded-full p-0.5 -ml-1" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling!.textContent = '❤️'; }} />
-                    <span className="text-gray-500 ml-1 font-normal">23</span>
-                  </div>
+                <div className="flex items-center text-xs mt-1 ml-3 font-bold text-[#65676B] gap-3">
+                  <button className="hover:underline">Like</button>
+                  <button className="hover:underline">Reply</button>
+                  <span className="font-normal">2h</span>
                 </div>
               </div>
             </div>
@@ -128,23 +126,21 @@ export default function App() {
             <div className="flex gap-3 ml-12 fb-reply-line fb-reply-line-first fb-reply-line-last pt-2">
               <img alt="Jennifer Davis" className="w-8 h-8 rounded-full bg-gray-200 object-cover mt-1 z-10" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=150&fit=crop" />
               <div className="flex-1">
-                <div className="bg-[#f0f2f5] p-3 rounded-2xl inline-block">
-                  <p className="font-bold text-[#385898] text-sm hover:underline cursor-pointer">Jennifer Davis</p>
-                  <p className="text-[15px] leading-snug mt-1 text-gray-800">FINALLY, SOMEONE WHO DOESN'T BEAT AROUND THE BUSH TO ASK FOR MONEY IN THE END, THANK YOUUUU! I STARTED TODAY 🤍</p>
+                <div className="relative inline-block max-w-[85%] sm:max-w-full">
+                  <div className="bg-[#f0f2f5] px-3 py-2 rounded-2xl">
+                    <p className="font-bold text-[#385898] text-[13px] hover:underline cursor-pointer">Jennifer Davis</p>
+                    <p className="text-[15px] leading-snug text-gray-800">FINALLY, SOMEONE WHO DOESN'T BEAT AROUND THE BUSH TO ASK FOR MONEY IN THE END, THANK YOUUUU! I STARTED TODAY 🤍</p>
+                  </div>
+                  <div className="absolute -bottom-2.5 right-0 flex items-center bg-white px-[4px] py-[2px] shadow-sm rounded-full border border-gray-200 z-10 cursor-pointer">
+                    <img src="https://raw.githubusercontent.com/vinicrespo/PROJETO-A/main/like.svg" alt="Like" className="w-[18px] h-[18px] bg-blue-500 rounded-full border-2 border-white p-0.5 object-cover z-20" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling!.textContent = '👍'; }} />
+                    <img src="https://raw.githubusercontent.com/vinicrespo/PROJETO-A/main/love.svg" alt="Love" className="w-[18px] h-[18px] bg-red-500 rounded-full border-2 border-white p-0.5 -ml-[6px] relative z-10 object-cover" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling!.textContent = '❤️'; }} />
+                    <span className="text-[#65676B] text-[13px] ml-1 pr-1 font-normal">17</span>
+                  </div>
                 </div>
-                <div className="flex justify-between items-center text-xs mt-1 ml-2 font-bold text-gray-500">
-                  <div className="flex gap-3">
-                    <button className="hover:underline">Like</button>
-                    <span>·</span>
-                    <button className="hover:underline">Reply</button>
-                    <span>·</span>
-                    <span className="font-normal text-gray-400">35 min</span>
-                  </div>
-                  <div className="flex items-center gap-1 bg-white px-1 shadow-sm rounded-full border border-gray-100 z-10 relative">
-                    <img src="https://raw.githubusercontent.com/vinicrespo/PROJETO-A/main/like.svg" alt="Like" className="w-4 h-4 bg-blue-500 rounded-full p-0.5" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling!.textContent = '👍'; }} />
-                    <img src="https://raw.githubusercontent.com/vinicrespo/PROJETO-A/main/love.svg" alt="Love" className="w-4 h-4 bg-red-500 rounded-full p-0.5 -ml-1" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling!.textContent = '❤️'; }} />
-                    <span className="text-gray-500 ml-1 font-normal">17</span>
-                  </div>
+                <div className="flex items-center text-xs mt-1 ml-3 font-bold text-[#65676B] gap-3">
+                  <button className="hover:underline">Like</button>
+                  <button className="hover:underline">Reply</button>
+                  <span className="font-normal">35 min</span>
                 </div>
               </div>
             </div>
@@ -153,23 +149,21 @@ export default function App() {
             <div className="flex gap-3 mt-4">
               <img alt="Tommy Thompson" className="w-10 h-10 rounded-full bg-gray-200 object-cover mt-1 z-10" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop" />
               <div className="flex-1">
-                <div className="bg-[#f0f2f5] p-3 rounded-2xl inline-block">
-                  <p className="font-bold text-[#385898] text-sm hover:underline cursor-pointer">Tommy Thompson</p>
-                  <p className="text-[15px] leading-snug mt-1 text-gray-800">You explain very well, it's what we, the laypeople, need. I'm going to start using this trick today itself.</p>
+                <div className="relative inline-block max-w-[85%] sm:max-w-full">
+                  <div className="bg-[#f0f2f5] px-3 py-2 rounded-2xl">
+                    <p className="font-bold text-[#385898] text-[13px] hover:underline cursor-pointer">Tommy Thompson</p>
+                    <p className="text-[15px] leading-snug text-gray-800">You explain very well, it's what we, the laypeople, need. I'm going to start using this trick today itself.</p>
+                  </div>
+                  <div className="absolute -bottom-2.5 right-0 flex items-center bg-white px-[4px] py-[2px] shadow-sm rounded-full border border-gray-200 z-10 cursor-pointer">
+                    <img src="https://raw.githubusercontent.com/vinicrespo/PROJETO-A/main/like.svg" alt="Like" className="w-[18px] h-[18px] bg-blue-500 rounded-full border-2 border-white p-0.5 object-cover z-20" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling!.textContent = '👍'; }} />
+                    <img src="https://raw.githubusercontent.com/vinicrespo/PROJETO-A/main/love.svg" alt="Love" className="w-[18px] h-[18px] bg-red-500 rounded-full border-2 border-white p-0.5 -ml-[6px] relative z-10 object-cover" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling!.textContent = '❤️'; }} />
+                    <span className="text-[#65676B] text-[13px] ml-1 pr-1 font-normal">11</span>
+                  </div>
                 </div>
-                <div className="flex justify-between items-center text-xs mt-1 ml-2 font-bold text-gray-500">
-                  <div className="flex gap-3">
-                    <button className="hover:underline">Like</button>
-                    <span>·</span>
-                    <button className="hover:underline">Reply</button>
-                    <span>·</span>
-                    <span className="font-normal text-gray-400">7 min</span>
-                  </div>
-                  <div className="flex items-center gap-1 bg-white px-1 shadow-sm rounded-full border border-gray-100 z-10 relative">
-                    <img src="https://raw.githubusercontent.com/vinicrespo/PROJETO-A/main/like.svg" alt="Like" className="w-4 h-4 bg-blue-500 rounded-full p-0.5" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling!.textContent = '👍'; }} />
-                    <img src="https://raw.githubusercontent.com/vinicrespo/PROJETO-A/main/love.svg" alt="Love" className="w-4 h-4 bg-red-500 rounded-full p-0.5 -ml-1" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling!.textContent = '❤️'; }} />
-                    <span className="text-gray-500 ml-1 font-normal">11</span>
-                  </div>
+                <div className="flex items-center text-xs mt-1 ml-3 font-bold text-[#65676B] gap-3">
+                  <button className="hover:underline">Like</button>
+                  <button className="hover:underline">Reply</button>
+                  <span className="font-normal">7 min</span>
                 </div>
               </div>
             </div>
@@ -178,23 +172,21 @@ export default function App() {
             <div className="flex gap-3 mt-4">
               <img alt="Cora Martinez" className="w-10 h-10 rounded-full bg-gray-200 object-cover mt-1 z-10" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop" />
               <div className="flex-1">
-                <div className="bg-[#f0f2f5] p-3 rounded-2xl inline-block">
-                  <p className="font-bold text-[#385898] text-sm hover:underline cursor-pointer">Cora Martinez</p>
-                  <p className="text-[15px] leading-snug mt-1 text-gray-800">I've been applying these tips for 17 days now, and I've already noticed a significant improvement in my memory. I was even surprised by the results; it's impressive how some simple adjustments can make a difference! Loved it ❤️❤️❤️</p>
+                <div className="relative inline-block max-w-[85%] sm:max-w-full">
+                  <div className="bg-[#f0f2f5] px-3 py-2 rounded-2xl">
+                    <p className="font-bold text-[#385898] text-[13px] hover:underline cursor-pointer">Cora Martinez</p>
+                    <p className="text-[15px] leading-snug text-gray-800">I've been applying these tips for 17 days now, and I've already noticed a significant improvement in my memory. I was even surprised by the results; it's impressive how some simple adjustments can make a difference! Loved it ❤️❤️❤️</p>
+                  </div>
+                  <div className="absolute -bottom-2.5 right-0 flex items-center bg-white px-[4px] py-[2px] shadow-sm rounded-full border border-gray-200 z-10 cursor-pointer">
+                    <img src="https://raw.githubusercontent.com/vinicrespo/PROJETO-A/main/like.svg" alt="Like" className="w-[18px] h-[18px] bg-blue-500 rounded-full border-2 border-white p-0.5 object-cover z-20" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling!.textContent = '👍'; }} />
+                    <img src="https://raw.githubusercontent.com/vinicrespo/PROJETO-A/main/love.svg" alt="Love" className="w-[18px] h-[18px] bg-red-500 rounded-full border-2 border-white p-0.5 -ml-[6px] relative z-10 object-cover" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling!.textContent = '❤️'; }} />
+                    <span className="text-[#65676B] text-[13px] ml-1 pr-1 font-normal">34</span>
+                  </div>
                 </div>
-                <div className="flex justify-between items-center text-xs mt-1 ml-2 font-bold text-gray-500">
-                  <div className="flex gap-3">
-                    <button className="hover:underline">Like</button>
-                    <span>·</span>
-                    <button className="hover:underline">Reply</button>
-                    <span>·</span>
-                    <span className="font-normal text-gray-400">1h</span>
-                  </div>
-                  <div className="flex items-center gap-1 bg-white px-1 shadow-sm rounded-full border border-gray-100 z-10 relative">
-                    <img src="https://raw.githubusercontent.com/vinicrespo/PROJETO-A/main/like.svg" alt="Like" className="w-4 h-4 bg-blue-500 rounded-full p-0.5" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling!.textContent = '👍'; }} />
-                    <img src="https://raw.githubusercontent.com/vinicrespo/PROJETO-A/main/love.svg" alt="Love" className="w-4 h-4 bg-red-500 rounded-full p-0.5 -ml-1" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling!.textContent = '❤️'; }} />
-                    <span className="text-gray-500 ml-1 font-normal">34</span>
-                  </div>
+                <div className="flex items-center text-xs mt-1 ml-3 font-bold text-[#65676B] gap-3">
+                  <button className="hover:underline">Like</button>
+                  <button className="hover:underline">Reply</button>
+                  <span className="font-normal">1h</span>
                 </div>
               </div>
             </div>
@@ -203,23 +195,21 @@ export default function App() {
             <div className="flex gap-3 mt-4">
               <img alt="Emily Johnson" className="w-10 h-10 rounded-full bg-gray-200 object-cover mt-1 z-10" src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&h=150&fit=crop" />
               <div className="flex-1">
-                <div className="bg-[#f0f2f5] p-3 rounded-2xl inline-block">
-                  <p className="font-bold text-[#385898] text-sm hover:underline cursor-pointer">Emily Johnson</p>
-                  <p className="text-[15px] leading-snug mt-1 text-gray-800">Very well explained and straightforward video, no beating around the bush, congratulations Dr. 🤩</p>
+                <div className="relative inline-block max-w-[85%] sm:max-w-full">
+                  <div className="bg-[#f0f2f5] px-3 py-2 rounded-2xl">
+                    <p className="font-bold text-[#385898] text-[13px] hover:underline cursor-pointer">Emily Johnson</p>
+                    <p className="text-[15px] leading-snug text-gray-800">Very well explained and straightforward video, no beating around the bush, congratulations Dr. 🤩</p>
+                  </div>
+                  <div className="absolute -bottom-2.5 right-0 flex items-center bg-white px-[4px] py-[2px] shadow-sm rounded-full border border-gray-200 z-10 cursor-pointer">
+                    <img src="https://raw.githubusercontent.com/vinicrespo/PROJETO-A/main/like.svg" alt="Like" className="w-[18px] h-[18px] bg-blue-500 rounded-full border-2 border-white p-0.5 object-cover z-20" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling!.textContent = '👍'; }} />
+                    <img src="https://raw.githubusercontent.com/vinicrespo/PROJETO-A/main/love.svg" alt="Love" className="w-[18px] h-[18px] bg-red-500 rounded-full border-2 border-white p-0.5 -ml-[6px] relative z-10 object-cover" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling!.textContent = '❤️'; }} />
+                    <span className="text-[#65676B] text-[13px] ml-1 pr-1 font-normal">54</span>
+                  </div>
                 </div>
-                <div className="flex justify-between items-center text-xs mt-1 ml-2 font-bold text-gray-500">
-                  <div className="flex gap-3">
-                    <button className="hover:underline">Like</button>
-                    <span>·</span>
-                    <button className="hover:underline">Reply</button>
-                    <span>·</span>
-                    <span className="font-normal text-gray-400">1h</span>
-                  </div>
-                  <div className="flex items-center gap-1 bg-white px-1 shadow-sm rounded-full border border-gray-100 z-10 relative">
-                    <img src="https://raw.githubusercontent.com/vinicrespo/PROJETO-A/main/like.svg" alt="Like" className="w-4 h-4 bg-blue-500 rounded-full p-0.5" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling!.textContent = '👍'; }} />
-                    <img src="https://raw.githubusercontent.com/vinicrespo/PROJETO-A/main/love.svg" alt="Love" className="w-4 h-4 bg-red-500 rounded-full p-0.5 -ml-1" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling!.textContent = '❤️'; }} />
-                    <span className="text-gray-500 ml-1 font-normal">54</span>
-                  </div>
+                <div className="flex items-center text-xs mt-1 ml-3 font-bold text-[#65676B] gap-3">
+                  <button className="hover:underline">Like</button>
+                  <button className="hover:underline">Reply</button>
+                  <span className="font-normal">1h</span>
                 </div>
               </div>
             </div>
@@ -228,23 +218,21 @@ export default function App() {
             <div className="flex gap-3 mt-4">
               <img alt="Lauren Brown" className="w-10 h-10 rounded-full bg-gray-200 object-cover mt-1 z-10" src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=150&h=150&fit=crop" />
               <div className="flex-1">
-                <div className="bg-[#f0f2f5] p-3 rounded-2xl inline-block">
-                  <p className="font-bold text-[#385898] text-sm hover:underline cursor-pointer">Lauren Brown</p>
-                  <p className="text-[15px] leading-snug mt-1 text-gray-800">Dr., you've helped me a lot. A few years ago, I went through a difficult period and started looking for ways to improve my mind and well-being. I started applying your techniques 5 days ago, and I already feel like a different person – more energized, with greater mental clarity, and more desire to face the day. What a blessing!</p>
+                <div className="relative inline-block max-w-[85%] sm:max-w-full">
+                  <div className="bg-[#f0f2f5] px-3 py-2 rounded-2xl">
+                    <p className="font-bold text-[#385898] text-[13px] hover:underline cursor-pointer">Lauren Brown</p>
+                    <p className="text-[15px] leading-snug text-gray-800">Dr., you've helped me a lot. A few years ago, I went through a difficult period and started looking for ways to improve my mind and well-being. I started applying your techniques 5 days ago, and I already feel like a different person – more energized, with greater mental clarity, and more desire to face the day. What a blessing!</p>
+                  </div>
+                  <div className="absolute -bottom-2.5 right-0 flex items-center bg-white px-[4px] py-[2px] shadow-sm rounded-full border border-gray-200 z-10 cursor-pointer">
+                    <img src="https://raw.githubusercontent.com/vinicrespo/PROJETO-A/main/like.svg" alt="Like" className="w-[18px] h-[18px] bg-blue-500 rounded-full border-2 border-white p-0.5 object-cover z-20" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling!.textContent = '👍'; }} />
+                    <img src="https://raw.githubusercontent.com/vinicrespo/PROJETO-A/main/love.svg" alt="Love" className="w-[18px] h-[18px] bg-red-500 rounded-full border-2 border-white p-0.5 -ml-[6px] relative z-10 object-cover" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling!.textContent = '❤️'; }} />
+                    <span className="text-[#65676B] text-[13px] ml-1 pr-1 font-normal">10</span>
+                  </div>
                 </div>
-                <div className="flex justify-between items-center text-xs mt-1 ml-2 font-bold text-gray-500">
-                  <div className="flex gap-3">
-                    <button className="hover:underline">Like</button>
-                    <span>·</span>
-                    <button className="hover:underline">Reply</button>
-                    <span>·</span>
-                    <span className="font-normal text-gray-400">19 min</span>
-                  </div>
-                  <div className="flex items-center gap-1 bg-white px-1 shadow-sm rounded-full border border-gray-100 z-10 relative">
-                    <img src="https://raw.githubusercontent.com/vinicrespo/PROJETO-A/main/like.svg" alt="Like" className="w-4 h-4 bg-blue-500 rounded-full p-0.5" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling!.textContent = '👍'; }} />
-                    <img src="https://raw.githubusercontent.com/vinicrespo/PROJETO-A/main/love.svg" alt="Love" className="w-4 h-4 bg-red-500 rounded-full p-0.5 -ml-1" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling!.textContent = '❤️'; }} />
-                    <span className="text-gray-500 ml-1 font-normal">10</span>
-                  </div>
+                <div className="flex items-center text-xs mt-1 ml-3 font-bold text-[#65676B] gap-3">
+                  <button className="hover:underline">Like</button>
+                  <button className="hover:underline">Reply</button>
+                  <span className="font-normal">19 min</span>
                 </div>
               </div>
             </div>
