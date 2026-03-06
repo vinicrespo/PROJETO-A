@@ -22,6 +22,12 @@ export default function App() {
       setMinutesAgo(prev => prev + 1);
     }, 60000);
 
+    // Inject Vturb Script
+    const vturbScript = document.createElement('script');
+    vturbScript.src = "https://scripts.converteai.net/d21a9e1d-910e-4254-b2bc-30b12586d2ef/players/69ab3e0401dc41aee18ccb65/v4/player.js";
+    vturbScript.async = true;
+    document.head.appendChild(vturbScript);
+
     const handleScroll = () => {
       // Hide banner when scrolled down, show when at top
       if (window.scrollY > 50) {
@@ -81,19 +87,10 @@ export default function App() {
         </section>
 
         {/* Video Area */}
-        <section className="mb-8">
-          <div className="video-placeholder rounded shadow-2xl overflow-hidden border-4 border-gray-200 group cursor-pointer">
-            <img
-              alt="Video Presentation"
-              className="w-full h-full object-cover"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5DuvQujY-gBX4pYkM3PHCnwzZFbBTkLnRPnO4Zj2vN9XSPy9Tux2xAAoj6n7_o0mdDRoGYnF4ppiLI1WTd_IU0yRi0I1TDvJwS92Xj9xkFp3ZKC8nKzXyx-mnF9qRCCDyLFSDcyB9isnS7rmemyBljG7En_Q4xBOkBQiMksvllgCm-0Kz8g4N4L6Tz8QvD7aLjD5PmlCIiqtog4ZBDHAQLlchiF6iZ3TI6dabwdLfSDU4nBmQ9VkmCWvEdW7YHu8Mon7_kGMVD6-G"
-              referrerPolicy="no-referrer"
-            />
-            <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/10 transition-all">
-              <div className="w-20 h-20 bg-health-red rounded-full flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform">
-                <Play className="h-10 w-10 text-white fill-current ml-1" />
-              </div>
-            </div>
+        <section className="mb-8 flex justify-center w-full">
+          {/* Vertical Video Container (9:16 Aspect Ratio) */}
+          <div className="w-full max-w-[400px] rounded-xl shadow-2xl overflow-hidden border-4 border-gray-200 relative" style={{ aspectRatio: '9/16' }}>
+            <vturb-smartplayer id="vid-69ab3e0401dc41aee18ccb65" style={{ display: 'block', margin: '0 auto', width: '100%', height: '100%', position: 'absolute', top: 0, left: 0 }}></vturb-smartplayer> 
           </div>
         </section>
 
