@@ -85,7 +85,7 @@ export default function App() {
 
         {/* Video Area */}
         <section className="mb-8 flex justify-center w-full">
-          <div className="w-full max-w-[400px] sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl 2xl:max-w-3xl rounded-xl shadow-2xl overflow-hidden border-4 border-gray-200 aspect-[9/16] bg-black">
+          <div className="w-full max-w-[400px] sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl 2xl:max-w-3xl rounded-xl shadow-2xl overflow-hidden">
             <vturb-smartplayer id="vid-69ab3e0401dc41aee18ccb65" style={{ display: 'block', margin: '0 auto', width: '100%', height: '100%' }}></vturb-smartplayer>
           </div>
         </section>
