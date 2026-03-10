@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, Play, ThumbsUp, Heart } from 'lucide-react';
-import moment from 'moment';
 
 export default function App() {
   const [currentDate, setCurrentDate] = useState('');
@@ -51,7 +49,7 @@ export default function App() {
         <h1 className="text-2xl font-bold tracking-widest">HEALTH</h1>
         <div className="flex-1 flex justify-end">
           <button aria-label="Menu" className="p-1">
-            <Menu className="h-8 w-8" />
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="4" x2="20" y1="12" y2="12" /><line x1="4" x2="20" y1="6" y2="6" /><line x1="4" x2="20" y1="18" y2="18" /></svg>
           </button>
         </div>
       </header>
@@ -87,8 +85,8 @@ export default function App() {
 
         {/* Video Area */}
         <section className="mb-8 flex justify-center w-full">
-          <div className="w-full max-w-[400px] sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl 2xl:max-w-3xl rounded-xl shadow-2xl overflow-hidden border-4 border-gray-200">
-            <vturb-smartplayer id="vid-69ab3e0401dc41aee18ccb65" style={{ display: 'block', margin: '0 auto', width: '100%' }}></vturb-smartplayer>
+          <div className="w-full max-w-[400px] sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl 2xl:max-w-3xl rounded-xl shadow-2xl overflow-hidden border-4 border-gray-200 aspect-[9/16] bg-black">
+            <vturb-smartplayer id="vid-69ab3e0401dc41aee18ccb65" style={{ display: 'block', margin: '0 auto', width: '100%', height: '100%' }}></vturb-smartplayer>
           </div>
         </section>
 
@@ -108,7 +106,7 @@ export default function App() {
             <div className="relative">
               {/* Comment 1 (Main) */}
               <div className="flex gap-3 relative z-10">
-                <img loading="lazy" alt="Samantha Anderson" className="w-10 h-10 rounded-full bg-gray-200 object-cover mt-1 z-10" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop" />
+                <img loading="lazy" alt="Samantha Anderson" width="40" height="40" className="w-10 h-10 rounded-full bg-gray-200 object-cover mt-1 z-10" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop" />
                 <div className="flex-1">
                   <div className="relative inline-block max-w-[85%] sm:max-w-full">
                     <div className="bg-[#f0f2f5] px-3 py-2 rounded-2xl">
@@ -116,8 +114,8 @@ export default function App() {
                       <p className="text-[15px] leading-snug text-gray-800">Dr., it's been 15 consecutive days since I started, and I've already noticed a big improvement in my mental clarity and focus. I'll keep going because I'm feeling amazing! 🤩</p>
                     </div>
                     <div className="absolute -bottom-2.5 right-0 flex items-center bg-white px-[4px] py-[2px] shadow-sm rounded-full border border-gray-200 z-10 cursor-pointer">
-                      <img loading="lazy" src="https://raw.githubusercontent.com/vinicrespo/PROJETO-A/main/like.svg" alt="Like" className="w-[18px] h-[18px] bg-blue-500 rounded-full border-2 border-white p-0.5 object-cover z-20" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling!.textContent = '👍'; }} />
-                      <img loading="lazy" src="https://raw.githubusercontent.com/vinicrespo/PROJETO-A/main/love.svg" alt="Love" className="w-[18px] h-[18px] bg-red-500 rounded-full border-2 border-white p-0.5 -ml-[6px] relative z-10 object-cover" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling!.textContent = '❤️'; }} />
+                      <img loading="lazy" src="https://raw.githubusercontent.com/vinicrespo/PROJETO-A/main/like.svg" alt="Like" width="18" height="18" className="w-[18px] h-[18px] bg-blue-500 rounded-full border-2 border-white p-0.5 object-cover z-20" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling!.textContent = '👍'; }} />
+                      <img loading="lazy" src="https://raw.githubusercontent.com/vinicrespo/PROJETO-A/main/love.svg" alt="Love" width="18" height="18" className="w-[18px] h-[18px] bg-red-500 rounded-full border-2 border-white p-0.5 -ml-[6px] relative z-10 object-cover" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling!.textContent = '❤️'; }} />
                       <span className="text-[#65676B] text-[13px] ml-1 pr-1 font-normal">23</span>
                     </div>
                   </div>
@@ -138,7 +136,7 @@ export default function App() {
 
 
 
-                  <img loading="lazy" alt="Jennifer Davis" className="w-8 h-8 rounded-full bg-gray-200 object-cover mt-1 z-10" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=150&fit=crop" />
+                  <img loading="lazy" alt="Jennifer Davis" width="32" height="32" className="w-8 h-8 rounded-full bg-gray-200 object-cover mt-1 z-10" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=150&fit=crop" />
                   <div className="flex-1">
                     <div className="relative inline-block max-w-[85%] sm:max-w-full">
                       <div className="bg-[#f0f2f5] px-3 py-2 rounded-2xl">
@@ -146,8 +144,8 @@ export default function App() {
                         <p className="text-[15px] leading-snug text-gray-800">FINALLY, SOMEONE WHO DOESN'T BEAT AROUND THE BUSH TO ASK FOR MONEY IN THE END, THANK YOUUUU! I STARTED TODAY ��</p>
                       </div>
                       <div className="absolute -bottom-2.5 right-0 flex items-center bg-white px-[4px] py-[2px] shadow-sm rounded-full border border-gray-200 z-10 cursor-pointer">
-                        <img loading="lazy" src="https://raw.githubusercontent.com/vinicrespo/PROJETO-A/main/like.svg" alt="Like" className="w-[18px] h-[18px] bg-blue-500 rounded-full border-2 border-white p-0.5 object-cover z-20" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling!.textContent = '👍'; }} />
-                        <img loading="lazy" src="https://raw.githubusercontent.com/vinicrespo/PROJETO-A/main/love.svg" alt="Love" className="w-[18px] h-[18px] bg-red-500 rounded-full border-2 border-white p-0.5 -ml-[6px] relative z-10 object-cover" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling!.textContent = '❤️'; }} />
+                        <img loading="lazy" src="https://raw.githubusercontent.com/vinicrespo/PROJETO-A/main/like.svg" alt="Like" width="18" height="18" className="w-[18px] h-[18px] bg-blue-500 rounded-full border-2 border-white p-0.5 object-cover z-20" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling!.textContent = '👍'; }} />
+                        <img loading="lazy" src="https://raw.githubusercontent.com/vinicrespo/PROJETO-A/main/love.svg" alt="Love" width="18" height="18" className="w-[18px] h-[18px] bg-red-500 rounded-full border-2 border-white p-0.5 -ml-[6px] relative z-10 object-cover" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling!.textContent = '❤️'; }} />
                         <span className="text-[#65676B] text-[13px] ml-1 pr-1 font-normal">17</span>
                       </div>
                     </div>
@@ -165,7 +163,7 @@ export default function App() {
             <div className="relative">
               {/* Comment 3 (Main) */}
               <div className="flex gap-3 relative z-10">
-                <img loading="lazy" alt="Tommy Thompson" className="w-10 h-10 rounded-full bg-gray-200 object-cover mt-1 z-10" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop" />
+                <img loading="lazy" alt="Tommy Thompson" width="40" height="40" className="w-10 h-10 rounded-full bg-gray-200 object-cover mt-1 z-10" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop" />
                 <div className="flex-1">
                   <div className="relative inline-block max-w-[85%] sm:max-w-full">
                     <div className="bg-[#f0f2f5] px-3 py-2 rounded-2xl">
@@ -173,8 +171,8 @@ export default function App() {
                       <p className="text-[15px] leading-snug text-gray-800">You explain very well, it's what we, the laypeople, need. I'm going to start using this trick today itself.</p>
                     </div>
                     <div className="absolute -bottom-2.5 right-0 flex items-center bg-white px-[4px] py-[2px] shadow-sm rounded-full border border-gray-200 z-10 cursor-pointer">
-                      <img loading="lazy" src="https://raw.githubusercontent.com/vinicrespo/PROJETO-A/main/like.svg" alt="Like" className="w-[18px] h-[18px] bg-blue-500 rounded-full border-2 border-white p-0.5 object-cover z-20" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling!.textContent = '👍'; }} />
-                      <img loading="lazy" src="https://raw.githubusercontent.com/vinicrespo/PROJETO-A/main/love.svg" alt="Love" className="w-[18px] h-[18px] bg-red-500 rounded-full border-2 border-white p-0.5 -ml-[6px] relative z-10 object-cover" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling!.textContent = '❤️'; }} />
+                      <img loading="lazy" src="https://raw.githubusercontent.com/vinicrespo/PROJETO-A/main/like.svg" alt="Like" width="18" height="18" className="w-[18px] h-[18px] bg-blue-500 rounded-full border-2 border-white p-0.5 object-cover z-20" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling!.textContent = '👍'; }} />
+                      <img loading="lazy" src="https://raw.githubusercontent.com/vinicrespo/PROJETO-A/main/love.svg" alt="Love" width="18" height="18" className="w-[18px] h-[18px] bg-red-500 rounded-full border-2 border-white p-0.5 -ml-[6px] relative z-10 object-cover" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling!.textContent = '❤️'; }} />
                       <span className="text-[#65676B] text-[13px] ml-1 pr-1 font-normal">11</span>
                     </div>
                   </div>
@@ -191,7 +189,7 @@ export default function App() {
             <div className="relative">
               {/* Comment 4 (Main) */}
               <div className="flex gap-3 relative z-10">
-                <img loading="lazy" alt="Cora Martinez" className="w-10 h-10 rounded-full bg-gray-200 object-cover mt-1 z-10" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop" />
+                <img loading="lazy" alt="Cora Martinez" width="40" height="40" className="w-10 h-10 rounded-full bg-gray-200 object-cover mt-1 z-10" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop" />
                 <div className="flex-1">
                   <div className="relative inline-block max-w-[85%] sm:max-w-full">
                     <div className="bg-[#f0f2f5] px-3 py-2 rounded-2xl">
@@ -199,8 +197,8 @@ export default function App() {
                       <p className="text-[15px] leading-snug text-gray-800">I've been applying these tips for 17 days now, and I've already noticed a significant improvement in my memory. I was even surprised by the results; it's impressive how some simple adjustments can make a difference! Loved it ❤️❤️❤️</p>
                     </div>
                     <div className="absolute -bottom-2.5 right-0 flex items-center bg-white px-[4px] py-[2px] shadow-sm rounded-full border border-gray-200 z-10 cursor-pointer">
-                      <img loading="lazy" src="https://raw.githubusercontent.com/vinicrespo/PROJETO-A/main/like.svg" alt="Like" className="w-[18px] h-[18px] bg-blue-500 rounded-full border-2 border-white p-0.5 object-cover z-20" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling!.textContent = '👍'; }} />
-                      <img loading="lazy" src="https://raw.githubusercontent.com/vinicrespo/PROJETO-A/main/love.svg" alt="Love" className="w-[18px] h-[18px] bg-red-500 rounded-full border-2 border-white p-0.5 -ml-[6px] relative z-10 object-cover" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling!.textContent = '❤️'; }} />
+                      <img loading="lazy" src="https://raw.githubusercontent.com/vinicrespo/PROJETO-A/main/like.svg" alt="Like" width="18" height="18" className="w-[18px] h-[18px] bg-blue-500 rounded-full border-2 border-white p-0.5 object-cover z-20" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling!.textContent = '👍'; }} />
+                      <img loading="lazy" src="https://raw.githubusercontent.com/vinicrespo/PROJETO-A/main/love.svg" alt="Love" width="18" height="18" className="w-[18px] h-[18px] bg-red-500 rounded-full border-2 border-white p-0.5 -ml-[6px] relative z-10 object-cover" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling!.textContent = '❤️'; }} />
                       <span className="text-[#65676B] text-[13px] ml-1 pr-1 font-normal">34</span>
                     </div>
                   </div>
@@ -217,7 +215,7 @@ export default function App() {
             <div className="relative">
               {/* Comment 5 (Main) */}
               <div className="flex gap-3 relative z-10">
-                <img loading="lazy" alt="Emily Johnson" className="w-10 h-10 rounded-full bg-gray-200 object-cover mt-1 z-10" src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&h=150&fit=crop" />
+                <img loading="lazy" alt="Emily Johnson" width="40" height="40" className="w-10 h-10 rounded-full bg-gray-200 object-cover mt-1 z-10" src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&h=150&fit=crop" />
                 <div className="flex-1">
                   <div className="relative inline-block max-w-[85%] sm:max-w-full">
                     <div className="bg-[#f0f2f5] px-3 py-2 rounded-2xl">
@@ -225,8 +223,8 @@ export default function App() {
                       <p className="text-[15px] leading-snug text-gray-800">Very well explained and straightforward video, no beating around the bush, congratulations Dr. 🤩</p>
                     </div>
                     <div className="absolute -bottom-2.5 right-0 flex items-center bg-white px-[4px] py-[2px] shadow-sm rounded-full border border-gray-200 z-10 cursor-pointer">
-                      <img loading="lazy" src="https://raw.githubusercontent.com/vinicrespo/PROJETO-A/main/like.svg" alt="Like" className="w-[18px] h-[18px] bg-blue-500 rounded-full border-2 border-white p-0.5 object-cover z-20" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling!.textContent = '👍'; }} />
-                      <img loading="lazy" src="https://raw.githubusercontent.com/vinicrespo/PROJETO-A/main/love.svg" alt="Love" className="w-[18px] h-[18px] bg-red-500 rounded-full border-2 border-white p-0.5 -ml-[6px] relative z-10 object-cover" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling!.textContent = '❤️'; }} />
+                      <img loading="lazy" src="https://raw.githubusercontent.com/vinicrespo/PROJETO-A/main/like.svg" alt="Like" width="18" height="18" className="w-[18px] h-[18px] bg-blue-500 rounded-full border-2 border-white p-0.5 object-cover z-20" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling!.textContent = '👍'; }} />
+                      <img loading="lazy" src="https://raw.githubusercontent.com/vinicrespo/PROJETO-A/main/love.svg" alt="Love" width="18" height="18" className="w-[18px] h-[18px] bg-red-500 rounded-full border-2 border-white p-0.5 -ml-[6px] relative z-10 object-cover" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling!.textContent = '❤️'; }} />
                       <span className="text-[#65676B] text-[13px] ml-1 pr-1 font-normal">54</span>
                     </div>
                   </div>
@@ -243,7 +241,7 @@ export default function App() {
             <div className="relative">
               {/* Comment 6 (Main) */}
               <div className="flex gap-3 relative z-10">
-                <img loading="lazy" alt="Lauren Brown" className="w-10 h-10 rounded-full bg-gray-200 object-cover mt-1 z-10" src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=150&h=150&fit=crop" />
+                <img loading="lazy" alt="Lauren Brown" width="40" height="40" className="w-10 h-10 rounded-full bg-gray-200 object-cover mt-1 z-10" src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=150&h=150&fit=crop" />
                 <div className="flex-1">
                   <div className="relative inline-block max-w-[85%] sm:max-w-full">
                     <div className="bg-[#f0f2f5] px-3 py-2 rounded-2xl">
@@ -251,8 +249,8 @@ export default function App() {
                       <p className="text-[15px] leading-snug text-gray-800">Dr., you've helped me a lot. A few years ago, I went through a difficult period and started looking for ways to improve my mind and well-being. I started applying your techniques 5 days ago, and I already feel like a different person – more energized, with greater mental clarity, and more desire to face the day. What a blessing!</p>
                     </div>
                     <div className="absolute -bottom-2.5 right-0 flex items-center bg-white px-[4px] py-[2px] shadow-sm rounded-full border border-gray-200 z-10 cursor-pointer">
-                      <img loading="lazy" src="https://raw.githubusercontent.com/vinicrespo/PROJETO-A/main/like.svg" alt="Like" className="w-[18px] h-[18px] bg-blue-500 rounded-full border-2 border-white p-0.5 object-cover z-20" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling!.textContent = '👍'; }} />
-                      <img loading="lazy" src="https://raw.githubusercontent.com/vinicrespo/PROJETO-A/main/love.svg" alt="Love" className="w-[18px] h-[18px] bg-red-500 rounded-full border-2 border-white p-0.5 -ml-[6px] relative z-10 object-cover" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling!.textContent = '❤️'; }} />
+                      <img loading="lazy" src="https://raw.githubusercontent.com/vinicrespo/PROJETO-A/main/like.svg" alt="Like" width="18" height="18" className="w-[18px] h-[18px] bg-blue-500 rounded-full border-2 border-white p-0.5 object-cover z-20" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling!.textContent = '👍'; }} />
+                      <img loading="lazy" src="https://raw.githubusercontent.com/vinicrespo/PROJETO-A/main/love.svg" alt="Love" width="18" height="18" className="w-[18px] h-[18px] bg-red-500 rounded-full border-2 border-white p-0.5 -ml-[6px] relative z-10 object-cover" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling!.textContent = '❤️'; }} />
                       <span className="text-[#65676B] text-[13px] ml-1 pr-1 font-normal">10</span>
                     </div>
                   </div>

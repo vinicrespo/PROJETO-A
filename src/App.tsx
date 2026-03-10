@@ -1,38 +1,47 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 
-// Providers
-import { AuthProvider } from './app/context/AuthContext';
-import { ProgressProvider } from './app/context/ProgressContext';
+// Providers (Lazy loaded)
+const AuthProvider = lazy(() => import('./app/context/AuthContext').then(m => ({ default: m.AuthProvider })));
+const ProgressProvider = lazy(() => import('./app/context/ProgressContext').then(m => ({ default: m.ProgressProvider })));
 
-// Layout
-import AppLayout from './app/components/AppLayout';
+// Layout (Lazy loaded)
+const AppLayout = lazy(() => import('./app/components/AppLayout'));
 
-// VSL Entry
+// VSL Entry (Static import for immediately loading on index)
 import VSL from './pages/VSL';
 
-// App Pages
-import Login from './app/pages/Login';
-import Dashboard from './app/pages/Dashboard';
-import Program from './app/pages/Program';
-import BonusAgeless from './app/pages/BonusAgeless';
-import BonusBiohacking from './app/pages/BonusBiohacking';
-import Progress from './app/pages/Progress';
-import DailyTips from './app/pages/DailyTips';
+// App Pages (Lazy loaded for performance code splitting)
+const Login = lazy(() => import('./app/pages/Login'));
+const Dashboard = lazy(() => import('./app/pages/Dashboard'));
+const Program = lazy(() => import('./app/pages/Program'));
+const BonusAgeless = lazy(() => import('./app/pages/BonusAgeless'));
+const BonusBiohacking = lazy(() => import('./app/pages/BonusBiohacking'));
+const Progress = lazy(() => import('./app/pages/Progress'));
+const DailyTips = lazy(() => import('./app/pages/DailyTips'));
+
+// Fallback loader while downloading chunk
+const PageLoader = () => (
+    <div className="min-h-screen flex items-center justify-center bg-white sm:bg-[#070b14]">
+        <div className="w-12 h-12 border-4 border-[#3B82F6] border-t-transparent rounded-full animate-spin"></div>
+    </div>
+);
 
 export default function App() {
     return (
         <Routes>
-            {/* VSL Route (Preserved) */}
+            {/* VSL Route (Preserved, no suspense to guarantee instant render) */}
             <Route path="/" element={<VSL />} />
 
             {/* Auth Route */}
             <Route
                 path="/app/login"
                 element={
-                    <AuthProvider>
-                        <Login />
-                    </AuthProvider>
+                    <Suspense fallback={<PageLoader />}>
+                        <AuthProvider>
+                            <Login />
+                        </AuthProvider>
+                    </Suspense>
                 }
             />
 
@@ -40,11 +49,13 @@ export default function App() {
             <Route
                 path="/app"
                 element={
-                    <AuthProvider>
-                        <ProgressProvider>
-                            <AppLayout />
-                        </ProgressProvider>
-                    </AuthProvider>
+                    <Suspense fallback={<PageLoader />}>
+                        <AuthProvider>
+                            <ProgressProvider>
+                                <AppLayout />
+                            </ProgressProvider>
+                        </AuthProvider>
+                    </Suspense>
                 }
             >
                 <Route index element={<Navigate to="/app/dashboard" replace />} />
