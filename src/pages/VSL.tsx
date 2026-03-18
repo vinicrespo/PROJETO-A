@@ -92,7 +92,7 @@ export default function App() {
 
         {/* Call To Action */}
         <section className="text-center mb-12 flex justify-center w-full hide">
-          <a href="https://pay.mycheckoutt.com/019cd95d-9142-7368-9e90-e657eda52f8d?ref=" className="bg-[#218838] hover:bg-[#1e7e34] text-white font-bold text-xl md:text-2xl py-4 px-8 rounded-full shadow-lg uppercase tracking-wide transition-all duration-200 w-full sm:w-[90%] md:w-auto mx-auto animate-pulse-fast hover:scale-105 active:scale-95 border-b-4 border-[#1c7430]">
+          <a href="https://pay.hotmart.com/X104874624T?off=54d6rbns" className="bg-[#218838] hover:bg-[#1e7e34] text-white font-bold text-xl md:text-2xl py-4 px-8 rounded-full shadow-lg uppercase tracking-wide transition-all duration-200 w-full sm:w-[90%] md:w-auto mx-auto animate-pulse-fast hover:scale-105 active:scale-95 border-b-4 border-[#1c7430]">
             Yes, I Want Instant Access
           </a>
         </section>
