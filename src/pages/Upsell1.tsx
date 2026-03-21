@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 export default function Upsell1() {
   const [isPrivacyOpen, setIsPrivacyOpen] = useState(false);
   const [isTermsOpen, setIsTermsOpen] = useState(false);
+  const [showBanner, setShowBanner] = useState(true);
 
   useEffect(() => {
     // Inject Vturb Script (Placeholder for Upsell 1)
@@ -11,16 +12,49 @@ export default function Upsell1() {
     vturbScript.async = true;
     document.head.appendChild(vturbScript);
 
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setShowBanner(false);
+      } else {
+        setShowBanner(true);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
     return () => {
-      // Clean up script if necessary, though usually not needed for vturb
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
 
   return (
-    <div className="bg-white font-sans antialiased min-h-screen flex flex-col">
+    <div className="bg-white font-sans antialiased min-h-screen flex flex-col pt-[72px]">
+      {/* Header */}
+      <header className={`bg-health-red text-white py-2 px-4 flex justify-between items-center fixed w-full z-50 shadow-md transition-all duration-300 top-0`}>
+        <div className="flex-1"></div>
+        <h1 className="text-2xl font-bold tracking-widest">HEALTH</h1>
+        <div className="flex-1 flex justify-end">
+          <button aria-label="Menu" className="p-1">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="4" x2="20" y1="12" y2="12" /><line x1="4" x2="20" y1="6" y2="6" /><line x1="4" x2="20" y1="18" y2="18" /></svg>
+          </button>
+        </div>
+      </header>
+
+      {/* Marquee Banner */}
+      <div className={`bg-[#4a0404] py-1 overflow-hidden transition-all duration-300 fixed w-full z-40 ${showBanner ? 'opacity-100 top-[48px]' : 'opacity-0 top-0 pointer-events-none'}`}>
+        <div className="flex whitespace-nowrap animate-marquee">
+          <div className="text-[10px] md:text-xs text-white font-bold uppercase tracking-wider px-4">
+            DAILY UPDATES ON WELLNESS AND HEALTH • DAILY UPDATES ON WELLNESS AND HEALTH • DAILY UPDATES ON WELLNESS AND HEALTH • DAILY UPDATES ON WELLNESS AND HEALTH • DAILY UPDATES ON WELLNESS AND HEALTH
+          </div>
+          <div className="text-[10px] md:text-xs text-white font-bold uppercase tracking-wider px-4">
+            DAILY UPDATES ON WELLNESS AND HEALTH • DAILY UPDATES ON WELLNESS AND HEALTH • DAILY UPDATES ON WELLNESS AND HEALTH • DAILY UPDATES ON WELLNESS AND HEALTH • DAILY UPDATES ON WELLNESS AND HEALTH
+          </div>
+        </div>
+      </div>
+
       {/* Main Content */}
       <main className="max-w-4xl mx-auto bg-white flex-1 w-full px-4 pt-12 pb-6 md:px-8 shadow-sm">
+
         {/* Video Area */}
         <section className="mb-8 flex justify-center w-full">
           <div className="w-full max-w-[400px] sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl 2xl:max-w-3xl rounded-xl shadow-2xl overflow-hidden">
