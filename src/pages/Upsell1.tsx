@@ -35,7 +35,7 @@ export default function Upsell1() {
 
 
   return (
-    <div className="bg-white font-sans antialiased min-h-screen flex flex-col pt-[72px]">
+    <div className="bg-black font-sans antialiased min-h-screen flex flex-col pt-[72px]">
       {/* Header */}
       <header className={`bg-health-red text-white py-2 px-4 flex justify-between items-center fixed w-full z-50 shadow-md transition-all duration-300 top-0`}>
         <div className="flex-1"></div>
@@ -60,7 +60,7 @@ export default function Upsell1() {
       </div>
 
       {/* Main Content */}
-      <main className="max-w-4xl mx-auto bg-white flex-1 w-full px-4 pt-12 pb-6 md:px-8 shadow-sm">
+      <main className="max-w-4xl mx-auto bg-black flex-1 w-full px-4 pt-12 pb-6 md:px-8">
 
         {/* Video Area */}
         <section className="mb-8 flex justify-center w-full">
@@ -72,11 +72,12 @@ export default function Upsell1() {
 
         {/* Mundpay Checkout (Accept/Refuse Upsell) */}
         <section className="text-center mb-12 flex justify-center w-full hide_upsell1">
-          <div data-mndpay-render="019d125a-d300-7241-bdae-825b2a9e132c"></div>
+          <div data-mndpay-render="019d1260-caf1-7218-bd28-8d0c5ce49e58"></div>
         </section>
 
         {/* Note: Facebook comments and unnecessary sections removed for Upsell page as requested */}
       </main>
+
 
 
 
