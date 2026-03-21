@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-export default function App() {
+export default function VSL39() {
   const [currentDate, setCurrentDate] = useState('');
   const [minutesAgo, setMinutesAgo] = useState(30);
   const [isPrivacyOpen, setIsPrivacyOpen] = useState(false);
