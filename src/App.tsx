@@ -12,6 +12,8 @@ const AppLayout = lazy(() => import('./app/components/AppLayout'));
 import VSL from './pages/VSL';
 import VSL39 from './pages/VSL39';
 import Upsell1 from './pages/Upsell1';
+import Thanks from './pages/Thanks';
+
 
 
 // App Pages (Lazy loaded for performance code splitting)
@@ -37,6 +39,8 @@ export default function App() {
             <Route path="/" element={<VSL />} />
             <Route path="/39" element={<VSL39 />} />
             <Route path="/upsell1" element={<Upsell1 />} />
+            <Route path="/thanks" element={<Thanks />} />
+
 
 
             {/* Auth Route */}
