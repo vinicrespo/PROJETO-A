@@ -48,6 +48,11 @@
   display: none;
 }
 
+.hide_upsell1 {
+  display: none;
+}
+
+
 /* Facebook Comment Lines */
 .fb-reply-line {
   position: relative;
