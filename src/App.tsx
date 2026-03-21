@@ -11,6 +11,8 @@ const AppLayout = lazy(() => import('./app/components/AppLayout'));
 // VSL Entry (Static import for immediately loading on index)
 import VSL from './pages/VSL';
 import VSL39 from './pages/VSL39';
+import Upsell1 from './pages/Upsell1';
+
 
 // App Pages (Lazy loaded for performance code splitting)
 const Login = lazy(() => import('./app/pages/Login'));
@@ -34,6 +36,8 @@ export default function App() {
             {/* VSL Route (Preserved, no suspense to guarantee instant render) */}
             <Route path="/" element={<VSL />} />
             <Route path="/39" element={<VSL39 />} />
+            <Route path="/upsell1" element={<Upsell1 />} />
+
 
             {/* Auth Route */}
             <Route
