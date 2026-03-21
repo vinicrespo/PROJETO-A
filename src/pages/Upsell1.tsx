@@ -72,8 +72,9 @@ export default function Upsell1() {
 
         {/* Mundpay Checkout (Accept/Refuse Upsell) */}
         <section className="text-center mb-12 flex justify-center w-full hide_upsell1">
-          <div data-mndpay-render="019d1260-caf1-7218-bd28-8d0c5ce49e58"></div>
+          <div className="hide_upsell1" data-mndpay-render="019d1260-caf1-7218-bd28-8d0c5ce49e58"></div>
         </section>
+
 
         {/* Note: Facebook comments and unnecessary sections removed for Upsell page as requested */}
       </main>
