@@ -12,6 +12,7 @@ const AppLayout = lazy(() => import('./app/components/AppLayout'));
 import VSL from './pages/VSL';
 import VSL39 from './pages/VSL39';
 import Upsell1 from './pages/Upsell1';
+import Upsell2 from './pages/Upsell2';
 import Thanks from './pages/Thanks';
 
 
@@ -39,6 +40,7 @@ export default function App() {
             <Route path="/" element={<VSL />} />
             <Route path="/39" element={<VSL39 />} />
             <Route path="/upsell1" element={<Upsell1 />} />
+            <Route path="/upsell2" element={<Upsell2 />} />
             <Route path="/thanks" element={<Thanks />} />
 
 
