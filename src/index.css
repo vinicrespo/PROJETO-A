@@ -52,6 +52,10 @@
   display: none;
 }
 
+.hide_upsell2 {
+  display: none;
+}
+
 
 /* Facebook Comment Lines */
 .fb-reply-line {
