@@ -12,6 +12,12 @@ export default function Upsell2() {
     vturbScript.async = true;
     document.head.appendChild(vturbScript);
 
+    // Inject CashPay Script
+    const kashpayScript = document.createElement('script');
+    kashpayScript.src = "https://app.kashpay.com.br/scripts/upsell-processor.js";
+    kashpayScript.async = true;
+    document.head.appendChild(kashpayScript);
+
 
 
     const handleScroll = () => {
@@ -67,6 +73,33 @@ export default function Upsell2() {
 
 
 
+
+        {/* CashPay Checkout Button (Accept Upsell) */}
+        <section className="text-center mb-12 flex justify-center w-full hide_upsell2">
+          <button 
+            onClick={() => {
+              // @ts-ignore
+              window.acceptUpsell('https://app.kashpay.com.br/u/d7a2b24e30dc8c1e');
+            }} 
+            style={{
+              fontFamily: "'Poppins'",
+              fontSize: '18px',
+              fontWeight: '600',
+              lineHeight: '1.3',
+              color: '#ffffff',
+              backgroundColor: '#057932',
+              border: 'none',
+              borderRadius: '10px',
+              padding: '13px 7%',
+              cursor: 'pointer',
+              textAlign: 'center',
+              display: 'block',
+              margin: 'auto'
+            }}
+          >
+            Get Offer
+          </button>
+        </section>
 
         {/* Note: Facebook comments and unnecessary sections removed for Upsell page as requested */}
       </main>

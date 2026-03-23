@@ -12,12 +12,11 @@ export default function Upsell1() {
     vturbScript.async = true;
     document.head.appendChild(vturbScript);
 
-    // Inject Mundpay Script
-    const mundpayScript = document.createElement('script');
-    mundpayScript.src = "https://upsell.mundpay.com/script-v2.js";
-    mundpayScript.async = true;
-    mundpayScript.defer = true;
-    document.head.appendChild(mundpayScript);
+    // Inject CashPay Script
+    const kashpayScript = document.createElement('script');
+    kashpayScript.src = "https://app.kashpay.com.br/scripts/upsell-processor.js";
+    kashpayScript.async = true;
+    document.head.appendChild(kashpayScript);
 
     const handleScroll = () => {
       if (window.scrollY > 50) {
@@ -70,9 +69,31 @@ export default function Upsell1() {
         </section>
 
 
-        {/* Mundpay Checkout (Accept/Refuse Upsell) */}
+        {/* CashPay Checkout Button (Accept Upsell) */}
         <section className="text-center mb-12 flex justify-center w-full hide_upsell1">
-          <div className="hide_upsell1" data-mndpay-render="019d1260-caf1-7218-bd28-8d0c5ce49e58"></div>
+          <button 
+            onClick={() => {
+              // @ts-ignore
+              window.acceptUpsell('https://app.kashpay.com.br/u/ed9c3843601bf7ea');
+            }} 
+            style={{
+              fontFamily: "'Poppins'",
+              fontSize: '18px',
+              fontWeight: '600',
+              lineHeight: '1.3',
+              color: '#ffffff',
+              backgroundColor: '#057932',
+              border: 'none',
+              borderRadius: '10px',
+              padding: '13px 7%',
+              cursor: 'pointer',
+              textAlign: 'center',
+              display: 'block',
+              margin: 'auto'
+            }}
+          >
+            Get Offer
+          </button>
         </section>
 
 
