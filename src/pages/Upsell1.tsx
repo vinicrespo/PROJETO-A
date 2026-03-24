@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Upsell1() {
   const [isPrivacyOpen, setIsPrivacyOpen] = useState(false);
@@ -70,30 +71,38 @@ export default function Upsell1() {
 
 
         {/* CashPay Checkout Button (Accept Upsell) */}
-        <section className="text-center mb-12 flex justify-center w-full hide hide_upsell1">
-          <button 
-            onClick={() => {
-              // @ts-ignore
-              window.acceptUpsell('https://app.kashpay.com.br/u/ed9c3843601bf7ea');
-            }} 
-            style={{
-              fontFamily: "'Poppins'",
-              fontSize: '18px',
-              fontWeight: '600',
-              lineHeight: '1.3',
-              color: '#ffffff',
-              backgroundColor: '#057932',
-              border: 'none',
-              borderRadius: '10px',
-              padding: '13px 7%',
-              cursor: 'pointer',
-              textAlign: 'center',
-              display: 'block',
-              margin: 'auto'
-            }}
-          >
-            Get Offer
-          </button>
+        <section className="text-center mb-12 w-full hide hide_upsell1">
+          <div className="flex flex-col items-center gap-4">
+            <button 
+              onClick={() => {
+                // @ts-ignore
+                window.acceptUpsell('https://app.kashpay.com.br/u/ed9c3843601bf7ea');
+              }} 
+              style={{
+                fontFamily: "'Poppins'",
+                fontSize: '18px',
+                fontWeight: '600',
+                lineHeight: '1.3',
+                color: '#ffffff',
+                backgroundColor: '#057932',
+                border: 'none',
+                borderRadius: '10px',
+                padding: '13px 7%',
+                cursor: 'pointer',
+                textAlign: 'center',
+                display: 'block',
+                margin: 'auto'
+              }}
+            >
+              Get Offer
+            </button>
+            <Link 
+              to="/upsell2" 
+              className="text-gray-400 text-sm hover:text-white underline transition-colors"
+            >
+              No thanks
+            </Link>
+          </div>
         </section>
 
 
