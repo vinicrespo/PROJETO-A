@@ -103,7 +103,7 @@ export default function Upsell2() {
             </button>
             <Link 
               to="/thanks" 
-              className="text-gray-400 text-sm hover:text-white underline transition-colors"
+              className="text-white text-sm hover:opacity-80 underline transition-opacity"
             >
               No thanks
             </Link>
