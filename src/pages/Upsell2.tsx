@@ -105,7 +105,7 @@ export default function Upsell2() {
               to="/thanks" 
               className="text-white text-sm hover:opacity-80 underline transition-opacity"
             >
-              No thanks
+              No, thanks!
             </Link>
           </div>
         </section>
