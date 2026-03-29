@@ -76,7 +76,7 @@ export default function Upsell1() {
             <button 
               onClick={() => {
                 // @ts-ignore
-                window.acceptUpsell('https://app.kashpay.com.br/u/ed9c3843601bf7ea');
+                window.acceptUpsell('https://app.kashpay.com.br/u/94ab471b4aea5500');
               }} 
               style={{
                 fontFamily: "'Poppins'",
@@ -94,7 +94,7 @@ export default function Upsell1() {
                 margin: 'auto'
               }}
             >
-              Get Offer
+              Get Now
             </button>
             <Link 
               to="/upsell2" 
