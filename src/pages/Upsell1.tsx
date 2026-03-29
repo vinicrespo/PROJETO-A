@@ -9,7 +9,7 @@ export default function Upsell1() {
   useEffect(() => {
     // Inject Vturb Script for Upsell 1
     const vturbScript = document.createElement('script');
-    vturbScript.src = "https://scripts.converteai.net/d21a9e1d-910e-4254-b2bc-30b12586d2ef/players/69befcc4596c6131b73ea519/v4/player.js";
+    vturbScript.src = "https://scripts.converteai.net/d21a9e1d-910e-4254-b2bc-30b12586d2ef/players/69c9592f9ece9c59e26b6667/v4/player.js";
     vturbScript.async = true;
     document.head.appendChild(vturbScript);
 
@@ -65,13 +65,13 @@ export default function Upsell1() {
         {/* Video Area */}
         <section className="mb-8 flex justify-center w-full">
           <div className="w-full max-w-[400px] sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl 2xl:max-w-3xl rounded-xl shadow-2xl overflow-hidden">
-            <vturb-smartplayer id="vid-69befcc4596c6131b73ea519" style={{ display: 'block', margin: '0 auto', width: '100%', height: '100%' }}></vturb-smartplayer>
+            <vturb-smartplayer id="vid-69c9592f9ece9c59e26b6667" style={{ display: 'block', margin: '0 auto', width: '100%', height: '100%' }}></vturb-smartplayer>
           </div>
         </section>
 
 
         {/* CashPay Checkout Button (Accept Upsell) */}
-        <section className="text-center mb-12 w-full hide hide_upsell1">
+        <section className="text-center mb-12 w-full hide hide-upsell1">
           <div className="flex flex-col items-center gap-4">
             <button 
               onClick={() => {
