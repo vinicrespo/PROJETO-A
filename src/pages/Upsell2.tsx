@@ -99,7 +99,7 @@ export default function Upsell2() {
                 margin: 'auto'
               }}
             >
-              Aceitar Oferta
+              Get Now
             </button>
             <Link 
               to="/upsell3" 
