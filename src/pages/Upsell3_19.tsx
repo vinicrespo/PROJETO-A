@@ -81,7 +81,7 @@ export default function Upsell3_19() {
             <button 
               onClick={() => {
                 // @ts-ignore
-                window.acceptUpsell('https://app.kashpay.com.br/u/831a3b06be09e65f');
+                window.acceptUpsell('https://app.kashpay.com.br/u/3a598596f13a827a');
               }} 
               style={{
                 fontFamily: "'Poppins'",
