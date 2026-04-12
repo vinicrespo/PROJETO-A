@@ -17,6 +17,7 @@ import Upsell3 from './pages/Upsell3';
 import Upsell1_19 from './pages/Upsell1_19';
 import Upsell2_19 from './pages/Upsell2_19';
 import Upsell3_19 from './pages/Upsell3_19';
+import VSL_19Lead01 from './pages/VSL_19Lead01';
 import Thanks from './pages/Thanks';
 
 
@@ -43,6 +44,7 @@ export default function App() {
             {/* VSL Route (Preserved, no suspense to guarantee instant render) */}
             <Route path="/" element={<VSL />} />
             <Route path="/39" element={<VSL39 />} />
+            <Route path="/19lead01" element={<VSL_19Lead01 />} />
             <Route path="/upsell1" element={<Upsell1 />} />
             <Route path="/upsell2" element={<Upsell2 />} />
             <Route path="/upsell3" element={<Upsell3 />} />
