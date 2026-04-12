@@ -79,7 +79,7 @@ export default function VSL39() {
         {/* Headline */}
         <section className="text-center mb-8">
           <h2 className="text-xl md:text-2xl font-extrabold leading-tight">
-            The morning ritual that the pharmaceutical industry paid millions to suppress — and that is already <span className="text-health-red">reversing Alzheimer's and dementia</span> in thousands of families
+            The morning ritual that the pharmaceutical industry paid millions to suppress — and that is already <span className="text-health-red">reversing Alzheimer's and Dementia</span> in thousands of families
           </h2>
         </section>
 
