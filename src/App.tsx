@@ -20,6 +20,7 @@ import Upsell3_19 from './pages/Upsell3_19';
 import VSL_19Lead01 from './pages/VSL_19Lead01';
 import VSL_19Lead02 from './pages/VSL_19Lead02';
 import VSL39Lead01 from './pages/VSL39Lead01';
+import VSL39Lead02 from './pages/VSL39Lead02';
 import Thanks from './pages/Thanks';
 
 
@@ -49,6 +50,7 @@ export default function App() {
             <Route path="/19lead01" element={<VSL_19Lead01 />} />
             <Route path="/19lead02" element={<VSL_19Lead02 />} />
             <Route path="/39lead01" element={<VSL39Lead01 />} />
+            <Route path="/39lead02" element={<VSL39Lead02 />} />
             <Route path="/upsell1" element={<Upsell1 />} />
             <Route path="/upsell2" element={<Upsell2 />} />
             <Route path="/upsell3" element={<Upsell3 />} />
