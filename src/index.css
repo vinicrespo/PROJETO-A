@@ -48,11 +48,15 @@
   display: none;
 }
 
-.hide_upsell1 {
+.hide-upsell1 {
   display: none;
 }
 
-.hide_upsell2 {
+.hide-upsell2 {
+  display: none;
+}
+
+.hide-upsell3 {
   display: none;
 }
 

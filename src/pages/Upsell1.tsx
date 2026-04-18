@@ -71,7 +71,7 @@ export default function Upsell1() {
 
 
         {/* CashPay Checkout Button (Accept Upsell) */}
-        <section className="text-center mb-12 w-full hide hide-upsell1">
+        <section className="text-center mb-12 w-full hide-upsell1">
           <div className="flex flex-col items-center gap-4">
             <button 
               onClick={() => {
