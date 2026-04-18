@@ -9,7 +9,7 @@ export default function Upsell2_19() {
   useEffect(() => {
     // Inject Vturb Script for Upsell 2
     const vturbScript = document.createElement('script');
-    vturbScript.src = "https://scripts.converteai.net/d21a9e1d-910e-4254-b2bc-30b12586d2ef/players/69e3e36835a9897a64361b8d/v4/player.js";
+    vturbScript.src = "https://scripts.converteai.net/d21a9e1d-910e-4254-b2bc-30b12586d2ef/players/69e3e579a40cbebddf7aa838/v4/player.js";
     vturbScript.async = true;
     document.head.appendChild(vturbScript);
 
@@ -67,7 +67,7 @@ export default function Upsell2_19() {
         {/* Video Area */}
         <section className="mb-8 flex justify-center w-full">
           <div className="w-full max-w-[400px] sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl 2xl:max-w-3xl rounded-xl shadow-2xl overflow-hidden">
-            <vturb-smartplayer id="vid-69e3e36835a9897a64361b8d" style={{ display: 'block', margin: '0 auto', width: '100%', height: '100%' }}></vturb-smartplayer>
+            <vturb-smartplayer id="vid-69e3e579a40cbebddf7aa838" style={{ display: 'block', margin: '0 auto', width: '100%', height: '100%' }}></vturb-smartplayer>
           </div>
         </section>
 
