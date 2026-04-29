@@ -115,7 +115,7 @@
                             <span class="weight-val" id="dash-goal">130 lbs</span>
                         </div>
                     </div>
-                    <button class="btn-secondary mt-15" onclick="navigateTo('screen-protocol')">Start Tonight &rarr;</button>
+                    <button class="btn-secondary mt-15" id="dash-start-btn" onclick="navigateTo('screen-protocol')">Start Tonight &rarr;</button>
                 </div>
 
                 <div class="section-title">My Program</div>
@@ -168,7 +168,7 @@
                 </div>
                 <div style="text-align: right;">
                     <div style="font-size: 20px; font-weight: 700; color: #E8A0B4;" id="prot-day-display">Day 1</div>
-                    <div style="font-size: 12px; color: #A0A0A0;">of 45 Days</div>
+                    <div style="font-size: 12px; color: #A0A0A0;" id="prot-total-display">of 45 Days</div>
                 </div>
             </header>
             
@@ -232,13 +232,8 @@
                 </div>
 
                 <div class="section-title">Preparation Steps</div>
-                <div class="prep-steps">
-                    <div class="prep-step"><span>1.</span> Prepare your gelatin base according to package instructions — while still warm.</div>
-                    <div class="prep-step"><span>2.</span> Add your exact dose of green tea extract and stir gently.</div>
-                    <div class="prep-step"><span>3.</span> Add your gingerol extract and mix for 10 seconds.</div>
-                    <div class="prep-step"><span>4.</span> Add turmeric + piperine last and mix thoroughly for 30 seconds.</div>
-                    <div class="prep-step"><span>5.</span> Let it cool slightly — consume <strong id="prot-timing-step">30 min</strong> before bed.</div>
-                    <div class="prep-step"><span>6.</span> Refrigerate any remaining portion for next day.</div>
+                <div class="prep-steps" id="dynamic-prep-steps">
+                    <!-- Injected via JS -->
                 </div>
 
                 <div class="phases-collapsible" onclick="togglePhases()">
@@ -247,10 +242,7 @@
                         <span id="phases-arrow">▼</span>
                     </div>
                     <div class="phases-content" id="phases-content" style="display: none;">
-                        <div class="phase-item"><strong>Phase 1 Activation:</strong> Gelatin wakes up your dormant hormones.</div>
-                        <div class="phase-item"><strong>Phase 2 Amplification:</strong> Green tea and ginger multiply the effect.</div>
-                        <div class="phase-item"><strong>Phase 3 Protection:</strong> Turmeric eliminates inflammation blocking the process.</div>
-                        <div class="phase-item"><strong>Phase 4 Transformation:</strong> Your body shifts into automatic fat-burning mode 24/7.</div>
+                        <!-- Injected via JS -->
                     </div>
                 </div>
 

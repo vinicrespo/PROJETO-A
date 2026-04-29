@@ -113,6 +113,141 @@ const bonusContent = {
     }
 };
 
+// Dynamic Content Generation Data
+const gelatinTexts = [
+    "Deeply activates GLP-1 through the matrix of glycine and alanine — your metabolic master keys. Increases GLP-1 up to 182%.",
+    "Restores the stomach lining to ensure maximum absorption of the fat-burning hormones while you sleep.",
+    "Binds to visceral fat cells by creating a slow-release gel in the gut, keeping insulin flat all night.",
+    "Repairs cellular damage from past diets. Glycine triggers deep REM sleep where 80% of fat burning happens.",
+    "Provides the exact amino acid profile needed to prevent muscle loss while forcing the body to burn fat for fuel.",
+    "Acts as the 'delivery vehicle' for the other extracts, slowing digestion exactly enough to activate GIP.",
+    "Flushes out toxins stored in fat cells by stimulating liver detoxification enzymes through high alanine content.",
+    "Builds a protective layer in your digestive tract, amplifying the hormone signals to your brain that you are full.",
+    "Firms loose skin as you lose weight by directly supplying raw collagen peptides to your dermis.",
+    "Stops midnight cravings at a neurological level by balancing serotonin and melatonin production via glycine."
+];
+
+const greenTeaTexts = [
+    "Amplifies GLP-1 production and acts as a GPS for your body — targeting stubborn belly fat first.",
+    "Strips the protective barrier off fat cells so they can be easily converted into energy.",
+    "Supercharges your metabolic rate by up to 14% without raising cortisol or heart rate.",
+    "Blocks the enzyme that destroys fat-burning hormones, allowing GLP-1 to stay active 3x longer.",
+    "Delivers a massive dose of EGCG directly into the bloodstream to shrink enlarged fat cells.",
+    "Lowers blood sugar spikes and trains your body to stop storing carbohydrates as fat.",
+    "Activates brown adipose tissue (the good fat) to naturally burn white adipose tissue (the bad fat).",
+    "Forces your liver to process and eliminate fat instead of storing it around your organs.",
+    "Provides clean, sustained thermogenesis that works quietly in the background while you rest.",
+    "Helps flush out the water weight that often masks true fat loss by acting as a gentle diuretic."
+];
+
+const gingerolTexts = [
+    "Raises your core body temperature by exactly 0.5 degrees — turning your body into a fat-burning furnace.",
+    "Soothes the digestive tract to maximize absorption of the green tea and turmeric extracts.",
+    "Activates both GLP-1 and GIP simultaneously to create a synergistic metabolic reset.",
+    "Speeds up gastric emptying so the protocol reaches the small intestine where hormones are produced.",
+    "Blocks the genes responsible for fat accumulation, literally turning off your fat-storage switch.",
+    "Reduces oxidative stress in your cells, allowing your mitochondria to produce energy from fat.",
+    "Clears the brain fog associated with weight loss by improving blood flow and reducing neuro-inflammation.",
+    "Acts as a powerful metabolic kickstarter to overcome weight loss plateaus.",
+    "Improves insulin sensitivity instantly so your body stops hoarding sugar.",
+    "Stimulates the vagus nerve, sending direct 'fullness' and 'fat-burning' signals to the brain."
+];
+
+const turmericTexts = [
+    "Clears the gut inflammation that blocks your hormone receptors. Creates permanent metabolic memory.",
+    "When combined with piperine, it becomes 2,000% more absorbable, wiping out cellular swelling.",
+    "Acts as the 'clean up crew', sweeping away dead fat cells from your bloodstream.",
+    "Lowers cortisol (the stress hormone) which is the primary cause of hormonally-driven belly fat.",
+    "Protects your metabolism from slowing down, preventing the dreaded yo-yo effect.",
+    "Transforms white fat into metabolically active brown fat to burn calories effortlessly.",
+    "Detoxifies the liver, allowing it to focus 100% on fat oxidation instead of filtering toxins.",
+    "Repairs leptin resistance so your brain finally understands when it's time to burn stored fat.",
+    "Reduces joint pain and systemic inflammation, making your body feel lighter and more energetic.",
+    "Seals the gut lining, preventing 'leaky gut' from disrupting your newly activated GLP-1 production."
+];
+
+const prepStepsVariations = [
+    [
+        "Prepare the gelatin base with warm (not boiling) water.",
+        "Stir continuously until the gelatin is completely dissolved.",
+        "Add the green tea extract and let it sit for exactly 60 seconds.",
+        "Mix in the gingerol and turmeric simultaneously.",
+        "Stir vigorously for 20 seconds to activate the piperine.",
+        "Drink at room temperature for optimal absorption."
+    ],
+    [
+        "Mix the gelatin in cold water first to 'bloom' it, then add warm water.",
+        "Whisk the green tea extract until slightly frothy.",
+        "Add the turmeric and gingerol and mix with a wooden or plastic spoon (no metal).",
+        "Let the mixture rest for 2 minutes to allow the matrix to form.",
+        "Consume slowly, taking sips over 5 minutes.",
+        "Store any leftovers in a glass container."
+    ],
+    [
+        "Start by mixing the turmeric, gingerol, and green tea extracts into a paste with 1 tbsp of water.",
+        "Pour the warm gelatin mixture over the paste.",
+        "Stir for 30 seconds to ensure a perfect emulsion.",
+        "Add a tiny pinch of black pepper if desired to boost the piperine.",
+        "Drink in one sitting.",
+        "Follow with half a glass of plain water."
+    ],
+    [
+        "Heat the water to just before boiling, then let it cool for 2 minutes.",
+        "Dissolve the gelatin completely until the liquid is crystal clear.",
+        "Add the green tea extract first, wait 30 seconds.",
+        "Fold in the gingerol and turmeric gently.",
+        "Consume while it is still pleasantly warm.",
+        "Do not eat anything else after consuming."
+    ],
+    [
+        "Blend all dry ingredients (gelatin, green tea, gingerol, turmeric) in a dry cup first.",
+        "Pour warm water over the dry mix rapidly.",
+        "Stir vigorously for 45 seconds to prevent clumping.",
+        "Let it cool down to room temperature.",
+        "Consume exactly at the specified timing before sleep.",
+        "Rinse the cup immediately as turmeric can stain."
+    ]
+];
+
+const phasesVariations = [
+    [
+        {name: "Phase 1: Deep Priming", desc: "The gelatin matrix coats the stomach lining, preparing the receptors."},
+        {name: "Phase 2: Ignition", desc: "Gingerol raises core temperature to ignite thermogenesis."},
+        {name: "Phase 3: Extraction", desc: "Green tea compounds begin breaking down visceral fat cells."},
+        {name: "Phase 4: Stabilization", desc: "Turmeric locks in the changes to prevent rebound weight gain."}
+    ],
+    [
+        {name: "Phase 1: Inflammation Flush", desc: "Turmeric rapidly clears gut inflammation to unblock receptors."},
+        {name: "Phase 2: Hormone Release", desc: "Gelatin triggers the natural surge of GLP-1 and GIP."},
+        {name: "Phase 3: Metabolic Acceleration", desc: "Green tea increases resting metabolic rate by up to 14%."},
+        {name: "Phase 4: Deep Sleep Burn", desc: "Your body shifts into fat-oxidation mode during REM sleep."}
+    ],
+    [
+        {name: "Phase 1: Insulin Reset", desc: "Green tea and gingerol immediately lower blood sugar spikes."},
+        {name: "Phase 2: Cellular Repair", desc: "Turmeric repairs damaged mitochondria to restore energy."},
+        {name: "Phase 3: Satiety Activation", desc: "Gelatin signals the brain to stop cravings for the next 12 hours."},
+        {name: "Phase 4: Fat Oxidation", desc: "Stored fat is converted into usable energy overnight."}
+    ],
+    [
+        {name: "Phase 1: The Matrix Formation", desc: "Ingredients bind together in the gut for sustained release."},
+        {name: "Phase 2: Vagus Nerve Stimulation", desc: "Gingerol sends direct signals to the brain to initiate fat burn."},
+        {name: "Phase 3: The Target Lock", desc: "Green tea isolates stubborn belly fat cells for destruction."},
+        {name: "Phase 4: System Flush", desc: "Toxins released from fat cells are neutralized by turmeric."}
+    ]
+];
+
+// Seeded Random Generator for consistency per day
+function getSeededRandom(seed) {
+    let x = Math.sin(seed++) * 10000;
+    return x - Math.floor(x);
+}
+
+// Helper to pick from array based on day
+function pickVariation(arr, day, offset = 0) {
+    const rand = getSeededRandom(day + offset);
+    return arr[Math.floor(rand * arr.length)];
+}
+
 // Initialize App
 document.addEventListener('DOMContentLoaded', () => {
     loadState();
@@ -381,6 +516,12 @@ function updateDashboard() {
     const totalDiff = state.startWeight - state.goalWeight;
     const progress = totalDiff > 0 ? ((state.startWeight - currentW) / totalDiff) * 100 : 0;
     document.querySelector('.weight-progress-fill-mini').style.width = Math.max(0, Math.min(100, progress)) + '%';
+    
+    // Update start button text
+    const btnStart = document.getElementById('dash-start-btn');
+    if (btnStart) {
+        btnStart.innerHTML = `Start Day ${state.currentDay || 1} &rarr;`;
+    }
 }
 
 // Protocol Update
@@ -398,67 +539,86 @@ function updateProtocol() {
     if (state.metabolism === 'fast_past') metaText = "Used to be fast";
     document.getElementById('prot-metabolism').innerText = metaText;
 
-    let timingNum = state.metabolism === 'slow' ? 45 : 30;
-    
     const day = state.currentDay || 1;
-    document.getElementById('prot-day-display').innerText = 'Day ' + day;
-
-    let dailyGelatin = 1 * multiplier;
-    let dailyGreenTea = Math.round(250 * multiplier);
-    let dailyGingerol = 0.5 * multiplier;
-    let dailyTurmeric = 0.25 * multiplier;
     
-    const descGingerol = document.getElementById('desc-gingerol');
-    const descTurmeric = document.getElementById('desc-turmeric');
+    // 180 Days Extension logic
+    if (day > 45) {
+        document.getElementById('prot-day-display').innerText = 'Maintenance: Day ' + day;
+        document.getElementById('prot-total-display').innerText = 'of 180 Days';
+    } else {
+        document.getElementById('prot-day-display').innerText = 'Day ' + day;
+        document.getElementById('prot-total-display').innerText = 'of 45 Days';
+    }
+
+    // Fluctuate baseline dosages slightly based on seeded random
+    const baseG = 1 * multiplier;
+    const baseGT = Math.round(250 * multiplier);
+    const baseGin = 0.5 * multiplier;
+    const baseTur = 0.25 * multiplier;
     
-    // Day variations
-    if (day % 2 === 0) {
-        dailyGingerol += 0.25;
-        descGingerol.innerText = "Increased gingerol today to stimulate thermogenesis during your rest cycle.";
-    } else {
-        descGingerol.innerText = "Base dose of gingerol to maintain steady metabolic burn and soothe the digestive tract.";
-    }
-
-    if (day % 3 === 0) {
-        dailyTurmeric += 0.25;
-        descTurmeric.innerText = "Extra turmeric added today for a deep cellular inflammation flush.";
-    } else {
-        descTurmeric.innerText = "Standard turmeric dose to keep cortisol levels low and prevent inflammation buildup.";
-    }
-
-    if (day % 5 === 0) {
-        dailyGreenTea += 50;
-        timingNum += 5;
-    }
+    // Math to alter numbers slightly
+    const flux1 = Math.floor(getSeededRandom(day + 10) * 3) * 0.25; // 0, 0.25, or 0.5
+    const flux2 = Math.floor(getSeededRandom(day + 11) * 3) * 50; // 0, 50, or 100
+    
+    let dailyGelatin = baseG + (Math.floor(getSeededRandom(day+15)*2)*0.5); 
+    let dailyGreenTea = baseGT + flux2;
+    let dailyGingerol = baseGin + flux1;
+    let dailyTurmeric = baseTur + flux1;
+    
+    // Timing: anywhere between 15 and 45 mins
+    const timings = [15, 20, 25, 30, 35, 40, 45];
+    let timingNum = pickVariation(timings, day, 99);
 
     document.getElementById('prot-timing').innerText = timingNum + ' min before bed';
-    document.getElementById('prot-timing-step').innerText = timingNum + ' min';
-
+    
+    // Assign texts
     document.getElementById('dose-gelatin').innerText = dailyGelatin + ' Tbsp';
+    document.getElementById('desc-gelatin').innerText = pickVariation(gelatinTexts, day, 1);
+    
     document.getElementById('dose-greentea').innerText = dailyGreenTea + 'mg';
+    document.getElementById('desc-greentea').innerText = pickVariation(greenTeaTexts, day, 2);
+    
     document.getElementById('dose-gingerol').innerText = dailyGingerol + ' tsp';
+    document.getElementById('desc-gingerol').innerText = pickVariation(gingerolTexts, day, 3);
+    
     document.getElementById('dose-turmeric').innerText = dailyTurmeric + ' tsp';
+    document.getElementById('desc-turmeric').innerText = pickVariation(turmericTexts, day, 4);
+
+    // Build Preparation Steps dynamically
+    const prepContainer = document.getElementById('dynamic-prep-steps');
+    const selectedSteps = pickVariation(prepStepsVariations, day, 5);
+    let stepsHTML = "";
+    selectedSteps.forEach((step, i) => {
+        stepsHTML += `<div class="prep-step"><span>${i+1}.</span> ${step}</div>`;
+    });
+    // Add the timing step
+    stepsHTML += `<div class="prep-step"><span>${selectedSteps.length + 1}.</span> Consume exactly <strong>${timingNum} minutes</strong> before going to sleep.</div>`;
+    if(prepContainer) prepContainer.innerHTML = stepsHTML;
+
+    // Build Phases dynamically
+    const phasesContainer = document.getElementById('phases-content');
+    const selectedPhases = pickVariation(phasesVariations, day, 6);
+    let phasesHTML = "";
+    selectedPhases.forEach(ph => {
+        phasesHTML += `<div class="phase-item"><strong>${ph.name}:</strong> ${ph.desc}</div>`;
+    });
+    if(phasesContainer) phasesContainer.innerHTML = phasesHTML;
 
     // Personalization text
-    let insightText = `Welcome to Day ${day}! `;
+    let insightText = day > 45 ? 
+        `Welcome to Maintenance Day ${day}. This phase is about locking in your results and preventing the yo-yo effect. ` : 
+        `Welcome to Day ${day}! `;
+        
     if (state.age > 50) insightText += "At your age, cellular turnover is naturally slower, so we've calibrated this exact formula to maximize absorption. ";
     else insightText += "Your metabolic rate is optimized for this exact dosage. ";
     
     if (w > 200) insightText += "Because your starting weight is above 200 lbs, your body needs extra initial support to break down visceral fat effectively. ";
     
-    if (state.metabolism === 'slow') insightText += "We added an extra 15 minutes to your timing to give your slowed receptors the exact window they need to absorb the gelatin matrix.";
+    if (state.metabolism === 'slow') insightText += "We adjusted your timing to give your slowed receptors the exact window they need to absorb the gelatin matrix.";
     else if (state.metabolism === 'fast_past') insightText += "This formula specifically targets the metabolic changes that occur after 35, reactivating your previously fast metabolism.";
     else insightText += "This baseline timing matches your moderate metabolism perfectly for overnight fat burning.";
     
     document.getElementById('prot-insight').innerText = insightText;
-    
-    const descGelatin = document.getElementById('desc-gelatin');
-    if (multiplier > 1) descGelatin.innerText = "With your increased dosage, it rapidly activates GLP-1 through glycine and alanine. Glycine increases GLP-1 by up to 182% and is crucial for your weight bracket.";
-    else descGelatin.innerText = "Activates GLP-1 through glycine and alanine — your metabolic master keys. Glycine increases GLP-1 by up to 182%. Alanine raises GIP by 144%.";
-
-    const descGreen = document.getElementById('desc-greentea');
-    if (state.age > 40) descGreen.innerText = "Amplifies GLP-1 production. For women over 40, it acts as a precise GPS for your body — targeting stubborn belly fat and stabilizing insulin levels.";
-    else descGreen.innerText = "Amplifies GLP-1 production and acts as a GPS for your body — targeting belly fat first. Stabilizes insulin and prevents fat storage.";
 }
 
 function togglePhases() {
