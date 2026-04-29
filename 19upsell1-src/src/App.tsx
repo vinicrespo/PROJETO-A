@@ -30,10 +30,6 @@ export default function App() {
         </header>
 
         <main className="px-4 py-4">
-          {/* Headline */}
-          <h1 className="text-[22px] md:text-2xl font-bold leading-tight text-[#1a1a1a] mb-4">
-            Dr. Oz Reveals the Gelatin Recipe to Lose 15 Pounds Before {currentMonth} Ends
-          </h1>
 
           {/* VSL Placeholder (Moldura) */}
           <div className="w-full mb-6 flex justify-center items-center bg-gray-200 aspect-video rounded-md border-2 border-dashed border-gray-400">
