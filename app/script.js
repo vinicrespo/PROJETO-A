@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function loadState() {
-    const saved = localStorage.getItem('gelatide_state');
+    const saved = localStorage.getItem('gelatide_state_v2');
     if (saved) {
         try {
             state = JSON.parse(saved);
@@ -156,7 +156,7 @@ function loadState() {
 }
 
 function saveState() {
-    localStorage.setItem('gelatide_state', JSON.stringify(state));
+    localStorage.setItem('gelatide_state_v2', JSON.stringify(state));
 }
 
 // Navigation
@@ -223,18 +223,30 @@ function showLoading(messages, duration, callback) {
 // Event Listeners
 function setupEventListeners() {
     // Login
-    document.getElementById('btn-login').addEventListener('click', () => {
+    const btnLogin = document.getElementById('btn-login');
+    btnLogin.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (btnLogin.disabled) return;
+        
         const email = document.getElementById('login-email').value;
-        if (!email) {
-            alert('Please enter your email');
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        
+        if (!email || !emailRegex.test(email)) {
+            alert('Please enter a valid email address');
             return;
         }
+        
+        btnLogin.disabled = true;
+        btnLogin.style.opacity = '0.7';
+        
         state.email = email;
         showLoading([
-            "Verifying your purchase...",
-            "Checking your account...",
+            "Verifying access...",
+            "Verifying purchase...",
             "Preparing your personalized protocol..."
         ], 3000, () => {
+            btnLogin.disabled = false;
+            btnLogin.style.opacity = '1';
             navigateTo('screen-quiz');
         });
     });
@@ -271,6 +283,9 @@ function setupEventListeners() {
     document.querySelectorAll('.btn-next-step').forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.preventDefault();
+            if (btn.disabled) return;
+            btn.disabled = true;
+            
             const next = parseInt(e.target.dataset.next);
             state.quizStep = next;
             saveState();
@@ -281,14 +296,23 @@ function setupEventListeners() {
             });
             const nextStep = document.getElementById('quiz-step-' + next);
             nextStep.classList.remove('hidden');
-            setTimeout(() => nextStep.classList.add('active'), 50);
+            setTimeout(() => {
+                nextStep.classList.add('active');
+                btn.disabled = false;
+            }, 50);
             
             document.getElementById('quiz-progress-fill').style.width = (next * 25) + '%';
         });
     });
 
     // Finish Quiz
-    document.querySelector('.btn-finish-quiz').addEventListener('click', () => {
+    const btnFinish = document.querySelector('.btn-finish-quiz');
+    btnFinish.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (btnFinish.disabled) return;
+        btnFinish.disabled = true;
+        btnFinish.style.opacity = '0.7';
+        
         state.weightHistory = []; // Reset history on new protocol
         state.quizCompleted = true;
         
@@ -305,6 +329,8 @@ function setupEventListeners() {
             "Adjusting concentrations for your body...",
             "Your protocol is ready"
         ], 4000, () => {
+            btnFinish.disabled = false;
+            btnFinish.style.opacity = '1';
             navigateTo('screen-home');
         });
     });
