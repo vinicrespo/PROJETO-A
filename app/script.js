@@ -16,19 +16,31 @@ const bonusContent = {
         title: "Victoria's Secret Waist Method",
         html: `
             <div class="bd-content">
-                <p>The "Victoria's Secret Waist Method" is a little-known breathing and posture technique used by top models to engage the deepest abdominal muscles (the transverse abdominis), pulling the waistline inward.</p>
-                <h3>The 2-Minute Daily Routine</h3>
+                <p>The "Victoria's Secret Waist Method" is a highly guarded breathing and posture technique used by top runway models to engage the deepest abdominal muscles (the transverse abdominis), acting as an internal corset that pulls the waistline inward permanently.</p>
+                
+                <h3>The Anatomy of a Tiny Waist</h3>
+                <p>Most women do crunches, which build the *rectus abdominis* (the front six-pack muscles) and actually make the waist look blockier and wider. This method targets the inner layer, cinching everything tight.</p>
+                
+                <h3>The 3-Step Daily Routine</h3>
                 <div class="bd-box">
                     <ol style="padding-left: 15px; color: #fff;">
-                        <li style="margin-bottom: 10px;"><strong>The Vacuum:</strong> Stand up straight. Exhale all the air from your lungs. Pull your belly button in towards your spine as hard as you can. Hold for 15 seconds. Repeat 3 times.</li>
-                        <li style="margin-bottom: 10px;"><strong>The Corset Pull:</strong> While sitting, imagine a string pulling the top of your head up. Engage your core gently (about 30% effort) and maintain this posture for 1 minute while breathing normally.</li>
+                        <li style="margin-bottom: 15px;">
+                            <strong>The Morning Vacuum (Empty Stomach):</strong> Stand up straight. Exhale absolutely all the air from your lungs. Without breathing back in, pull your belly button in towards your spine and slightly upward under your ribs. Hold for 15-20 seconds. Repeat 5 times.
+                        </li>
+                        <li style="margin-bottom: 15px;">
+                            <strong>The "Corset Pull" Posture:</strong> Whenever you are sitting at a desk or driving, imagine a string pulling the top of your head up. Engage your core gently (about 30% effort). Maintain this for at least 5 minutes, breathing normally but keeping the tension.
+                        </li>
+                        <li style="margin-bottom: 10px;">
+                            <strong>The Pelvic Tilt:</strong> Lie on your back with knees bent. Flatten your lower back entirely against the floor by tilting your pelvis up slightly. Hold this flat-back position while sliding one leg straight, then bringing it back. 10 reps per leg.
+                        </li>
                     </ol>
                 </div>
-                <h3>Tips for Best Results</h3>
+                
+                <h3>Dietary Hacks for a Flat Stomach</h3>
                 <ul>
-                    <li>Do this first thing in the morning on an empty stomach.</li>
-                    <li>Consistency is key — do it daily for 45 days.</li>
-                    <li>Avoid carbonated drinks to reduce bloating.</li>
+                    <li><strong>Eliminate Carbonation:</strong> Sparkling water and sodas expand the stomach lining with gas, pushing the muscles outward.</li>
+                    <li><strong>Chew 30 Times:</strong> Digestion starts in the mouth. Swallowing unchewed food causes fermentation in the gut, leading to severe lower belly bloat.</li>
+                    <li><strong>The Peppermint Tea Rule:</strong> Drink one cup of pure peppermint tea 30 minutes after your largest meal to instantly relax the gastrointestinal tract and deflate trapped air.</li>
                 </ul>
             </div>
         `
@@ -37,20 +49,30 @@ const bonusContent = {
         title: "Mediterranean Cocktail Formula",
         html: `
             <div class="bd-content">
-                <p>This powerful combination of Mediterranean extracts improves circulation and strengthens vein walls, reducing the appearance of spider veins and firming the skin.</p>
-                <h3>Ingredients</h3>
-                <ul>
-                    <li>1 cup pure pomegranate juice (no sugar added)</li>
-                    <li>1/2 tsp horse chestnut extract (liquid)</li>
-                    <li>Juice of half a lemon</li>
-                    <li>1 pinch of cayenne pepper</li>
-                </ul>
-                <h3>Preparation</h3>
+                <p>Women in Mediterranean regions like Sardinia and Ikaria are known for having flawless, firm legs well into their 70s. This isn't just genetics—it's driven by specific vasodilators and antioxidants they consume daily that strengthen vein walls and boost collagen.</p>
+                
+                <h3>The Core Science</h3>
+                <p>Spider veins and loose skin occur when capillary walls weaken and collagen degrades. The ingredients in this cocktail contain high levels of *rutin* and *vitamin C*, which physically rebuild the vein structures and flush out pooled blood.</p>
+                
+                <h3>The Classic Firming Cocktail</h3>
                 <div class="bd-box">
-                    <p>Mix all ingredients in a glass. Stir well. The cayenne pepper acts as an immediate vasodilator to boost absorption.</p>
+                    <ul style="color: #fff;">
+                        <li>1 cup pure cold-pressed pomegranate juice (no sugar added)</li>
+                        <li>1/2 tsp horse chestnut extract (liquid)</li>
+                        <li>Juice of half a fresh lemon</li>
+                        <li>1 pinch of cayenne pepper</li>
+                    </ul>
+                    <p style="margin-top: 10px; font-size: 14px;"><strong>Preparation:</strong> Mix all ingredients in a glass. The cayenne pepper acts as an immediate vasodilator to boost the absorption of the horse chestnut directly into the bloodstream.</p>
                 </div>
-                <h3>Usage</h3>
-                <p>Drink one small glass (about 4 oz) every morning after breakfast. You should start noticing firmer skin and reduced vein visibility within 3 to 4 weeks of consistent use.</p>
+
+                <h3>Alternative Variations</h3>
+                <ul>
+                    <li style="margin-bottom: 10px;"><strong>The Circulation Booster:</strong> Swap pomegranate for pure tart cherry juice and add a slice of fresh ginger. Ideal for reducing heavy, swollen legs at the end of the day.</li>
+                    <li style="margin-bottom: 10px;"><strong>The Collagen Builder:</strong> Add 1 scoop of unflavored marine collagen peptides to the classic cocktail to directly supply the amino acids needed for firm skin.</li>
+                </ul>
+
+                <h3>Usage Protocol</h3>
+                <p>Drink one small glass (about 4 oz) every morning on an empty stomach. You should start noticing firmer skin and reduced vein visibility within 3 to 4 weeks of consistent use as the capillary walls repair themselves.</p>
             </div>
         `
     },
@@ -58,18 +80,26 @@ const bonusContent = {
         title: "Korean Facial Spot Removal",
         html: `
             <div class="bd-content">
-                <p>Korean women use a specific combination of natural acids and fats to break down hyperpigmentation and sun spots without harsh chemicals.</p>
-                <h3>The Avocado & Rice Technique</h3>
+                <p>Korean women use a specific combination of natural acids and fats to break down hyperpigmentation, age spots, and melasma without the harsh, skin-thinning chemicals found in Western bleaching creams.</p>
+                
+                <h3>The Secret: Lactic Acid + Vitamin E</h3>
+                <p>By combining the gentle lactic acid from fermented rice water with the deep-penetrating fats of avocado, you create a natural solvent that dissolves concentrated melanin deposits safely.</p>
+                
+                <h3>The 60-Second Spot Eraser Paste</h3>
                 <div class="bd-box">
                     <ol style="padding-left: 15px; color: #fff;">
-                        <li style="margin-bottom: 10px;">Mash 1/4 of a ripe avocado until smooth.</li>
-                        <li style="margin-bottom: 10px;">Add 1 tsp of rice water (water left over from washing uncooked rice).</li>
-                        <li style="margin-bottom: 10px;">Add 2 drops of fresh lemon juice.</li>
-                        <li style="margin-bottom: 10px;">Mix into a paste.</li>
+                        <li style="margin-bottom: 10px;">Mash 1/4 of a ripe avocado until completely smooth and lump-free.</li>
+                        <li style="margin-bottom: 10px;">Add 1 tsp of <strong>fermented rice water</strong> (Leave water from washed uncooked rice in a jar at room temp for 24 hours).</li>
+                        <li style="margin-bottom: 10px;">Add exactly 2 drops of fresh lemon juice (no more, or it will irritate).</li>
+                        <li style="margin-bottom: 10px;">Mix vigorously into a creamy paste.</li>
                     </ol>
                 </div>
-                <h3>Application</h3>
-                <p>Apply directly to dark spots using a Q-tip. Leave on for exactly 60 seconds. The lactic acid from the rice water combined with avocado's vitamin E penetrates instantly. Wipe off gently with a damp, warm cloth. Do this 3 times a week at night.</p>
+                
+                <h3>Application Protocol</h3>
+                <p>Apply the paste directly to dark spots using a Q-tip. Leave on for <strong>exactly 60 seconds</strong>. Do not leave it longer. The lactic acid penetrates instantly. Wipe off gently with a damp, warm cloth. Do this 3 times a week at night before bed.</p>
+
+                <h3>Bonus: The Green Tea Toner</h3>
+                <p>After removing the paste, brew a strong cup of green tea, let it cool, and wipe it over your entire face with a cotton pad. The EGCG in green tea stops the enzyme that produces melanin, preventing new spots from forming overnight.</p>
             </div>
         `
     },
@@ -77,17 +107,31 @@ const bonusContent = {
         title: "20 Metabolism Boosters",
         html: `
             <div class="bd-content">
-                <p>Simple daily habits to increase your resting metabolic rate and burn more calories without exercising.</p>
-                <h3>Top Boosters</h3>
-                <ul>
-                    <li><strong>The Ice Technique:</strong> Drink 16oz of ice-cold water immediately upon waking. Your body burns calories just heating it up.</li>
-                    <li><strong>NEAT Movement:</strong> Tap your foot or fidget. It can burn up to 300 extra calories a day.</li>
-                    <li><strong>Protein First:</strong> Eat your protein before your carbs at every meal to reduce the insulin spike by 30%.</li>
-                    <li><strong>Cooler Room:</strong> Sleep in a room at 66°F (19°C) to activate brown fat.</li>
-                </ul>
+                <p>These 20 scientifically proven, simple daily habits will passively increase your resting metabolic rate (RMR), allowing your body to burn hundreds of extra calories every single day without stepping foot in a gym.</p>
+                
                 <div class="bd-box">
-                    <h3>Japanese Women's Daily Habits</h3>
-                    <p>Stop eating when you are 80% full (Hara Hachi Bu). Drink matcha tea instead of coffee for sustained thermogenesis without the cortisol spike.</p>
+                    <ol style="padding-left: 15px; color: #fff;">
+                        <li style="margin-bottom: 8px;"><strong>The Ice Technique:</strong> Drink 16oz of ice-cold water immediately upon waking. Your body burns up to 30% more calories for an hour just heating the water to core temperature.</li>
+                        <li style="margin-bottom: 8px;"><strong>NEAT Movement:</strong> Tap your foot or fidget while sitting. Non-Exercise Activity Thermogenesis (NEAT) burns up to 350 extra calories a day.</li>
+                        <li style="margin-bottom: 8px;"><strong>Protein First:</strong> Eat your protein before your carbs at every meal to reduce the insulin spike by 30%, keeping your body in fat-burning mode.</li>
+                        <li style="margin-bottom: 8px;"><strong>Cooler Room:</strong> Sleep in a room at 66°F (19°C) to activate brown adipose tissue (BAT), which burns white fat for heat.</li>
+                        <li style="margin-bottom: 8px;"><strong>Hara Hachi Bu:</strong> Stop eating when you are 80% full. This Japanese rule prevents the metabolic slowdown caused by over-digestion.</li>
+                        <li style="margin-bottom: 8px;"><strong>Matcha Over Coffee:</strong> Matcha provides sustained thermogenesis via EGCG without the massive cortisol spike that regular coffee causes.</li>
+                        <li style="margin-bottom: 8px;"><strong>Spicy Condiments:</strong> Add cayenne or jalapeños to one meal a day. Capsaicin boosts metabolism by 8% for hours after eating.</li>
+                        <li style="margin-bottom: 8px;"><strong>Stand While on the Phone:</strong> Standing burns 50 more calories per hour than sitting. Make it a rule to pace during calls.</li>
+                        <li style="margin-bottom: 8px;"><strong>The 10-Minute Walk:</strong> Walk for just 10 minutes immediately after your heaviest meal. It blunts the glucose curve dramatically.</li>
+                        <li style="margin-bottom: 8px;"><strong>Chew Gum:</strong> Sugar-free gum increases satiety and slightly increases metabolic rate through continuous jaw movement.</li>
+                        <li style="margin-bottom: 8px;"><strong>Coconut Oil Swap:</strong> Replace vegetable oil with coconut oil. Its Medium Chain Triglycerides (MCTs) go straight to the liver to be burned as energy.</li>
+                        <li style="margin-bottom: 8px;"><strong>Deep Diaphragmatic Breathing:</strong> Take 5 deep belly breaths before eating. It shifts your nervous system out of "fight or flight," optimizing digestion.</li>
+                        <li style="margin-bottom: 8px;"><strong>The Apple Trick:</strong> Eat a small apple 15 minutes before dinner. The pectin fiber expands, reducing your total caloric intake automatically.</li>
+                        <li style="margin-bottom: 8px;"><strong>Cold Showers:</strong> End your shower with 30 seconds of pure cold water to shock your nervous system and spike metabolic rate.</li>
+                        <li style="margin-bottom: 8px;"><strong>Oolong Tea Midday:</strong> Drink Oolong tea at 2 PM. It increases fat oxidation by 12% compared to water.</li>
+                        <li style="margin-bottom: 8px;"><strong>Sea Salt:</strong> Swap table salt for Celtic sea salt to ensure your thyroid has the trace minerals it needs to keep your metabolism high.</li>
+                        <li style="margin-bottom: 8px;"><strong>Dark Chocolate:</strong> One square of 85% dark chocolate curbs sweet cravings and provides magnesium for cellular energy.</li>
+                        <li style="margin-bottom: 8px;"><strong>Stretch Before Bed:</strong> Light stretching improves blood flow to muscles overnight, aiding in recovery and calorie burn.</li>
+                        <li style="margin-bottom: 8px;"><strong>Grapefruit Scent:</strong> Smelling grapefruit essential oil has been shown to activate sympathetic nerves that supply brown fat tissue.</li>
+                        <li style="margin-bottom: 8px;"><strong>Laugh More:</strong> Genuine laughter causes a 10-20% increase in energy expenditure and heart rate.</li>
+                    </ol>
                 </div>
             </div>
         `
@@ -96,18 +140,30 @@ const bonusContent = {
         title: "Apple Cider Vinegar Blood Sugar Guide",
         html: `
             <div class="bd-content">
-                <p>Stabilizing your blood sugar is crucial for weight loss. ACV reduces glucose spikes by up to 34%.</p>
-                <h3>The Base Recipe</h3>
-                <div class="bd-box">
-                    <p>1 Tbsp raw, unfiltered Apple Cider Vinegar (with the "mother") + 8 oz of water. Drink through a straw 15 minutes before your largest meal.</p>
-                </div>
-                <h3>Variations</h3>
+                <p>Stabilizing your blood sugar is the absolute foundation of weight loss. When blood sugar spikes, insulin spikes, and your body actively stores fat. Apple Cider Vinegar (ACV) contains acetic acid, which blocks the absorption of starches and reduces glucose spikes by up to 34%.</p>
+                
+                <h3>The Golden Rules of ACV</h3>
                 <ul>
-                    <li><strong>The Skin Glow:</strong> Add 1 oz Aloe Vera juice.</li>
-                    <li><strong>The Metabolism Kicker:</strong> Add a dash of cinnamon.</li>
-                    <li><strong>The Digestion Soother:</strong> Add fresh grated ginger.</li>
+                    <li>Always use raw, unfiltered ACV with the "mother" (the cloudy web-like substance at the bottom).</li>
+                    <li><strong>Always dilute it.</strong> Never drink it straight.</li>
+                    <li><strong>Use a straw.</strong> Acetic acid can erode tooth enamel over time.</li>
+                    <li>Drink it exactly 15 to 20 minutes before your largest meal of the day.</li>
                 </ul>
-                <p><em>Always dilute ACV and use a straw to protect your tooth enamel!</em></p>
+
+                <h3>The 9 Blood Sugar Balancing Recipes</h3>
+                <div class="bd-box">
+                    <ol style="padding-left: 15px; color: #fff;">
+                        <li style="margin-bottom: 10px;"><strong>The Classic Base:</strong> 1 Tbsp ACV + 8 oz water. Simple, pure, effective.</li>
+                        <li style="margin-bottom: 10px;"><strong>The Skin Glow:</strong> 1 Tbsp ACV + 8 oz water + 1 oz Aloe Vera juice. Heals the gut and hydrates the skin.</li>
+                        <li style="margin-bottom: 10px;"><strong>The Metabolism Kicker:</strong> 1 Tbsp ACV + 8 oz warm water + a heavy dash of Ceylon cinnamon. Double blood-sugar blunting power.</li>
+                        <li style="margin-bottom: 10px;"><strong>The Digestion Soother:</strong> 1 Tbsp ACV + 8 oz water + 1 tsp fresh grated ginger. Perfect if you suffer from bloating.</li>
+                        <li style="margin-bottom: 10px;"><strong>The Morning Detox:</strong> 1 Tbsp ACV + 8 oz warm water + juice of half a lemon. Alkalizes the body first thing in the AM.</li>
+                        <li style="margin-bottom: 10px;"><strong>The Craving Crusher:</strong> 1 Tbsp ACV + 8 oz sparkling water + 5 drops liquid stevia. Tastes like apple soda, kills sugar cravings instantly.</li>
+                        <li style="margin-bottom: 10px;"><strong>The Immune Shield:</strong> 1 Tbsp ACV + 8 oz warm water + 1/4 tsp turmeric + a pinch of black pepper.</li>
+                        <li style="margin-bottom: 10px;"><strong>The Nightcap:</strong> 1 Tbsp ACV + 1 cup chamomile tea. Drink 1 hour before bed to lower fasting glucose the next morning.</li>
+                        <li style="margin-bottom: 10px;"><strong>The Pre-Workout:</strong> 1 Tbsp ACV + 8 oz water + a pinch of pink Himalayan salt. Provides electrolytes and shuttles carbs into muscles instead of fat.</li>
+                    </ol>
+                </div>
             </div>
         `
     }
