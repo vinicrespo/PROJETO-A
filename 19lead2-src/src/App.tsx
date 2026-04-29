@@ -1,7 +1,7 @@
-import React from 'react';
-import { Search, Bell, PlayCircle, RotateCcw, ThumbsUp, Heart } from 'lucide-react';
+import React, { memo } from 'react';
+import { Search, Bell, ThumbsUp, Heart } from 'lucide-react';
 
-const Comment = ({ comment }) => {
+const Comment = memo(({ comment }: { comment: any }) => {
   return (
     <div className="flex gap-2 mb-4 text-[15px] leading-tight font-sans">
       <img
@@ -49,7 +49,7 @@ const Comment = ({ comment }) => {
         {/* Nested Replies */}
         {comment.replies && comment.replies.length > 0 && (
           <div className="mt-2 flex flex-col gap-2">
-            {comment.replies.map(reply => (
+            {comment.replies.map((reply: any) => (
               <Comment key={reply.id} comment={reply} />
             ))}
           </div>
@@ -57,15 +57,9 @@ const Comment = ({ comment }) => {
       </div>
     </div>
   );
-};
+});
 
 export default function App() {
-  React.useEffect(() => {
-    const s = document.createElement("script");
-    s.src = "https://scripts.converteai.net/d21a9e1d-910e-4254-b2bc-30b12586d2ef/players/69f226f6a6fe5ed477b68731/v4/player.js";
-    s.async = true;
-    document.head.appendChild(s);
-  }, []);
 
   const currentMonth = new Date().toLocaleString('en-US', { month: 'long' });
 
