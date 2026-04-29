@@ -16,12 +16,18 @@
     -webkit-tap-highlight-color: transparent;
 }
 
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    overscroll-behavior-y: none;
+}
 body {
     background-color: #000;
     color: var(--text-main);
     display: flex;
     justify-content: center;
-    min-height: 100vh;
 }
 
 #app-container {
@@ -29,7 +35,9 @@ body {
     max-width: 430px;
     background-color: var(--bg-dark);
     position: relative;
-    overflow: hidden;
+    overflow-y: auto;
+    overflow-x: hidden;
+    overscroll-behavior-y: none;
     height: 100vh;
     box-shadow: 0 0 20px rgba(0,0,0,0.5);
 }

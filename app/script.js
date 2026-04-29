@@ -149,6 +149,7 @@ function loadState() {
     if (saved) {
         try {
             state = JSON.parse(saved);
+            if (!state.currentDay) state.currentDay = 1;
         } catch (e) {
             console.error('Error parsing state');
         }
@@ -335,6 +336,26 @@ function setupEventListeners() {
         });
     });
 
+    // Next Day Button
+    document.getElementById('btn-next-day').addEventListener('click', () => {
+        state.currentDay = (state.currentDay || 1) + 1;
+        saveState();
+        updateProtocol();
+        updateDashboard();
+        
+        // Show brief visual feedback
+        const btn = document.getElementById('btn-next-day');
+        const origText = btn.innerText;
+        btn.innerText = "Day Complete! ✓";
+        btn.style.backgroundColor = "#4caf50";
+        setTimeout(() => {
+            btn.innerText = origText;
+            btn.style.backgroundColor = "";
+            navigateTo('screen-home');
+            document.querySelector('.scrollable').scrollTop = 0;
+        }, 1500);
+    });
+
     // Bottom Nav
     document.querySelectorAll('.nav-item').forEach(item => {
         item.addEventListener('click', () => {
@@ -355,6 +376,7 @@ function updateDashboard() {
     
     const toLose = currentW - state.goalWeight;
     document.getElementById('dash-to-lose').innerText = toLose > 0 ? toLose : 0;
+    document.getElementById('dash-day-tracker').innerText = state.currentDay || 1;
     
     const totalDiff = state.startWeight - state.goalWeight;
     const progress = totalDiff > 0 ? ((state.startWeight - currentW) / totalDiff) * 100 : 0;
@@ -376,21 +398,49 @@ function updateProtocol() {
     if (state.metabolism === 'fast_past') metaText = "Used to be fast";
     document.getElementById('prot-metabolism').innerText = metaText;
 
-    let timing = "30 min";
-    if (state.metabolism === 'slow') timing = "45 min";
+    let timingNum = state.metabolism === 'slow' ? 45 : 30;
     
-    document.getElementById('prot-timing').innerText = timing + ' before bed';
-    document.getElementById('prot-timing-step').innerText = timing;
+    const day = state.currentDay || 1;
+    document.getElementById('prot-day-display').innerText = 'Day ' + day;
 
-    // Dosages
-    // Base logic: Gelatin 1 Tbsp, Green Tea 250mg, Gingerol 1/2 tsp, Turmeric 1/4 tsp
-    document.getElementById('dose-gelatin').innerText = (1 * multiplier) + ' Tbsp';
-    document.getElementById('dose-greentea').innerText = Math.round(250 * multiplier) + 'mg';
-    document.getElementById('dose-gingerol').innerText = (0.5 * multiplier) + ' tsp';
-    document.getElementById('dose-turmeric').innerText = (0.25 * multiplier) + ' tsp';
+    let dailyGelatin = 1 * multiplier;
+    let dailyGreenTea = Math.round(250 * multiplier);
+    let dailyGingerol = 0.5 * multiplier;
+    let dailyTurmeric = 0.25 * multiplier;
+    
+    const descGingerol = document.getElementById('desc-gingerol');
+    const descTurmeric = document.getElementById('desc-turmeric');
+    
+    // Day variations
+    if (day % 2 === 0) {
+        dailyGingerol += 0.25;
+        descGingerol.innerText = "Increased gingerol today to stimulate thermogenesis during your rest cycle.";
+    } else {
+        descGingerol.innerText = "Base dose of gingerol to maintain steady metabolic burn and soothe the digestive tract.";
+    }
+
+    if (day % 3 === 0) {
+        dailyTurmeric += 0.25;
+        descTurmeric.innerText = "Extra turmeric added today for a deep cellular inflammation flush.";
+    } else {
+        descTurmeric.innerText = "Standard turmeric dose to keep cortisol levels low and prevent inflammation buildup.";
+    }
+
+    if (day % 5 === 0) {
+        dailyGreenTea += 50;
+        timingNum += 5;
+    }
+
+    document.getElementById('prot-timing').innerText = timingNum + ' min before bed';
+    document.getElementById('prot-timing-step').innerText = timingNum + ' min';
+
+    document.getElementById('dose-gelatin').innerText = dailyGelatin + ' Tbsp';
+    document.getElementById('dose-greentea').innerText = dailyGreenTea + 'mg';
+    document.getElementById('dose-gingerol').innerText = dailyGingerol + ' tsp';
+    document.getElementById('dose-turmeric').innerText = dailyTurmeric + ' tsp';
 
     // Personalization text
-    let insightText = "";
+    let insightText = `Welcome to Day ${day}! `;
     if (state.age > 50) insightText += "At your age, cellular turnover is naturally slower, so we've calibrated this exact formula to maximize absorption. ";
     else insightText += "Your metabolic rate is optimized for this exact dosage. ";
     
