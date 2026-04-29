@@ -197,7 +197,7 @@ export default function App() {
           {/* VSL Video Vturb */}
           <div className="w-full mb-6">
             {/* @ts-ignore */}
-            <vturb-smartplayer id="vid-69f22989026646d4aa721494" style={{display: 'block', margin: '0 auto', width: '100%', maxWidth: '400px'}}></vturb-smartplayer>
+            <vturb-smartplayer id="vid-69f2240cc1adc7a72c362d33" style={{display: 'block', margin: '0 auto', width: '100%', maxWidth: '400px'}}></vturb-smartplayer>
           </div>
 
           {/* Notifications / Tags Area */}
