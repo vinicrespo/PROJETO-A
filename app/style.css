@@ -198,18 +198,24 @@ h1, h2, h3, h4, h5 {
     right: 30px;
     opacity: 0;
     pointer-events: none;
+    visibility: hidden;
     transform: translateX(20px);
     transition: all 0.4s ease;
+    z-index: 1;
 }
 .quiz-step.active {
     opacity: 1;
     pointer-events: auto;
+    visibility: visible;
     transform: translateX(0);
+    z-index: 10;
 }
 .quiz-step.hidden {
     opacity: 0;
     pointer-events: none;
+    visibility: hidden;
     transform: translateX(-20px);
+    z-index: 1;
 }
 .value-display {
     font-size: 36px;

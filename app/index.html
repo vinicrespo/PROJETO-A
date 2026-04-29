@@ -169,6 +169,9 @@
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
                         <span>Timing: <strong id="prot-timing">30 min before bed</strong></span>
                     </div>
+                    <div class="personalization-insight" id="prot-insight" style="background: rgba(232, 160, 180, 0.05); border-left: 3px solid #E8A0B4; padding: 12px; margin-top: 15px; font-size: 14px; color: #F5F5F5; line-height: 1.5;">
+                        <!-- Insight injected here -->
+                    </div>
                 </div>
 
                 <div class="section-title">Your 4 Ingredients</div>
@@ -180,7 +183,7 @@
                             <h3>Pure Gelatin</h3>
                         </div>
                         <div class="ing-dose">Dose: <span id="dose-gelatin">1 Tbsp</span></div>
-                        <p class="ing-desc">Activates GLP-1 through glycine and alanine — your metabolic master keys. Glycine increases GLP-1 by up to 182%. Alanine raises GIP by 144%.</p>
+                        <p class="ing-desc" id="desc-gelatin">Activates GLP-1 through glycine and alanine — your metabolic master keys. Glycine increases GLP-1 by up to 182%. Alanine raises GIP by 144%.</p>
                         <p class="ing-buy"><strong>Where to buy:</strong> Any grocery store — unflavored gelatin</p>
                     </div>
                     <div class="ingredient-card">
@@ -189,7 +192,7 @@
                             <h3>Green Tea Extract</h3>
                         </div>
                         <div class="ing-dose">Dose: <span id="dose-greentea">250mg</span></div>
-                        <p class="ing-desc">Amplifies GLP-1 production and acts as a GPS for your body — targeting belly fat first. Stabilizes insulin and prevents fat storage.</p>
+                        <p class="ing-desc" id="desc-greentea">Amplifies GLP-1 production and acts as a GPS for your body — targeting belly fat first. Stabilizes insulin and prevents fat storage.</p>
                         <p class="ing-buy"><strong>Where to buy:</strong> Health food stores or Amazon</p>
                     </div>
                     <div class="ingredient-card">
@@ -354,7 +357,6 @@
                 </div>
 
                 <button class="btn-secondary mt-20" onclick="resetQuiz()">Recalculate My Protocol</button>
-                <a href="mailto:support@gelatide.com" class="btn-secondary mt-15" style="display: block; text-align: center; text-decoration: none;">Contact Support</a>
 
                 <div class="guarantee-box mt-20">
                     🛡️ Your purchase is protected by our 60-day money-back guarantee

@@ -5,7 +5,10 @@ let state = {
     age: 45,
     goalWeight: 130,
     metabolism: 'moderate', // slow, moderate, fast_past
-    weightHistory: [] // {date, weight}
+    weightHistory: [], // {date, weight}
+    quizCompleted: false,
+    currentScreen: 'screen-login',
+    quizStep: 1
 };
 
 const bonusContent = {
@@ -116,10 +119,28 @@ document.addEventListener('DOMContentLoaded', () => {
     setupEventListeners();
     
     // Check if returning user
-    if (state.email && state.startWeight) {
-        // Skip to home
-        navigateTo('screen-home');
-        updateDashboard();
+    if (state.email) {
+        if (state.quizCompleted) {
+            if (state.currentScreen && state.currentScreen !== 'screen-login' && state.currentScreen !== 'screen-quiz') {
+                navigateTo(state.currentScreen);
+            } else {
+                navigateTo('screen-home');
+                updateDashboard();
+            }
+        } else {
+            navigateTo('screen-quiz');
+            // Restore quiz step
+            document.querySelectorAll('.quiz-step').forEach(s => {
+                s.classList.remove('active');
+                s.classList.add('hidden');
+            });
+            const stepEl = document.getElementById('quiz-step-' + state.quizStep);
+            if(stepEl) {
+                stepEl.classList.remove('hidden');
+                stepEl.classList.add('active');
+                document.getElementById('quiz-progress-fill').style.width = (state.quizStep * 25) + '%';
+            }
+        }
     }
 });
 
@@ -140,6 +161,10 @@ function saveState() {
 
 // Navigation
 function navigateTo(screenId) {
+    if(screenId !== 'screen-login' && screenId !== 'screen-quiz') {
+        state.currentScreen = screenId;
+        saveState();
+    }
     document.querySelectorAll('.screen:not(#loading-overlay)').forEach(s => {
         s.classList.remove('active');
         s.classList.add('hidden');
@@ -245,7 +270,11 @@ function setupEventListeners() {
     // Quiz steps navigation
     document.querySelectorAll('.btn-next-step').forEach(btn => {
         btn.addEventListener('click', (e) => {
-            const next = e.target.dataset.next;
+            e.preventDefault();
+            const next = parseInt(e.target.dataset.next);
+            state.quizStep = next;
+            saveState();
+
             document.querySelectorAll('.quiz-step').forEach(s => {
                 s.classList.remove('active');
                 s.classList.add('hidden');
@@ -261,6 +290,7 @@ function setupEventListeners() {
     // Finish Quiz
     document.querySelector('.btn-finish-quiz').addEventListener('click', () => {
         state.weightHistory = []; // Reset history on new protocol
+        state.quizCompleted = true;
         
         // Save initial weight to history
         const today = new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
@@ -332,6 +362,27 @@ function updateProtocol() {
     document.getElementById('dose-greentea').innerText = Math.round(250 * multiplier) + 'mg';
     document.getElementById('dose-gingerol').innerText = (0.5 * multiplier) + ' tsp';
     document.getElementById('dose-turmeric').innerText = (0.25 * multiplier) + ' tsp';
+
+    // Personalization text
+    let insightText = "";
+    if (state.age > 50) insightText += "At your age, cellular turnover is naturally slower, so we've calibrated this exact formula to maximize absorption. ";
+    else insightText += "Your metabolic rate is optimized for this exact dosage. ";
+    
+    if (w > 200) insightText += "Because your starting weight is above 200 lbs, your body needs extra initial support to break down visceral fat effectively. ";
+    
+    if (state.metabolism === 'slow') insightText += "We added an extra 15 minutes to your timing to give your slowed receptors the exact window they need to absorb the gelatin matrix.";
+    else if (state.metabolism === 'fast_past') insightText += "This formula specifically targets the metabolic changes that occur after 35, reactivating your previously fast metabolism.";
+    else insightText += "This baseline timing matches your moderate metabolism perfectly for overnight fat burning.";
+    
+    document.getElementById('prot-insight').innerText = insightText;
+    
+    const descGelatin = document.getElementById('desc-gelatin');
+    if (multiplier > 1) descGelatin.innerText = "With your increased dosage, it rapidly activates GLP-1 through glycine and alanine. Glycine increases GLP-1 by up to 182% and is crucial for your weight bracket.";
+    else descGelatin.innerText = "Activates GLP-1 through glycine and alanine — your metabolic master keys. Glycine increases GLP-1 by up to 182%. Alanine raises GIP by 144%.";
+
+    const descGreen = document.getElementById('desc-greentea');
+    if (state.age > 40) descGreen.innerText = "Amplifies GLP-1 production. For women over 40, it acts as a precise GPS for your body — targeting stubborn belly fat and stabilizing insulin levels.";
+    else descGreen.innerText = "Amplifies GLP-1 production and acts as a GPS for your body — targeting belly fat first. Stabilizes insulin and prevents fat storage.";
 }
 
 function togglePhases() {
