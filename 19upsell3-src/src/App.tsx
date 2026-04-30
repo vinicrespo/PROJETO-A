@@ -4,7 +4,7 @@ import { Search, Bell } from 'lucide-react';
 export default function App() {
   React.useEffect(() => {
     const s = document.createElement("script");
-    s.src = "https://scripts.converteai.net/d21a9e1d-910e-4254-b2bc-30b12586d2ef/players/69f29b7560a0504bace6cf00/v4/player.js";
+    s.src = "https://scripts.converteai.net/d21a9e1d-910e-4254-b2bc-30b12586d2ef/players/69f2ba1ec4812a9b1a74305c/v4/player.js";
     s.async = true;
     document.head.appendChild(s);
   }, []);
@@ -41,16 +41,16 @@ export default function App() {
           {/* VSL Player */}
           <div className="w-full mb-6">
             {/* @ts-ignore */}
-            <vturb-smartplayer id="vid-69f29b7560a0504bace6cf00" style={{ display: 'block', margin: '0 auto', width: '100%', maxWidth: '400px' }}></vturb-smartplayer> 
+            <vturb-smartplayer id="vid-69f2ba1ec4812a9b1a74305c" style={{ display: 'block', margin: '0 auto', width: '100%', maxWidth: '400px' }}></vturb-smartplayer> 
           </div>
 
           {/* CTA Button & Decline Link */}
           <div className="w-full flex flex-col items-center justify-center mb-6">
             {/* @ts-ignore */}
-            <button onClick={() => window.acceptUpsell('https://app.kashpay.com.br/u/909c156b15b4c2bb')} className="hide_19upsell3" style={{fontFamily: 'Poppins', fontSize: '18px', fontWeight: '600', lineHeight: '1.3', color: '#ffffff', backgroundColor: '#057932', border: 'none', borderRadius: '10px', padding: '13px 7%', cursor: 'pointer', textAlign: 'center', display: 'block', margin: 'auto', marginBottom: '16px'}}>
+            <button onClick={() => window.acceptUpsell('https://app.kashpay.com.br/u/909c156b15b4c2bb')} className="hide_19upsell2" style={{fontFamily: 'Poppins', fontSize: '18px', fontWeight: '600', lineHeight: '1.3', color: '#ffffff', backgroundColor: '#057932', border: 'none', borderRadius: '10px', padding: '13px 7%', cursor: 'pointer', textAlign: 'center', display: 'block', margin: 'auto', marginBottom: '16px'}}>
               Get Now
             </button>
-            <a href="/thanks" className="hide_19upsell3 text-gray-400 hover:text-gray-600 underline text-sm font-medium transition-colors">
+            <a href="/thanks" className="hide_19upsell2 text-gray-400 hover:text-gray-600 underline text-sm font-medium transition-colors">
               No, thanks!
             </a>
           </div>
