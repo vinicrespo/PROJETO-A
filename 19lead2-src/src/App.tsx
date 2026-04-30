@@ -60,6 +60,12 @@ const Comment = memo(({ comment }: { comment: any }) => {
 });
 
 export default function App() {
+  React.useEffect(() => {
+    const s = document.createElement("script");
+    s.src = "https://scripts.converteai.net/d21a9e1d-910e-4254-b2bc-30b12586d2ef/players/69f226f6a6fe5ed477b68731/v4/player.js";
+    s.async = true;
+    document.head.appendChild(s);
+  }, []);
 
   const currentMonth = new Date().toLocaleString('en-US', { month: 'long' });
 
