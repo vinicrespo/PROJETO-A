@@ -2,6 +2,13 @@ import React from 'react';
 import { Search, Bell } from 'lucide-react';
 
 export default function App() {
+  React.useEffect(() => {
+    const s = document.createElement("script");
+    s.src = "https://scripts.converteai.net/d21a9e1d-910e-4254-b2bc-30b12586d2ef/players/69f29b7560a0504bace6cf00/v4/player.js";
+    s.async = true;
+    document.head.appendChild(s);
+  }, []);
+
   const currentMonth = new Date().toLocaleString('en-US', { month: 'long' });
 
   return (
@@ -31,18 +38,19 @@ export default function App() {
 
         <main className="px-4 py-4">
 
-          {/* VSL Placeholder (Moldura) */}
-          <div className="w-full mb-6 flex justify-center items-center bg-gray-200 aspect-video rounded-md border-2 border-dashed border-gray-400">
-            <span className="text-gray-500 font-semibold">VSL Placeholder</span>
+          {/* VSL Player */}
+          <div className="w-full mb-6">
+            {/* @ts-ignore */}
+            <vturb-smartplayer id="vid-69f29b7560a0504bace6cf00" style={{ display: 'block', margin: '0 auto', width: '100%', maxWidth: '400px' }}></vturb-smartplayer> 
           </div>
 
           {/* CTA Button & Decline Link */}
           <div className="w-full flex flex-col items-center justify-center mb-6">
             {/* @ts-ignore */}
-            <button onClick={() => window.acceptUpsell('https://app.kashpay.com.br/u/5e07a86bd0caad95')} className="hide_19upsell1 bg-[#22c55e] hover:bg-[#16a34a] text-white text-2xl font-black py-4 px-8 rounded-full w-full max-w-[400px] text-center shadow-[0_4px_14px_0_rgba(34,197,94,0.39)] hover:shadow-[0_6px_20px_rgba(34,197,94,0.23)] hover:-translate-y-1 transition-all duration-200 uppercase tracking-wide border-b-4 border-[#15803d] active:border-b-0 active:translate-y-0 mb-4">
+            <button onClick={() => window.acceptUpsell('https://app.kashpay.com.br/u/909c156b15b4c2bb')} className="hide_19upsell3" style={{fontFamily: 'Poppins', fontSize: '18px', fontWeight: '600', lineHeight: '1.3', color: '#ffffff', backgroundColor: '#057932', border: 'none', borderRadius: '10px', padding: '13px 7%', cursor: 'pointer', textAlign: 'center', display: 'block', margin: 'auto', marginBottom: '16px'}}>
               Get Now
             </button>
-            <a href="/19upsell2" className="hide_19upsell1 text-gray-400 hover:text-gray-600 underline text-sm font-medium transition-colors">
+            <a href="/thanks" className="hide_19upsell3 text-gray-400 hover:text-gray-600 underline text-sm font-medium transition-colors">
               No, thanks!
             </a>
           </div>
