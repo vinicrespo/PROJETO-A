@@ -2,6 +2,13 @@ import React from 'react';
 import { Search, Bell } from 'lucide-react';
 
 export default function App() {
+  React.useEffect(() => {
+    const s = document.createElement("script");
+    s.src = "https://scripts.converteai.net/d21a9e1d-910e-4254-b2bc-30b12586d2ef/players/69f29b459ba103f8c5176522/v4/player.js";
+    s.async = true;
+    document.head.appendChild(s);
+  }, []);
+
   const currentMonth = new Date().toLocaleString('en-US', { month: 'long' });
 
   return (
@@ -35,7 +42,6 @@ export default function App() {
           <div className="w-full mb-6">
             {/* @ts-ignore */}
             <vturb-smartplayer id="vid-69f29b459ba103f8c5176522" style={{ display: 'block', margin: '0 auto', width: '100%', maxWidth: '400px' }}></vturb-smartplayer> 
-            <script type="text/javascript" dangerouslySetInnerHTML={{ __html: `var s=document.createElement("script"); s.src="https://scripts.converteai.net/d21a9e1d-910e-4254-b2bc-30b12586d2ef/players/69f29b459ba103f8c5176522/v4/player.js", s.async=!0,document.head.appendChild(s);` }}></script>
           </div>
 
           {/* CTA Button & Decline Link */}
