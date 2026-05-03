@@ -47,10 +47,10 @@ export default function App() {
           {/* CTA Button & Decline Link */}
           <div className="w-full flex flex-col items-center justify-center mb-6">
             {/* @ts-ignore */}
-            <button onClick={() => window.acceptUpsell('https://app.kashpay.com.br/u/09ec3fed75854701')} className="hide_39upsell1" style={{fontFamily: 'Poppins', fontSize: '18px', fontWeight: '600', lineHeight: '1.3', color: '#ffffff', backgroundColor: '#057932', border: 'none', borderRadius: '10px', padding: '13px 7%', cursor: 'pointer', textAlign: 'center', display: 'block', margin: 'auto', marginBottom: '16px'}}>
+            <button onClick={() => window.acceptUpsell('https://app.kashpay.com.br/u/09ec3fed75854701')} className="hide_19upsell1" style={{fontFamily: 'Poppins', fontSize: '18px', fontWeight: '600', lineHeight: '1.3', color: '#ffffff', backgroundColor: '#057932', border: 'none', borderRadius: '10px', padding: '13px 7%', cursor: 'pointer', textAlign: 'center', display: 'block', margin: 'auto', marginBottom: '16px'}}>
               Get Now
             </button>
-            <a href="/39upsell2" className="hide_39upsell1 text-gray-400 hover:text-gray-600 underline text-sm font-medium transition-colors">
+            <a href="/39upsell2" className="hide_19upsell1 text-gray-400 hover:text-gray-600 underline text-sm font-medium transition-colors">
               No, thanks!
             </a>
           </div>
