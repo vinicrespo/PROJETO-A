@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, createContext, useContext } from 'react';
 import { BrowserRouter, Routes, Route, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { Home, ListChecks, Target, User, LifeBuoy } from 'lucide-react';
 import Login from './screens/Login';
@@ -9,8 +9,15 @@ import Program3 from './screens/Program3';
 import Profile from './screens/Profile';
 import Support from './screens/Support';
 
-// Custom hook to manage email auth state
-export function useAuth() {
+interface AuthContextType {
+  email: string | null;
+  login: (email: string) => void;
+  logout: () => void;
+}
+
+const AuthContext = createContext<AuthContextType | null>(null);
+
+export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [email, setEmail] = useState<string | null>(localStorage.getItem('gelatide_email'));
 
   const login = (newEmail: string) => {
@@ -23,7 +30,17 @@ export function useAuth() {
     setEmail(null);
   };
 
-  return { email, login, logout };
+  return (
+    <AuthContext.Provider value={{ email, login, logout }}>
+      {children}
+    </AuthContext.Provider>
+  );
+}
+
+export function useAuth() {
+  const context = useContext(AuthContext);
+  if (!context) throw new Error('useAuth must be used within AuthProvider');
+  return context;
 }
 
 function Layout({ children }: { children: React.ReactNode }) {
@@ -86,8 +103,15 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  const { email } = useAuth();
+  return (
+    <AuthProvider>
+      <AppRoutes />
+    </AuthProvider>
+  );
+}
 
+function AppRoutes() {
+  const { email } = useAuth();
   return (
     <BrowserRouter basename="/app2">
       <Routes>
