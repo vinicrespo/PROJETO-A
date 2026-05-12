@@ -4,7 +4,7 @@ import { Search, Bell } from 'lucide-react';
 export default function App() {
   React.useEffect(() => {
     const s = document.createElement("script");
-    s.src = "https://scripts.converteai.net/d21a9e1d-910e-4254-b2bc-30b12586d2ef/players/6a027d3e5eb7e2ae28f0f2c3/v4/player.js";
+    s.src = "https://scripts.converteai.net/d21a9e1d-910e-4254-b2bc-30b12586d2ef/players/6a028190f7540a4d2f857655/v4/player.js";
     s.async = true;
     document.head.appendChild(s);
   }, []);
@@ -41,13 +41,13 @@ export default function App() {
           {/* VSL Player */}
           <div className="w-full mb-6">
             {/* @ts-ignore */}
-            <vturb-smartplayer id="vid-6a027d3e5eb7e2ae28f0f2c3" style={{ display: 'block', margin: '0 auto', width: '100%', maxWidth: '400px' }}></vturb-smartplayer> 
+            <vturb-smartplayer id="vid-6a028190f7540a4d2f857655" style={{ display: 'block', margin: '0 auto', width: '100%', maxWidth: '400px' }}></vturb-smartplayer> 
           </div>
 
           {/* CTA Button & Decline Link */}
           <div className="w-full flex flex-col items-center justify-center mb-6">
             {/* @ts-ignore */}
-            <button onClick={() => window.acceptUpsell('https://app.kashpay.com.br/u/fc20a0e0aed6f838')} className="upsell3" style={{fontFamily: 'Poppins', fontSize: '18px', fontWeight: '600', lineHeight: '1.3', color: '#ffffff', backgroundColor: '#057932', border: 'none', borderRadius: '10px', padding: '13px 7%', cursor: 'pointer', textAlign: 'center', display: 'block', margin: 'auto', marginBottom: '16px'}}>
+            <button onClick={() => window.acceptUpsell('https://app.kashpay.com.br/u/c90bd27213d3f29d')} className="upsell3" style={{fontFamily: 'Poppins', fontSize: '18px', fontWeight: '600', lineHeight: '1.3', color: '#ffffff', backgroundColor: '#057932', border: 'none', borderRadius: '10px', padding: '13px 7%', cursor: 'pointer', textAlign: 'center', display: 'block', margin: 'auto', marginBottom: '16px'}}>
               Get Now
             </button>
             <a href="/thanks" className="upsell3 text-gray-400 hover:text-gray-600 underline text-sm font-medium transition-colors">
