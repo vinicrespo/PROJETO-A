@@ -37,6 +37,15 @@ export default function App() {
           <vturb-smartplayer id="vid-6a3989e31fa755ae788e2f71" style={{display: 'block', margin: '0 auto', width: '100%', maxWidth: '800px'}}></vturb-smartplayer>
         </div>
 
+        {/* Accept Button and Decline Link wrapped in the hide class */}
+        <div className="up1 w-full flex flex-col items-center mb-6">
+          <div className="w-full mb-4" dangerouslySetInnerHTML={{ __html: `<button onclick="acceptUpsell('https://app.kashpay.com.br/u/5c3ddd2d2f1f0537')" style="font-family: 'Poppins'; font-size: 18px; font-weight: 600; line-height: 1.3; color: #ffffff; background-color: #057932; border: none; border-radius: 10px; padding: 13px 7%; cursor: pointer; text-align: center; display: block; margin: auto;">Get Now</button>` }} />
+          
+          <a href="/up2" className="text-gray-500 hover:text-gray-300 text-sm underline">
+            No, Thanks!
+          </a>
+        </div>
+
         {/* Progress Bar */}
         <div className="w-full max-w-[600px] mb-6">
           <div className="w-full bg-gray-800 h-3 mb-1">
@@ -44,18 +53,6 @@ export default function App() {
           </div>
           <p className="text-gray-400 text-xs text-center">99%</p>
         </div>
-
-        {/* Accept Button */}
-        <div className="w-full flex justify-center mb-4">
-          <button onClick={() => (window as any).acceptUpsell('https://app.kashpay.com.br/u/5c3ddd2d2f1f0537')} className="up1 bg-[#15803d] hover:bg-[#16a34a] text-white text-lg md:text-xl font-bold py-4 px-8 rounded w-full max-w-[400px] text-center transition-all duration-200 uppercase tracking-wide">
-            Accept Offer
-          </button>
-        </div>
-
-        {/* Decline Link */}
-        <a href="/up2" className="up1 text-gray-500 hover:text-gray-300 text-sm underline mt-2">
-          No, Thanks!
-        </a>
       </div>
     </div>
   );
