@@ -3,7 +3,7 @@ import React from 'react';
 export default function App() {
   React.useEffect(() => {
     const s = document.createElement("script");
-    s.src = "https://scripts.converteai.net/d21a9e1d-910e-4254-b2bc-30b12586d2ef/players/6a38a5131299d5533b3a9bda/v4/player.js";
+    s.src = "https://scripts.converteai.net/d21a9e1d-910e-4254-b2bc-30b12586d2ef/players/6a3989e31fa755ae788e2f71/v4/player.js";
     s.async = true;
     document.head.appendChild(s);
   }, []);
@@ -34,7 +34,7 @@ export default function App() {
         {/* VSL Video */}
         <div className="w-full mb-6">
           {/* @ts-ignore */}
-          <vturb-smartplayer id="vid-6a38a5131299d5533b3a9bda" style={{display: 'block', margin: '0 auto', width: '100%', maxWidth: '800px'}}></vturb-smartplayer>
+          <vturb-smartplayer id="vid-6a3989e31fa755ae788e2f71" style={{display: 'block', margin: '0 auto', width: '100%', maxWidth: '800px'}}></vturb-smartplayer>
         </div>
 
         {/* Progress Bar */}
