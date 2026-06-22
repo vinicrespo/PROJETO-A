@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>SlimTide Protocol</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #F8F4EC;
+            --primary-teal: #4A8B8C;
+            --secondary-coral: #E8917C;
+            --accent-pink: #F7E0DA;
+            --text-main: #2C3E50;
+            --text-muted: #7F8B9A;
+            --card-bg: #FFFFFF;
+            --shadow: 0 2px 12px rgba(0,0,0,0.05);
+            --border-radius: 20px;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            overflow-x: hidden;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+        }
+        
+        #app-container {
+            width: 100%;
+            max-width: 420px;
+            height: 100%;
+            position: relative;
+            background-color: var(--bg-color);
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        
+        .screen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow-y: auto;
+            background-color: var(--bg-color);
+            display: none;
+            flex-direction: column;
+            padding: 24px;
+            padding-bottom: 90px;
+            transition: opacity 0.3s ease;
+            opacity: 0;
+        }
+        
+        .screen.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .tab-content {
+            display: none;
+            flex-direction: column;
+            gap: 20px;
+            padding-bottom: 30px;
+        }
+
+        .tab-content.active {
+            display: flex;
+        }
+        
+        /* Logo SVG */
+        .logo-svg {
+            width: 220px;
+            height: auto;
+            margin: 0 auto;
+        }
+        
+        /* Typography */
+        h1 { font-size: 28px; font-weight: 800; color: var(--text-main); margin-bottom: 12px; line-height: 1.2; }
+        h2 { font-size: 22px; font-weight: 700; margin-bottom: 8px; }
+        h3 { font-size: 18px; font-weight: 600; margin-bottom: 6px; }
+        p { font-size: 15px; line-height: 1.5; color: var(--text-muted); margin-bottom: 16px; }
+        
+        /* Components */
+        .btn {
+            background-color: var(--secondary-coral);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 16px 24px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 4px 14px rgba(232, 145, 124, 0.3);
+            transition: transform 0.1s;
+        }
+        .btn:active { transform: scale(0.98); }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary-teal);
+            border: 2px solid var(--primary-teal);
+            box-shadow: none;
+        }
+        
+        .input-field {
+            width: 100%;
+            padding: 16px;
+            border-radius: 12px;
+            border: 1px solid #E2E8F0;
+            background-color: white;
+            font-size: 16px;
+            margin-bottom: 16px;
+            color: var(--text-main);
+        }
+        .input-field:focus { outline: none; border-color: var(--primary-teal); }
+        
+        .card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            box-shadow: var(--shadow);
+            margin-bottom: 16px;
+            width: 100%;
+        }
+
+        .card.pink { background-color: var(--accent-pink); }
+        
+        /* Bottom Nav */
+        .bottom-nav {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            background-color: white;
+            border-top-left-radius: 24px;
+            border-top-right-radius: 24px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.05);
+            padding-bottom: 15px; /* safe area for iOS */
+            z-index: 100;
+        }
+        
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #A0AEC0;
+            font-size: 11px;
+            font-weight: 600;
+            cursor: pointer;
+            gap: 4px;
+        }
+        
+        .nav-item svg { width: 24px; height: 24px; fill: currentColor; }
+        .nav-item.active { color: var(--secondary-coral); }
+
+        /* Specific Screens */
+        #screen-splash { justify-content: center; align-items: center; text-align: center; }
+        #screen-login { justify-content: center; }
+        #screen-loading { justify-content: center; align-items: center; text-align: center; }
+        
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid var(--accent-pink);
+            border-top: 4px solid var(--secondary-coral);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 30px auto;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        /* Questionnaire */
+        .q-step { display: none; flex-direction: column; height: 100%; }
+        .q-step.active { display: flex; }
+        .progress-bar-container { width: 100%; height: 6px; background-color: #E2E8F0; border-radius: 3px; margin-bottom: 30px; }
+        .progress-bar { height: 100%; background-color: var(--primary-teal); border-radius: 3px; transition: width 0.3s; }
+        .option-btn {
+            background-color: white;
+            border: 2px solid #E2E8F0;
+            border-radius: 12px;
+            padding: 18px;
+            text-align: left;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .option-btn:hover, .option-btn.selected { border-color: var(--primary-teal); background-color: #F0F9F9; }
+        
+        .flex-spacer { flex-grow: 1; }
+
+        /* Today Tab specific */
+        .app-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; padding-top: 10px; }
+        .metabolic-window { display: flex; flex-direction: column; align-items: center; text-align: center; }
+        .ring-container { position: relative; width: 160px; height: 160px; margin-bottom: 16px; }
+        .ring-svg { transform: rotate(-90deg); width: 100%; height: 100%; }
+        .ring-circle-bg { fill: none; stroke: var(--accent-pink); stroke-width: 8; }
+        .ring-circle-progress { fill: none; stroke: var(--secondary-coral); stroke-width: 8; stroke-linecap: round; stroke-dasharray: 283; stroke-dashoffset: 70; }
+        .ring-text { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+        
+        .sequence-step { display: flex; align-items: center; padding: 12px 0; border-bottom: 1px solid #F0F4F8; }
+        .sequence-step:last-child { border-bottom: none; }
+        .step-num { width: 28px; height: 28px; border-radius: 50%; background-color: var(--primary-teal); color: white; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: bold; margin-right: 12px; }
+        .step-info { flex-grow: 1; }
+        .step-name { font-weight: 600; font-size: 15px; margin-bottom: 2px; color: var(--text-main); }
+        .step-time { font-size: 12px; color: var(--text-muted); }
+        .step-status { font-size: 18px; }
+
+        .coach-avatar { width: 48px; height: 48px; border-radius: 50%; background-color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; color: var(--primary-teal); font-size: 18px; margin-right: 16px; border: 2px solid white; }
+        .coach-header { display: flex; align-items: center; margin-bottom: 12px; }
+        
+        .mistake-card { border-left: 4px solid var(--secondary-coral); }
+        .mistake-item { display: flex; align-items: flex-start; margin-bottom: 10px; font-size: 14px; color: var(--text-main); }
+        .mistake-item::before { content: "❌"; margin-right: 8px; font-size: 12px; margin-top: 2px; }
+        
+        .eat-map-card { background-color: #F8FAFC; border-radius: 12px; padding: 12px; margin-bottom: 8px; display: flex; align-items: center; font-size: 14px; font-weight: 600; }
+        .eat-map-icon { font-size: 20px; margin-right: 12px; }
+
+        /* Journey specific */
+        .module-card { cursor: pointer; }
+        .module-header { display: flex; justify-content: space-between; align-items: center; }
+        .badge { background-color: var(--primary-teal); color: white; padding: 4px 8px; border-radius: 8px; font-size: 10px; font-weight: bold; text-transform: uppercase; }
+        .badge.locked { background-color: #CBD5E0; }
+        .module-icon { font-size: 32px; margin-bottom: 12px; }
+
+        /* Insights specific */
+        .insight-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .stat-box { background-color: #F8FAFC; padding: 16px; border-radius: 16px; text-align: center; }
+        .stat-value { font-size: 24px; font-weight: 800; color: var(--primary-teal); margin-bottom: 4px; }
+        .stat-label { font-size: 12px; color: var(--text-muted); font-weight: 600; text-transform: uppercase; }
+        
+        .streak-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; margin-top: 12px; }
+        .streak-day { width: 100%; aspect-ratio: 1; border-radius: 4px; background-color: #E2E8F0; }
+        .streak-day.done { background-color: var(--primary-teal); }
+
+        .stars { font-size: 24px; cursor: pointer; color: #CBD5E0; letter-spacing: 4px; }
+        .stars span.active { color: #F59E0B; }
+
+        /* Profile specific */
+        .profile-header { display: flex; flex-direction: column; align-items: center; margin-bottom: 30px; margin-top: 20px; }
+        .profile-avatar { width: 80px; height: 80px; border-radius: 50%; background-color: var(--secondary-coral); color: white; display: flex; align-items: center; justify-content: center; font-size: 32px; font-weight: bold; margin-bottom: 16px; }
+        
+        .setting-row { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; border-bottom: 1px solid #F0F4F8; }
+        .setting-row:last-child { border-bottom: none; }
+        .toggle { width: 44px; height: 24px; background-color: #CBD5E0; border-radius: 12px; position: relative; cursor: pointer; transition: 0.3s; }
+        .toggle.on { background-color: var(--primary-teal); }
+        .toggle::after { content: ''; position: absolute; top: 2px; left: 2px; width: 20px; height: 20px; background-color: white; border-radius: 50%; transition: 0.3s; }
+        .toggle.on::after { transform: translateX(20px); }
+        
+        /* Modal */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); z-index: 1000; display: none; justify-content: center; align-items: center; padding: 20px; }
+        .modal-overlay.active { display: flex; }
+        .modal-content { background-color: white; border-radius: 24px; padding: 24px; width: 100%; max-width: 380px; max-height: 80vh; overflow-y: auto; position: relative; }
+        .modal-close { position: absolute; top: 16px; right: 16px; font-size: 24px; color: var(--text-muted); cursor: pointer; }
+        
+        /* Accordion */
+        .accordion-item { border-bottom: 1px solid #F0F4F8; }
+        .accordion-header { padding: 16px 0; font-weight: 600; color: var(--text-main); cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+        .accordion-content { padding: 0 0 16px 0; color: var(--text-muted); font-size: 14px; display: none; line-height: 1.5; }
+        
+        .logo-code { width: 100%; display: flex; justify-content: center; }
+    </style>
+</head>
+<body>
+    <div id="app-container">
+        
+        <!-- ==================== SPLASH SCREEN ==================== -->
+        <div id="screen-splash" class="screen active">
+            <div class="logo-code" style="width:220px; margin:0 auto; margin-bottom: 20px;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 180" style="width:100%;height:auto;">
+                  <text x="200" y="110" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-size="90" font-weight="600" fill="#1B7B8C" text-anchor="middle" letter-spacing="-2">SlimTide</text>
+                  <path d="M 60 140 Q 110 120 160 138 Q 210 156 260 138 Q 310 120 340 135" stroke="#5ECDD6" stroke-width="5" fill="none" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <p style="color: var(--primary-teal); font-weight: 600;">Your personalized metabolic protocol</p>
+        </div>
+
+        <!-- ==================== LOGIN SCREEN ==================== -->
+        <div id="screen-login" class="screen">
+            <div class="logo-code" style="width:180px; margin:0 auto; margin-bottom: 40px;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 180" style="width:100%;height:auto;">
+                  <text x="200" y="110" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-size="90" font-weight="600" fill="#1B7B8C" text-anchor="middle" letter-spacing="-2">SlimTide</text>
+                  <path d="M 60 140 Q 110 120 160 138 Q 210 156 260 138 Q 310 120 340 135" stroke="#5ECDD6" stroke-width="5" fill="none" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <h1>Welcome back</h1>
+            <p>Sign in with the email you used at checkout</p>
+            
+            <input type="email" class="input-field" placeholder="Email address">
+            <input type="password" class="input-field" placeholder="Password">
+            
+            <button class="btn" style="margin-top: 10px;" onclick="goToScreen('screen-loading')">Access My Protocol</button>
+        </div>
+
+        <!-- ==================== LOADING SCREEN ==================== -->
+        <div id="screen-loading" class="screen">
+            <div class="logo-code" style="width:160px; margin:0 auto;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 180" style="width:100%;height:auto;">
+                  <text x="200" y="110" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-size="90" font-weight="600" fill="#1B7B8C" text-anchor="middle" letter-spacing="-2">SlimTide</text>
+                  <path d="M 60 140 Q 110 120 160 138 Q 210 156 260 138 Q 310 120 340 135" stroke="#5ECDD6" stroke-width="5" fill="none" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <div class="spinner"></div>
+            <h3 id="loading-msg" style="color: var(--primary-teal);">Verifying your access...</h3>
+        </div>
+
+        <!-- ==================== WELCOME SCREEN ==================== -->
+        <div id="screen-welcome" class="screen">
+            <div class="flex-spacer"></div>
+            <div class="logo-code" style="width:120px; margin:0 auto; margin-bottom: 20px;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 180" style="width:100%;height:auto;">
+                  <text x="200" y="110" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-size="90" font-weight="600" fill="#1B7B8C" text-anchor="middle" letter-spacing="-2">SlimTide</text>
+                  <path d="M 60 140 Q 110 120 160 138 Q 210 156 260 138 Q 310 120 340 135" stroke="#5ECDD6" stroke-width="5" fill="none" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <h1 style="text-align: center;">Welcome to SlimTide 💚</h1>
+            <div class="card" style="margin-top: 20px;">
+                <p style="color: var(--text-main); font-size: 16px;">Hi! I'm Dr. Ania. You've just joined more than 67,000 women using this exact protocol to transform their bodies — naturally, without injections, without diets, without gyms.</p>
+                <p style="color: var(--text-main); font-size: 16px; margin-bottom: 0;">Before we start, let me ask you a few quick questions so I can personalize everything for YOU.</p>
+            </div>
+            <div class="flex-spacer"></div>
+            <button class="btn" onclick="goToScreen('screen-profile')">Let's start</button>
+        </div>
+
+        <!-- ==================== PROFILE QUESTIONNAIRE ==================== -->
+        <div id="screen-profile" class="screen">
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="q-progress" style="width: 11%;"></div>
+            </div>
+            
+            <div id="q1" class="q-step active">
+                <h2>What's your name?</h2>
+                <p>This is how I'll address you.</p>
+                <input type="text" id="inp-name" class="input-field" placeholder="Your name">
+                <div class="flex-spacer"></div>
+                <button class="btn" onclick="nextQ(2)">Next</button>
+            </div>
+            
+            <div id="q2" class="q-step">
+                <h2>What's your age?</h2>
+                <p>Metabolism changes over time.</p>
+                <input type="number" id="inp-age" class="input-field" placeholder="e.g. 45">
+                <div class="flex-spacer"></div>
+                <button class="btn" onclick="nextQ(3)">Next</button>
+            </div>
+            
+            <div id="q3" class="q-step">
+                <h2>Your height?</h2>
+                <input type="text" id="inp-height" class="input-field" placeholder="e.g. 5'5 or 165cm">
+                <div class="flex-spacer"></div>
+                <button class="btn" onclick="nextQ(4)">Next</button>
+            </div>
+            
+            <div id="q4" class="q-step">
+                <h2>Your current weight?</h2>
+                <input type="number" id="inp-weight" class="input-field" placeholder="lbs">
+                <div class="flex-spacer"></div>
+                <button class="btn" onclick="nextQ(5)">Next</button>
+            </div>
+            
+            <div id="q5" class="q-step">
+                <h2>What best describes you right now?</h2>
+                <button class="option-btn" onclick="selectOption(5, 'I\'m under 40')">I'm under 40</button>
+                <button class="option-btn" onclick="selectOption(5, 'I\'m in perimenopause')">I'm in perimenopause</button>
+                <button class="option-btn" onclick="selectOption(5, 'I\'m in menopause')">I'm in menopause</button>
+                <button class="option-btn" onclick="selectOption(5, 'Post-menopause')">Post-menopause</button>
+            </div>
+            
+            <div id="q6" class="q-step">
+                <h2>How would you describe your energy lately?</h2>
+                <button class="option-btn" onclick="selectOption(6, 'Constantly tired')">Constantly tired</button>
+                <button class="option-btn" onclick="selectOption(6, 'Up and down')">Up and down</button>
+                <button class="option-btn" onclick="selectOption(6, 'Generally good')">Generally good</button>
+            </div>
+            
+            <div id="q7" class="q-step">
+                <h2>How are your cravings?</h2>
+                <button class="option-btn" onclick="selectOption(7, 'Out of control')">Out of control</button>
+                <button class="option-btn" onclick="selectOption(7, 'Manageable but present')">Manageable but present</button>
+                <button class="option-btn" onclick="selectOption(7, 'Mostly under control')">Mostly under control</button>
+            </div>
+            
+            <div id="q8" class="q-step">
+                <h2>What's your main goal?</h2>
+                <button class="option-btn" onclick="selectOption(8, 'Lose 10-20 lbs')">Lose 10-20 lbs</button>
+                <button class="option-btn" onclick="selectOption(8, 'Lose 20-40 lbs')">Lose 20-40 lbs</button>
+                <button class="option-btn" onclick="selectOption(8, 'Lose 40+ lbs')">Lose 40+ lbs</button>
+            </div>
+            
+            <div id="q9" class="q-step">
+                <h2>How fast do you want results?</h2>
+                <button class="option-btn" onclick="selectOption(9, 'Steady and lasting')">Steady and lasting</button>
+                <button class="option-btn" onclick="selectOption(9, 'As fast as possible')">As fast as possible</button>
+            </div>
+        </div>
+
+        <!-- ==================== PROFILE COMPLETE ==================== -->
+        <div id="screen-profile-complete" class="screen">
+            <div class="flex-spacer"></div>
+            <div style="text-align: center; font-size: 60px; margin-bottom: 20px;">✨</div>
+            <h1 id="complete-title" style="text-align: center;">Perfect!</h1>
+            <p style="text-align: center;">Based on your profile, I've calibrated a 90-day metabolic protocol specifically for you.</p>
+            
+            <div class="card" style="margin-top: 20px;">
+                <div style="display: flex; margin-bottom: 16px;">
+                    <div style="width: 4px; background-color: var(--primary-teal); border-radius: 2px; margin-right: 12px;"></div>
+                    <div>
+                        <div style="font-weight: 700; color: var(--text-main);">Phase 1 (Days 1-30)</div>
+                        <div style="color: var(--text-muted); font-size: 14px;">Activation</div>
+                    </div>
+                </div>
+                <div style="display: flex; margin-bottom: 16px;">
+                    <div style="width: 4px; background-color: var(--secondary-coral); border-radius: 2px; margin-right: 12px;"></div>
+                    <div>
+                        <div style="font-weight: 700; color: var(--text-main);">Phase 2 (Days 31-60)</div>
+                        <div style="color: var(--text-muted); font-size: 14px;">Acceleration</div>
+                    </div>
+                </div>
+                <div style="display: flex;">
+                    <div style="width: 4px; background-color: #CBD5E0; border-radius: 2px; margin-right: 12px;"></div>
+                    <div>
+                        <div style="font-weight: 700; color: var(--text-main);">Phase 3 (Days 61-90)</div>
+                        <div style="color: var(--text-muted); font-size: 14px;">Lock-In</div>
+                    </div>
+                </div>
+            </div>
+            
+            <h2 style="text-align: center; margin-top: 30px;">Day 1 starts now.</h2>
+            <div class="flex-spacer"></div>
+            <button class="btn" onclick="finishSetup()">Enter my dashboard</button>
+        </div>
+
+        <!-- ==================== MAIN APP ==================== -->
+        <div id="screen-main" class="screen" style="padding-bottom: 0;">
+            
+            <!-- ====== TAB: TODAY ====== -->
+            <div id="tab-today" class="tab-content active">
+                <div class="app-header">
+                    <div class="logo-code" style="width:100px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 180" style="width:100%;height:auto;">
+                          <text x="200" y="110" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-size="90" font-weight="600" fill="#1B7B8C" text-anchor="middle" letter-spacing="-2">SlimTide</text>
+                          <path d="M 60 140 Q 110 120 160 138 Q 210 156 260 138 Q 310 120 340 135" stroke="#5ECDD6" stroke-width="5" fill="none" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <div style="display: flex; gap: 16px; color: var(--text-main);">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                    </div>
+                </div>
+                
+                <div>
+                    <h2 id="greeting">Good Morning, Anna ☀️</h2>
+                    <p id="day-phase-text" style="font-weight: 600;">Day 1 · Phase 1: Activation</p>
+                </div>
+                
+                <div class="card metabolic-window">
+                    <h3 style="margin-bottom: 20px;">Metabolic Window</h3>
+                    <div class="ring-container">
+                        <svg class="ring-svg" viewBox="0 0 100 100">
+                            <circle class="ring-circle-bg" cx="50" cy="50" r="45"></circle>
+                            <circle class="ring-circle-progress" cx="50" cy="50" r="45" id="window-ring"></circle>
+                        </svg>
+                        <div class="ring-text">
+                            <div style="font-size: 28px; font-weight: 800; color: var(--primary-teal);" id="window-time">--</div>
+                            <div style="font-size: 12px; color: var(--text-muted); font-weight: 600;" id="window-label">REMAINING</div>
+                        </div>
+                    </div>
+                    <p id="window-desc" style="color: var(--secondary-coral); font-weight: 600; margin-bottom: 0;">Opens tomorrow at 7:00 AM</p>
+                </div>
+                
+                <div class="card">
+                    <h3 style="margin-bottom: 16px;">Today's Activation Sequence</h3>
+                    <div id="sequence-container">
+                        <!-- Filled via JS -->
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3 style="margin-bottom: 4px;">Progress</h3>
+                    <p id="progress-text">Day 1 · You've lost 0 lbs</p>
+                    <div style="width: 100%; height: 100px; position: relative;">
+                        <svg viewBox="0 0 100 40" preserveAspectRatio="none" style="width: 100%; height: 100%;">
+                            <path id="progress-path" d="M0,20 Q50,20 100,20" fill="none" stroke="var(--primary-teal)" stroke-width="3" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                </div>
+                
+                <div class="card pink">
+                    <div class="coach-header">
+                        <div class="coach-avatar">DA</div>
+                        <div style="font-weight: 700; color: var(--text-main);">Today's message from Dr. Ania</div>
+                    </div>
+                    <p id="coaching-msg-text" style="color: var(--text-main); font-weight: 500; font-size: 15px; margin-bottom: 0;"></p>
+                </div>
+                
+                <div class="card mistake-card">
+                    <h3 style="color: var(--secondary-coral); margin-bottom: 16px;">⚠️ 3 Critical Mistakes to Avoid Today</h3>
+                    <div id="mistakes-container">
+                        <!-- Filled via JS -->
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3 style="margin-bottom: 4px;">Eat-Normally Map · Today</h3>
+                    <p id="eat-map-time" style="font-size: 13px;">Your body is in fat-burning mode until 8:00 PM tonight</p>
+                    <div id="eat-map-container" style="margin-top: 16px;">
+                        <!-- Filled via JS -->
+                    </div>
+                </div>
+                
+                <div style="height: 100px;"></div> <!-- Extra scroll space -->
+            </div>
+
+            <!-- ====== TAB: JOURNEY ====== -->
+            <div id="tab-journey" class="tab-content">
+                <h2>Your Journey</h2>
+                
+                <div class="card module-card" onclick="openModal('modal-core')">
+                    <div class="module-header">
+                        <div class="badge">ACTIVE</div>
+                        <div style="font-weight: 600; font-size: 13px; color: var(--text-muted);" id="journey-day-text">Day 1 of 90</div>
+                    </div>
+                    <div class="module-icon">🌱</div>
+                    <h3>SlimTide Core Protocol</h3>
+                    <p style="margin-bottom: 0;">Your personalized daily metabolic recalibration.</p>
+                </div>
+                
+                <div class="card module-card" onclick="openModal('modal-accel')">
+                    <div class="module-header">
+                        <div class="badge">UNLOCKED</div>
+                    </div>
+                    <div class="module-icon">🔥</div>
+                    <h3>7X Accelerator Method</h3>
+                    <p style="margin-bottom: 0;">The 2-minute bacteria flip to accelerate fat burning.</p>
+                </div>
+                
+                <div class="card module-card" onclick="openModal('modal-hormone')">
+                    <div class="module-header">
+                        <div class="badge">UNLOCKED</div>
+                    </div>
+                    <div class="module-icon">🧪</div>
+                    <h3>Hormonal Shot Calculator</h3>
+                    <p style="margin-bottom: 0;">Custom recipes based on your age and weight.</p>
+                </div>
+                
+                <div class="card module-card" onclick="openModal('modal-skin')">
+                    <div class="module-header">
+                        <div class="badge">UNLOCKED</div>
+                    </div>
+                    <div class="module-icon">✨</div>
+                    <h3>Anti-Sagging Skin Method</h3>
+                    <p style="margin-bottom: 0;">Collagen F3 protocol to maintain firmness.</p>
+                </div>
+                
+                <div class="card module-card" onclick="openModal('modal-hair')">
+                    <div class="module-header">
+                        <div class="badge">UNLOCKED</div>
+                    </div>
+                    <div class="module-icon">💇‍♀️</div>
+                    <h3>Hair Rescue Protocol</h3>
+                    <p style="margin-bottom: 0;">Protect your hair follicles during rapid weight loss.</p>
+                </div>
+                
+                <div style="height: 100px;"></div>
+            </div>
+
+            <!-- ====== TAB: COACHING ====== -->
+            <div id="tab-coaching" class="tab-content">
+                <div style="display: flex; flex-direction: column; align-items: center; text-align: center; padding: 20px 0;">
+                    <div style="width: 80px; height: 80px; border-radius: 50%; background-color: var(--accent-pink); color: var(--secondary-coral); display: flex; align-items: center; justify-content: center; font-size: 32px; font-weight: bold; margin-bottom: 12px; position: relative;">
+                        EC
+                        <div style="position: absolute; bottom: 0; right: 0; background-color: var(--secondary-coral); width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid var(--bg-color);">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="white"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                        </div>
+                    </div>
+                    <h2>Emily Carter</h2>
+                    <p style="margin-bottom: 0;">Wellness Specialist · MS, RD</p>
+                </div>
+                
+                <div class="card">
+                    <h3 style="margin-bottom: 16px;">Today's Plan</h3>
+                    <div id="daily-plan-container"></div>
+                </div>
+                
+                <div class="card">
+                    <h3 style="margin-bottom: 8px;">Weekly Focus: <span id="weekly-focus-title" style="color: var(--primary-teal);">Hydration</span></h3>
+                    <p style="margin-bottom: 0;" id="weekly-focus-desc">Water is the catalyst for every metabolic reaction. This week, we focus on consistent cellular hydration.</p>
+                </div>
+                
+                <div class="card">
+                    <h3 style="margin-bottom: 16px;">Ask Dr. Ania (FAQ)</h3>
+                    <div id="faq-container">
+                        <!-- Filled via JS -->
+                    </div>
+                </div>
+                
+                <div style="height: 100px;"></div>
+            </div>
+
+            <!-- ====== TAB: INSIGHTS ====== -->
+            <div id="tab-insights" class="tab-content">
+                <h2>Insights</h2>
+                
+                <div class="card">
+                    <h3>Weight Journey</h3>
+                    <div class="insight-grid" style="margin: 16px 0;">
+                        <div class="stat-box">
+                            <div class="stat-value" id="stat-lost">0</div>
+                            <div class="stat-label">Lbs Lost</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-value" id="stat-current">0</div>
+                            <div class="stat-label">Current</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3><span id="streak-num">1</span> Day Streak 🔥</h3>
+                    <div class="streak-grid" id="streak-grid">
+                        <!-- Filled via JS -->
+                    </div>
+                </div>
+                
+                <div class="card" id="daily-checkin-card">
+                    <h3 style="margin-bottom: 16px;">Daily Check-In</h3>
+                    
+                    <div style="margin-bottom: 16px;">
+                        <div style="font-weight: 600; font-size: 14px; margin-bottom: 8px;">Sleep quality</div>
+                        <div class="stars" onclick="setStars('sleep', event)">
+                            <span data-val="1">★</span><span data-val="2">★</span><span data-val="3">★</span><span data-val="4">★</span><span data-val="5">★</span>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-bottom: 16px;">
+                        <div style="font-weight: 600; font-size: 14px; margin-bottom: 8px;">Energy level</div>
+                        <div class="stars" onclick="setStars('energy', event)">
+                            <span data-val="1">★</span><span data-val="2">★</span><span data-val="3">★</span><span data-val="4">★</span><span data-val="5">★</span>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-bottom: 16px;">
+                        <div style="font-weight: 600; font-size: 14px; margin-bottom: 8px;">Cravings (5 = None)</div>
+                        <div class="stars" onclick="setStars('cravings', event)">
+                            <span data-val="1">★</span><span data-val="2">★</span><span data-val="3">★</span><span data-val="4">★</span><span data-val="5">★</span>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-bottom: 24px;">
+                        <div style="font-weight: 600; font-size: 14px; margin-bottom: 8px;">Current weight (lbs)</div>
+                        <input type="number" id="inp-daily-weight" class="input-field" style="margin-bottom: 0;">
+                    </div>
+                    
+                    <button class="btn" onclick="submitCheckin()">Submit today's check-in</button>
+                    <p id="checkin-success" style="display: none; color: var(--primary-teal); font-weight: 600; margin-top: 12px; text-align: center; margin-bottom: 0;">Got it. Protocol recalibrated. ✨</p>
+                </div>
+                
+                <div class="card">
+                    <h3>Milestones</h3>
+                    <div id="milestones-container" style="margin-top: 16px;">
+                        <!-- Filled via JS -->
+                    </div>
+                </div>
+                
+                <div style="height: 100px;"></div>
+            </div>
+
+            <!-- ====== TAB: PROFILE ====== -->
+            <div id="tab-profile" class="tab-content">
+                <div class="profile-header">
+                    <div class="profile-avatar" id="prof-initial">A</div>
+                    <h2 id="prof-name">Anna</h2>
+                    <p id="prof-subtitle" style="font-weight: 600;">Day 1 of 90 · Phase 1</p>
+                </div>
+                
+                <div class="card">
+                    <h3>My Goal</h3>
+                    <p id="prof-goal" style="color: var(--text-main); font-weight: 600;">Lose 20-40 lbs</p>
+                </div>
+                
+                <div class="card">
+                    <h3>Notifications</h3>
+                    <div class="setting-row">
+                        <span style="font-weight: 600; color: var(--text-main);">Morning Reminder</span>
+                        <div class="toggle on" onclick="this.classList.toggle('on')"></div>
+                    </div>
+                    <div class="setting-row">
+                        <span style="font-weight: 600; color: var(--text-main);">Coaching Message</span>
+                        <div class="toggle on" onclick="this.classList.toggle('on')"></div>
+                    </div>
+                    <div class="setting-row">
+                        <span style="font-weight: 600; color: var(--text-main);">Window Alert</span>
+                        <div class="toggle on" onclick="this.classList.toggle('on')"></div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="setting-row">
+                        <span style="font-weight: 600; color: var(--text-main);">About SlimTide</span>
+                        <span style="color: #CBD5E0;">›</span>
+                    </div>
+                    <div class="setting-row">
+                        <span style="font-weight: 600; color: var(--text-main);">Privacy Policy</span>
+                        <span style="color: #CBD5E0;">›</span>
+                    </div>
+                    <div class="setting-row">
+                        <span style="font-weight: 600; color: var(--text-main);">Terms of Service</span>
+                        <span style="color: #CBD5E0;">›</span>
+                    </div>
+                </div>
+                
+                <button class="btn btn-outline" style="margin-top: 16px; border-color: #E2E8F0; color: var(--text-muted);" onclick="logout()">Log Out</button>
+                
+                <div style="height: 100px;"></div>
+            </div>
+
+            <!-- ====== BOTTOM NAVIGATION ====== -->
+            <div class="bottom-nav">
+                <div class="nav-item active" onclick="switchTab('today', this)">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                    Today
+                </div>
+                <div class="nav-item" onclick="switchTab('journey', this)">
+                    <svg viewBox="0 0 24 24"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon><line x1="8" y1="2" x2="8" y2="18"></line><line x1="16" y1="6" x2="16" y2="22"></line></svg>
+                    Journey
+                </div>
+                <div class="nav-item" onclick="switchTab('coaching', this)">
+                    <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                    Coaching
+                </div>
+                <div class="nav-item" onclick="switchTab('insights', this)">
+                    <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+                    Insights
+                </div>
+                <div class="nav-item" onclick="switchTab('profile', this)">
+                    <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                    Profile
+                </div>
+            </div>
+            
+        </div>
+        
+        <!-- MODALS -->
+        <div id="modal-core" class="modal-overlay">
+            <div class="modal-content">
+                <div class="modal-close" onclick="closeModal('modal-core')">×</div>
+                <h2>SlimTide Core Protocol</h2>
+                <p>This is your foundation. Complete the sequence daily.</p>
+                <div style="background-color: #F8FAFC; padding: 16px; border-radius: 12px; margin-top: 20px;">
+                    <h3 style="font-size: 16px;">The 47-Min Window</h3>
+                    <p style="font-size: 13px; margin-bottom: 0;">During the activation phase, your metabolic window is exactly 47 minutes. This precise timing ensures GLP-1 hormones are naturally stimulated without triggering insulin resistance.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div id="modal-hormone" class="modal-overlay">
+            <div class="modal-content">
+                <div class="modal-close" onclick="closeModal('modal-hormone')">×</div>
+                <h2>Hormonal Shot Calculator</h2>
+                <p>Generates your custom recipe.</p>
+                <button class="btn" style="margin-top: 20px;" onclick="generateHormoneShot()">Generate My Recipe</button>
+                <div id="hormone-result" style="display: none; margin-top: 20px; background-color: var(--accent-pink); padding: 16px; border-radius: 12px;">
+                    <h3 style="color: var(--secondary-coral);">Your Recipe:</h3>
+                    <ul id="hormone-list" style="margin-left: 20px; font-size: 14px; font-weight: 600; color: var(--text-main); line-height: 1.6;"></ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- generic modal for others -->
+        <div id="modal-generic" class="modal-overlay">
+            <div class="modal-content">
+                <div class="modal-close" onclick="closeModal('modal-generic')">×</div>
+                <h2>Module Content</h2>
+                <p>This premium module is active and tracking your progress in the background. Keep following your daily sequences!</p>
+                <div class="badge" style="display: inline-block; margin-top: 20px;">UNLOCKED</div>
+            </div>
+        </div>
+        
+    </div>
+
+    <script>
+        // DATA ARRAYS
+        const COACHING_MESSAGES = ["[Nome], today is the first day of your transformation. Your body has been holding on to fat because your GLP-1 and GIP hormones have been suppressed. The morning sequence you're about to do reactivates them. Trust the process \u2014 what you do today plants seeds that will bloom in week 3.", "Day 2 is about consistency. You've taken the first step, and your body is starting to recognize the change. Stick to the sequence.", "On Day 3, your digestion might feel a little different. That's the metabolic trigger working. Keep hydrating.", "Day 4: You're doing great, [Nome]. The small changes are adding up. The morning sequence is your foundation.", "Day 5: Hydration is key today. As your cells activate, they need water to flush out the old. Drink up!", "Day 6: Almost a week in. Your energy levels should be stabilizing. Notice how you feel in the afternoon.", "One week in, [Nome]. Right now, your L-cells are waking up. You may not feel dramatic changes yet, but I want you to look in the mirror. Your face looks slightly less puffy, doesn't it? That's the gut decompression starting.", "Day 8: Week 2 begins. The first week was about waking up the body. Now we start the real work.", "Day 9: Stay focused on the sequence. It's the repetition that rewires your metabolism.", "Day 10: Double digits! Celebrate this milestone. Your commitment is showing.", "Day 11: Pay attention to your sleep tonight. Better sleep means better fat burning tomorrow.", "Day 12: You might start feeling lighter. It's not just water weight; it's inflammation leaving your body.", "Day 13: Cravings might try to sneak in. Remember your goal and stick to the protocol.", "Two weeks. This is when most women start noticing the food noise quieting down. Have you caught yourself NOT thinking about food at 3pm? That's the protocol working.", "Day 15: Halfway through the first month. The foundation is set. Your metabolism is shifting.", "Day 16: Keep an eye on your energy. It should feel more sustained throughout the day.", "Day 17: The metabolic window is becoming a habit. It's your daily metabolic reset.", "Day 18: Listen to your body today. If you're tired, rest. If you have energy, move.", "Day 19: You're doing incredible work, [Nome]. The inside is changing before the outside.", "Day 20: 20 days of commitment. Your body is thanking you for the consistency.", "Three weeks. Your metabolism has now been recalibrated. The next 7 days are critical \u2014 your body wants to test if this is permanent. Stay consistent.", "Day 22: The critical week. Don't let up now. Keep the momentum going.", "Day 23: Your clothes might start fitting differently. Notice the small changes.", "Day 24: You are stronger than your excuses. Stick to the sequence.", "Day 25: 5 days left in Phase 1. You've come so far. Finish strong.", "Day 26: The habits are forming. What was hard on Day 1 is easier today.", "Day 27: Your body is adapting to the new normal. A healthier normal.", "Day 28: Almost there. The foundation is solid. Get ready for Acceleration.", "Day 29: Reflect on the past month. Look at the progress you've made.", "End of Activation Phase. Look at where you started. Tomorrow we move into Acceleration \u2014 your window expands, your fat burning doubles.", "Welcome to Phase 2: Acceleration. From today, your metabolic window expands to 60 minutes. Your body is now actively asking for fat to burn, instead of storing it.", "Day 32: The expanded window means more fat burning time. Use it wisely.", "Day 33: Acceleration is about momentum. You've built it, now let's use it.", "Day 34: Your body is a fat-burning machine now. Keep the fuel clean.", "Day 35: Notice the changes in your energy. It should be soaring.", "Day 36: The scale might start moving faster. But remember, non-scale victories matter too.", "Day 37: Your skin might look clearer. That's the detox effect of the protocol.", "Day 38: Keep hydrating. Fat burning requires water.", "Day 39: You are transforming, [Nome]. Believe in the process.", "Day 40: 40 days! You are unstoppable. Keep going.", "Day 41: Acceleration is in full swing. Your body is adapting beautifully.", "Day 42: Pay attention to your digestion. It should be smoother than ever.", "Day 43: Your cravings should be almost gone. The food noise is silent.", "Day 44: You're almost halfway through the entire 90 days. Incredible.", "Halfway. The mirror is telling a different story now. Have your jeans loosened? Your collar bones reappearing?", "Day 46: The second half begins. The changes will be more noticeable now.", "Day 47: Your body is reshaping itself. Trust the protocol.", "Day 48: Keep the consistency. It's the key to the Acceleration phase.", "Day 49: You're building a new you, [Nome]. Day by day.", "Day 50: 50 days of dedication. Celebrate your strength.", "Day 51: The final 10 days of Acceleration. Let's make them count.", "Day 52: Your metabolism is firing on all cylinders.", "Day 53: Notice how your clothes feel. The transformation is real.", "Day 54: You are glowing from the inside out.", "Day 55: Just 5 days left in Phase 2. Push through.", "Day 56: Your body is loving this new routine.", "Day 57: The fat burning is optimized. Keep following the plan.", "Day 58: You are almost ready for Lock-In. Prepare yourself.", "Day 59: Tomorrow is the last day of Acceleration. Finish strong.", "End of Acceleration. Most women have lost between 18-32 lbs at this point. Tomorrow we lock it in \u2014 Phase 3 isn't about losing more, it's about your body forgetting it ever held that fat.", "Day 61: Welcome to Lock-In. This is about making it permanent.", "Day 62: We are defending your new weight. It's your new baseline.", "Day 63: Lock-In is about sustainability. We want this to last forever.", "Day 64: Your body is settling into its new shape.", "Day 65: Notice how natural the protocol feels now. It's just what you do.", "Day 66: The habits are locked in. You are a different person.", "Day 67: Your metabolism is stable and strong.", "Day 68: Keep following the steps. We are cementing the results.", "Day 69: You've come so far, [Nome]. Never forget how hard you worked.", "Day 70: 70 days! You are amazing.", "Day 71: The Lock-In phase is crucial. Don't skip a day.", "Day 72: Your body is learning that this is the new normal.", "Day 73: The fat cells are adapting to their new size.", "Day 74: You are maintaining your success beautifully.", "Lock-In Phase. Your body is now defending the lower weight as the new normal. This is the phase Oprah told me about \u2014 she said 'this is when I knew it wouldn't come back.'", "Day 76: Keep the momentum. We are almost at the finish line.", "Day 77: Your confidence must be soaring. Enjoy it.", "Day 78: Notice the changes in your overall health, not just weight.", "Day 79: You are an inspiration, [Nome].", "Day 80: 80 days! Only 10 days left in the protocol.", "Day 81: The final countdown. Let's lock this in completely.", "Day 82: Your body is completely transformed.", "Day 83: You have mastered your metabolism.", "Day 84: The habits are unbreakable now.", "Day 85: Just 5 days left. You've done the work.", "Day 86: Your new baseline is secure.", "Day 87: Reflect on the entire journey. You did this.", "Day 88: You are ready for maintenance.", "Day 89: Tomorrow is the big day. Prepare to celebrate.", "Ninety days. Look at your before photo. That woman is gone. Tomorrow is Day 1 of the rest of your life \u2014 and the protocol is now part of who you are."];
+        const CRITICAL_MISTAKES = ["Drinking coffee before 9:30 AM blocks GLP-1 absorption", "Yogurt with hidden sugar spikes insulin and shuts off fat burning", "Skipping the 47-min metabolic window resets your body to storage mode", "Eating fruit on an empty stomach raises blood sugar before your window opens", "Standing for less than 5 min after breakfast slows gastric emptying", "Cold water before noon constricts gut blood flow", "Late-night screens delay melatonin and disrupt morning GLP-1", "Artificial sweeteners feed the bad bacteria you're trying to eliminate", "Eating dinner after 8pm extends storage mode by 4 hours", "Skipping protein at breakfast collapses afternoon satiety", "Having a large lunch right after a stressful meeting halts digestion", "Drinking water during meals dilutes stomach acid and slows breakdown", "Eating while distracted prevents the brain from registering satiety signals", "Consuming dairy right after taking the hormone trigger blocks absorption", "Sitting immediately after dinner stops the insulin-lowering process", "Using seed oils for cooking causes cellular inflammation that holds fat", "Sleeping less than 6 hours disrupts the leptin-ghrelin balance entirely", "Eating a heavy carb meal for dinner guarantees morning puffiness", "Skipping the morning hydration step leaves the metabolic engine dry", "Over-exercising without proper recovery spikes cortisol and stores belly fat", "Ignoring the 'Eat-Normally Map' and restricting too much causes a metabolic crash", "Having alcohol within 2 hours of bedtime completely stops overnight fat burning", "Eating processed 'diet' foods introduces toxins that the liver must process instead of fat", "Not getting morning sunlight delays the circadian rhythm and morning hormones", "Eating too fast prevents the L-cells from releasing the fullness signal in time", "Relying on caffeine instead of the metabolic sequence for energy", "Skipping meals thinking it helps, but it actually signals starvation mode", "Not managing stress, leading to constant cortisol elevation and fat retention", "Consuming hidden sodium in packaged foods causing extreme water retention", "Giving up too early before the L-cells have a chance to fully wake up"];
+        const DAILY_PLANS = [[{"text": "Eat your first bite with eyes closed", "icon": "\ud83c\udf3f"}, {"text": "10-min walk after breakfast", "icon": "\ud83d\udeb6"}, {"text": "64 oz by end of day", "icon": "\ud83d\udca7"}], [{"text": "Add lemon to your warm water", "icon": "\ud83c\udf4b"}, {"text": "4-7-8 breathing before lunch", "icon": "\ud83e\uddd8"}, {"text": "No screens 30 min before bed", "icon": "\ud83d\udecf"}], [{"text": "Chew each bite 20 times", "icon": "\ud83c\udf7d"}, {"text": "Stretch for 5 mins upon waking", "icon": "\ud83e\udd38"}, {"text": "Drink a glass of water before each meal", "icon": "\ud83d\udeb0"}], [{"text": "Eat protein first at lunch", "icon": "\ud83e\udd69"}, {"text": "Take the stairs instead of the elevator", "icon": "\ud83e\ude9c"}, {"text": "Read 10 pages of a book before sleep", "icon": "\ud83d\udcd6"}], [{"text": "Include a green vegetable at dinner", "icon": "\ud83e\udd66"}, {"text": "Do 15 squats while brushing teeth", "icon": "\ud83e\uddb5"}, {"text": "Dim the lights 1 hour before bed", "icon": "\ud83d\udca1"}], [{"text": "Swap afternoon coffee for herbal tea", "icon": "\ud83c\udf75"}, {"text": "Park further away at the store", "icon": "\ud83d\ude97"}, {"text": "Write down 3 things you're grateful for", "icon": "\ud83d\ude4f"}], [{"text": "Try a new healthy recipe today", "icon": "\ud83e\udd57"}, {"text": "Dance to your favorite song", "icon": "\ud83d\udc83"}, {"text": "Take a warm bath before bed", "icon": "\ud83d\udec1"}], [{"text": "Portion out snacks into a bowl", "icon": "\ud83e\udd63"}, {"text": "Do a 5-minute core workout", "icon": "\ud83d\udcaa"}, {"text": "Listen to calming music in the evening", "icon": "\ud83c\udfb6"}], [{"text": "Eat until 80% full", "icon": "\ud83d\uded1"}, {"text": "Go for a walk during your lunch break", "icon": "\ud83c\udf33"}, {"text": "Avoid caffeine after 2 PM", "icon": "\u2615"}], [{"text": "Include healthy fats in your breakfast", "icon": "\ud83e\udd51"}, {"text": "Stand up and stretch every hour", "icon": "\u23f1"}, {"text": "Keep the bedroom cool for better sleep", "icon": "\u2744\ufe0f"}], [{"text": "Eat your first bite with eyes closed", "icon": "\ud83c\udf3f"}, {"text": "10-min walk after breakfast", "icon": "\ud83d\udeb6"}, {"text": "64 oz by end of day", "icon": "\ud83d\udca7"}], [{"text": "Add lemon to your warm water", "icon": "\ud83c\udf4b"}, {"text": "4-7-8 breathing before lunch", "icon": "\ud83e\uddd8"}, {"text": "No screens 30 min before bed", "icon": "\ud83d\udecf"}], [{"text": "Chew each bite 20 times", "icon": "\ud83c\udf7d"}, {"text": "Stretch for 5 mins upon waking", "icon": "\ud83e\udd38"}, {"text": "Drink a glass of water before each meal", "icon": "\ud83d\udeb0"}], [{"text": "Eat protein first at lunch", "icon": "\ud83e\udd69"}, {"text": "Take the stairs instead of the elevator", "icon": "\ud83e\ude9c"}, {"text": "Read 10 pages of a book before sleep", "icon": "\ud83d\udcd6"}], [{"text": "Include a green vegetable at dinner", "icon": "\ud83e\udd66"}, {"text": "Do 15 squats while brushing teeth", "icon": "\ud83e\uddb5"}, {"text": "Dim the lights 1 hour before bed", "icon": "\ud83d\udca1"}], [{"text": "Swap afternoon coffee for herbal tea", "icon": "\ud83c\udf75"}, {"text": "Park further away at the store", "icon": "\ud83d\ude97"}, {"text": "Write down 3 things you're grateful for", "icon": "\ud83d\ude4f"}], [{"text": "Try a new healthy recipe today", "icon": "\ud83e\udd57"}, {"text": "Dance to your favorite song", "icon": "\ud83d\udc83"}, {"text": "Take a warm bath before bed", "icon": "\ud83d\udec1"}], [{"text": "Portion out snacks into a bowl", "icon": "\ud83e\udd63"}, {"text": "Do a 5-minute core workout", "icon": "\ud83d\udcaa"}, {"text": "Listen to calming music in the evening", "icon": "\ud83c\udfb6"}], [{"text": "Eat until 80% full", "icon": "\ud83d\uded1"}, {"text": "Go for a walk during your lunch break", "icon": "\ud83c\udf33"}, {"text": "Avoid caffeine after 2 PM", "icon": "\u2615"}], [{"text": "Include healthy fats in your breakfast", "icon": "\ud83e\udd51"}, {"text": "Stand up and stretch every hour", "icon": "\u23f1"}, {"text": "Keep the bedroom cool for better sleep", "icon": "\u2744\ufe0f"}], [{"text": "Eat your first bite with eyes closed", "icon": "\ud83c\udf3f"}, {"text": "10-min walk after breakfast", "icon": "\ud83d\udeb6"}, {"text": "64 oz by end of day", "icon": "\ud83d\udca7"}], [{"text": "Add lemon to your warm water", "icon": "\ud83c\udf4b"}, {"text": "4-7-8 breathing before lunch", "icon": "\ud83e\uddd8"}, {"text": "No screens 30 min before bed", "icon": "\ud83d\udecf"}], [{"text": "Chew each bite 20 times", "icon": "\ud83c\udf7d"}, {"text": "Stretch for 5 mins upon waking", "icon": "\ud83e\udd38"}, {"text": "Drink a glass of water before each meal", "icon": "\ud83d\udeb0"}], [{"text": "Eat protein first at lunch", "icon": "\ud83e\udd69"}, {"text": "Take the stairs instead of the elevator", "icon": "\ud83e\ude9c"}, {"text": "Read 10 pages of a book before sleep", "icon": "\ud83d\udcd6"}], [{"text": "Include a green vegetable at dinner", "icon": "\ud83e\udd66"}, {"text": "Do 15 squats while brushing teeth", "icon": "\ud83e\uddb5"}, {"text": "Dim the lights 1 hour before bed", "icon": "\ud83d\udca1"}], [{"text": "Swap afternoon coffee for herbal tea", "icon": "\ud83c\udf75"}, {"text": "Park further away at the store", "icon": "\ud83d\ude97"}, {"text": "Write down 3 things you're grateful for", "icon": "\ud83d\ude4f"}], [{"text": "Try a new healthy recipe today", "icon": "\ud83e\udd57"}, {"text": "Dance to your favorite song", "icon": "\ud83d\udc83"}, {"text": "Take a warm bath before bed", "icon": "\ud83d\udec1"}], [{"text": "Portion out snacks into a bowl", "icon": "\ud83e\udd63"}, {"text": "Do a 5-minute core workout", "icon": "\ud83d\udcaa"}, {"text": "Listen to calming music in the evening", "icon": "\ud83c\udfb6"}], [{"text": "Eat until 80% full", "icon": "\ud83d\uded1"}, {"text": "Go for a walk during your lunch break", "icon": "\ud83c\udf33"}, {"text": "Avoid caffeine after 2 PM", "icon": "\u2615"}], [{"text": "Include healthy fats in your breakfast", "icon": "\ud83e\udd51"}, {"text": "Stand up and stretch every hour", "icon": "\u23f1"}, {"text": "Keep the bedroom cool for better sleep", "icon": "\u2744\ufe0f"}]];
+        
+        const EAT_MAPS = [
+            { title: "Sunday", items: ["🌯 Wrap OK", "🍫 Dark chocolate", "🍵 Matcha latte"] }, // 0 = Sunday
+            { title: "Monday", items: ["🍕 Pizza slice OK", "🍫 Dark chocolate (2 sq)", "☕ Latte until 10am"] },
+            { title: "Tuesday", items: ["🍷 Glass of wine OK", "🥐 Croissant before window", "🧀 Hard cheese OK"] },
+            { title: "Wednesday", items: ["🍞 Sourdough OK", "🥑 Avocado (full)", "🍓 Berries before noon"] },
+            { title: "Thursday", items: ["🍝 Pasta OK (lunch)", "🍦 Greek yogurt + honey", "🥜 Almonds (handful)"] },
+            { title: "Friday", items: ["🍔 Burger OK", "🍷 Glass of wine OK", "🍰 Dessert before 7pm"] },
+            { title: "Saturday", items: ["🥞 Pancakes OK", "🍳 Eggs", "🍓 Free fruit window"] }
+        ];
+
+        const SEQUENCES = [
+            ["Reset Hydration", "Reset Trigger", "Reset Hormone"], // Sun
+            ["Hydration", "Metabolic Trigger", "Hormone Window"], // Mon
+            ["Lemon Cleanse", "Ginger Pulse", "Stillness 90s"], // Tue
+            ["Mineral Activation", "Cinnamon Trigger", "Window Lock"], // Wed
+            ["Apple Cider Spark", "Berberine Pulse", "Breath Cycle"], // Thu
+            ["Salt Flush", "Turmeric Trigger", "Hormone Window"], // Fri
+            ["Hydration Plus", "Metabolic Trigger", "Extended Window"] // Sat
+        ];
+        
+        const FAQS = [
+            { q: "Why don't I feel hungry anymore?", a: "The protocol naturally reactivates your L-cells, which produce GLP-1. This hormone signals to your brain that you are full, eliminating constant food noise and cravings." },
+            { q: "Is it OK to skip a day?", a: "Consistency is key, especially in Phase 1. If you miss a day, your body might temporarily revert to storage mode. Just get right back on track the next day." },
+            { q: "How long until I see real results?", a: "Most women feel a difference in energy within 3 days, notice changes in facial puffiness by day 7, and see the scale move significantly between days 14-21." },
+            { q: "Can I drink alcohol on the protocol?", a: "Yes, but timing matters. Refer to your daily Eat-Normally Map to see the best windows for alcohol consumption without disrupting fat burning." },
+            { q: "What if I'm traveling?", a: "The sequences are designed to be done anywhere. The ingredients are simple and accessible. Keep your window timing consistent with your local time zone." },
+            { q: "Will I gain it back when I stop?", a: "Phase 3 (Lock-In) is specifically designed to prevent this. By day 90, your body defends the new lower weight as its natural baseline." },
+            { q: "Can I do exercise on top of this?", a: "Light movement is great. Heavy cardio is not recommended in Phase 1 as it can spike cortisol. Stick to walking or light stretching initially." },
+            { q: "What if I'm on medication?", a: "Always consult your doctor, but this is a natural food-based protocol. It generally complements most health routines safely." },
+            { q: "How is this different from Ozempic?", a: "Injections force synthetic hormones into your body. SlimTide provides the exact specific nutrients at the precise times needed to make your body produce its OWN hormones naturally." },
+            { q: "What happens after Day 90?", a: "You enter the Maintenance phase. The protocol becomes second nature. You won't need to track as closely, as your metabolism is fully healed." }
+        ];
+
+        // STATE
+        let profile = {};
+        let startDate = null;
+        let dayNumber = 1;
+        let phase = 'activation';
+        
+        // INIT
+        window.onload = () => {
+            const savedProfile = localStorage.getItem('slimtide_profile');
+            if (savedProfile) {
+                profile = JSON.parse(savedProfile);
+                startDate = new Date(localStorage.getItem('slimtide_startDate'));
+                calculateDayNumber();
+                
+                // Show splash then go direct to main
+                setTimeout(() => {
+                    initMainApp();
+                    goToScreen('screen-main');
+                }, 2000);
+            } else {
+                // Show splash then login
+                setTimeout(() => {
+                    goToScreen('screen-login');
+                }, 2000);
+            }
+        };
+
+        // NAVIGATION
+        function goToScreen(id) {
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            
+            if (id === 'screen-loading') {
+                const msgs = ["Verifying your access...", "Loading your personalized protocol...", "Calibrating your metabolic profile...", "Almost there..."];
+                let i = 0;
+                const el = document.getElementById('loading-msg');
+                const int = setInterval(() => {
+                    i++;
+                    if (i < msgs.length) el.innerText = msgs[i];
+                    else {
+                        clearInterval(int);
+                        goToScreen('screen-welcome');
+                    }
+                }, 1000);
+            }
+        }
+
+        function switchTab(tabId, el) {
+            document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+            el.classList.add('active');
+            
+            document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+            document.getElementById('tab-' + tabId).classList.add('active');
+        }
+
+        // QUESTIONNAIRE
+        function nextQ(num) {
+            // Save data
+            if (num === 2) profile.name = document.getElementById('inp-name').value || 'Beautiful';
+            if (num === 3) profile.age = document.getElementById('inp-age').value || 40;
+            if (num === 4) profile.height = document.getElementById('inp-height').value || "5'5";
+            if (num === 5) profile.weight = document.getElementById('inp-weight').value || 160;
+            
+            document.querySelectorAll('.q-step').forEach(q => q.classList.remove('active'));
+            const nextEl = document.getElementById('q' + num);
+            if (nextEl) {
+                nextEl.classList.add('active');
+                document.getElementById('q-progress').style.width = (num/9)*100 + '%';
+            } else {
+                // Done
+                profile.status = profile.status || "I'm in perimenopause";
+                profile.energy = profile.energy || "Up and down";
+                profile.cravings = profile.cravings || "Manageable but present";
+                profile.goal = profile.goal || "Lose 20-40 lbs";
+                profile.speed = profile.speed || "Steady and lasting";
+                
+                startDate = new Date();
+                dayNumber = 1;
+                localStorage.setItem('slimtide_profile', JSON.stringify(profile));
+                localStorage.setItem('slimtide_startDate', startDate.toISOString());
+                
+                document.getElementById('complete-title').innerText = `Perfect, ${profile.name}! ✨`;
+                goToScreen('screen-profile-complete');
+            }
+        }
+
+        function selectOption(qNum, val) {
+            if (qNum === 5) profile.status = val;
+            if (qNum === 6) profile.energy = val;
+            if (qNum === 7) profile.cravings = val;
+            if (qNum === 8) profile.goal = val;
+            if (qNum === 9) profile.speed = val;
+            
+            const btns = document.getElementById('q'+qNum).querySelectorAll('.option-btn');
+            btns.forEach(b => b.classList.remove('selected'));
+            event.target.classList.add('selected');
+            
+            setTimeout(() => nextQ(qNum + 1), 300);
+        }
+
+        function finishSetup() {
+            initMainApp();
+            goToScreen('screen-main');
+        }
+
+        // APP LOGIC
+        function calculateDayNumber() {
+            const now = new Date();
+            const diffTime = Math.abs(now - startDate);
+            dayNumber = Math.floor(diffTime / (1000 * 60 * 60 * 24)) + 1;
+            if (dayNumber > 90) dayNumber = 90;
+            
+            if (dayNumber <= 30) phase = 'Activation';
+            else if (dayNumber <= 60) phase = 'Acceleration';
+            else phase = 'Lock-In';
+        }
+
+        function personalizeText(text) {
+            return text.replace(/\[Nome\]/g, profile.name);
+        }
+
+        function getTimeOfDay() {
+            const hour = new Date().getHours();
+            if (hour < 12) return "Morning";
+            if (hour < 18) return "Afternoon";
+            return "Evening";
+        }
+
+        function initMainApp() {
+            calculateDayNumber();
+            
+            // Header
+            const time = getTimeOfDay();
+            const emoji = time === "Morning" ? "☀️" : (time === "Afternoon" ? "👋" : "🌙");
+            document.getElementById('greeting').innerText = `Good ${time}, ${profile.name} ${emoji}`;
+            document.getElementById('day-phase-text').innerText = `Day ${dayNumber} · Phase: ${phase}`;
+            
+            // Window
+            const hour = new Date().getHours();
+            if (hour >= 7 && hour < 8) {
+                document.getElementById('window-time').innerText = (60 - new Date().getMinutes()) + " min";
+                document.getElementById('window-desc').innerText = "Window is OPEN. Consume your sequence now.";
+            } else {
+                document.getElementById('window-time').innerText = "7:00";
+                document.getElementById('window-label').innerText = "AM";
+                let t = phase === 'Activation' ? "47 min" : (phase === 'Acceleration' ? "60 min" : "Adaptive");
+                document.getElementById('window-desc').innerText = `Opens tomorrow at 7:00 AM (${t})`;
+            }
+
+            // Sequence
+            const dayOfWeek = new Date().getDay();
+            const seqBase = SEQUENCES[dayOfWeek];
+            const prefix = phase === 'Activation' ? "" : (phase === 'Acceleration' ? "Advanced " : "Maintenance ");
+            let seqHtml = "";
+            seqBase.forEach((step, i) => {
+                let timeStr = `7:${12 + (i*6)} AM`;
+                seqHtml += `
+                <div class="sequence-step">
+                    <div class="step-num">${i+1}</div>
+                    <div class="step-info">
+                        <div class="step-name">${prefix}${step}</div>
+                        <div class="step-time">${timeStr}</div>
+                    </div>
+                    <div class="step-status">${hour >= 8 ? '✓' : (hour === 7 ? '▶' : '🔒')}</div>
+                </div>`;
+            });
+            document.getElementById('sequence-container').innerHTML = seqHtml;
+            
+            // Progress
+            const lbsLost = (dayNumber * 0.4).toFixed(1);
+            document.getElementById('progress-text').innerText = `Day ${dayNumber} · You've lost ${lbsLost} lbs`;
+            
+            // Coaching Msg
+            const msgIndex = (dayNumber - 1) % 90;
+            let msg = COACHING_MESSAGES[msgIndex];
+            
+            // Check past checkins
+            const checkinsStr = localStorage.getItem('slimtide_checkins');
+            if (checkinsStr) {
+                const checkins = JSON.parse(checkinsStr);
+                if (checkins.length > 0) {
+                    const last = checkins[checkins.length-1];
+                    if (last.sleep < 3) msg = `I saw you didn't sleep well last night, ${profile.name} — that's exactly why today's sequence is gentle. ` + msg;
+                    else if (last.cravings < 3) msg = `I noticed cravings were rough yesterday, ${profile.name}. Today's sequence has an extra cinnamon pulse to stabilize ghrelin. ` + msg;
+                }
+            }
+            document.getElementById('coaching-msg-text').innerText = personalizeText(msg);
+
+            // Mistakes
+            const mistakeSet = Math.floor(dayNumber % 10);
+            let mistHtml = "";
+            for(let i=0; i<3; i++) {
+                let idx = (mistakeSet * 3 + i) % 30;
+                mistHtml += `<div class="mistake-item">${CRITICAL_MISTAKES[idx]}</div>`;
+            }
+            document.getElementById('mistakes-container').innerHTML = mistHtml;
+
+            // Eat Map
+            const map = EAT_MAPS[dayOfWeek];
+            let emHtml = "";
+            map.items.forEach(it => {
+                emHtml += `<div class="eat-map-card"><span class="eat-map-icon">👉</span>${it}</div>`;
+            });
+            document.getElementById('eat-map-container').innerHTML = emHtml;
+
+            // Journey
+            document.getElementById('journey-day-text').innerText = `Day ${dayNumber} of 90`;
+            
+            // Coaching Plan
+            const planIdx = (dayNumber - 1) % 30;
+            const plan = DAILY_PLANS[planIdx];
+            let plHtml = "";
+            plan.forEach(p => {
+                plHtml += `<div class="eat-map-card" style="background: white; border: 1px solid #F0F4F8;"><span class="eat-map-icon">${p.icon}</span>${p.text}</div>`;
+            });
+            document.getElementById('daily-plan-container').innerHTML = plHtml;
+
+            // FAQ
+            let faqHtml = "";
+            FAQS.forEach((f, i) => {
+                faqHtml += `
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleFaq(${i})">
+                        ${f.q}
+                        <span id="faq-icon-${i}">+</span>
+                    </div>
+                    <div class="accordion-content" id="faq-content-${i}">${f.a}</div>
+                </div>`;
+            });
+            document.getElementById('faq-container').innerHTML = faqHtml;
+
+            // Insights
+            document.getElementById('stat-lost').innerText = lbsLost;
+            document.getElementById('stat-current').innerText = (profile.weight - parseFloat(lbsLost)).toFixed(1);
+            document.getElementById('streak-num').innerText = dayNumber;
+            
+            let gridHtml = "";
+            for(let i=1; i<=30; i++) {
+                gridHtml += `<div class="streak-day ${i <= dayNumber ? 'done' : ''}"></div>`;
+            }
+            document.getElementById('streak-grid').innerHTML = gridHtml;
+            
+            let mHtml = "";
+            const milestones = [
+                {d: 7, t: "🥉 First Week Complete"},
+                {d: 14, t: "🥈 Two Weeks Strong"},
+                {d: 21, t: "🔥 21-Day Habit"},
+                {d: 30, t: "🏆 Phase 1 Complete"}
+            ];
+            milestones.forEach(m => {
+                if(dayNumber >= m.d) mHtml += `<div class="eat-map-card" style="background:#F0F9F9; border:1px solid var(--primary-teal); color:var(--primary-teal);">${m.t}</div>`;
+                else mHtml += `<div class="eat-map-card" style="color:var(--text-muted);">${m.t} (Locked)</div>`;
+            });
+            document.getElementById('milestones-container').innerHTML = mHtml;
+
+            // Profile
+            document.getElementById('prof-initial').innerText = profile.name ? profile.name.charAt(0).toUpperCase() : "U";
+            document.getElementById('prof-name').innerText = profile.name;
+            document.getElementById('prof-subtitle').innerText = `Day ${dayNumber} of 90 · Phase: ${phase}`;
+            document.getElementById('prof-goal').innerText = profile.goal;
+        }
+
+        // HELPERS
+        let currentStars = { sleep: 0, energy: 0, cravings: 0 };
+        function setStars(type, e) {
+            if(e.target.tagName === 'SPAN') {
+                const val = parseInt(e.target.getAttribute('data-val'));
+                currentStars[type] = val;
+                const spans = e.target.parentElement.querySelectorAll('span');
+                spans.forEach(s => s.classList.remove('active'));
+                for(let i=0; i<val; i++) spans[i].classList.add('active');
+            }
+        }
+
+        function submitCheckin() {
+            const w = document.getElementById('inp-daily-weight').value;
+            const checkinsStr = localStorage.getItem('slimtide_checkins');
+            let checkins = checkinsStr ? JSON.parse(checkinsStr) : [];
+            checkins.push({ date: new Date().toISOString(), sleep: currentStars.sleep, energy: currentStars.energy, cravings: currentStars.cravings, weight: w });
+            localStorage.setItem('slimtide_checkins', JSON.stringify(checkins));
+            
+            document.getElementById('checkin-success').style.display = 'block';
+            setTimeout(() => {
+                document.getElementById('checkin-success').style.display = 'none';
+                initMainApp(); // refresh
+            }, 2000);
+        }
+
+        function toggleFaq(i) {
+            const el = document.getElementById('faq-content-'+i);
+            const icon = document.getElementById('faq-icon-'+i);
+            if(el.style.display === 'block') {
+                el.style.display = 'none';
+                icon.innerText = '+';
+            } else {
+                el.style.display = 'block';
+                icon.innerText = '-';
+            }
+        }
+
+        function openModal(id) {
+            document.getElementById(id).classList.add('active');
+        }
+        function closeModal(id) {
+            document.getElementById(id).classList.remove('active');
+        }
+
+        function generateHormoneShot() {
+            const w = profile.weight || 160;
+            const a = profile.age || 45;
+            const h = 65; // default 5'5
+            
+            const ginger = (w/30).toFixed(1);
+            const cin = (Math.round((a/50)*4)/4).toFixed(2);
+            const water = (h/5).toFixed(1);
+            const lemon = a > 45 ? "1 full lemon" : "1/2 lemon";
+            const honey = w > 150 ? "1 tsp" : "1/2 tsp";
+            
+            let html = `
+                <li>${ginger} tsp ginger powder</li>
+                <li>${cin} tsp cinnamon</li>
+                <li>${water} oz warm water</li>
+                <li>${lemon}</li>
+                <li>${honey} raw honey</li>
+            `;
+            document.getElementById('hormone-list').innerHTML = html;
+            document.getElementById('hormone-result').style.display = 'block';
+        }
+
+        function logout() {
+            localStorage.clear();
+            location.reload();
+        }
+    </script>
+</body>
+</html>
