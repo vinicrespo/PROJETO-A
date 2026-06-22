@@ -47,13 +47,13 @@ export default function App() {
 
         {/* Accept Button */}
         <div className="w-full flex justify-center mb-4">
-          <a href="#" className="vsl bg-[#15803d] hover:bg-[#16a34a] text-white text-lg md:text-xl font-bold py-4 px-8 rounded w-full max-w-[400px] text-center transition-all duration-200 uppercase tracking-wide">
+          <button onClick={() => (window as any).acceptUpsell('https://app.kashpay.com.br/u/5c3ddd2d2f1f0537')} className="up1 bg-[#15803d] hover:bg-[#16a34a] text-white text-lg md:text-xl font-bold py-4 px-8 rounded w-full max-w-[400px] text-center transition-all duration-200 uppercase tracking-wide">
             Accept Offer
-          </a>
+          </button>
         </div>
 
         {/* Decline Link */}
-        <a href="/up2" className="vsl text-gray-500 hover:text-gray-300 text-sm underline mt-2">
+        <a href="/up2" className="up1 text-gray-500 hover:text-gray-300 text-sm underline mt-2">
           No, Thanks!
         </a>
       </div>
