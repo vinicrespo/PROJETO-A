@@ -62,7 +62,7 @@ const Comment = memo(({ comment }: { comment: any }) => {
 export default function App() {
   React.useEffect(() => {
     const s = document.createElement("script");
-    s.src = "https://scripts.converteai.net/d21a9e1d-910e-4254-b2bc-30b12586d2ef/players/69f8b9ac2cfe2e33ea932eb3/v4/player.js";
+    s.src = "https://scripts.converteai.net/d21a9e1d-910e-4254-b2bc-30b12586d2ef/players/6a38a5131299d5533b3a9bda/v4/player.js";
     s.async = true;
     document.head.appendChild(s);
   }, []);
@@ -72,101 +72,81 @@ export default function App() {
   const commentsData = [
     {
       id: 1,
-      author: "Sarah Smith",
-      avatar: "https://i.pravatar.cc/150?u=sarahsmith",
+      author: "Sophie Robinson",
+      avatar: "https://i.pravatar.cc/150?u=sophierobinson",
       time: "2h",
-      likes: 23,
-      text: "OMG! My doctor couldn't believe it. I lost so much belly fat with this gelatin trick that he thought I was starving myself. But my tests show I'm healthier than ever!",
+      likes: 21,
+      text: "Wait what's the actual recipe? Do I need to watch the whole thing?",
       replies: [
         {
           id: 11,
-          author: "Jennifer Taylor",
-          replyTo: "Sarah Smith",
-          avatar: "https://i.pravatar.cc/150?u=jennifertaylor",
-          time: "35 min",
-          likes: 17,
-          text: "Girl, I melted 11 pounds in just a week! This gelatin trick is unreal!"
+          author: "Victoria Carter",
+          replyTo: "Sophie Robinson",
+          avatar: "https://i.pravatar.cc/150?u=victoriacarter",
+          time: "1h",
+          likes: 18,
+          text: "yeah she breaks it down early on. Worth watching tbh"
         }
       ]
     },
     {
       id: 2,
-      author: "Olivia Moore",
-      avatar: "https://i.pravatar.cc/150?u=oliviamoore",
-      time: "7 min",
-      likes: 11,
-      text: "I've been using this gelatin trick for just over 3 weeks, and my belly fat is literally melting off! Even my husband noticed and complimented me today!"
+      author: "Lisa G.",
+      avatar: "https://i.pravatar.cc/150?u=lisag",
+      time: "1h",
+      likes: 46,
+      text: "Ngl I only watched cause of Oprah but the baking soda recipe actually makes sense when she breaks down the science. Def gonna try it 👀"
     },
     {
        id: 3,
-       author: "Jessica Brown",
-       avatar: "https://i.pravatar.cc/150?u=jessicabrown",
-       time: "6 min",
-       likes: 32,
-       text: "Finally, someone explained a solution that melts fat without all the medical jargon! I'm starting the gelatin trick this morning—thank you for being so clear!"
+       author: "Madison Scott",
+       avatar: "https://i.pravatar.cc/150?u=madisonscott",
+       time: "55 min",
+       likes: 63,
+       text: "3 weeks in and my coworker asked if I got work done 😂 nope just baking soda apparently"
     },
     {
        id: 4,
-       author: "Jennifer Taylor",
-       avatar: "https://i.pravatar.cc/150?u=jennifertaylor",
-       time: "5 min",
-       likes: 6,
-       text: "My binge eating used to control me. But after starting the gelatin trick, I don't crave sweets anymore. I've already melted 19 pounds in two weeks—it feels amazing!",
-       replies: [
-           {
-               id: 41,
-               author: "Emily Johnson",
-               replyTo: "Jennifer Taylor",
-               avatar: "https://i.pravatar.cc/150?u=emilyjohnson",
-               time: "1h",
-               likes: 34,
-               text: "That's insane! Did you change anything else or just the gelatin trick?"
-           },
-           {
-               id: 42,
-               author: "Jennifer Taylor",
-               replyTo: "Emily Johnson",
-               avatar: "https://i.pravatar.cc/150?u=jennifertaylor",
-               time: "1h",
-               likes: 32,
-               text: "Nothing else—just the gelatin trick! No diet, no gym. It's wild how much fat I'm melting!"
-           }
-       ]
+       author: "Charlotte Williams",
+       avatar: "https://i.pravatar.cc/150?u=charlottewilliams",
+       time: "40 min",
+       likes: 58,
+       text: "Ok I almost scrolled past this but I'm glad I didn't. Started the baking soda shot 2 weeks ago and my jeans are already looser. Not saying it's magic but something is definitely working"
     },
     {
        id: 5,
-       author: "Ashley Davis",
-       avatar: "https://i.pravatar.cc/150?u=ashleydavis",
-       time: "1h",
-       likes: 34,
-       text: "Does anyone know if this gelatin trick really works? I'm extremely overweight and feeling desperate!",
+       author: "Daisy Collins",
+       avatar: "https://i.pravatar.cc/150?u=daisycollins",
+       time: "32 min",
+       likes: 14,
+       text: "Is this actually legit or just another internet thing??",
        replies: [
            {
                id: 51,
-               author: "Morgan Rose",
-               replyTo: "Ashley Davis",
-               avatar: "https://i.pravatar.cc/150?u=morganrose",
-               time: "1h",
-               likes: 31,
-               text: "Yes! I looked it up—there are studies backing it. My belly fat is melting away thanks to this gelatin trick. Give it a try!"
+               author: "Emily Lewis",
+               replyTo: "Daisy Collins",
+               avatar: "https://i.pravatar.cc/150?u=emilylewis",
+               time: "28 min",
+               likes: 35,
+               text: "I literally said the same thing lol. Try it for a week and see. My bloating went down first and now I'm back in my size 6 jeans that were sitting in my closet for like 2 years"
            }
        ]
     },
     {
        id: 6,
-       author: "Natalie Clark",
-       avatar: "https://i.pravatar.cc/150?u=natalieclark",
-       time: "1h",
-       likes: 54,
-       text: "This is the most honest solution I've seen. No long videos, no upsells—just a simple gelatin trick that melts belly fat. Thank you so much!"
+       author: "Olivia Martinez",
+       avatar: "https://i.pravatar.cc/150?u=oliviamartinez",
+       time: "20 min",
+       likes: 49,
+       text: "I've done keto, IF, ozempic... this is the first time I'm not white-knuckling it. The cravings just kinda stopped? Idk how to explain"
     },
     {
        id: 7,
-       author: "Chloe Garcia",
-       avatar: "https://i.pravatar.cc/150?u=chloegarcia",
-       time: "1h",
-       likes: 59,
-       text: "After 3 weeks with the gelatin trick, my belly is flat like a board. I've melted 26 pounds without dieting—I feel lighter and more beautiful already!"
+       author: "Emma Clark",
+       avatar: "https://i.pravatar.cc/150?u=emmaclark",
+       time: "just now",
+       likes: 72,
+       text: "2 months in. down 29 lbs. no gym. i'm honestly confused how this isn't bigger news 🤷‍♀️"
     }
   ];
 
@@ -198,13 +178,13 @@ export default function App() {
         <main className="px-4 py-4">
           {/* Headline */}
           <h1 className="text-[22px] md:text-2xl font-bold leading-tight text-[#1a1a1a] mb-4">
-            Dr. Oz Reveals the Gelatin Recipe to Lose 15 Pounds Before {currentMonth} Ends
+            Oprah Reveals the 9-Minute Morning Ritual That Replaced Her Ozempic — "I Lost 43 Pounds and It Never Came Back"
           </h1>
 
           {/* VSL Video Vturb */}
           <div className="w-full mb-6">
             {/* @ts-ignore */}
-            <vturb-smartplayer id="vid-69f8b9ac2cfe2e33ea932eb3" style={{display: 'block', margin: '0 auto', width: '100%', maxWidth: '400px'}}></vturb-smartplayer>
+            <vturb-smartplayer id="vid-6a38a5131299d5533b3a9bda" style={{display: 'block', margin: '0 auto', width: '100%', maxWidth: '400px'}}></vturb-smartplayer>
           </div>
 
           {/* CTA Button (Hidden by default, shown by Vturb at specific pitch moment) */}
