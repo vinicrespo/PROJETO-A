@@ -1,38 +1,346 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SLIMTIDE</title>
-    <script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
-    <link rel="preload" href="https://scripts.converteai.net/d21a9e1d-910e-4254-b2bc-30b12586d2ef/players/69f2240cc1adc7a72c362d33/v4/player.js" as="script">
-    <link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
-    <link rel="preload" href="https://cdn.converteai.net/d21a9e1d-910e-4254-b2bc-30b12586d2ef/69f227b2a6fe5ed477b688db/main.m3u8" as="fetch">
-    <link rel="dns-prefetch" href="https://cdn.converteai.net">
-    <link rel="dns-prefetch" href="https://scripts.converteai.net">
-    <link rel="dns-prefetch" href="https://images.converteai.net">
-    <link rel="dns-prefetch" href="https://api.vturb.com.br">
-    <script>
-      window.pixelId = "69f25f4aa3f1590c3140afbe";
-      var a = document.createElement("script");
-      a.setAttribute("async", "");
-      a.setAttribute("defer", "");
-      a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
-      document.head.appendChild(a);
-    </script>
-    <script
-      src="https://cdn.utmify.com.br/scripts/utms/latest.js"
-      data-utmify-prevent-xcod-sck
-      data-utmify-prevent-subids
-      async
-      defer
-    ></script>
-    <link rel="preconnect" href="https://i.pravatar.cc">
-    <script type="module" crossorigin src="/up3/assets/index-adwxg73g.js"></script>
-    <link rel="stylesheet" crossorigin href="/up3/assets/index-80RA8HCd.css">
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
-</html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Complete Your Order</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #ffffff;
+      color: #333333;
+    }
+    .top-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #cc0000;
+      color: #ffffff;
+      font-weight: bold;
+      text-align: center;
+      padding: 10px 15px;
+      z-index: 1000;
+      box-sizing: border-box;
+      font-size: clamp(14px, 4vw, 16px);
+    }
+    .container {
+      max-width: 680px;
+      margin: 60px auto 40px auto;
+      padding: 0 20px;
+      box-sizing: border-box;
+    }
+    h1 {
+      text-align: center;
+      font-size: clamp(24px, 6vw, 32px);
+      line-height: 1.2;
+      margin-top: 20px;
+    }
+    h1 span {
+      color: #cc0000;
+    }
+    p {
+      font-size: clamp(16px, 4.5vw, 18px);
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+    .bold-line {
+      font-weight: bold;
+      font-size: clamp(18px, 5vw, 22px);
+      text-align: center;
+      margin: 30px 0;
+    }
+    .sagging-text {
+      text-align: center;
+      font-weight: bold;
+      font-size: clamp(20px, 5.5vw, 26px);
+      margin: 30px 0;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto 20px auto;
+    }
+    .img-narrow {
+      max-width: 280px;
+    }
+    .check-box {
+      background-color: #f8f9fa;
+      border-left: 5px solid #cc0000;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .check-box-no-title {
+      background-color: #f8f9fa;
+      border-left: 5px solid #057932;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .check-box h3 {
+      margin-top: 0;
+      font-size: clamp(18px, 5vw, 20px);
+    }
+    .check-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .check-list li {
+      margin-bottom: 10px;
+      font-size: clamp(16px, 4.5vw, 18px);
+      display: flex;
+      align-items: flex-start;
+    }
+    .check-list li::before {
+      content: "✓";
+      color: #057932;
+      font-weight: bold;
+      margin-right: 10px;
+    }
+    h2 {
+      text-align: center;
+      font-size: clamp(22px, 5.5vw, 28px);
+      line-height: 1.3;
+      margin: 40px 0 20px 0;
+    }
+    .separator {
+      height: 1px;
+      background-color: #e0e0e0;
+      margin: 40px 0;
+    }
+    .price-block {
+      text-align: center;
+      margin: 40px 0;
+    }
+    .price-block .price-small {
+      font-size: clamp(18px, 5vw, 22px);
+      font-weight: bold;
+    }
+    .price-block .price-large {
+      font-size: clamp(40px, 10vw, 60px);
+      font-weight: 900;
+      color: #057932;
+      margin: 10px 0;
+    }
+    .bonus-box {
+      background-color: #fffde7;
+      border: 2px solid #fff59d;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .bonus-box h3 {
+      margin-top: 0;
+      color: #f57f17;
+      font-size: clamp(18px, 5vw, 22px);
+    }
+    .guarantee-box {
+      background-color: #f5f5f5;
+      border: 2px solid #e0e0e0;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+    }
+    .guarantee-box h3 {
+      margin-top: 0;
+      font-size: clamp(18px, 5vw, 22px);
+      color: #333;
+    }
+    .warning-block {
+      text-align: center;
+      margin: 40px 0;
+    }
+    .warning-block .warning-title {
+      color: #cc0000;
+      font-weight: bold;
+      font-size: clamp(20px, 5vw, 24px);
+    }
+    .cta-block {
+      text-align: center;
+      margin: 40px 0;
+    }
+    .cta-block .cta-title {
+      color: #057932;
+      font-weight: bold;
+      font-size: clamp(20px, 5.5vw, 26px);
+      margin-bottom: 20px;
+    }
+    .cta-button {
+      display: block;
+      width: 100%;
+      max-width: 500px;
+      margin: 20px auto;
+      background-color: #057932;
+      color: #ffffff;
+      text-align: center;
+      padding: 20px;
+      font-size: clamp(18px, 5vw, 22px);
+      font-weight: bold;
+      border-radius: 8px;
+      text-decoration: none;
+      box-sizing: border-box;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .cta-button:hover {
+      background-color: #046328;
+    }
+    .decline-link {
+      display: block;
+      text-align: center;
+      color: #888888;
+      font-size: 14px;
+      text-decoration: none;
+      margin-top: 15px;
+    }
+    .decline-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
 
+  <div class="top-bar">
+    Only a few in <span id="loc">your area</span> were selected, don't miss this.
+  </div>
+
+  <div class="container">
+    <h1>⚠️ <span>Attention:</span> Your order is not complete yet!</h1>
+
+    <p>Before finalizing your SlimTide order, read this message to the end. It may save you from a frustrating problem that comes after losing too much weight.</p>
+
+    <div class="bold-line">You're extremely close to achieving the body you've always dreamed of. 🎉</div>
+
+    <p>But this is also the exact moment when most women make a silent mistake... a mistake that ends up costing them dearly later on.</p>
+
+    <p>Your decision to use SlimTide was spot on. The baking soda protocol is already activating your GLP-1 and GIP hormones, and you're about to shed pounds of fat naturally, quickly, and safely — just like 67,000+ women before you.</p>
+
+    <p>But there's one unavoidable side effect when you start losing weight this fast:</p>
+
+    <div class="sagging-text">Sagging skin.</div>
+
+    <img src="IMAGE_1_SAGGING.png" alt="Sagging Skin">
+
+    <p>Why? Because when the fat goes away... the skin stays loose.</p>
+
+    <div class="check-box">
+      <h3>If nothing is done, you'll notice:</h3>
+      <ul class="check-list">
+        <li>Flabby arms</li>
+        <li>Loose, wrinkled belly</li>
+        <li>Sagging chin</li>
+        <li>Dropped glutes and thighs</li>
+      </ul>
+    </div>
+
+    <p>What should be a moment of high self-esteem... suddenly becomes a new reason to feel embarrassed in front of the mirror.</p>
+
+    <img src="IMAGE_2_BEFORE_AFTER.jpg" alt="Before and After">
+
+    <p>Many students even told us they had to slow down their results... because their skin was getting too saggy.</p>
+    <p>This made it clear that we needed a solution.</p>
+
+    <h2>That's why we created the Anti-Sagging Skin Method</h2>
+
+    <img src="IMAGE_3_MOCKUP.png" alt="Mockup" class="img-narrow">
+
+    <p>A 100% natural program made specifically for SlimTide students who want to avoid the "slim but saggy" effect.</p>
+
+    <div class="check-box-no-title">
+      <ul class="check-list">
+        <li>Tightens loose skin in as little as 30 days</li>
+        <li>Restores firmness in the most affected areas</li>
+        <li>Rejuvenates your appearance without creams or surgeries</li>
+        <li>Prevents the dreaded "skinny body with loose skin" effect</li>
+      </ul>
+    </div>
+
+    <div class="separator"></div>
+
+    <h2>🔬 Why does it work?</h2>
+
+    <p>Because it targets the real cause of sagging skin: the breakdown of the correct type of collagen.</p>
+    <p>The body has more than 28 types of collagen...</p>
+    <p>But only ONE is responsible for skin firmness — especially in the belly, chin, arms, and legs.</p>
+    <p>We call it Collagen F3 ("Firmness 3").</p>
+    <p>Most creams, pills, and treatments use the WRONG type of collagen — or don't activate collagen production at all.</p>
+    <p>That's why so many women spend a lot of money and see zero results.</p>
+    <p>Our method naturally activates Collagen F3 — safely, internally, and without expensive products or invasive procedures.</p>
+    <p>It's the ONLY method created specifically for women losing weight rapidly with SlimTide.</p>
+
+    <div class="separator"></div>
+
+    <h2>💰 If you look for alternatives to treat sagging skin today, you will find:</h2>
+
+    <div class="check-box-no-title">
+      <ul class="check-list">
+        <li>$80–$120 miracle creams that don't work</li>
+        <li>$300–$800 per session for aesthetic procedures</li>
+        <li>$5,000+ on plastic surgeries</li>
+      </ul>
+    </div>
+
+    <p>And NONE of them guarantee activation of the correct collagen.</p>
+    <p>The Anti-Sagging Skin Method could easily cost $250 or more.</p>
+    <p>Many women even said they would pay $500 for a complete sagging skin treatment.</p>
+
+    <div class="price-block">
+      <div class="price-small">But today, ONLY on this page, you can get it</div>
+      <div class="price-large">👉 for just $17</div>
+    </div>
+
+    <p style="text-align: center; font-weight: bold;">Yes — only $17 to transform your skin's firmness and your self-confidence from this point forward.</p>
+
+    <div class="separator"></div>
+
+    <div class="bonus-box">
+      <h3>🎁 PLUS: You also receive a bonus:</h3>
+      <p style="font-weight: bold; margin-bottom: 5px;">VIP Women's Support Group (worth $97)</p>
+      <p style="margin-top: 0; font-size: 14px;">An exclusive community of women sharing experiences, tips, results, stories, and supporting each other.</p>
+    </div>
+
+    <div class="separator"></div>
+
+    <div class="guarantee-box">
+      <h3>✅ 30-Day Guarantee</h3>
+      <p>If you don't love the method, you have 30 days to request a full refund.</p>
+      <p>No questions. No hassle. You're in control.</p>
+    </div>
+
+    <div class="separator"></div>
+
+    <div class="warning-block">
+      <div class="warning-title">🚨 But pay attention:</div>
+      <p>If you leave this page, this offer disappears forever.</p>
+      <p>You won't find this method anywhere else — and it may not be available tomorrow.</p>
+    </div>
+
+    <div class="cta-block">
+      <div class="cta-title">👇 Click the button below to add the Anti-Sagging Skin Method to your order now</div>
+      <p>Free yourself from sagging skin.</p>
+      <p>Feel proud of your body.</p>
+      <p>And become the best version of yourself — inside and out.</p>
+      <p>👇 Click now. Your future body will thank you.</p>
+
+      <a href="PLACEHOLDER_CTA_LINK" class="cta-button">YES, I WANT IT WITH A DISCOUNT!</a>
+
+      <a href="/up4" class="decline-link">No, thanks!</a>
+    </div>
+
+  </div>
+
+  <script>
+    fetch('https://ipapi.co/json/')
+      .then(response => response.json())
+      .then(data => {
+        if (data && data.city) {
+          document.getElementById('loc').textContent = data.city;
+        }
+      })
+      .catch(error => console.error('Error fetching location:', error));
+  </script>
+</body>
+</html>
