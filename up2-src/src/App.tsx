@@ -4,7 +4,7 @@ import { Hand } from 'lucide-react';
 export default function App() {
   React.useEffect(() => {
     const s = document.createElement("script");
-    s.src = "https://scripts.converteai.net/d21a9e1d-910e-4254-b2bc-30b12586d2ef/players/6a398f0061b3e1e42dd71f22/v4/player.js";
+    s.src = "https://scripts.converteai.net/d21a9e1d-910e-4254-b2bc-30b12586d2ef/players/6a399b9f1fa755ae788e3d32/v4/player.js";
     s.async = true;
     document.head.appendChild(s);
   }, []);
@@ -47,7 +47,7 @@ export default function App() {
         {/* VSL Video */}
         <div className="w-full mb-8">
           {/* @ts-ignore */}
-          <vturb-smartplayer id="vid-6a398f0061b3e1e42dd71f22" style={{display: 'block', margin: '0 auto', width: '100%', maxWidth: '800px'}}></vturb-smartplayer>
+          <vturb-smartplayer id="vid-6a399b9f1fa755ae788e3d32" style={{display: 'block', margin: '0 auto', width: '100%', maxWidth: '800px'}}></vturb-smartplayer>
         </div>
 
         {/* Accept Button */}

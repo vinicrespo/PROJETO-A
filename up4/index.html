@@ -1,38 +1,232 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SLIMTIDE</title>
-    <script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
-    <link rel="preload" href="https://scripts.converteai.net/d21a9e1d-910e-4254-b2bc-30b12586d2ef/players/69f2240cc1adc7a72c362d33/v4/player.js" as="script">
-    <link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
-    <link rel="preload" href="https://cdn.converteai.net/d21a9e1d-910e-4254-b2bc-30b12586d2ef/69f227b2a6fe5ed477b688db/main.m3u8" as="fetch">
-    <link rel="dns-prefetch" href="https://cdn.converteai.net">
-    <link rel="dns-prefetch" href="https://scripts.converteai.net">
-    <link rel="dns-prefetch" href="https://images.converteai.net">
-    <link rel="dns-prefetch" href="https://api.vturb.com.br">
-    <script>
-      window.pixelId = "69f25f4aa3f1590c3140afbe";
-      var a = document.createElement("script");
-      a.setAttribute("async", "");
-      a.setAttribute("defer", "");
-      a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
-      document.head.appendChild(a);
-    </script>
-    <script
-      src="https://cdn.utmify.com.br/scripts/utms/latest.js"
-      data-utmify-prevent-xcod-sck
-      data-utmify-prevent-subids
-      async
-      defer
-    ></script>
-    <link rel="preconnect" href="https://i.pravatar.cc">
-    <script type="module" crossorigin src="/up4/assets/index-CaZQUpTy.js"></script>
-    <link rel="stylesheet" crossorigin href="/up4/assets/index-80RA8HCd.css">
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
-</html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>One Last Thing</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #ffffff;
+      color: #333333;
+    }
+    .top-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #cc0000;
+      color: #ffffff;
+      font-weight: bold;
+      text-align: center;
+      padding: 10px 15px;
+      z-index: 1000;
+      box-sizing: border-box;
+      font-size: clamp(14px, 4vw, 16px);
+    }
+    .container {
+      max-width: 680px;
+      margin: 60px auto 40px auto;
+      padding: 0 20px;
+      box-sizing: border-box;
+    }
+    h1 {
+      text-align: center;
+      font-size: clamp(24px, 6vw, 32px);
+      line-height: 1.2;
+      margin-top: 20px;
+    }
+    h1 span {
+      color: #cc0000;
+    }
+    p {
+      font-size: clamp(16px, 4.5vw, 18px);
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+    .bold-line {
+      font-weight: bold;
+      font-size: clamp(18px, 5vw, 22px);
+      text-align: center;
+      margin: 30px 0;
+    }
+    .check-box {
+      background-color: #f8f9fa;
+      border-left: 5px solid #cc0000;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .check-box-no-title {
+      background-color: #f8f9fa;
+      border-left: 5px solid #057932;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .check-box h3 {
+      margin-top: 0;
+      font-size: clamp(18px, 5vw, 20px);
+    }
+    .check-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .check-list li {
+      margin-bottom: 10px;
+      font-size: clamp(16px, 4.5vw, 18px);
+      display: flex;
+      align-items: flex-start;
+    }
+    .check-list li::before {
+      content: "✓";
+      color: #057932;
+      font-weight: bold;
+      margin-right: 10px;
+    }
+    h2 {
+      text-align: center;
+      font-size: clamp(22px, 5.5vw, 28px);
+      line-height: 1.3;
+      margin: 40px 0 20px 0;
+    }
+    .price-block {
+      text-align: center;
+      margin: 40px 0;
+    }
+    .price-block .price-small {
+      font-size: clamp(18px, 5vw, 22px);
+      font-weight: bold;
+    }
+    .price-block .price-large {
+      font-size: clamp(40px, 10vw, 60px);
+      font-weight: 900;
+      color: #057932;
+      margin: 10px 0;
+    }
+    .guarantee-box {
+      background-color: #f5f5f5;
+      border: 2px solid #e0e0e0;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+    }
+    .guarantee-box h3 {
+      margin-top: 0;
+      font-size: clamp(18px, 5vw, 22px);
+      color: #333;
+    }
+    .warning-block {
+      text-align: center;
+      margin: 40px 0;
+      color: #cc0000;
+      font-weight: bold;
+      font-size: clamp(20px, 5vw, 24px);
+    }
+    .cta-block {
+      text-align: center;
+      margin: 40px 0;
+    }
+    .cta-block .cta-title {
+      color: #057932;
+      font-weight: bold;
+      font-size: clamp(20px, 5.5vw, 26px);
+      margin-bottom: 20px;
+    }
+    .cta-button {
+      display: block;
+      width: 100%;
+      max-width: 500px;
+      margin: 20px auto;
+      background-color: #057932;
+      color: #ffffff;
+      text-align: center;
+      padding: 20px;
+      font-size: clamp(18px, 5vw, 22px);
+      font-weight: bold;
+      border-radius: 8px;
+      text-decoration: none;
+      box-sizing: border-box;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .cta-button:hover {
+      background-color: #046328;
+    }
+    .decline-link {
+      display: block;
+      text-align: center;
+      color: #888888;
+      font-size: 14px;
+      text-decoration: none;
+      margin-top: 15px;
+    }
+    .decline-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
 
+  <div class="top-bar">
+    Only available for SlimTide students — read before you close this page.
+  </div>
+
+  <div class="container">
+    <h1>⚠️ <span>Wait!</span> One last thing about your transformation</h1>
+
+    <p>Your SlimTide order is almost complete. But there's one side effect of rapid weight loss no one talks about — and it can ruin your transformation if you're not prepared.</p>
+
+    <div class="bold-line">Hair loss. 😢</div>
+
+    <p>When you lose weight fast — especially with hormone-activating protocols like SlimTide — your body redirects nutrients away from non-essential tissues. And hair is the FIRST thing your body sacrifices.</p>
+    <p>Studies show that women between 40 and 56 are the most affected — that's exactly who SlimTide was built for.</p>
+
+    <div class="check-box">
+      <h3>If nothing is done, within 60–90 days you may notice:</h3>
+      <ul class="check-list">
+        <li>Hair coming out in clumps in the shower</li>
+        <li>Thinning ponytail and visible scalp</li>
+        <li>Bald spots at the temples and crown</li>
+      </ul>
+    </div>
+
+    <h2>That's why we created the Hair Rescue Protocol</h2>
+
+    <p>A simple natural protocol designed specifically for SlimTide students — to protect your hair follicles while your body sheds the fat.</p>
+
+    <div class="check-box-no-title">
+      <ul class="check-list">
+        <li>Stops hair shedding in as little as 21 days</li>
+        <li>Strengthens follicles from the inside out</li>
+        <li>Uses 3 simple ingredients you already have at home</li>
+        <li>Takes just 2 minutes a day — no creams, no pills</li>
+      </ul>
+    </div>
+
+    <div class="price-block">
+      <div class="price-small">Normally $97 — but today, only on this page:</div>
+      <div class="price-large">👉 add it to your order for just $15</div>
+    </div>
+
+    <div class="guarantee-box">
+      <h3>✅ 30-Day Guarantee</h3>
+      <p>If you don't see your hair becoming visibly stronger and fuller within 30 days, just send one email and we refund every cent.</p>
+    </div>
+
+    <div class="warning-block">
+      🚨 This offer disappears the moment you close this page.
+    </div>
+
+    <div class="cta-block">
+      <div class="cta-title">👇 Protect your hair while you transform your body</div>
+
+      <a href="PLACEHOLDER_CTA_LINK" class="cta-button">YES, PROTECT MY HAIR FOR $15!</a>
+
+      <a href="/thanks" class="decline-link">No, thanks!</a>
+    </div>
+
+  </div>
+
+</body>
+</html>
