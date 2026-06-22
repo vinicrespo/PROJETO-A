@@ -73,7 +73,7 @@ export default function App() {
     {
       id: 1,
       author: "Sophie Robinson",
-      avatar: "https://i.pravatar.cc/150?u=sophierobinson",
+      avatar: "https://randomuser.me/api/portraits/women/12.jpg",
       time: "2h",
       likes: 21,
       text: "Wait what's the actual recipe? Do I need to watch the whole thing?",
@@ -82,7 +82,7 @@ export default function App() {
           id: 11,
           author: "Victoria Carter",
           replyTo: "Sophie Robinson",
-          avatar: "https://i.pravatar.cc/150?u=victoriacarter",
+          avatar: "https://randomuser.me/api/portraits/women/24.jpg",
           time: "1h",
           likes: 18,
           text: "yeah she breaks it down early on. Worth watching tbh"
@@ -92,7 +92,7 @@ export default function App() {
     {
       id: 2,
       author: "Lisa G.",
-      avatar: "https://i.pravatar.cc/150?u=lisag",
+      avatar: "https://randomuser.me/api/portraits/women/36.jpg",
       time: "1h",
       likes: 46,
       text: "Ngl I only watched cause of Oprah but the baking soda recipe actually makes sense when she breaks down the science. Def gonna try it 👀"
@@ -100,7 +100,7 @@ export default function App() {
     {
        id: 3,
        author: "Madison Scott",
-       avatar: "https://i.pravatar.cc/150?u=madisonscott",
+       avatar: "https://randomuser.me/api/portraits/women/48.jpg",
        time: "55 min",
        likes: 63,
        text: "3 weeks in and my coworker asked if I got work done 😂 nope just baking soda apparently"
@@ -108,7 +108,7 @@ export default function App() {
     {
        id: 4,
        author: "Charlotte Williams",
-       avatar: "https://i.pravatar.cc/150?u=charlottewilliams",
+       avatar: "https://randomuser.me/api/portraits/women/60.jpg",
        time: "40 min",
        likes: 58,
        text: "Ok I almost scrolled past this but I'm glad I didn't. Started the baking soda shot 2 weeks ago and my jeans are already looser. Not saying it's magic but something is definitely working"
@@ -116,7 +116,7 @@ export default function App() {
     {
        id: 5,
        author: "Daisy Collins",
-       avatar: "https://i.pravatar.cc/150?u=daisycollins",
+       avatar: "https://randomuser.me/api/portraits/women/72.jpg",
        time: "32 min",
        likes: 14,
        text: "Is this actually legit or just another internet thing??",
@@ -125,7 +125,7 @@ export default function App() {
                id: 51,
                author: "Emily Lewis",
                replyTo: "Daisy Collins",
-               avatar: "https://i.pravatar.cc/150?u=emilylewis",
+               avatar: "https://randomuser.me/api/portraits/women/84.jpg",
                time: "28 min",
                likes: 35,
                text: "I literally said the same thing lol. Try it for a week and see. My bloating went down first and now I'm back in my size 6 jeans that were sitting in my closet for like 2 years"
@@ -135,7 +135,7 @@ export default function App() {
     {
        id: 6,
        author: "Olivia Martinez",
-       avatar: "https://i.pravatar.cc/150?u=oliviamartinez",
+       avatar: "https://randomuser.me/api/portraits/women/90.jpg",
        time: "20 min",
        likes: 49,
        text: "I've done keto, IF, ozempic... this is the first time I'm not white-knuckling it. The cravings just kinda stopped? Idk how to explain"
@@ -143,7 +143,7 @@ export default function App() {
     {
        id: 7,
        author: "Emma Clark",
-       avatar: "https://i.pravatar.cc/150?u=emmaclark",
+       avatar: "https://randomuser.me/api/portraits/women/95.jpg",
        time: "just now",
        likes: 72,
        text: "2 months in. down 29 lbs. no gym. i'm honestly confused how this isn't bigger news 🤷‍♀️"
