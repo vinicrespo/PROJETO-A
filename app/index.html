@@ -454,16 +454,12 @@
             
             <!-- ====== TAB: TODAY ====== -->
             <div id="tab-today" class="tab-content active">
-                <div class="app-header">
-                    <div class="logo-code" style="width:100px;">
+                <div class="app-header" style="justify-content: center; margin-bottom: 10px;">
+                    <div class="logo-code" style="width:120px;">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 180" style="width:100%;height:auto;">
                           <text x="200" y="110" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-size="90" font-weight="600" fill="#1B7B8C" text-anchor="middle" letter-spacing="-2">SlimTide</text>
                           <path d="M 60 140 Q 110 120 160 138 Q 210 156 260 138 Q 310 120 340 135" stroke="#5ECDD6" stroke-width="5" fill="none" stroke-linecap="round"/>
                         </svg>
-                    </div>
-                    <div style="display: flex; gap: 16px; color: var(--text-main);">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
                     </div>
                 </div>
                 
@@ -596,8 +592,8 @@
                             <svg width="12" height="12" viewBox="0 0 24 24" fill="white"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
                         </div>
                     </div>
-                    <h2>Emily Carter</h2>
-                    <p style="margin-bottom: 0;">Wellness Specialist · MS, RD</p>
+                    <h2>Dr. Ania</h2>
+                    <p style="margin-bottom: 0;">Metabolic Specialist · Chief Medical Advisor</p>
                 </div>
                 
                 <div class="card">
@@ -701,38 +697,7 @@
                     <p id="prof-goal" style="color: var(--text-main); font-weight: 600;">Lose 20-40 lbs</p>
                 </div>
                 
-                <div class="card">
-                    <h3>Notifications</h3>
-                    <div class="setting-row">
-                        <span style="font-weight: 600; color: var(--text-main);">Morning Reminder</span>
-                        <div class="toggle on" onclick="this.classList.toggle('on')"></div>
-                    </div>
-                    <div class="setting-row">
-                        <span style="font-weight: 600; color: var(--text-main);">Coaching Message</span>
-                        <div class="toggle on" onclick="this.classList.toggle('on')"></div>
-                    </div>
-                    <div class="setting-row">
-                        <span style="font-weight: 600; color: var(--text-main);">Window Alert</span>
-                        <div class="toggle on" onclick="this.classList.toggle('on')"></div>
-                    </div>
-                </div>
-                
-                <div class="card">
-                    <div class="setting-row">
-                        <span style="font-weight: 600; color: var(--text-main);">About SlimTide</span>
-                        <span style="color: #CBD5E0;">›</span>
-                    </div>
-                    <div class="setting-row">
-                        <span style="font-weight: 600; color: var(--text-main);">Privacy Policy</span>
-                        <span style="color: #CBD5E0;">›</span>
-                    </div>
-                    <div class="setting-row">
-                        <span style="font-weight: 600; color: var(--text-main);">Terms of Service</span>
-                        <span style="color: #CBD5E0;">›</span>
-                    </div>
-                </div>
-                
-                <button class="btn btn-outline" style="margin-top: 16px; border-color: #E2E8F0; color: var(--text-muted);" onclick="logout()">Log Out</button>
+<!-- Profile settings stripped -->
                 
                 <div style="height: 100px;"></div>
             </div>
@@ -852,7 +817,7 @@
                     <div style="padding: 20px; overflow-y: auto;">
                         <p style="font-size: 13px; margin-bottom: 20px;">Blocks estrogen-related belly fat accumulation using custom metabolic spice ratios.</p>
                         
-                        <button class="btn" style="background-color: #8C4A76; width: 100%; box-shadow: 0 4px 14px rgba(140, 74, 118, 0.3);" onclick="generateHormoneShot()">Generate Custom Recipe</button>
+                        <button id="btn-generate-hormone" class="btn" style="background-color: #8C4A76; width: 100%; box-shadow: 0 4px 14px rgba(140, 74, 118, 0.3);" onclick="generateHormoneShot()">Generate Custom Recipe</button>
                         
                         <div id="hormone-result" style="display: none; margin-top: 20px; background-color: white; padding: 20px; border-radius: 16px; border: 2px solid #8C4A76; box-shadow: 0 4px 20px rgba(140, 74, 118, 0.1);">
                             <h3 style="color: #8C4A76; text-align: center; margin-bottom: 16px; font-size: 18px; text-transform: uppercase; letter-spacing: 1px;">Your Clinical Ratio</h3>
@@ -888,6 +853,17 @@
                             <h3 style="color: #D4AF37; margin-bottom: 4px; font-size: 15px;">3. The Youth Cream</h3>
                             <div style="background: #FFFBF0; padding: 12px; border-radius: 8px; margin-top: 8px;">
                                 <p style="font-size: 13px; margin-bottom: 0;"><strong>Recipe:</strong> 2 tbsp aloe vera gel, 1 tsp vitamin E oil, 1 tsp rose hip oil, 1 tsp hydrolyzed collagen powder. Apply before sleep.</p>
+                            </div>
+                        </div>
+                        <div class="card" style="background: white; border-left: 4px solid #D4AF37; margin-bottom: 12px; margin-top: 20px;">
+                            <h3 style="color: #D4AF37; margin-bottom: 12px; font-size: 16px;">Troubleshooting</h3>
+                            <div style="margin-bottom: 12px;">
+                                <strong style="font-size: 13px;">My skin feels dry on Phase 1?</strong>
+                                <p style="font-size: 12px; margin-bottom: 0;">Ensure you are using Celtic sea salt, not table salt. Table salt dehydrates; Celtic salt contains the trace minerals needed to force water into the dermal matrix.</p>
+                            </div>
+                            <div>
+                                <strong style="font-size: 13px;">What if I skip a massage?</strong>
+                                <p style="font-size: 12px; margin-bottom: 0;">The fascial layer loses its structural tension quickly. If you miss a morning, do a 5-minute session before bed.</p>
                             </div>
                         </div>
                     </div>
@@ -932,6 +908,17 @@
                                     <div style="font-weight: bold; font-size: 13px; color: #4A5568;">Day 60:</div>
                                     <div style="font-size: 13px;">Thickness begins to return.</div>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="card" style="margin-top: 16px;">
+                            <h3 style="margin-bottom: 12px; font-size: 16px;">Troubleshooting</h3>
+                            <div style="margin-bottom: 12px;">
+                                <strong style="font-size: 13px;">Why hasn't shedding stopped by Day 7?</strong>
+                                <p style="font-size: 12px; margin-bottom: 0;">Day 7 only addresses scalp inflammation. The actual follicles require the full 21-day cycle of molasses iron-loading to physically halt the telogen phase. Keep going.</p>
+                            </div>
+                            <div>
+                                <strong style="font-size: 13px;">Can I add other supplements?</strong>
+                                <p style="font-size: 12px; margin-bottom: 0;">No. Synthetic biotin or generic hair pills compete with the bioavailable iron in the molasses for absorption. Stick strictly to the tonic.</p>
                             </div>
                         </div>
                     </div>
@@ -1181,7 +1168,7 @@
             }
 
             // Sequence
-            const dayOfWeek = new Date().getDay();
+            const dayOfWeek = (dayNumber - 1) % 7;
             const seqBase = SEQUENCES[dayOfWeek];
             const prefix = phase === 'Activation' ? "" : (phase === 'Acceleration' ? "Advanced " : "Maintenance ");
             let seqHtml = "";
@@ -1339,6 +1326,7 @@
         }
 
         function generateHormoneShot() {
+            document.getElementById('btn-generate-hormone').style.display = 'none';
             const w = profile.weight || 160;
             const a = profile.age || 45;
             const h = 65; // default 5'5
