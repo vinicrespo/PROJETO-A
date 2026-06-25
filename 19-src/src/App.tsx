@@ -191,7 +191,7 @@ export default function App() {
 
           {/* CTA Button (Hidden by default, shown by Vturb at specific pitch moment) */}
           <div className="w-full flex justify-center mb-6">
-            <a href="https://checkout.kashpay.com.br/checkout/checkout-1782156586439" className="vsl19 bg-[#22c55e] hover:bg-[#16a34a] text-white text-2xl font-black py-4 px-8 rounded-full w-full max-w-[400px] text-center shadow-[0_4px_14px_0_rgba(34,197,94,0.39)] hover:shadow-[0_6px_20px_rgba(34,197,94,0.23)] hover:-translate-y-1 transition-all duration-200 uppercase tracking-wide border-b-4 border-[#15803d] active:border-b-0 active:translate-y-0">
+            <a href="https://checkout.kashpay.com.br/checkout/checkout-1782421555073" className="vsl19 bg-[#22c55e] hover:bg-[#16a34a] text-white text-2xl font-black py-4 px-8 rounded-full w-full max-w-[400px] text-center shadow-[0_4px_14px_0_rgba(34,197,94,0.39)] hover:shadow-[0_6px_20px_rgba(34,197,94,0.23)] hover:-translate-y-1 transition-all duration-200 uppercase tracking-wide border-b-4 border-[#15803d] active:border-b-0 active:translate-y-0">
               Get Instant Access to SlimTide
             </a>
           </div>
