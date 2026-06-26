@@ -63,11 +63,7 @@ export default function App() {
 
         {/* Accept Button and Decline Link wrapped in the hide class */}
         <div className="up2 w-full flex flex-col items-center mb-6">
-          <div className="w-full mb-4" dangerouslySetInnerHTML={{ __html: `<button onclick="acceptUpsell('https://app.kashpay.com.br/u/2a5f7aedbe19d7b3')" style="font-family: 'Poppins'; font-size: 18px; font-weight: 600; line-height: 1.3; color: #ffffff; background-color: #057932; border: none; border-radius: 10px; padding: 13px 7%; cursor: pointer; text-align: center; display: block; margin: auto;">Get Now</button>` }} />
-
-          <a href="/up3" className="text-gray-500 hover:text-gray-300 text-sm underline">
-            No, thanks!
-          </a>
+          <div id="hotmart-sales-funnel" className="w-full"></div>
         </div>
       </div>
     </div>
