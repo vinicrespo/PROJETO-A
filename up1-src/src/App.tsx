@@ -6,6 +6,17 @@ export default function App() {
     s.src = "https://scripts.converteai.net/d21a9e1d-910e-4254-b2bc-30b12586d2ef/players/6a3989e31fa755ae788e2f71/v4/player.js";
     s.async = true;
     document.head.appendChild(s);
+  
+    const h = document.createElement("script");
+    h.src = "https://checkout.hotmart.com/lib/hotmart-checkout-elements.js";
+    h.onload = () => {
+      // @ts-ignore
+      if (window.checkoutElements) {
+        // @ts-ignore
+        window.checkoutElements.init('salesFunnel').mount('#hotmart-sales-funnel');
+      }
+    };
+    document.head.appendChild(h);
   }, []);
 
   return (
