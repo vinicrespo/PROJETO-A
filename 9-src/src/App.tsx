@@ -176,10 +176,7 @@ export default function App() {
         </header>
 
         <main className="px-4 py-4">
-          {/* Headline */}
-          <h1 className="text-[22px] md:text-2xl font-bold leading-tight text-[#1a1a1a] mb-4">
-            Oprah Reveals the 9-Minute Morning Ritual That Replaced Her Ozempic — "I Lost 43 Pounds and It Never Came Back"
-          </h1>
+
 
           {/* VSL Video Vturb */}
           <div className="w-full mb-6">
