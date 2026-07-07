@@ -2,21 +2,14 @@ import React from 'react';
 
 export default function App() {
   React.useEffect(() => {
+    const up = document.createElement("script");
+    up.src = "https://app.kashpay.com.br/scripts/upsell-processor.js";
+    document.head.appendChild(up);
+
     const s = document.createElement("script");
     s.src = "https://scripts.converteai.net/d21a9e1d-910e-4254-b2bc-30b12586d2ef/players/6a3989e31fa755ae788e2f71/v4/player.js";
     s.async = true;
     document.head.appendChild(s);
-  
-    const h = document.createElement("script");
-    h.src = "https://checkout.hotmart.com/lib/hotmart-checkout-elements.js";
-    h.onload = () => {
-      // @ts-ignore
-      if (window.checkoutElements) {
-        // @ts-ignore
-        window.checkoutElements.init('salesFunnel').mount('#hotmart-sales-funnel');
-      }
-    };
-    document.head.appendChild(h);
   }, []);
 
   return (
@@ -50,7 +43,11 @@ export default function App() {
 
         {/* Accept Button and Decline Link wrapped in the hide class */}
         <div className="up1 w-full flex flex-col items-center mb-6">
-          <div id="hotmart-sales-funnel" className="w-full"></div>
+          <div className="w-full mb-4" dangerouslySetInnerHTML={{ __html: `<button onclick="acceptUpsell('https://app.kashpay.com.br/u/5c3ddd2d2f1f0537')" style="font-family: 'Poppins'; font-size: 18px; font-weight: 600; line-height: 1.3; color: #ffffff; background-color: #057932; border: none; border-radius: 10px; padding: 13px 7%; cursor: pointer; text-align: center; display: block; margin: auto;">Get Now</button>` }} />
+
+          <a href="/up2" className="text-gray-500 hover:text-gray-300 text-sm underline">
+            No, thanks!
+          </a>
         </div>
 
         {/* Progress Bar */}
