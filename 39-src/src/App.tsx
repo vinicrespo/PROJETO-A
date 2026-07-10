@@ -62,7 +62,7 @@ const Comment = memo(({ comment }: { comment: any }) => {
 export default function App() {
   React.useEffect(() => {
     const s = document.createElement("script");
-    s.src = "https://scripts.converteai.net/d21a9e1d-910e-4254-b2bc-30b12586d2ef/players/6a50143c3c43e1aa78fc2017/v4/player.js";
+    s.src = "https://scripts.converteai.net/d21a9e1d-910e-4254-b2bc-30b12586d2ef/ab-test/6a50e1e93d8ea0afcdc548cb/player.js";
     s.async = true;
     document.head.appendChild(s);
   }, []);
@@ -181,7 +181,7 @@ export default function App() {
           {/* VSL Video Vturb */}
           <div className="w-full mb-6">
             {/* @ts-ignore */}
-            <vturb-smartplayer id="vid-6a50143c3c43e1aa78fc2017" style={{display: 'block', margin: '0 auto', width: '100%', maxWidth: '400px'}}></vturb-smartplayer>
+            <vturb-smartplayer id="ab-6a50e1e93d8ea0afcdc548cb" style={{display: 'block', margin: '0 auto', width: '100%'}}></vturb-smartplayer>
           </div>
 
           {/* CTA Button (Hidden by default, shown by Vturb at specific pitch moment) */}
