@@ -41,7 +41,7 @@ export default function ArticleContent({ article }: ArticleContentProps) {
           href="#" 
           className="inline-block w-[90%] max-w-sm bg-red-600 hover:bg-red-700 text-white font-extrabold text-[18px] py-4 rounded-lg shadow-xl animate-cta-pulse uppercase tracking-wide transition-all border-b-4 border-red-800"
         >
-          CLAIM MY NEXTBURN KIT
+          CLAIM MY NEXBURN KIT
         </a>
       </div>
     </article>
