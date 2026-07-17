@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import PhoneFrame from './components/PhoneFrame';
+
 import FoxHeader from './components/FoxHeader';
 import ArticleContent from './components/ArticleContent';
 import WatchLiveModal from './components/WatchLiveModal';
@@ -28,8 +28,7 @@ export default function App() {
   };
 
   return (
-    <PhoneFrame>
-      <div className="w-full min-h-full flex flex-col bg-white relative">
+    <div className="w-full min-h-screen flex flex-col bg-white relative">
         {/* FOX NEWS Sticky Header */}
         <FoxHeader 
           onWatchTVClick={() => setIsWatchTVOpen(true)}
@@ -52,7 +51,6 @@ export default function App() {
           onClose={() => setIsMenuOpen(false)}
           onSelectCategory={handleSelectCategory}
         />
-      </div>
-    </PhoneFrame>
+    </div>
   );
 }
