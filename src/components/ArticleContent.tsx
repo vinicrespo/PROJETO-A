@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Article } from '../types';
 
 interface ArticleContentProps {
@@ -6,6 +6,22 @@ interface ArticleContentProps {
 }
 
 export default function ArticleContent({ article }: ArticleContentProps) {
+  useEffect(() => {
+    // Dynamically load VTurb script when component mounts
+    // This fixes issues where the player sometimes fails to load because the DOM isn't ready
+    const script = document.createElement("script");
+    script.src = "https://scripts.converteai.net/d21a9e1d-910e-4254-b2bc-30b12586d2ef/players/6a5a32828ff7d30fbc875ec3/v4/player.js";
+    script.async = true;
+    document.head.appendChild(script);
+
+    return () => {
+      // Optional: Cleanup script if component unmounts
+      if (document.head.contains(script)) {
+        document.head.removeChild(script);
+      }
+    };
+  }, []);
+
   return (
     <article className="w-full bg-white px-5 pt-6 pb-12 font-sans select-text">
       {/* Category Badge - DONALD TRUMP styled exactly as screenshot */}
