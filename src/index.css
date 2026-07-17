@@ -7,12 +7,30 @@
   .animate-slide-left {
     animation: slideLeft 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
+  .animate-cta-pulse {
+    animation: ctaPulse 2s infinite;
+  }
   .scrollbar-none::-webkit-scrollbar {
     display: none;
   }
   .scrollbar-none {
     -ms-overflow-style: none;
     scrollbar-width: none;
+  }
+}
+
+@keyframes ctaPulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 15px rgba(220, 38, 38, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0);
   }
 }
 

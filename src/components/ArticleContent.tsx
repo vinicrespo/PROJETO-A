@@ -37,7 +37,12 @@ export default function ArticleContent({ article }: ArticleContentProps) {
 
       {/* Hidden Content triggered by VTurb (classe hide: vsl) */}
       <div className="vsl w-full mt-6 text-center">
-        {/* Adicione aqui botões de compra ou conteúdo que deve aparecer com delay */}
+        <a 
+          href="#" 
+          className="inline-block w-[90%] max-w-sm bg-red-600 hover:bg-red-700 text-white font-extrabold text-[18px] py-4 rounded-lg shadow-xl animate-cta-pulse uppercase tracking-wide transition-all border-b-4 border-red-800"
+        >
+          CLAIM MY NEXTBURN KIT
+        </a>
       </div>
     </article>
   );
