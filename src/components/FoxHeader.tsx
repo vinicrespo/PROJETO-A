@@ -20,19 +20,7 @@ export default function FoxHeader() {
             <polygon points="6,15 15,15 18,6 21,15 30,15 22,20 25,29 18,24 11,29 14,20" />
           </g>
           
-          {/* Bold, heavy italic uppercase wordmark */}
-          <text 
-            x="44" 
-            y="27" 
-            fontFamily="'Arial Black', 'Impact', 'Helvetica Neue', Arial, sans-serif" 
-            fontSize="24" 
-            fontWeight="900" 
-            fontStyle="italic"
-            letterSpacing="-1" 
-            fill="white"
-          >
-            FOX NEWS
-          </text>
+
         </svg>
       </div>
 
