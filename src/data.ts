@@ -3,9 +3,9 @@ import { Article, RecommendedItem } from './types';
 export const articles: Record<string, Article> = {
   'election-intelligence': {
     id: 'election-intelligence',
-    category: 'DONALD TRUMP',
-    title: "Trump releases declassified election intelligence, says it reveals 'shocking vulnerabilities'",
-    subheading: "Trump releases trove of information related to ballot counting vulnerabilities, China interference, Michigan voter-registration investigation and noncitizens on voter rolls",
+    category: 'weight loss',
+    title: 'Melanie Reveals the At-Home Protocol That Replaced Her Weight-Loss Injections — "I Lost 63 Pounds in 60 Days Without Dieting"',
+    subheading: 'She says four simple ingredients recreate the effects of GLP-1 injections at home — activating three fat-burning hormones while she still eats pizza, pasta, and dessert',
     author: {
       name: "Ashley J. DiMella",
       avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&h=150&q=80",
