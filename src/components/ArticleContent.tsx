@@ -32,10 +32,12 @@ export default function ArticleContent({ article }: ArticleContentProps) {
         </p>
       </div>
 
-      {/* Space left intentionally for their upcoming horizontal VSL */}
-      <div className="w-full border-t border-dashed border-gray-200 pt-8 mt-4 text-center text-gray-300 text-xs py-10 rounded-lg bg-slate-50 border-2 border-spacing-2">
-        <span className="font-semibold block text-slate-400 mb-1 uppercase tracking-wider text-[10px]">Espaço reservado para a VSL Horizontal</span>
-        <span className="text-slate-400 block text-[11px]">Sua VSL horizontal aparecerá perfeitamente estruturada neste espaço.</span>
+      {/* VTurb VSL Player */}
+      <div className="w-full mt-4" dangerouslySetInnerHTML={{ __html: `<vturb-smartplayer id="vid-6a5a32828ff7d30fbc875ec3" style="display: block; margin: 0 auto; width: 100%; "><div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 56.14583333333333% 0 0; z-index: 0; background-color: black;"></div></vturb-smartplayer>` }} />
+
+      {/* Hidden Content triggered by VTurb (classe hide: vsl) */}
+      <div className="vsl w-full mt-6 text-center">
+        {/* Adicione aqui botões de compra ou conteúdo que deve aparecer com delay */}
       </div>
     </article>
   );
