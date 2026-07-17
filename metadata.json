@@ -1,0 +1,6 @@
+{
+  "name": "Fox News Mobile Clone",
+  "description": "A high-fidelity, interactive clone of a Fox News mobile article page featuring recommended tabs, live TV simulation, real-time reactions, and interactive share options.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
