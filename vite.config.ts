@@ -22,6 +22,7 @@ export default defineConfig(() => {
       rollupOptions: {
         input: {
           main: path.resolve(__dirname, 'index.html'),
+          nexburn: path.resolve(__dirname, 'nexburn/index.html'),
           app: path.resolve(__dirname, 'app/index.html')
         }
       }
