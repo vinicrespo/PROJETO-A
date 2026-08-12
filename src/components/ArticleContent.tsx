@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Article } from '../types';
 
 interface ArticleContentProps {
@@ -6,6 +6,19 @@ interface ArticleContentProps {
 }
 
 export default function ArticleContent({ article }: ArticleContentProps) {
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://scripts.converteai.net/d21a9e1d-910e-4254-b2bc-30b12586d2ef/players/6a7c9e6fdcba282513bfcbef/v4/player.js";
+    script.async = true;
+    document.head.appendChild(script);
+
+    return () => {
+      if (document.head.contains(script)) {
+        document.head.removeChild(script);
+      }
+    };
+  }, []);
+
   return (
     <article className="w-full bg-white px-5 pt-6 pb-12 font-sans select-text">
 
