@@ -2,7 +2,7 @@ import { Menu, Bell } from 'lucide-react';
 
 export default function FoxHeader() {
   return (
-    <header className="w-full bg-white h-[68px] flex items-center justify-between px-4 sticky top-0 z-40 border-t-[8px] border-[#fff5db]">
+    <header className="w-full bg-white h-[68px] flex items-center justify-between px-4 sticky top-0 z-40 border-b border-gray-200 shadow-sm">
       {/* TODAY Logo */}
       <div className="flex items-center select-none">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 40" className="h-7 w-auto ml-2 mt-1">
