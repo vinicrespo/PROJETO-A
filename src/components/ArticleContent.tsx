@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Article } from '../types';
 
 interface ArticleContentProps {
@@ -6,7 +6,27 @@ interface ArticleContentProps {
 }
 
 export default function ArticleContent({ article }: ArticleContentProps) {
+  const [publishDate, setPublishDate] = useState(article.publishDate);
+
   useEffect(() => {
+    // Dynamically calculate publish date: 3 hours ago from current user's local time
+    const d = new Date();
+    d.setHours(d.getHours() - 3);
+
+    const formatted = new Intl.DateTimeFormat('en-US', {
+      month: 'long', 
+      day: 'numeric', 
+      year: 'numeric',
+      hour: 'numeric', 
+      minute: '2-digit', 
+      timeZoneName: 'short'
+    }).format(d);
+
+    // Format output to match "Published August 12, 2026 11:17am EDT"
+    const finalStr = "Published " + formatted.replace(' at ', ' ').replace(' AM', 'am').replace(' PM', 'pm');
+    setPublishDate(finalStr);
+
+
     // Dynamically load VTurb script when component mounts
     // This fixes issues where the player sometimes fails to load because the DOM isn't ready
     const script = document.createElement("script");
@@ -35,7 +55,7 @@ export default function ArticleContent({ article }: ArticleContentProps) {
       {/* Published Date Line (Only this author-related line is kept, centered) */}
       <div className="flex flex-col items-center justify-center mb-6 border-b border-gray-100 pb-5">
         <p className="text-[11px] text-gray-400 font-medium">
-          {article.publishDate}
+          {publishDate}
         </p>
       </div>
 
