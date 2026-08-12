@@ -10,7 +10,7 @@ export default function ArticleContent({ article }: ArticleContentProps) {
     // Dynamically load VTurb script when component mounts
     // This fixes issues where the player sometimes fails to load because the DOM isn't ready
     const script = document.createElement("script");
-    script.src = "https://scripts.converteai.net/d21a9e1d-910e-4254-b2bc-30b12586d2ef/players/6a5a32828ff7d30fbc875ec3/v4/player.js";
+    script.src = "https://scripts.converteai.net/d21a9e1d-910e-4254-b2bc-30b12586d2ef/players/6a7c9e6fdcba282513bfcbef/v4/player.js";
     script.async = true;
     document.head.appendChild(script);
 
@@ -31,15 +31,6 @@ export default function ArticleContent({ article }: ArticleContentProps) {
         </span>
       </div>
 
-      {/* Main Headline */}
-      <h1 className="text-[25px] font-extrabold text-gray-900 text-center leading-tight tracking-tight mb-5 font-serif font-black">
-        {article.title}
-      </h1>
-
-      {/* Subheading / Summary */}
-      <p className="text-[14px] text-gray-700 text-center leading-relaxed mb-6 font-medium">
-        {article.subheading}
-      </p>
 
       {/* Published Date Line (Only this author-related line is kept, centered) */}
       <div className="flex flex-col items-center justify-center mb-6 border-b border-gray-100 pb-5">
@@ -49,7 +40,7 @@ export default function ArticleContent({ article }: ArticleContentProps) {
       </div>
 
       {/* VTurb VSL Player */}
-      <div className="w-full mt-4" dangerouslySetInnerHTML={{ __html: `<vturb-smartplayer id="vid-6a5a32828ff7d30fbc875ec3" style="display: block; margin: 0 auto; width: 100%; "><div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 56.14583333333333% 0 0; z-index: 0; background-color: black;"></div></vturb-smartplayer>` }} />
+      <div className="w-full mt-4" dangerouslySetInnerHTML={{ __html: `<vturb-smartplayer id="vid-6a7c9e6fdcba282513bfcbef" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;"><div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 125% 0 0; z-index: 0; background-color: black;"></div></vturb-smartplayer>` }} />
 
       {/* Hidden Content triggered by VTurb (classe hide: vsl) */}
       <div className="vsl w-full mt-6 text-center">
