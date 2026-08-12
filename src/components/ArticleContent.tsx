@@ -29,7 +29,7 @@ export default function ArticleContent({ article }: ArticleContentProps) {
       <div className="vsl w-full mt-6 text-center">
         <a 
           href="https://bg.nexburn.store/dtc-d/?aff_id=8870" 
-          className="inline-block w-[90%] max-w-sm bg-red-600 hover:bg-red-700 text-white font-extrabold text-[18px] py-4 rounded-lg shadow-xl animate-cta-pulse uppercase tracking-wide transition-all border-b-4 border-red-800"
+          className="inline-block w-[90%] max-w-sm bg-green-600 hover:bg-green-700 text-white font-extrabold text-[18px] py-4 rounded-lg shadow-xl animate-cta-pulse uppercase tracking-wide transition-all border-b-4 border-green-800"
         >
           CLAIM MY NEXBURN KIT
         </a>
