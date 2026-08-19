@@ -8,7 +8,7 @@ interface ArticleContentProps {
 export default function ArticleContent({ article }: ArticleContentProps) {
   useEffect(() => {
     const script = document.createElement("script");
-    script.src = "https://scripts.converteai.net/d21a9e1d-910e-4254-b2bc-30b12586d2ef/players/6a7c9e6fdcba282513bfcbef/v4/player.js";
+    script.src = "https://scripts.converteai.net/d21a9e1d-910e-4254-b2bc-30b12586d2ef/players/6a860ad9a3935d4b3a2faa92/v4/player.js";
     script.async = true;
     document.head.appendChild(script);
 
@@ -23,7 +23,7 @@ export default function ArticleContent({ article }: ArticleContentProps) {
     <article className="w-full bg-white px-5 pt-6 pb-12 font-sans select-text">
 
       {/* VTurb VSL Player */}
-      <div className="w-full mt-4" dangerouslySetInnerHTML={{ __html: `<vturb-smartplayer id="vid-6a7c9e6fdcba282513bfcbef" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;"><div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 125% 0 0; z-index: 0; background-color: black;"></div></vturb-smartplayer>` }} />
+      <div className="w-full mt-4" dangerouslySetInnerHTML={{ __html: `<vturb-smartplayer id="vid-6a860ad9a3935d4b3a2faa92" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;"><div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 125% 0 0; z-index: 0; background-color: black;"></div></vturb-smartplayer>` }} />
 
       {/* Pricing Cards */}
       <div className="w-full mt-10 mb-8 flex flex-col md:flex-row items-stretch justify-center gap-6 max-w-6xl mx-auto font-sans relative">
