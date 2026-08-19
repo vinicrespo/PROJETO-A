@@ -54,7 +54,7 @@ export default function ArticleContent({ article }: ArticleContentProps) {
               <p className="flex items-center"><span className="flex items-center justify-center min-w-[16px] w-4 h-4 rounded-full bg-[#ef5350] text-white mr-3 text-[10px]"><svg className="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M6 18L18 6M6 6l12 12"></path></svg></span> FREE BONUSES</p>
             </div>
 
-            <a href="https://bg.nexburn.store/dtc-d/?aff_id=8870" className="flex items-center justify-center w-full bg-gradient-to-b from-[#ffea00] to-[#ffc400] text-black font-black text-2xl py-3 rounded-lg shadow-md border border-[#fbc02d] hover:brightness-105 transition-all">
+            <a href="https://lipo-jelly.mycartpanda.com/checkout/211500306:1?afid=hbCL6vjwAC" className="flex items-center justify-center w-full bg-gradient-to-b from-[#ffea00] to-[#ffc400] text-black font-black text-2xl py-3 rounded-lg shadow-md border border-[#fbc02d] hover:brightness-105 transition-all">
               <span className="mr-3 tracking-tighter">BUY NOW</span>
               <span className="flex items-center justify-center min-w-[32px] w-8 h-8 rounded-full bg-[#001529] text-[#ffea00] text-sm"><i className="fa-solid fa-cart-shopping"></i></span>
             </a>
@@ -107,7 +107,7 @@ export default function ArticleContent({ article }: ArticleContentProps) {
               </div>
             </div>
 
-            <a href="https://bg.nexburn.store/dtc-d/?aff_id=8870" className="flex items-center justify-center w-full bg-gradient-to-b from-[#ffea00] to-[#ffc400] text-black font-black text-[26px] py-4 rounded-lg shadow-lg border border-[#fbc02d] hover:brightness-105 transition-all">
+            <a href="https://lipo-jelly.mycartpanda.com/checkout/211500308:1?afid=hbCL6vjwAC" className="flex items-center justify-center w-full bg-gradient-to-b from-[#ffea00] to-[#ffc400] text-black font-black text-[26px] py-4 rounded-lg shadow-lg border border-[#fbc02d] hover:brightness-105 transition-all">
               <span className="mr-3 tracking-tighter">BUY NOW</span>
               <span className="flex items-center justify-center min-w-[40px] w-10 h-10 rounded-full bg-[#001529] text-[#ffea00] text-lg"><i className="fa-solid fa-cart-shopping"></i></span>
             </a>
@@ -154,7 +154,7 @@ export default function ArticleContent({ article }: ArticleContentProps) {
               <p className="flex items-center"><span className="flex items-center justify-center min-w-[16px] w-4 h-4 rounded-full bg-[#ffb300] text-white mr-3 text-[10px]"><svg className="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path></svg></span> 1 FREE BONUS!</p>
             </div>
 
-            <a href="https://bg.nexburn.store/dtc-d/?aff_id=8870" className="flex items-center justify-center w-full bg-gradient-to-b from-[#ffea00] to-[#ffc400] text-black font-black text-2xl py-3 rounded-lg shadow-md border border-[#fbc02d] hover:brightness-105 transition-all">
+            <a href="https://lipo-jelly.mycartpanda.com/checkout/211500307:1?afid=hbCL6vjwAC" className="flex items-center justify-center w-full bg-gradient-to-b from-[#ffea00] to-[#ffc400] text-black font-black text-2xl py-3 rounded-lg shadow-md border border-[#fbc02d] hover:brightness-105 transition-all">
               <span className="mr-3 tracking-tighter">BUY NOW</span>
               <span className="flex items-center justify-center min-w-[32px] w-8 h-8 rounded-full bg-[#001529] text-[#ffea00] text-sm"><i className="fa-solid fa-cart-shopping"></i></span>
             </a>
