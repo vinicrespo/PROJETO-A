@@ -26,15 +26,15 @@ export default function ArticleContent({ article }: ArticleContentProps) {
       <div className="w-full mt-4" dangerouslySetInnerHTML={{ __html: `<vturb-smartplayer id="vid-6a7c9e6fdcba282513bfcbef" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;"><div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 125% 0 0; z-index: 0; background-color: black;"></div></vturb-smartplayer>` }} />
 
       {/* Pricing Cards */}
-      <div className="w-full mt-10 mb-8 flex flex-col md:flex-row items-end justify-center gap-4 max-w-6xl mx-auto font-sans relative">
+      <div className="w-full mt-10 mb-8 flex flex-col md:flex-row items-stretch justify-center gap-6 max-w-6xl mx-auto font-sans relative">
         
         {/* Card 1: Starter (Left) */}
-        <div className="order-3 md:order-1 flex-1 flex flex-col bg-white rounded-xl overflow-hidden shadow-[0_0_15px_rgba(0,0,0,0.1)] border border-gray-100">
+        <div className="order-3 md:order-1 flex-1 flex flex-col bg-white rounded-xl overflow-hidden shadow-[0_0_15px_rgba(0,0,0,0.1)] border border-gray-100 w-full max-w-[340px] mx-auto">
           <div className="bg-[#D32F2F] text-white text-center py-2">
             <h2 className="text-sm font-normal uppercase tracking-widest">STARTER</h2>
           </div>
           <div className="p-5 text-center flex-grow flex flex-col">
-            <h3 className="text-2xl text-[#b71c1c] font-normal tracking-tight mb-1">2 BOTTLES</h3>
+            <h3 className="text-[28px] text-[#b71c1c] font-normal tracking-tight mb-1">2 BOTTLES</h3>
             <p className="text-xs text-gray-400 font-normal mb-4">60 Day Supply</p>
             
             <div className="relative h-40 flex items-center justify-center mb-4">
@@ -49,14 +49,14 @@ export default function ArticleContent({ article }: ArticleContentProps) {
             <div className="border-t border-gray-100 mb-4 w-full"></div>
 
             <div className="text-left px-2 space-y-3 text-[13px] text-gray-500 font-normal mb-6 flex-grow">
-              <p className="flex items-center"><span className="flex items-center justify-center w-4 h-4 rounded-full bg-[#ef5350] text-white mr-3 text-[10px]"><i className="fa-solid fa-xmark"></i></span> FREE SHIPPING</p>
-              <p className="flex items-center"><span className="flex items-center justify-center w-4 h-4 rounded-full bg-[#ef5350] text-white mr-3 text-[10px]"><i className="fa-solid fa-xmark"></i></span> FAST SHIPPING</p>
-              <p className="flex items-center"><span className="flex items-center justify-center w-4 h-4 rounded-full bg-[#ef5350] text-white mr-3 text-[10px]"><i className="fa-solid fa-xmark"></i></span> FREE BONUSES</p>
+              <p className="flex items-center"><span className="flex items-center justify-center min-w-[16px] w-4 h-4 rounded-full bg-[#ef5350] text-white mr-3 text-[10px]"><i className="fa-solid fa-xmark"></i></span> FREE SHIPPING</p>
+              <p className="flex items-center"><span className="flex items-center justify-center min-w-[16px] w-4 h-4 rounded-full bg-[#ef5350] text-white mr-3 text-[10px]"><i className="fa-solid fa-xmark"></i></span> FAST SHIPPING</p>
+              <p className="flex items-center"><span className="flex items-center justify-center min-w-[16px] w-4 h-4 rounded-full bg-[#ef5350] text-white mr-3 text-[10px]"><i className="fa-solid fa-xmark"></i></span> FREE BONUSES</p>
             </div>
 
             <a href="https://bg.nexburn.store/dtc-d/?aff_id=8870" className="flex items-center justify-center w-full bg-gradient-to-b from-[#ffea00] to-[#ffc400] text-black font-black text-2xl py-3 rounded-lg shadow-md border border-[#fbc02d] hover:brightness-105 transition-all">
               <span className="mr-3 tracking-tighter">BUY NOW</span>
-              <span className="flex items-center justify-center w-8 h-8 rounded-full bg-[#001529] text-[#ffea00] text-sm"><i className="fa-solid fa-cart-shopping"></i></span>
+              <span className="flex items-center justify-center min-w-[32px] w-8 h-8 rounded-full bg-[#001529] text-[#ffea00] text-sm"><i className="fa-solid fa-cart-shopping"></i></span>
             </a>
 
             <div className="flex justify-center items-center gap-2 mt-3 text-2xl">
@@ -71,12 +71,12 @@ export default function ArticleContent({ article }: ArticleContentProps) {
         </div>
 
         {/* Card 2: Best Seller (Middle) */}
-        <div className="order-1 md:order-2 flex-[1.1] flex flex-col bg-[#fff8e1] rounded-xl overflow-hidden shadow-[0_10px_30px_rgba(211,47,47,0.15)] relative z-10 border border-[#ffe082]">
+        <div className="order-1 md:order-2 flex-1 flex flex-col bg-[#fff8e1] rounded-xl overflow-hidden shadow-[0_10px_30px_rgba(211,47,47,0.15)] relative z-10 border border-[#ffe082] w-full max-w-[340px] mx-auto md:transform md:-translate-y-2">
           <div className="bg-gradient-to-b from-[#ffe082] to-[#ffca28] text-[#8d6e63] text-center py-2 shadow-sm">
             <h2 className="text-sm font-bold uppercase tracking-widest">BEST SELLER</h2>
           </div>
           <div className="p-5 text-center flex-grow flex flex-col">
-            <h3 className="text-3xl text-gray-800 font-normal tracking-tight mb-1">6 BOTTLES</h3>
+            <h3 className="text-[32px] text-black font-normal tracking-tight mb-1">6 BOTTLES</h3>
             <p className="text-xs text-gray-500 font-normal mb-4">180 Day Supply</p>
             
             <div className="relative h-44 flex items-center justify-center mb-4">
@@ -102,19 +102,19 @@ export default function ArticleContent({ article }: ArticleContentProps) {
 
             <div className="text-left px-2 space-y-2 text-[13px] text-gray-600 font-normal mb-6 flex-grow">
               <div className="bg-white rounded-md py-1.5 px-3 flex items-center shadow-sm">
-                <span className="flex items-center justify-center w-4 h-4 rounded-full bg-[#4caf50] text-white mr-3 text-[10px]"><i className="fa-solid fa-check"></i></span> 60-DAY GUARANTEE
+                <span className="flex items-center justify-center min-w-[16px] w-4 h-4 rounded-full bg-[#4caf50] text-white mr-3 text-[10px]"><i className="fa-solid fa-check"></i></span> 60-DAY GUARANTEE
               </div>
               <div className="bg-white rounded-md py-1.5 px-3 flex items-center shadow-sm">
-                <span className="flex items-center justify-center w-4 h-4 rounded-full bg-[#4caf50] text-white mr-3 text-[10px]"><i className="fa-solid fa-check"></i></span> FAST & FREE SHIPPING
+                <span className="flex items-center justify-center min-w-[16px] w-4 h-4 rounded-full bg-[#4caf50] text-white mr-3 text-[10px]"><i className="fa-solid fa-check"></i></span> FAST & FREE SHIPPING
               </div>
               <div className="bg-white rounded-md py-1.5 px-3 flex items-center shadow-sm">
-                <span className="flex items-center justify-center w-4 h-4 rounded-full bg-[#4caf50] text-white mr-3 text-[10px]"><i className="fa-solid fa-check"></i></span> 3 FREE BONUSES!
+                <span className="flex items-center justify-center min-w-[16px] w-4 h-4 rounded-full bg-[#4caf50] text-white mr-3 text-[10px]"><i className="fa-solid fa-check"></i></span> 3 FREE BONUSES!
               </div>
             </div>
 
             <a href="https://bg.nexburn.store/dtc-d/?aff_id=8870" className="flex items-center justify-center w-full bg-gradient-to-b from-[#ffea00] to-[#ffc400] text-black font-black text-[26px] py-4 rounded-lg shadow-lg border border-[#fbc02d] hover:brightness-105 transition-all">
               <span className="mr-3 tracking-tighter">BUY NOW</span>
-              <span className="flex items-center justify-center w-10 h-10 rounded-full bg-[#001529] text-[#ffea00] text-lg"><i className="fa-solid fa-cart-shopping"></i></span>
+              <span className="flex items-center justify-center min-w-[40px] w-10 h-10 rounded-full bg-[#001529] text-[#ffea00] text-lg"><i className="fa-solid fa-cart-shopping"></i></span>
             </a>
 
             <div className="flex justify-center items-center gap-2 mt-4 text-2xl">
@@ -129,12 +129,12 @@ export default function ArticleContent({ article }: ArticleContentProps) {
         </div>
 
         {/* Card 3: Standard (Right) */}
-        <div className="order-2 md:order-3 flex-1 flex flex-col bg-white rounded-xl overflow-hidden shadow-[0_0_15px_rgba(0,0,0,0.1)] border border-gray-100">
+        <div className="order-2 md:order-3 flex-1 flex flex-col bg-white rounded-xl overflow-hidden shadow-[0_0_15px_rgba(0,0,0,0.1)] border border-gray-100 w-full max-w-[340px] mx-auto">
           <div className="bg-[#D32F2F] text-white text-center py-2">
             <h2 className="text-sm font-normal uppercase tracking-widest">STANDARD</h2>
           </div>
           <div className="p-5 text-center flex-grow flex flex-col">
-            <h3 className="text-2xl text-[#b71c1c] font-normal tracking-tight mb-1">3 BOTTLES</h3>
+            <h3 className="text-[28px] text-[#b71c1c] font-normal tracking-tight mb-1">3 BOTTLES</h3>
             <p className="text-xs text-gray-400 font-normal mb-4">90 Day Supply</p>
             
             <div className="relative h-40 flex items-center justify-center mb-4">
@@ -159,14 +159,14 @@ export default function ArticleContent({ article }: ArticleContentProps) {
             <div className="border-t border-gray-100 mb-4 w-full"></div>
 
             <div className="text-left px-2 space-y-3 text-[13px] text-gray-500 font-normal mb-6 flex-grow">
-              <p className="flex items-center"><span className="flex items-center justify-center w-4 h-4 rounded-full bg-[#4caf50] text-white mr-3 text-[10px]"><i className="fa-solid fa-check"></i></span> 60-DAY GUARANTEE</p>
-              <p className="flex items-center"><span className="flex items-center justify-center w-4 h-4 rounded-full bg-[#ffb300] text-white mr-3 text-[10px]"><i className="fa-solid fa-check"></i></span> FAST & FREE SHIPPING</p>
-              <p className="flex items-center"><span className="flex items-center justify-center w-4 h-4 rounded-full bg-[#ffb300] text-white mr-3 text-[10px]"><i className="fa-solid fa-check"></i></span> 1 FREE BONUS!</p>
+              <p className="flex items-center"><span className="flex items-center justify-center min-w-[16px] w-4 h-4 rounded-full bg-[#4caf50] text-white mr-3 text-[10px]"><i className="fa-solid fa-check"></i></span> 60-DAY GUARANTEE</p>
+              <p className="flex items-center"><span className="flex items-center justify-center min-w-[16px] w-4 h-4 rounded-full bg-[#ffb300] text-white mr-3 text-[10px]"><i className="fa-solid fa-check"></i></span> FAST & FREE SHIPPING</p>
+              <p className="flex items-center"><span className="flex items-center justify-center min-w-[16px] w-4 h-4 rounded-full bg-[#ffb300] text-white mr-3 text-[10px]"><i className="fa-solid fa-check"></i></span> 1 FREE BONUS!</p>
             </div>
 
             <a href="https://bg.nexburn.store/dtc-d/?aff_id=8870" className="flex items-center justify-center w-full bg-gradient-to-b from-[#ffea00] to-[#ffc400] text-black font-black text-2xl py-3 rounded-lg shadow-md border border-[#fbc02d] hover:brightness-105 transition-all">
               <span className="mr-3 tracking-tighter">BUY NOW</span>
-              <span className="flex items-center justify-center w-8 h-8 rounded-full bg-[#001529] text-[#ffea00] text-sm"><i className="fa-solid fa-cart-shopping"></i></span>
+              <span className="flex items-center justify-center min-w-[32px] w-8 h-8 rounded-full bg-[#001529] text-[#ffea00] text-sm"><i className="fa-solid fa-cart-shopping"></i></span>
             </a>
 
             <div className="flex justify-center items-center gap-2 mt-3 text-2xl">
