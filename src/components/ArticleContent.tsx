@@ -49,9 +49,9 @@ export default function ArticleContent({ article }: ArticleContentProps) {
             <div className="border-t border-gray-100 mb-4 w-full"></div>
 
             <div className="text-left px-2 space-y-3 text-[13px] text-gray-500 font-normal mb-6 flex-grow">
-              <p className="flex items-center"><span className="flex items-center justify-center min-w-[16px] w-4 h-4 rounded-full bg-[#ef5350] text-white mr-3 text-[10px]"><i className="fa-solid fa-xmark"></i></span> FREE SHIPPING</p>
-              <p className="flex items-center"><span className="flex items-center justify-center min-w-[16px] w-4 h-4 rounded-full bg-[#ef5350] text-white mr-3 text-[10px]"><i className="fa-solid fa-xmark"></i></span> FAST SHIPPING</p>
-              <p className="flex items-center"><span className="flex items-center justify-center min-w-[16px] w-4 h-4 rounded-full bg-[#ef5350] text-white mr-3 text-[10px]"><i className="fa-solid fa-xmark"></i></span> FREE BONUSES</p>
+              <p className="flex items-center"><span className="flex items-center justify-center min-w-[16px] w-4 h-4 rounded-full bg-[#ef5350] text-white mr-3 text-[10px]"><svg className="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M6 18L18 6M6 6l12 12"></path></svg></span> FREE SHIPPING</p>
+              <p className="flex items-center"><span className="flex items-center justify-center min-w-[16px] w-4 h-4 rounded-full bg-[#ef5350] text-white mr-3 text-[10px]"><svg className="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M6 18L18 6M6 6l12 12"></path></svg></span> FAST SHIPPING</p>
+              <p className="flex items-center"><span className="flex items-center justify-center min-w-[16px] w-4 h-4 rounded-full bg-[#ef5350] text-white mr-3 text-[10px]"><svg className="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M6 18L18 6M6 6l12 12"></path></svg></span> FREE BONUSES</p>
             </div>
 
             <a href="https://bg.nexburn.store/dtc-d/?aff_id=8870" className="flex items-center justify-center w-full bg-gradient-to-b from-[#ffea00] to-[#ffc400] text-black font-black text-2xl py-3 rounded-lg shadow-md border border-[#fbc02d] hover:brightness-105 transition-all">
@@ -86,11 +86,6 @@ export default function ArticleContent({ article }: ArticleContentProps) {
               <div className="absolute top-0 right-0 transform translate-x-2 -translate-y-2 bg-[#D32F2F] text-white rounded-full w-14 h-14 flex items-center justify-center text-center leading-[1.1] border-[2px] border-white shadow-md z-10" style={{clipPath: "polygon(50% 0%, 61% 11%, 76% 5%, 83% 19%, 98% 21%, 97% 37%, 100% 50%, 97% 63%, 98% 79%, 83% 81%, 76% 95%, 61% 89%, 50% 100%, 39% 89%, 24% 95%, 17% 81%, 2% 79%, 3% 63%, 0% 50%, 3% 37%, 2% 21%, 17% 19%, 24% 5%, 39% 11%)"}}>
                 <span className="text-[9px] font-black tracking-tight">SAVE<br/>$780<br/>TODAY</span>
               </div>
-              
-              {/* Free Shipping Sticker */}
-              <div className="absolute bottom-2 left-0 transform -translate-x-2 -rotate-6 bg-[#001529] text-[#ffea00] px-2 py-0.5 text-[9px] font-black uppercase tracking-wider border border-white shadow-sm z-10 flex flex-col items-center">
-                <span className="text-[#64b5f6]">FREE</span> SHIPPING
-              </div>
             </div>
 
             <div className="text-center mb-6">
@@ -102,13 +97,13 @@ export default function ArticleContent({ article }: ArticleContentProps) {
 
             <div className="text-left px-2 space-y-2 text-[13px] text-gray-600 font-normal mb-6 flex-grow">
               <div className="bg-white rounded-md py-1.5 px-3 flex items-center shadow-sm">
-                <span className="flex items-center justify-center min-w-[16px] w-4 h-4 rounded-full bg-[#4caf50] text-white mr-3 text-[10px]"><i className="fa-solid fa-check"></i></span> 60-DAY GUARANTEE
+                <span className="flex items-center justify-center min-w-[16px] w-4 h-4 rounded-full bg-[#4caf50] text-white mr-3 text-[10px]"><svg className="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path></svg></span> 60-DAY GUARANTEE
               </div>
               <div className="bg-white rounded-md py-1.5 px-3 flex items-center shadow-sm">
-                <span className="flex items-center justify-center min-w-[16px] w-4 h-4 rounded-full bg-[#4caf50] text-white mr-3 text-[10px]"><i className="fa-solid fa-check"></i></span> FAST & FREE SHIPPING
+                <span className="flex items-center justify-center min-w-[16px] w-4 h-4 rounded-full bg-[#4caf50] text-white mr-3 text-[10px]"><svg className="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path></svg></span> FAST & FREE SHIPPING
               </div>
               <div className="bg-white rounded-md py-1.5 px-3 flex items-center shadow-sm">
-                <span className="flex items-center justify-center min-w-[16px] w-4 h-4 rounded-full bg-[#4caf50] text-white mr-3 text-[10px]"><i className="fa-solid fa-check"></i></span> 3 FREE BONUSES!
+                <span className="flex items-center justify-center min-w-[16px] w-4 h-4 rounded-full bg-[#4caf50] text-white mr-3 text-[10px]"><svg className="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path></svg></span> 3 FREE BONUSES!
               </div>
             </div>
 
@@ -144,11 +139,6 @@ export default function ArticleContent({ article }: ArticleContentProps) {
               <div className="absolute top-0 right-0 transform translate-x-2 -translate-y-2 bg-[#D32F2F] text-white rounded-full w-12 h-12 flex items-center justify-center text-center leading-[1.1] border-[2px] border-white shadow-md z-10" style={{clipPath: "polygon(50% 0%, 61% 11%, 76% 5%, 83% 19%, 98% 21%, 97% 37%, 100% 50%, 97% 63%, 98% 79%, 83% 81%, 76% 95%, 61% 89%, 50% 100%, 39% 89%, 24% 95%, 17% 81%, 2% 79%, 3% 63%, 0% 50%, 3% 37%, 2% 21%, 17% 19%, 24% 5%, 39% 11%)"}}>
                 <span className="text-[8px] font-black tracking-tight">SAVE<br/>$330<br/>TODAY</span>
               </div>
-              
-              {/* Free Shipping Sticker */}
-              <div className="absolute bottom-2 left-0 transform -translate-x-2 -rotate-6 bg-[#001529] text-[#ffea00] px-2 py-0.5 text-[8px] font-black uppercase tracking-wider border border-white shadow-sm z-10 flex flex-col items-center">
-                <span className="text-[#64b5f6]">FREE</span> SHIPPING
-              </div>
             </div>
 
             <div className="text-center mb-6">
@@ -159,9 +149,9 @@ export default function ArticleContent({ article }: ArticleContentProps) {
             <div className="border-t border-gray-100 mb-4 w-full"></div>
 
             <div className="text-left px-2 space-y-3 text-[13px] text-gray-500 font-normal mb-6 flex-grow">
-              <p className="flex items-center"><span className="flex items-center justify-center min-w-[16px] w-4 h-4 rounded-full bg-[#4caf50] text-white mr-3 text-[10px]"><i className="fa-solid fa-check"></i></span> 60-DAY GUARANTEE</p>
-              <p className="flex items-center"><span className="flex items-center justify-center min-w-[16px] w-4 h-4 rounded-full bg-[#ffb300] text-white mr-3 text-[10px]"><i className="fa-solid fa-check"></i></span> FAST & FREE SHIPPING</p>
-              <p className="flex items-center"><span className="flex items-center justify-center min-w-[16px] w-4 h-4 rounded-full bg-[#ffb300] text-white mr-3 text-[10px]"><i className="fa-solid fa-check"></i></span> 1 FREE BONUS!</p>
+              <p className="flex items-center"><span className="flex items-center justify-center min-w-[16px] w-4 h-4 rounded-full bg-[#4caf50] text-white mr-3 text-[10px]"><svg className="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path></svg></span> 60-DAY GUARANTEE</p>
+              <p className="flex items-center"><span className="flex items-center justify-center min-w-[16px] w-4 h-4 rounded-full bg-[#ffb300] text-white mr-3 text-[10px]"><svg className="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path></svg></span> FAST & FREE SHIPPING</p>
+              <p className="flex items-center"><span className="flex items-center justify-center min-w-[16px] w-4 h-4 rounded-full bg-[#ffb300] text-white mr-3 text-[10px]"><svg className="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path></svg></span> 1 FREE BONUS!</p>
             </div>
 
             <a href="https://bg.nexburn.store/dtc-d/?aff_id=8870" className="flex items-center justify-center w-full bg-gradient-to-b from-[#ffea00] to-[#ffc400] text-black font-black text-2xl py-3 rounded-lg shadow-md border border-[#fbc02d] hover:brightness-105 transition-all">
