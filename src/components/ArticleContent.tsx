@@ -26,7 +26,7 @@ export default function ArticleContent({ article }: ArticleContentProps) {
       <div className="w-full mt-4" dangerouslySetInnerHTML={{ __html: `<vturb-smartplayer id="vid-6a860ad9a3935d4b3a2faa92" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;"><div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 125% 0 0; z-index: 0; background-color: black;"></div></vturb-smartplayer>` }} />
 
       {/* Pricing Cards */}
-      <div className="vsl hide w-full mt-10 mb-8 flex flex-col md:flex-row items-stretch justify-center gap-6 max-w-6xl mx-auto font-sans relative">
+      <div className="vsl hide w-full mt-10 mb-8 flex flex-col md:flex-row items-stretch justify-center gap-8 md:gap-6 max-w-6xl mx-auto font-sans relative">
         
         {/* Card 2: Best Seller (6 Bottles) -> DOM 1st, Desktop 2nd */}
         <div className="md:order-2 flex-1 flex flex-col bg-[#fff8e1] rounded-xl overflow-hidden shadow-[0_10px_30px_rgba(211,47,47,0.15)] relative z-10 border border-[#ffe082] w-full max-w-[340px] mx-auto md:transform md:-translate-y-2">
