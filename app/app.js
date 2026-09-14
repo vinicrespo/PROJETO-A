@@ -51,8 +51,12 @@ function esc(s){ return String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt
 function $(sel, root){ return (root||document).querySelector(sel); }
 function $$(sel, root){ return Array.prototype.slice.call((root||document).querySelectorAll(sel)); }
 function on(sel, fn, root){ $$(sel, root).forEach(e => e.addEventListener('click', fn)); }
-const LOGO = '<!-- INSERIR LOGO AQUI --><div class="logo">LOGO</div>';
-const LOGO_SM = '<!-- INSERIR LOGO AQUI --><div class="logo sm">LOGO</div>';
+/* Logo: trocar o arquivo em /app/logo.png. Se nao existir, cai no placeholder. */
+const LOGO_SRC = '/app/logo.png';
+const FALLBACK = "this.onerror=null;this.outerHTML='<div class=\\'logo-ph\\'>LOGO</div>'";
+const FALLBACK_SM = "this.onerror=null;this.outerHTML='<div class=\\'logo-ph sm\\'>LOGO</div>'";
+const LOGO = '<img class="logo" src="' + LOGO_SRC + '" alt="HorseFil" onerror="' + FALLBACK + '">';
+const LOGO_SM = '<img class="logo sm" src="' + LOGO_SRC + '" alt="HorseFil" onerror="' + FALLBACK_SM + '">';
 
 let route = 'login', param = null, timers = [];
 function clearTimers(){ timers.forEach(t => clearInterval(t)); timers = []; }
