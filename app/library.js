@@ -176,7 +176,7 @@ const FAQ = {
     ['Do I need to buy supplements?','No. The protocol uses common foods and techniques only. Nothing in it requires a bottle.'],
     ['How long should a Kegel session take?','Under two minutes. If you are going much longer you are probably overworking a muscle that in most men is already too tight.'],
     ['I keep forgetting the water first thing. Any trick?','Fill the glass the night before and put it where you will physically bump into it. Removing the decision is more reliable than remembering.'],
-    ['I missed two days. Should I double up?','No. Resume at the current day. The protocol works on consistency, not accumulation, and doubling up on techniques risks soreness.'],
+    ['Can I do more than one day at a time?','You can — the next day unlocks as soon as you complete the current one. But the techniques and foods are designed to land daily, and rushing three days in one afternoon gives you the reading without the adaptation.'],
     ['Is the cold shower necessary in Phase 1?','It does not start until Phase 2. Phase 1 is about hydration, sleep, inflammation and finding the pelvic floor.'],
     ['My hips are sore from the stretches. Is that expected?','Mild stiffness the first week is normal, especially if you sit a lot. Sharp or joint pain is not — back off the range and build slowly.']
   ],
@@ -229,7 +229,7 @@ const FAQ = {
     ['I have a heart condition or diabetes. Is this suitable?','Bring the protocol to your doctor first. Cold exposure, fasting windows and high-nitrate foods all interact with common cardiac and diabetes treatment. None of this replaces medical advice.'],
     ['My partner does not know I am doing this. Is it discreet?','Yes. It is an app on your phone with no explicit images and no obvious branding. The content reads as health and wellness.'],
     ['Do I need to do it in order?','Yes. Each phase builds on the tissue and habit changes from the one before. Jumping to Phase 4 without the foundation does not work.'],
-    ['What if I miss a week?','Resume where you are. Missed days show as missed in your tracker, which is honest feedback rather than punishment. The protocol does not reset.'],
+    ['What if I stop for a week?','Nothing is lost. The protocol waits where you left it — open the app and your next day is exactly where it was. Nothing resets and nothing is marked against you.'],
     ['Can I do this alongside ED medication?','Many men do, but discuss it with the doctor who prescribed it — particularly the beet juice, since combining nitrates with PDE5 inhibitors can cause a dangerous drop in blood pressure.'],
     ['Is my data stored anywhere?','No. Everything stays in your browser on this device. Clearing your browser data clears your progress, so avoid doing that.'],
     ['Can I use this on more than one device?','Progress is stored per device and does not sync. Use one device for consistency.'],
