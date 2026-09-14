@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>HorseFil — Complete Your Order</title>
+<style>
+  :root{
+    --bg:#0a0a0a;
+    --fg:#ffffff;
+    --muted:#8b8b8b;
+    --green:#22c55e;
+    --warn:#fbbf24;
+    --line:#242424;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    background:var(--bg);
+    color:var(--fg);
+    font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    min-height:100vh;
+  }
+
+  .page{
+    width:100%;
+    max-width:960px;
+    margin:0 auto;
+    padding:20px 16px 40px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:20px;
+  }
+
+  /* 1. progresso */
+  .progress{width:100%;max-width:800px}
+  .progress-label{
+    display:flex;
+    align-items:baseline;
+    justify-content:center;
+    gap:8px;
+    margin-bottom:10px;
+    font-size:14px;
+    font-weight:500;
+    color:var(--muted);
+    letter-spacing:.2px;
+  }
+  .progress-label b{color:var(--green);font-size:17px;font-weight:700}
+  .progress-track{
+    height:8px;
+    border-radius:999px;
+    background:#1c1c1c;
+    overflow:hidden;
+  }
+  .progress-fill{
+    height:100%;
+    width:0;
+    border-radius:999px;
+    background:var(--green);
+    animation:fill 1.5s cubic-bezier(.22,.9,.3,1) forwards;
+  }
+  @keyframes fill{to{width:90%}}
+  @media (prefers-reduced-motion:reduce){
+    .progress-fill{animation:none;width:90%}
+  }
+
+  /* 2. aviso de sistema */
+  .notice{
+    max-width:640px;
+    text-align:center;
+    font-size:13.5px;
+    font-weight:600;
+    line-height:1.5;
+    color:var(--warn);
+    letter-spacing:.1px;
+  }
+
+  /* 3. heading */
+  h1{
+    max-width:720px;
+    text-align:center;
+    font-size:28px;
+    font-weight:800;
+    line-height:1.2;
+    letter-spacing:-.4px;
+    text-transform:uppercase;
+  }
+
+  /* 4. video */
+  .video{
+    width:100%;
+    max-width:800px;
+    aspect-ratio:16/9;
+    background:#000;
+    border:1px solid var(--line);
+    border-radius:12px;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .video > iframe,
+  .video > video,
+  .video > vturb-smartplayer{width:100%;height:100%;border:0;display:block}
+  .placeholder{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:14px;
+    pointer-events:none;
+  }
+  .placeholder svg{width:64px;height:64px;fill:#fff;opacity:.5}
+  .placeholder span{font-size:12px;letter-spacing:.6px;color:var(--muted);text-transform:uppercase}
+
+  /* 5. area reservada para os botoes de checkout */
+  .checkout-buttons-area{
+    width:100%;
+    max-width:800px;
+    min-height:120px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:14px;
+  }
+
+  /* 6. recusa */
+  .decline{
+    display:inline-block;
+    font-size:13px;
+    line-height:1.5;
+    color:var(--muted);
+    text-decoration:underline;
+    text-underline-offset:3px;
+    text-decoration-thickness:1px;
+    text-align:center;
+    transition:opacity .15s ease;
+  }
+  .decline:hover,
+  .decline:focus-visible{opacity:.65}
+
+  /* tablet */
+  @media (min-width:768px){
+    .page{gap:24px;padding:28px 16px 48px}
+    h1{font-size:34px}
+    .notice{font-size:14px}
+    .video{max-width:680px}
+    .progress{max-width:680px}
+  }
+  /* desktop */
+  @media (min-width:1025px){
+    h1{font-size:38px}
+    .video{max-width:800px}
+    .progress{max-width:800px}
+  }
+</style>
+</head>
+<body>
+
+<main class="page">
+
+  <div class="progress">
+    <div class="progress-label">Only one step left… <b>90%</b></div>
+    <div class="progress-track" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" aria-label="Order progress">
+      <div class="progress-fill"></div>
+    </div>
+  </div>
+
+  <p class="notice">⚠️ Do not close or refresh this page, it may cause errors with your purchase...</p>
+
+  <h1>Watch your first protocol step below 👇</h1>
+
+  <div class="video">
+    <!-- ================================================================= -->
+    <!-- INSERIR O EMBED DO VIDEO AQUI (iframe ou script do player)         -->
+    <!-- Apague a div .placeholder abaixo ao colar o embed.                 -->
+    <!-- ================================================================= -->
+    <div class="placeholder">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+      <span>Video embed goes here</span>
+    </div>
+  </div>
+
+  <!-- INSERIR BOTÕES DE CHECKOUT ONE-CLICK AQUI -->
+  <div class="checkout-buttons-area" id="cta-buttons"></div>
+
+  <a class="decline" href="/up2">No, thanks! I don't want to multiply my results.</a>
+
+</main>
+
+<script>
+  // mantem o visitante na pagina ao usar o botao voltar
+  (function () {
+    try {
+      history.pushState(null, '', location.href);
+      window.addEventListener('popstate', function () {
+        history.pushState(null, '', location.href);
+      });
+    } catch (e) {}
+  })();
+</script>
+
+</body>
+</html>
