@@ -56,7 +56,7 @@
   .video{
     width:100%;
     max-width:min(420px,46vh);
-    aspect-ratio:9/16;
+    aspect-ratio:1000/1674;
     background:#000;
     border:1px solid var(--line);
     border-radius:12px;
@@ -67,7 +67,8 @@
   }
   .video > iframe,
   .video > video,
-  .video > vturb-smartplayer{width:100%;height:100%;border:0;display:block}
+  .video > vturb-smartplayer{width:100%;max-width:none;height:100%;border:0;display:block}
+  .video .vturb-player-placeholder{padding-top:0!important;height:100%}
   .placeholder{
     display:flex;
     flex-direction:column;
@@ -128,14 +129,7 @@
   <h1>See when you will <span class="hl">gain access</span> to your product 👇</h1>
 
   <div class="video">
-    <!-- ================================================================= -->
-    <!-- INSERIR O EMBED DO VIDEO AQUI (iframe ou script do player)         -->
-    <!-- Apague a div .placeholder abaixo ao colar o embed.                 -->
-    <!-- ================================================================= -->
-    <div class="placeholder">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
-      <span>Video embed goes here</span>
-    </div>
+    <vturb-smartplayer id="vid-6aa83183674fc27e0646dd38" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;"><div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 167.4074074074074% 0 0; z-index: 0; background-color: black;"></div></vturb-smartplayer> <script type="text/javascript"> var s=document.createElement("script"); s.src="https://scripts.converteai.net/d21a9e1d-910e-4254-b2bc-30b12586d2ef/players/6aa83183674fc27e0646dd38/v4/player.js", s.async=!0,document.head.appendChild(s); </script>
   </div>
 
   <!-- INSERIR BOTÕES DE CHECKOUT ONE-CLICK AQUI -->
