@@ -52,9 +52,9 @@ function $(sel, root){ return (root||document).querySelector(sel); }
 function $$(sel, root){ return Array.prototype.slice.call((root||document).querySelectorAll(sel)); }
 function on(sel, fn, root){ $$(sel, root).forEach(e => e.addEventListener('click', fn)); }
 /* Logo: trocar o arquivo em /app/logo.png. Se nao existir, cai no placeholder. */
-const LOGO_SRC = '/app/logo.png';
-const FALLBACK = "this.onerror=null;this.outerHTML='<div class=\\'logo-ph\\'>LOGO</div>'";
-const FALLBACK_SM = "this.onerror=null;this.outerHTML='<div class=\\'logo-ph sm\\'>LOGO</div>'";
+const LOGO_SRC = '/app/logo.webp';
+const FALLBACK = "if(this.src.indexOf('.webp')>-1){this.src='/app/logo.png';return}this.onerror=null;this.outerHTML='<div class=\\'logo-ph\\'>LOGO</div>'";
+const FALLBACK_SM = "if(this.src.indexOf('.webp')>-1){this.src='/app/logo.png';return}this.onerror=null;this.outerHTML='<div class=\\'logo-ph sm\\'>LOGO</div>'";
 const LOGO = '<img class="logo" src="' + LOGO_SRC + '" alt="HorseFil" onerror="' + FALLBACK + '">';
 const LOGO_SM = '<img class="logo sm" src="' + LOGO_SRC + '" alt="HorseFil" onerror="' + FALLBACK_SM + '">';
 
