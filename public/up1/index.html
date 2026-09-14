@@ -93,8 +93,8 @@
   /* 4. video */
   .video{
     width:100%;
-    max-width:800px;
-    aspect-ratio:16/9;
+    max-width:min(420px,46vh);
+    aspect-ratio:9/16;
     background:#000;
     border:1px solid var(--line);
     border-radius:12px;
@@ -133,13 +133,13 @@
     .page{gap:24px;padding:28px 16px 48px}
     h1{font-size:34px}
     .notice{font-size:14px}
-    .video{max-width:680px}
+    .video{max-width:min(420px,46vh)}
     .progress{max-width:680px}
   }
   /* desktop */
   @media (min-width:1025px){
     h1{font-size:38px}
-    .video{max-width:800px}
+    .video{max-width:min(440px,48vh)}
     .progress{max-width:800px}
   }
 </style>
