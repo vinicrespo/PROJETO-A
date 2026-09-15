@@ -220,7 +220,33 @@
     .pull{font-size:24px}
     .price .new{font-size:76px}
   }
+
+  /* area do checkout */
+  .checkout-buttons-area{gap:0}
+  .checkout-buttons-area button{transition:background-color .18s ease,transform .18s ease}
+  .checkout-buttons-area button:hover{background-color:#046b2c}
+  .checkout-buttons-area button:active{transform:scale(.98)}
+  .no-thanks{
+    display:block;
+    margin:22px auto 0;
+    padding:10px 14px;
+    background:none;
+    border:0;
+    font-family:inherit;
+    font-size:14px;
+    font-weight:400;
+    color:#ffffff;
+    text-decoration:underline;
+    text-underline-offset:3px;
+    text-decoration-thickness:1px;
+    text-align:center;
+    cursor:pointer;
+    opacity:.75;
+    transition:opacity .18s ease;
+  }
+  .no-thanks:hover,.no-thanks:focus-visible{opacity:1}
 </style>
+  <script src="https://checkout.kashpay.com.br/scripts/upsell-processor.js"></script>
 </head>
 <body>
 
@@ -368,7 +394,10 @@
   <!-- 13 -->
   <section>
     <!-- INSERIR BOTÃO DE CHECKOUT ONE-CLICK AQUI -->
-    <div class="checkout-buttons-area" id="cta-buttons"></div>
+    <div class="checkout-buttons-area" id="cta-buttons">
+      <button type="button" onclick="acceptUpsell('https://checkout.kashpay.com.br/u/db9c25c9304180a2')" style="font-family: 'Poppins'; font-size: 18px; font-weight: 600; line-height: 1.3; color: #ffffff; background-color: #057932; border: none; border-radius: 10px; padding: 13px 7%; cursor: pointer; text-align: center; display: block; margin: auto;">Get Flood Protocol</button>
+      <a class="no-thanks" href="/up4">No, Thanks!</a>
+    </div>
   </section>
 
   <!-- 15 -->
