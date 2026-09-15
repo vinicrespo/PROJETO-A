@@ -77,6 +77,19 @@
     text-transform:uppercase;
     color:var(--fg);
   }
+  .card.gtee{
+    background:linear-gradient(180deg,rgba(250,204,21,.13),rgba(250,204,21,.04));
+    border-color:var(--yellow);
+    box-shadow:0 0 22px rgba(250,204,21,.18);
+    animation:rise .45s ease-out both,gGlow 2.6s ease-in-out infinite 1s;
+  }
+  .card.gtee b{color:var(--yellow);font-size:30px;white-space:nowrap;text-shadow:0 0 16px rgba(250,204,21,.35)}
+  .card.gtee em{color:#f0e2a8}
+  .card.gtee .sh{display:block;font-size:22px;line-height:1;margin-bottom:4px}
+  @keyframes gGlow{
+    0%,100%{box-shadow:0 0 22px rgba(250,204,21,.18)}
+    50%{box-shadow:0 0 34px rgba(250,204,21,.36)}
+  }
   .plus{
     font-size:28px;
     font-weight:900;
@@ -109,7 +122,7 @@
     letter-spacing:.3px;
   }
   .offer-cta{
-    margin-top:14px;
+    margin-top:11px;
     text-transform:uppercase;
     font-size:13px;
     font-weight:800;
@@ -180,14 +193,16 @@
 
   /* compacta para caber em uma tela */
   @media (max-width:767px){
-    .wrap{padding:16px 20px 18px}
-    h1{font-size:23px;margin-bottom:14px}
+    .wrap{padding:12px 20px 14px}
+    h1{font-size:22px;margin-bottom:11px}
     .stack{gap:6px}
-    .card{padding:12px 16px}
-    .card b{font-size:33px}
+    .card{padding:10px 16px}
+    .card b{font-size:31px}
+    .card.gtee b{font-size:24px}
+    .card.gtee .sh{font-size:19px}
     .card em{font-size:12px;letter-spacing:2px;margin-top:3px}
     .plus{font-size:23px}
-    .offer{margin-top:14px;padding:18px 16px}
+    .offer{margin-top:11px;padding:15px 16px}
     .offer-lead{font-size:13px}
     .warranty b{font-size:23px}
     .offer .amount{font-size:52px;margin-top:6px}
@@ -195,14 +210,16 @@
   }
   /* telas baixas (iPhone SE e similares) */
   @media (max-height:700px){
-    .wrap{padding:10px 20px 12px}
+    .wrap{padding:8px 20px 10px}
     h1{font-size:20px;margin-bottom:10px}
     .stack{gap:5px}
-    .card{padding:9px 14px}
+    .card{padding:7px 14px}
     .card b{font-size:28px}
+    .card.gtee b{font-size:22px}
+    .card.gtee .sh{font-size:17px}
     .card em{font-size:11px;margin-top:2px}
     .plus{font-size:19px}
-    .offer{margin-top:10px;padding:14px}
+    .offer{margin-top:8px;padding:11px 14px}
     .offer-lead{font-size:12px}
     .warranty{padding:9px 14px;margin-top:12px}
     .warranty b{font-size:20px}
@@ -230,6 +247,8 @@
       box-shadow:0 10px 26px rgba(0,0,0,.5);
     }
     .card b{font-size:44px}
+    .card.gtee b{font-size:25px;white-space:nowrap}
+    .card.gtee .sh{font-size:26px}
     .plus{font-size:32px;align-self:center}
 
     .offer{margin-top:28px;padding:32px 24px}
@@ -258,15 +277,12 @@
     <div class="card"><b>Orgasmic</b><em>Massage</em></div>
     <div class="plus">+</div>
     <div class="card"><b>Flood</b><em>Protocol</em></div>
+    <div class="plus">+</div>
+    <div class="card gtee"><span class="sh">🛡️</span><b>360-Day</b><em>Extended Guarantee</em></div>
   </div>
 
   <div class="offer">
-    <p class="offer-lead">Get the complete combo:<br>7X&nbsp;Accelerator, Orgasmic&nbsp;Massage<br>and Flood&nbsp;Protocol right now</p>
-
-    <div class="warranty">
-      <span class="shield">🛡️</span>
-      <span class="wtxt"><b>360-Day</b><em>Extended Guarantee</em></span>
-    </div>
+    <p class="offer-lead">All three modules<br>plus the 360-day guarantee</p>
 
     <p class="offer-cta">All of it for just</p>
     <span class="amount">$15</span>
