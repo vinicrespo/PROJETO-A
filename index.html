@@ -200,7 +200,7 @@ footer p{font-size:12px;color:var(--brand-muted);line-height:1.7;max-width:720px
     expanded = true;
     container.classList.add('expanded');
     wrapper.classList.add('expanded');
-    container.scrollIntoView({behavior:'smooth',block:'start'});
+    wrapper.scrollIntoView({behavior:'smooth',block:'start'});
   }
 
   function collapse(){
@@ -214,29 +214,9 @@ footer p{font-size:12px;color:var(--brand-muted);line-height:1.7;max-width:720px
     var player = document.querySelector('vturb-smartplayer');
     if(!player) return setTimeout(waitForPlayer, 500);
 
-    var video = null;
-    function findVideo(){
-      video = player.querySelector('video') || (player.shadowRoot && player.shadowRoot.querySelector('video'));
-      if(!video) return setTimeout(findVideo, 500);
-
-      video.addEventListener('play', expand);
-      video.addEventListener('pause', collapse);
-      video.addEventListener('ended', collapse);
-    }
-    findVideo();
-
-    var observer = new MutationObserver(function(){
-      if(!video){
-        var v = player.querySelector('video') || (player.shadowRoot && player.shadowRoot.querySelector('video'));
-        if(v){
-          video = v;
-          video.addEventListener('play', expand);
-          video.addEventListener('pause', collapse);
-          video.addEventListener('ended', collapse);
-        }
-      }
-    });
-    observer.observe(player, {childList:true, subtree:true});
+    player.addEventListener('play', expand);
+    player.addEventListener('pause', collapse);
+    player.addEventListener('ended', collapse);
   }
   waitForPlayer();
 })();
