@@ -2,6 +2,7 @@
   "rewrites": [
     { "source": "/thanks", "destination": "/thanks.html" },
     { "source": "/up1", "destination": "/up1.html" },
+    { "source": "/up2", "destination": "/up2.html" },
     { "source": "/app/(.*)", "destination": "/app/index.html" }
   ]
 }
