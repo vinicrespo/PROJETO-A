@@ -16,167 +16,112 @@
 
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     -webkit-font-smoothing: antialiased;
     background: #ffffff;
-    color: #4B5563;
-    line-height: 1.7;
+    color: #1a1a1a;
     overflow-x: hidden;
   }
 
-  .top-bar {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: #DC2626;
-    padding: 10px 16px;
-    text-align: center;
-  }
-  .top-bar p {
-    font-size: 13px;
-    font-weight: 700;
-    color: #fff;
-    line-height: 1.4;
-  }
-
   .container {
-    max-width: 640px;
+    max-width: 480px;
     margin: 0 auto;
-    padding: 32px 20px 48px;
-  }
-  @media (min-width: 768px) {
-    .container { padding: 40px 40px 60px; }
+    padding: 40px 20px 48px;
   }
 
   .headline {
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 800;
-    color: #1a1a1a;
     text-align: center;
     line-height: 1.3;
-    margin-bottom: 28px;
-  }
-  @media (min-width: 480px) {
-    .headline { font-size: 28px; }
+    margin-bottom: 8px;
   }
 
-  .text { margin-bottom: 24px; text-align: center; font-size: 16px; }
-  .text-left { text-align: left; }
-
-  .bold-highlight {
-    font-weight: 700;
-    color: #1a1a1a;
-  }
-
-  .combo-card {
-    background: #F5F7FA;
-    border: 1px solid #E5E7EB;
-    border-radius: 12px;
-    padding: 20px;
-    margin-bottom: 12px;
-  }
-  .combo-card h4 {
+  .sub {
     font-size: 15px;
-    font-weight: 700;
-    color: #1a1a1a;
-    margin-bottom: 4px;
-  }
-  .combo-card .original-price {
-    font-size: 13px;
-    color: #9CA3AF;
-  }
-  .combo-card p {
-    font-size: 14px;
-    line-height: 1.6;
-    color: #4B5563;
-    margin-top: 8px;
-  }
-
-  .total-box {
-    background: #FEF2F2;
-    border: 1px dashed #DC2626;
-    border-radius: 10px;
-    padding: 16px;
+    color: #6B7280;
     text-align: center;
-    margin: 24px 0;
+    margin-bottom: 32px;
   }
-  .total-box .old {
-    font-size: 15px;
+
+  .cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 32px;
+  }
+
+  .card {
+    background: #F9FAFB;
+    border: 1px solid #E5E7EB;
+    border-radius: 10px;
+    padding: 16px 12px;
+    text-align: center;
+  }
+  .card h4 {
+    font-size: 12px;
+    font-weight: 700;
+    color: #1a1a1a;
+    line-height: 1.3;
+    margin-bottom: 8px;
+    min-height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .card .old-price {
+    font-size: 13px;
     color: #9CA3AF;
     text-decoration: line-through;
   }
-  .total-box .new {
-    font-size: 14px;
-    font-weight: 700;
-    color: #DC2626;
-    margin-top: 2px;
+
+  .arrow-down {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  .arrow-down svg {
+    width: 24px;
+    height: 24px;
+    color: #D1D5DB;
   }
 
-  .guarantee-box {
-    background: #F0FFF4;
+  .offer {
     border: 2px solid #1B6B4A;
-    border-radius: 12px;
-    padding: 24px;
-    margin: 28px 0;
+    border-radius: 14px;
+    padding: 28px 20px;
     text-align: center;
+    margin-bottom: 24px;
   }
-  .guarantee-box .shield {
-    font-size: 40px;
-    margin-bottom: 12px;
-  }
-  .guarantee-box h3 {
-    font-size: 20px;
-    font-weight: 800;
-    color: #1B6B4A;
-    margin-bottom: 8px;
-  }
-  .guarantee-box p {
-    font-size: 15px;
-    line-height: 1.6;
-    color: #4B5563;
-  }
-  .guarantee-box strong { color: #1a1a1a; }
-
-  .price-box {
-    border: 2px solid #1B6B4A;
-    border-radius: 12px;
-    background: #fff;
-    padding: 24px;
-    text-align: center;
-    margin: 32px 0;
-  }
-  .price-box .label {
-    font-size: 16px;
-    font-weight: 600;
-    color: #4B5563;
-    margin-bottom: 4px;
-  }
-  .price-box .amount {
-    font-size: 40px;
+  .offer .price {
+    font-size: 42px;
     font-weight: 900;
     color: #1B6B4A;
+    line-height: 1;
   }
-  .price-box .detail {
-    font-size: 13px;
-    color: #9CA3AF;
-    margin-top: 4px;
+  .offer .label {
+    font-size: 14px;
+    color: #6B7280;
+    margin-top: 6px;
   }
 
-  .urgency {
+  .guarantee {
+    background: #F0FDF4;
+    border-radius: 12px;
+    padding: 20px;
     text-align: center;
-    margin: 28px 0;
-    font-size: 15px;
+    margin-bottom: 32px;
   }
-  .urgency strong { color: #DC2626; }
-
-  .divider {
-    width: 60px;
-    height: 3px;
-    background: #E5E7EB;
-    margin: 32px auto;
-    border-radius: 2px;
+  .guarantee h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1B6B4A;
+    margin-bottom: 6px;
+  }
+  .guarantee p {
+    font-size: 14px;
+    color: #4B5563;
+    line-height: 1.5;
   }
 
   .skip-link {
@@ -185,7 +130,6 @@
     font-size: 13px;
     color: #9CA3AF;
     text-decoration: underline;
-    margin-top: 16px;
     cursor: pointer;
     padding: 8px;
   }
@@ -194,84 +138,43 @@
 </head>
 <body>
 
-  <div class="top-bar">
-    <p>⏳ This is your last chance — this offer won't appear again.</p>
-  </div>
-
   <div class="container">
 
-    <h1 class="headline">
-      Wait — before you go, here's everything for just $10.
-    </h1>
+    <h1 class="headline">Get all three for $10</h1>
+    <p class="sub">Everything you passed on — one payment, full access.</p>
 
-    <p class="text">
-      You skipped some upgrades, and that's okay. But what if you could get <span class="bold-highlight">all three</span> — plus an extended 360-day guarantee — for less than a single coffee?
-    </p>
-
-    <div class="divider"></div>
-
-    <p class="text bold-highlight" style="font-size:18px;margin-bottom:20px;">Here's what's included:</p>
-
-    <div class="combo-card">
-      <h4>✅ 7X Accelerator</h4>
-      <span class="original-price">Originally $69</span>
-      <p>The fast-track protocol that multiplies your Emma results — designed for women who want to see changes faster.</p>
+    <div class="cards">
+      <div class="card">
+        <h4>7X Accelerator</h4>
+        <span class="old-price">$69</span>
+      </div>
+      <div class="card">
+        <h4>Detox Shield</h4>
+        <span class="old-price">$49</span>
+      </div>
+      <div class="card">
+        <h4>Sleep & Digestion Mastery</h4>
+        <span class="old-price">$19</span>
+      </div>
     </div>
 
-    <div class="combo-card">
-      <h4>✅ Detox Shield</h4>
-      <span class="original-price">Originally $49</span>
-      <p>Protect your body from everyday toxins that silently undo your gut healing progress.</p>
+    <div class="arrow-down">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
     </div>
 
-    <div class="combo-card">
-      <h4>✅ Sleep & Digestion Mastery</h4>
-      <span class="original-price">Originally $19</span>
-      <p>The nighttime protocol that ensures your gut heals around the clock — not just during the day.</p>
+    <div class="offer">
+      <div class="price">$10</div>
+      <div class="label">One-time payment · Instant access</div>
     </div>
 
-    <div class="total-box">
-      <p class="old">Total value: $137</p>
-      <p class="new">You pay just $10 — that's 93% off</p>
-    </div>
-
-    <div class="divider"></div>
-
-    <!-- Guarantee -->
-    <div class="guarantee-box">
-      <div class="shield">🛡️</div>
+    <div class="guarantee">
       <h3>360-Day Extended Guarantee</h3>
-      <p>
-        With this bundle, your guarantee is <strong>extended to a full year.</strong> If at any point in the next 360 days you feel these programs didn't improve your results — you get a complete refund. No questions, no hassle, no risk.
-      </p>
+      <p>A full year to try everything. If you're not satisfied, you get a complete refund — no questions asked.</p>
     </div>
 
-    <p class="text" style="font-style:italic;">
-      You have an entire year to try everything. If it doesn't work, you pay nothing.
-    </p>
+    <!-- Buttons: user will add one-click upsell -->
 
-    <div class="divider"></div>
-
-    <!-- Price -->
-    <p class="text bold-highlight">
-      Three complete programs. One full year of protection. One price.
-    </p>
-
-    <div class="price-box">
-      <p class="label">Everything above for:</p>
-      <p class="amount">$10</p>
-      <p class="detail">One-time payment · Instant access · 360-day guarantee</p>
-    </div>
-
-    <!-- Urgency -->
-    <div class="urgency">
-      <p>🚨 <strong>This is the final offer.</strong></p>
-      <p style="margin-top:8px;">If you close this page, these three upgrades go back to full price — and the 360-day guarantee disappears.</p>
-    </div>
-
-    <!-- No buttons - user will add one-click upsell buttons -->
-
-    <a href="/thanks" class="skip-link">No thanks, I don't want the bundle.</a>
+    <a href="/thanks" class="skip-link">No thanks, take me to my purchase.</a>
 
   </div>
 
