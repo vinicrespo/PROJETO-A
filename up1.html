@@ -14,6 +14,9 @@
 <link rel="dns-prefetch" href="https://images.converteai.net">
 <link rel="dns-prefetch" href="https://license.vturb.com">
 
+<!-- Kashpay Upsell -->
+<script src="https://checkout.kashpay.com/scripts/upsell-processor.js"></script>
+
 <!-- Pixel UTMify -->
 <script>window.pixelId="6ae923c2c2e4c3e36e33060d";</script>
 <script src="https://cdn.utmify.com.br/scripts/pixel/pixel.js" async defer></script>
@@ -109,6 +112,39 @@
   @media (max-width: 480px) {
     .video-container { max-width: 100%; }
   }
+
+  .up1 { display: none; }
+
+  .cta-section {
+    max-width: 400px;
+    margin: 28px auto 0;
+    text-align: center;
+  }
+  .cta-btn {
+    display: block;
+    width: 100%;
+    padding: 16px 20px;
+    background: #057932;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+    box-shadow: 0 4px 16px rgba(5,121,50,0.3);
+  }
+  .cta-btn:active { transform: scale(0.98); }
+  .skip-link {
+    display: inline-block;
+    margin-top: 14px;
+    font-size: 13px;
+    color: #666;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  .skip-link:hover { color: #999; }
 </style>
 </head>
 <body>
@@ -136,6 +172,11 @@
     <div class="video-container">
       <vturb-smartplayer id="vid-6aeba7d9b44e361757eb27c4" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;"><div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 177.77777777777777% 0 0; z-index: 0; background-color: black;"></div></vturb-smartplayer>
       <script type="text/javascript">var s=document.createElement("script");s.src="https://scripts.converteai.net/d21a9e1d-910e-4254-b2bc-30b12586d2ef/players/6aeba7d9b44e361757eb27c4/v4/player.js",s.async=!0,document.head.appendChild(s);</script>
+    </div>
+
+    <div class="cta-section up1">
+      <button type="button" onclick="acceptUpsell('https://checkout.kashpay.com/u/519a2d0bf6b05421')" class="cta-btn">Yes, Add the 7X Accelerator — $69</button>
+      <a href="/up2" class="skip-link">No thanks, I'll stick with the basic protocol.</a>
     </div>
   </div>
 

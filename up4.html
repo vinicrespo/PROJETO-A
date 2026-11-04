@@ -9,6 +9,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
+<!-- Kashpay Upsell -->
+<script src="https://checkout.kashpay.com/scripts/upsell-processor.js"></script>
+
 <!-- Pixel UTMify -->
 <script>window.pixelId="6ae923c2c2e4c3e36e33060d";</script>
 <script src="https://cdn.utmify.com.br/scripts/pixel/pixel.js" async defer></script>
@@ -167,7 +170,7 @@
       <p>A full year to try everything. Not satisfied? <strong>Complete refund, no questions asked.</strong></p>
     </div>
 
-    <!-- Buttons: user will add one-click upsell -->
+    <button type="button" onclick="acceptUpsell('https://checkout.kashpay.com/u/5384dcb77d807d94')" style="display:block;width:100%;max-width:400px;margin:0 auto;padding:16px 20px;background:#1B6B4A;color:#fff;font-family:'Inter',sans-serif;font-size:17px;font-weight:700;border:none;border-radius:10px;cursor:pointer;text-align:center;box-shadow:0 4px 16px rgba(27,107,74,0.3);">Yes, Give Me Everything — Just $10</button>
 
     <a href="/thanks" class="skip-link">No thanks, take me to my purchase.</a>
 
