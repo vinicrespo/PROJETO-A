@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Attention — Emma</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- Pixel UTMify -->
+<script>window.pixelId="6ae923c2c2e4c3e36e33060d";</script>
+<script src="https://cdn.utmify.com.br/scripts/pixel/pixel.js" async defer></script>
+<!-- End Pixel/UTM -->
+
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background: #ffffff;
+    color: #4B5563;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  .top-bar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: #DC2626;
+    padding: 10px 16px;
+    text-align: center;
+  }
+  .top-bar p {
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.4;
+  }
+
+  .container {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 32px 20px 48px;
+  }
+  @media (min-width: 768px) {
+    .container { padding: 40px 40px 60px; }
+  }
+
+  .headline {
+    font-size: 24px;
+    font-weight: 800;
+    color: #1a1a1a;
+    text-align: center;
+    line-height: 1.3;
+    margin-bottom: 28px;
+  }
+  @media (min-width: 480px) {
+    .headline { font-size: 28px; }
+  }
+  .headline .warn { color: #DC2626; }
+
+  .text { margin-bottom: 24px; text-align: center; font-size: 16px; }
+  .text-left { text-align: left; }
+
+  .bold-center {
+    font-size: 20px;
+    font-weight: 800;
+    color: #1a1a1a;
+    text-align: center;
+    margin: 32px 0 24px;
+    line-height: 1.3;
+  }
+
+  .bold-highlight {
+    font-weight: 700;
+    color: #1a1a1a;
+  }
+
+  .consequence-card {
+    background: #F5F7FA;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 10px;
+    font-size: 15px;
+    line-height: 1.6;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .consequence-card .emoji { flex-shrink: 0; font-size: 18px; }
+  .consequence-card .card-text { flex: 1; }
+  .consequence-card .card-text strong { color: #1a1a1a; }
+
+  .product-heading {
+    font-size: 22px;
+    font-weight: 800;
+    color: #1B6B4A;
+    text-align: center;
+    margin: 36px 0 16px;
+    line-height: 1.3;
+  }
+
+  .benefit-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 16px;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  .benefit-item .check {
+    color: #1B6B4A;
+    font-size: 18px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .benefit-item strong { color: #1a1a1a; }
+
+  .mechanism-heading {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 32px 0 12px;
+    text-align: center;
+  }
+
+  .price-box {
+    border: 2px solid #1B6B4A;
+    border-radius: 12px;
+    background: #fff;
+    padding: 24px;
+    text-align: center;
+    margin: 32px 0;
+  }
+  .price-box .label {
+    font-size: 16px;
+    font-weight: 600;
+    color: #4B5563;
+    margin-bottom: 6px;
+  }
+  .price-box .amount {
+    font-size: 36px;
+    font-weight: 900;
+    color: #1B6B4A;
+  }
+
+  .bonus-section { margin: 32px 0; }
+  .bonus-heading {
+    font-size: 18px;
+    font-weight: 800;
+    color: #1a1a1a;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .bonus-card {
+    background: #FAFAFA;
+    border: 1px solid #E5E7EB;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 14px;
+  }
+  .bonus-card h4 {
+    font-size: 15px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 8px;
+  }
+  .bonus-card p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #4B5563;
+  }
+
+  .guarantee-box {
+    background: #F0FFF4;
+    border: 1px solid #BBF7D0;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 28px 0;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  .guarantee-box strong { color: #1a1a1a; }
+
+  .urgency {
+    text-align: center;
+    margin: 28px 0;
+    font-size: 15px;
+  }
+  .urgency strong { color: #DC2626; }
+
+  .cta-btn {
+    display: block;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto 12px;
+    padding: 18px 24px;
+    background: #1B6B4A;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 0 6px 24px rgba(27,107,74,0.3);
+    animation: ctaPulse 2s ease-in-out infinite;
+    transition: background 0.2s;
+  }
+  .cta-btn:hover { background: #155A3A; }
+  .cta-btn:active { transform: scale(0.98); }
+  @keyframes ctaPulse {
+    0%, 100% { box-shadow: 0 6px 24px rgba(27,107,74,0.3); }
+    50% { box-shadow: 0 6px 36px rgba(27,107,74,0.5); }
+  }
+
+  .skip-link {
+    display: block;
+    text-align: center;
+    font-size: 13px;
+    color: #9CA3AF;
+    text-decoration: underline;
+    margin-top: 8px;
+    cursor: pointer;
+    padding: 8px;
+  }
+  .skip-link:hover { color: #6B7280; }
+
+  .divider {
+    width: 60px;
+    height: 3px;
+    background: #E5E7EB;
+    margin: 32px auto;
+    border-radius: 2px;
+  }
+
+  .price-compare {
+    font-size: 15px;
+    line-height: 1.7;
+    text-align: center;
+    margin-bottom: 8px;
+  }
+</style>
+</head>
+<body>
+
+  <!-- Sticky Top Bar -->
+  <div class="top-bar">
+    <p>Only a few in your area were selected, don't miss this.</p>
+  </div>
+
+  <div class="container">
+
+    <!-- Headline -->
+    <h1 class="headline">
+      ⚠️ <span class="warn">Attention:</span> Your order is not complete yet!
+    </h1>
+
+    <!-- Intro -->
+    <p class="text">
+      Before you access your Emma app, read this short message. It could be the difference between slow, frustrating results and waking up every morning feeling lighter than you did the night before.
+    </p>
+
+    <!-- Validation -->
+    <p class="text">
+      Your decision to join Emma was the right one. You're about to restore your gut, eliminate the archaea, and experience the kind of digestion you haven't had in years. 🎉
+    </p>
+    <p class="text bold-highlight">
+      But there's something the protocol doesn't cover — and it's quietly stealing up to 50% of your results every single night.
+    </p>
+
+    <!-- The Problem -->
+    <p class="bold-center">Your sleep is sabotaging your gut.</p>
+
+    <!-- Explanation -->
+    <p class="text text-left">Here's what most people don't realize.</p>
+    <p class="text text-left">
+      Your gut does <strong>80% of its repair work while you sleep.</strong> The gut lining regenerates. Friendly flora repopulate. Inflammation drops. The mucosal barrier rebuilds.
+    </p>
+    <p class="text text-left">But <strong>ONLY</strong> if the conditions are right.</p>
+    <p class="text text-left">
+      If you eat the wrong foods at dinner, your body spends the entire night digesting instead of repairing.
+    </p>
+    <p class="text text-left">
+      If you sleep in the wrong position, you compress your intestines and slow bile flow to a crawl.
+    </p>
+    <p class="text text-left">
+      If your cortisol is elevated at bedtime — from screens, stress, or the wrong evening routine — your gut literally shuts down repair mode.
+    </p>
+    <p class="text text-left bold-highlight">
+      Every night you sleep wrong, you're erasing hours of progress your morning protocol built during the day.
+    </p>
+
+    <div class="divider"></div>
+
+    <!-- Consequences -->
+    <p class="text" style="margin-bottom:16px;">Without a nighttime protocol, you'll notice:</p>
+
+    <div class="consequence-card">
+      <span class="emoji">😴</span>
+      <span class="card-text"><strong>Waking up bloated</strong> — even though you went to bed feeling fine</span>
+    </div>
+    <div class="consequence-card">
+      <span class="emoji">🔄</span>
+      <span class="card-text"><strong>Sluggish mornings</strong> — your morning ritual takes longer to kick in because your gut didn't repair overnight</span>
+    </div>
+    <div class="consequence-card">
+      <span class="emoji">⚖️</span>
+      <span class="card-text"><strong>Weight that won't budge</strong> — your body stores fat when cortisol stays elevated through the night</span>
+    </div>
+    <div class="consequence-card">
+      <span class="emoji">🧠</span>
+      <span class="card-text"><strong>Brain fog that lingers</strong> — poor gut repair at night means serotonin production drops by morning</span>
+    </div>
+    <div class="consequence-card">
+      <span class="emoji">💤</span>
+      <span class="card-text"><strong>Restless sleep</strong> — an active digestive system at night keeps your nervous system on alert</span>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Transition -->
+    <p class="text">
+      Emma gives you the perfect morning. But without the right nighttime protocol, you're rebuilding the same wall every day that your body tears down every night.
+    </p>
+    <p class="text">
+      That's why I created something specifically for the hours between your last meal and your first morning ritual.
+    </p>
+
+    <!-- Product -->
+    <h2 class="product-heading">Introducing: Sleep & Digestion Mastery</h2>
+    <p class="text">
+      A complete nighttime protocol designed to work with your Emma program — so your gut heals around the clock, not just during the day.
+    </p>
+
+    <!-- Benefits -->
+    <div style="margin: 24px 0 32px;">
+      <div class="benefit-item">
+        <span class="check">✅</span>
+        <span><strong>Optimizes your dinner timing and composition</strong> — exactly what to eat and when to stop so your gut shifts from digestion to repair mode before you fall asleep</span>
+      </div>
+      <div class="benefit-item">
+        <span class="check">✅</span>
+        <span><strong>The 3-minute evening ritual</strong> — a specific sequence that activates your parasympathetic nervous system and signals your gut to begin overnight repair</span>
+      </div>
+      <div class="benefit-item">
+        <span class="check">✅</span>
+        <span><strong>Sleep position guide</strong> — the one position clinically shown to improve bile flow, reduce acid reflux, and accelerate intestinal transit while you sleep</span>
+      </div>
+      <div class="benefit-item">
+        <span class="check">✅</span>
+        <span><strong>Cortisol wind-down protocol</strong> — how to drop your cortisol levels in the 90 minutes before bed so your gut enters full repair mode</span>
+      </div>
+      <div class="benefit-item">
+        <span class="check">✅</span>
+        <span><strong>Morning-after effect</strong> — wake up with a flatter stomach, zero bloating, and a morning release that comes faster and smoother than ever</span>
+      </div>
+    </div>
+
+    <!-- Mechanism -->
+    <p class="mechanism-heading">🔬 Why does it work?</p>
+    <p class="text text-left">
+      Because it targets the one window your gut protocol is missing: <strong>the 8 hours you're asleep.</strong>
+    </p>
+    <p class="text text-left">
+      During sleep, your body enters what scientists call the <strong>Migrating Motor Complex (MMC)</strong> — a wave-like cleaning motion that sweeps debris through your intestines. But the MMC only activates under very specific conditions: low cortisol, empty stomach, and parasympathetic dominance.
+    </p>
+    <p class="text text-left">
+      Most women unknowingly block the MMC every single night — with a late snack, a scrolling session in bed, or simply sleeping on the wrong side.
+    </p>
+    <p class="text text-left bold-highlight">
+      Sleep & Digestion Mastery ensures the MMC fires every night, so you wake up cleaned out and ready for your morning protocol.
+    </p>
+
+    <div class="divider"></div>
+
+    <!-- Price Anchoring -->
+    <p class="price-compare">A single consultation with a sleep specialist costs <strong>$200–$400</strong>.</p>
+    <p class="price-compare">A digestive health coaching session runs <strong>$150+</strong>.</p>
+    <p class="price-compare" style="margin-bottom:0;">Sleep & Digestion Mastery gives you both — specifically designed for Emma users — and it <strong>never expires</strong> inside your app.</p>
+
+    <!-- Price Box -->
+    <div class="price-box">
+      <p class="label">Today only:</p>
+      <p class="amount">$19</p>
+    </div>
+
+    <!-- Bonuses -->
+    <div class="bonus-section">
+      <p class="bonus-heading">🎁 PLUS: You also receive:</p>
+      <div class="bonus-card">
+        <h4>Bonus 1: The Nighttime Gut-Healing Recipe Book <span style="color:#9CA3AF;">(worth $27)</span></h4>
+        <p>12 dinner recipes specifically designed to stop digestion before bedtime so your MMC activates on schedule. Each recipe tells you exactly when to eat it relative to your bedtime.</p>
+      </div>
+      <div class="bonus-card">
+        <h4>Bonus 2: The 5-Minute Wind-Down Audio Guide <span style="color:#9CA3AF;">(worth $19)</span></h4>
+        <p>A guided audio sequence inside your app that walks you through the evening cortisol-lowering protocol. Just press play, follow along, and your nervous system shifts into repair mode.</p>
+      </div>
+    </div>
+
+    <!-- Guarantee -->
+    <div class="guarantee-box">
+      <strong>✅ 90-Day Guarantee</strong><br><br>
+      If you don't notice a difference in how you wake up — flatter stomach, less bloating, smoother mornings — you have 90 days to request a full refund. No questions. No hassle.
+    </div>
+
+    <!-- Urgency -->
+    <div class="urgency">
+      <p>🚨 <strong>But pay attention:</strong></p>
+      <p style="margin-top:8px;">If you leave this page, this offer disappears forever.</p>
+      <p style="margin-top:8px;">Sleep & Digestion Mastery is only available right now, at this price, for Emma members who are serious about maximizing every hour of their transformation — including the 8 hours they're asleep.</p>
+    </div>
+
+    <!-- CTA -->
+    <a href="#" class="cta-btn" id="ctaBtn">Yes! Add Sleep & Digestion Mastery — Just $19</a>
+    <a href="/thanks" class="skip-link">No thanks, I'll skip the nighttime protocol.</a>
+
+  </div>
+
+</body>
+</html>
