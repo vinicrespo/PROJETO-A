@@ -16305,223 +16305,253 @@ function mr() {
     ],
   });
 }
-function hr() {
-  let e = qe(),
-    t = Tt(),
-    n = tr(t),
-    r = nr(t),
-    [i] = (0, _.useState)(ar(r)),
-    [a, o] = (0, _.useState)(() => O.get(`emma_ritual_` + t) || !1),
-    [s, c] = (0, _.useState)(!1),
-    [l, u] = (0, _.useState)(0);
-  (0, _.useEffect)(() => {
-    if (!s) return;
-    let e = setInterval(() => {
-      u((n) => (n >= 6 ? (clearInterval(e), c(!1), o(!0), O.set(`emma_ritual_` + t, !0), 0) : n + 1));
-    }, 1e3);
-    return () => clearInterval(e);
-  }, [s, t]);
-  let d = {
-      1: [
-        `Archaea populations decreasing`,
-        `Biofilm layers breaking down`,
-        `Stomach acid normalizing`,
-        `Bloating beginning to reduce`,
-      ],
-      2: [
-        `Gut lining cells regenerating`,
-        `Tight junctions repairing`,
-        `Inflammation decreasing`,
-        `Nutrient absorption improving`,
-      ],
-      3: [
-        `Beneficial bacteria colonizing`,
-        `Microbiome diversity increasing`,
-        `Immune function strengthening`,
-        `Food sensitivities reducing`,
-      ],
-      4: [
-        `Gut ecosystem stabilizing`,
-        `Maintenance habits forming`,
-        `Food freedom expanding`,
-        `Energy levels optimizing`,
-      ],
-      5: [
-        `Gut-brain axis strengthening`,
-        `Serotonin production optimizing`,
-        `Mental clarity sharpening`,
-        `Stress resilience building`,
-      ],
-      6: [
-        `Lifetime habits solidifying`,
-        `Microbiome self-regulating`,
-        `Immune system fortified`,
-        `Full-body transformation complete`,
-      ],
-    },
-    f = d[r] || d[3];
-  return (0, k.jsxs)(`div`, {
-    className: `min-h-dvh bg-[#FAFAF7] pb-24`,
-    children: [
-      (0, k.jsxs)(`div`, {
-        className: `px-4 pt-8 pb-5`,
-        children: [
-          (0, k.jsxs)(`button`, {
-            onClick: () => e(`/`),
-            className: `flex items-center space-x-1 text-[13px] text-gray-400 mb-4 active:text-gray-600`,
-            children: [(0, k.jsx)(nn, { size: 16 }), ` `, (0, k.jsx)(`span`, { children: `Back` })],
-          }),
-          (0, k.jsxs)(`div`, {
-            className: `flex items-center space-x-2 mb-1.5`,
-            children: [
-              (0, k.jsx)(`span`, { className: `text-lg`, children: ir(r) }),
-              (0, k.jsxs)(`span`, {
-                className: `text-[10px] font-bold text-[#1B6B4A] bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 rounded-full uppercase tracking-widest`,
-                children: [`Phase `, r, `: `, rr(r)],
-              }),
-            ],
-          }),
-          (0, k.jsxs)(`h1`, { className: `text-2xl font-bold text-gray-900`, children: [`Day `, t, ` Protocol`] }),
-          (0, k.jsxs)(`p`, {
-            className: `text-[12px] text-gray-400 mt-0.5`,
-            children: [`Days `, i[0], `-`, i[1], ` · `, rr(r)],
-          }),
-        ],
-      }),
-      (0, k.jsxs)(`div`, {
-        className: `px-4`,
-        children: [
-          (0, k.jsxs)(`div`, {
-            className: `bg-white rounded-2xl shadow-sm border border-gray-100 p-5 mb-5 relative overflow-hidden`,
-            children: [
-              (0, k.jsx)(`div`, {
-                className: `absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-[#1B6B4A] to-[#D4874D]`,
-              }),
-              (0, k.jsxs)(`div`, {
-                className: `pl-3`,
-                children: [
-                  (0, k.jsx)(`h3`, {
-                    className: `text-[14px] font-bold text-[#1B6B4A] mb-2.5`,
-                    children: `🧪 Today's Protocol`,
-                  }),
-                  (0, k.jsx)(`p`, { className: `text-[14px] text-gray-600 leading-relaxed`, children: n.protocol }),
-                ],
-              }),
-            ],
-          }),
-          (0, k.jsxs)(`div`, {
-            className: `bg-white rounded-2xl shadow-sm border border-gray-100 p-5 mb-5`,
-            children: [
-              (0, k.jsxs)(`div`, {
-                className: `flex items-center space-x-2 mb-2.5`,
-                children: [
-                  (0, k.jsx)(`div`, {
-                    className: `w-8 h-8 bg-purple-50 rounded-lg flex items-center justify-center border border-purple-100`,
-                    children: (0, k.jsx)(Ln, { size: 14, className: `text-purple-500` }),
-                  }),
-                  (0, k.jsx)(`h3`, {
-                    className: `text-[14px] font-bold text-purple-600`,
-                    children: `Breathing Ritual`,
-                  }),
-                ],
-              }),
-              (0, k.jsx)(`p`, { className: `text-[13px] text-gray-500 mb-3 leading-relaxed`, children: n.ritual }),
-              a
-                ? (0, k.jsx)(`div`, {
-                    className: `py-3 px-4 bg-green-50 rounded-xl text-[#1B6B4A] text-[13px] font-semibold border border-green-200 text-center`,
-                    children: `✓ Completed today`,
-                  })
-                : s
-                  ? (0, k.jsxs)(`div`, {
-                      className: `text-center py-4`,
-                      children: [
-                        (0, k.jsx)(`div`, {
-                          className: `text-2xl font-bold text-purple-600`,
-                          children: l < 3 ? `Breathe In...` : l < 4 ? `Hold...` : `Exhale...`,
-                        }),
-                        (0, k.jsx)(`div`, {
-                          className: `flex justify-center gap-1.5 mt-3`,
-                          children: [...Array(7)].map((e, t) =>
-                            (0, k.jsx)(
-                              `div`,
-                              {
-                                className: `w-2.5 h-2.5 rounded-full transition-all ${t <= l ? `bg-purple-500` : `bg-gray-200`}`,
-                              },
-                              t,
-                            ),
-                          ),
-                        }),
-                      ],
-                    })
-                  : (0, k.jsx)(`button`, {
-                      onClick: () => {
-                        (c(!0), u(0));
-                      },
-                      className: `w-full py-3 bg-purple-600 text-white font-semibold rounded-xl text-[14px] active:bg-purple-700 transition-all shadow-lg shadow-purple-500/20`,
-                      children: `Start Breathing Exercise`,
-                    }),
-            ],
-          }),
-          (0, k.jsxs)(`div`, {
-            className: `bg-white rounded-2xl shadow-sm border border-gray-100 p-5 mb-5`,
-            children: [
-              (0, k.jsxs)(`div`, {
-                className: `flex items-center space-x-2 mb-2.5`,
-                children: [
-                  (0, k.jsx)(`div`, {
-                    className: `w-8 h-8 bg-amber-50 rounded-lg flex items-center justify-center border border-amber-100`,
-                    children: (0, k.jsx)(Nn, { size: 14, className: `text-amber-500` }),
-                  }),
-                  (0, k.jsx)(`h3`, { className: `text-[14px] font-bold text-amber-600`, children: `Pro Tip` }),
-                ],
-              }),
-              (0, k.jsx)(`p`, { className: `text-[13px] text-gray-500 leading-relaxed`, children: n.tip }),
-            ],
-          }),
-          (0, k.jsxs)(`div`, {
-            className: `bg-white rounded-2xl shadow-sm border border-gray-100 p-5 mb-5`,
-            children: [
-              (0, k.jsx)(`h3`, {
-                className: `text-[14px] font-bold text-gray-900 mb-3`,
-                children: `🔬 What's Happening in Your Body`,
-              }),
-              (0, k.jsx)(`div`, {
-                className: `space-y-2.5`,
-                children: f.map((e, t) =>
-                  (0, k.jsxs)(
-                    `div`,
-                    {
-                      className: `flex items-center space-x-2.5 text-[13px] text-gray-600`,
-                      children: [
-                        (0, k.jsx)(`div`, { className: `w-2 h-2 rounded-full bg-[#1B6B4A] flex-shrink-0` }),
-                        (0, k.jsx)(`span`, { children: e }),
-                      ],
-                    },
-                    t,
-                  ),
-                ),
-              }),
-            ],
-          }),
-          (0, k.jsxs)(`div`, {
-            className: `bg-gradient-to-r from-emerald-50 to-green-50 rounded-2xl p-5 border border-green-100 mb-5`,
-            children: [
-              (0, k.jsxs)(`div`, {
-                className: `flex items-center space-x-2 mb-2.5`,
-                children: [
-                  (0, k.jsx)(Yt, { size: 16, className: `text-[#1B6B4A]` }),
-                  (0, k.jsx)(`h3`, { className: `text-[14px] font-bold text-[#1B6B4A]`, children: `Did You Know?` }),
-                ],
-              }),
-              (0, k.jsx)(`p`, { className: `text-[13px] text-gray-600 leading-relaxed`, children: n.fact }),
-            ],
-          }),
-        ],
-      }),
-      (0, k.jsx)(cr, {}),
-    ],
-  });
+var _accelDays=[
+{day:1,morning:"Fasting protocol: No food until 11 AM. Drink 16oz warm water with 1/2 lemon + 1/4 tsp turmeric + pinch black pepper at 7 AM. Creates an acidic environment archaea cannot survive in.",supplement:"500mg NAC (N-Acetyl Cysteine) on empty stomach — breaks down archaea biofilm shields",evening:"Anti-archaea broth: Simmer 4 cloves crushed garlic + 1 inch ginger + 1/2 tsp oregano oil in 12oz bone broth for 10 min. Drink warm before bed.",focus:"Biofilm Disruption",insight:"Archaea protect themselves with biofilm — a slimy shield. NAC dissolves it, making them vulnerable to your immune system for the first time."},
+{day:2,morning:"16oz warm water + 2 tbsp apple cider vinegar + 1 tsp raw honey. Wait 30 min before eating. First meal: 2 eggs scrambled with 1/2 avocado + sauerkraut (2 tbsp).",supplement:"500mg NAC + 1000mg Vitamin C — dual biofilm attack + antioxidant protection",evening:"Garlic-ginger tea: Crush 3 cloves garlic, steep with 1 inch sliced ginger in hot water 10 min. Add lemon. Drink 1 hour before sleep.",focus:"Acid Optimization",insight:"ACV mimics healthy stomach acid (pH 2-3). Most people with archaea overgrowth have low stomach acid — the #1 reason archaea thrive."},
+{day:3,morning:"Green antimicrobial smoothie: 2 cups spinach + 1/2 cucumber + 1 stalk celery + juice of 1 lime + 1 inch ginger + 1/2 green apple + 8oz water. Blend and drink immediately.",supplement:"500mg NAC + Berberine 500mg — berberine is a natural antibiotic that kills archaea directly",evening:"Turmeric golden milk: 8oz coconut milk + 1 tsp turmeric + 1/2 tsp cinnamon + pinch black pepper + 1/2 tsp coconut oil. Heat and whisk.",focus:"Direct Kill Phase",insight:"Berberine has been shown in clinical studies to be as effective as the prescription drug Metformin at reducing methane-producing archaea."},
+{day:4,morning:"Intermittent fast until noon. 7 AM: 16oz water + 1 tbsp ACV. 9 AM: Black coffee or green tea only. First meal at noon: wild-caught salmon + steamed broccoli + 1/4 cup white rice.",supplement:"Berberine 500mg + Allicin 450mg (stabilized garlic extract) — the one-two punch",evening:"Oregano oil capsule (150mg carvacrol) with dinner. Follow with 8oz warm water + 1 tbsp lemon juice.",focus:"Metabolic Reset",insight:"Fasting activates the Migrating Motor Complex (MMC) — a wave that sweeps dead archaea and debris out of your small intestine every 90 minutes."},
+{day:5,morning:"Power breakfast: 3 eggs + 1/4 cup kimchi + 1/2 avocado + 2 tbsp pumpkin seeds. This combines protein, probiotics, healthy fats, and zinc — all anti-archaea.",supplement:"Full stack: NAC 500mg + Berberine 500mg + Allicin 450mg",evening:"Bone broth fast: Replace dinner with 16oz homemade or quality bone broth + 1 tsp coconut oil + turmeric. Sip slowly over 30 minutes.",focus:"Die-Off Peak",insight:"Day 5 is typically when die-off symptoms peak. Headaches, fatigue, and bloating mean the protocol IS WORKING. Your body is processing dead archaea toxins."},
+{day:6,morning:"Activated charcoal lemonade: 1/2 capsule activated charcoal in 12oz water + juice of 1 lemon. Drink 2 hours away from supplements. This binds die-off toxins.",supplement:"Berberine 500mg + Saccharomyces boulardii (probiotic yeast that survives stomach acid)",evening:"Liver support: Steep milk thistle tea + dandelion root tea together in 10oz hot water for 8 min. Add raw honey. Your liver is working overtime processing toxins.",focus:"Toxin Clearance",insight:"Activated charcoal binds to the LPS endotoxins released by dying archaea. Without it, these toxins recirculate and cause 80% of die-off symptoms."},
+{day:7,morning:"Celebration breakfast: Coconut yogurt bowl with blueberries, walnuts, ground flaxseed, and a drizzle of raw honey. You’ve completed Week 1 — the hardest week.",supplement:"Maintenance: NAC 500mg + Berberine 500mg",evening:"Gut-healing soup: Sweet potato + carrots + ginger + turmeric + bone broth. Blend until smooth. This coats and soothes your healing gut lining.",focus:"Recovery & Rebuild",insight:"After 7 days of continuous antimicrobial pressure, archaea populations drop by an estimated 40-60%. The surviving colonies are weakened and vulnerable."},
+{day:8,morning:"Phase 2 begins. Gut lining repair smoothie: 1 scoop collagen peptides + 1/2 banana + 1 cup blueberries + 1 tbsp almond butter + 8oz almond milk.",supplement:"L-Glutamine 5g + Zinc Carnosine 75mg — the gut lining repair duo",evening:"Slippery elm tea: Mix 1 tsp slippery elm bark powder in 8oz warm water. Stir well. This coats your intestinal walls and promotes mucus production.",focus:"Lining Repair Begins",insight:"L-Glutamine is the primary fuel source for enterocytes (gut lining cells). Without it, your gut can’t rebuild the tight junctions that archaea destroyed."},
+{day:9,morning:"Anti-inflammatory plate: Wild salmon (or sardines) + steamed asparagus + 1/4 avocado + 2 tbsp fermented vegetables. Omega-3s reduce the inflammation archaea left behind.",supplement:"L-Glutamine 5g + Zinc Carnosine 75mg + Omega-3 (2000mg EPA/DHA)",evening:"Aloe vera digestive: 2oz pure aloe vera juice (inner leaf) + 8oz water + squeeze of lime. Drink 30 min before dinner. Aloe accelerates mucosal healing.",focus:"Inflammation Control",insight:"Omega-3 fatty acids reduce inflammatory cytokines (TNF-alpha, IL-6) by up to 30%. These are the exact chemicals that archaea trigger to damage your gut."},
+{day:10,morning:"Prebiotic power meal: 1/2 cup cooked oats + 1 tbsp ground flaxseed + 1/2 banana (slightly green) + walnuts + cinnamon. Green bananas contain resistant starch that feeds good bacteria.",supplement:"L-Glutamine 5g + Probiotic (50 billion CFU, multi-strain with Lactobacillus + Bifidobacterium)",evening:"Marshmallow root tea: Steep 1 tbsp dried marshmallow root in 10oz hot water for 15 min. Strain. Creates a protective film over healing gut tissue.",focus:"Recolonization Start",insight:"Your gut is now ready for beneficial bacteria. Lactobacillus rhamnosus and Bifidobacterium longum are the first colonizers — they create the environment for hundreds of other species."},
+{day:11,morning:"Fermented foods focus: 2 eggs any style + 1/4 cup kimchi + 1/4 cup sauerkraut + sourdough toast (if tolerated). Live cultures from fermented foods establish faster than supplements.",supplement:"Probiotic 50B CFU + Prebiotic fiber (Partially Hydrolyzed Guar Gum 5g)",evening:"Digestive enzyme support: Take a broad-spectrum digestive enzyme with dinner. Your gut is healing but still needs help breaking down food efficiently.",focus:"Microbiome Diversity",insight:"Diversity is the #1 predictor of gut health. A healthy microbiome has 500-1000 different species. After archaea overgrowth, most people are down to 200-300."},
+{day:12,morning:"Polyphenol breakfast: Mixed berry smoothie (blueberries, raspberries, strawberries) + 1 tbsp cacao powder + collagen peptides + coconut milk. Polyphenols are rocket fuel for beneficial bacteria.",supplement:"Probiotic 50B CFU + Butyrate 600mg — butyrate is the #1 fuel for colon cells",evening:"Bone broth + 1 tsp ghee + turmeric. The butyric acid in ghee directly feeds colonocytes and accelerates gut barrier repair.",focus:"Barrier Strengthening",insight:"Butyrate is a short-chain fatty acid that your good bacteria should produce naturally. Supplementing it while your microbiome recovers is like putting scaffolding around a building under construction."},
+{day:13,morning:"Gut-brain connection meal: Wild salmon + dark leafy greens + 1/4 cup walnuts + olive oil drizzle. Your vagus nerve connects gut to brain — feeding it optimizes both.",supplement:"Full maintenance: L-Glutamine 5g + Probiotic 50B + Omega-3 2000mg",evening:"Vagus nerve activation: Gargle water vigorously for 30 seconds. Hum deeply for 1 minute. Splash cold water on face. Stimulates the nerve that controls gut motility.",focus:"Gut-Brain Axis",insight:"90% of serotonin is made in the gut, not the brain. As your microbiome recovers, many people report dramatic improvements in mood, anxiety, and mental clarity."},
+{day:14,morning:"Final day celebration. Make your best meal from the last 14 days — whatever made you feel the strongest. Document your transformation.",supplement:"Continue your current stack for maintenance. The 14-day intensive is complete — your foundation is set.",evening:"Reflection tea: Chamomile + lavender + honey. Write down: symptoms before vs. now, energy levels, bloating, mood. This is your proof of progress.",focus:"Integration & Mastery",insight:"You’ve completed the 7X Accelerator. In 14 days, you’ve disrupted biofilms, killed archaea, repaired your gut lining, and established a new microbiome. Continue the main Emma protocol — these 14 days gave you a 7X head start."}
+];
+var _forbiddenFoods=[
+{category:"Archaea Fuel (NEVER eat these)",items:[
+{name:"Refined Sugar",why:"Archaea’s #1 energy source. Every gram feeds billions of methane-producing organisms."},
+{name:"White Bread / Pasta",why:"Converts to sugar in minutes. Spikes blood glucose which archaea ferment into methane."},
+{name:"Cow’s Dairy",why:"Lactose feeds archaea directly. Casein triggers gut inflammation and loosens tight junctions."},
+{name:"Alcohol",why:"Destroys beneficial bacteria while leaving archaea untouched. Damages gut lining within hours."},
+{name:"Processed / Fast Food",why:"Emulsifiers strip away the mucus layer protecting your gut."},
+{name:"Artificial Sweeteners",why:"Sucralose and aspartame alter microbiome composition and may increase archaea populations."},
+{name:"Soy Products",why:"Phytoestrogens disrupt gut hormone signaling. Processed soy inflames the gut."},
+{name:"Corn (all forms)",why:"High in mycotoxins that suppress immune function and feed archaea."}
+]},
+{category:"Limit Strictly (max 2x/week)",items:[
+{name:"Red Meat",why:"Takes 4-6 hours to digest. Slows MMC and produces TMAO, a gut inflammatory compound."},
+{name:"Gluten Grains",why:"Zonulin release increases intestinal permeability. Even whole grain keeps the gut leaky."},
+{name:"Raw Cruciferous Veggies",why:"Broccoli, cauliflower, cabbage produce gas when raw. Cook them instead."},
+{name:"Dried Fruit",why:"Concentrated sugar: 1/4 cup raisins = 25g sugar = an archaea feast."},
+{name:"Peanuts",why:"High in aflatoxins (a potent mycotoxin). Use almonds, walnuts, or cashews instead."}
+]},
+{category:"Eat Freely (Archaea Killers)",items:[
+{name:"Garlic",why:"Allicin is a potent natural antimicrobial that kills archaea on contact."},
+{name:"Ginger",why:"Gingerol accelerates gastric emptying and has direct anti-archaea properties."},
+{name:"Turmeric",why:"Curcumin disrupts archaea biofilm and reduces gut inflammation simultaneously."},
+{name:"Fermented Vegetables",why:"Sauerkraut, kimchi introduce billions of beneficial bacteria that compete with archaea."},
+{name:"Wild-Caught Fish",why:"Omega-3s reduce inflammation. Digests in 2-3 hours — doesn’t slow your MMC."},
+{name:"Bone Broth",why:"Collagen, glycine, and glutamine directly repair the gut lining archaea damaged."},
+{name:"Leafy Greens",why:"Chlorophyll detoxifies, fiber feeds good bacteria, magnesium relaxes gut muscles."},
+{name:"Berries",why:"Polyphenols are selective — they feed beneficial bacteria while inhibiting harmful organisms."}
+]}
+];
+var _mealPlan=[
+{day:"Day 1-3",breakfast:"Lemon-turmeric water (fasting) → 11 AM: 2 eggs + 1/2 avocado + sauerkraut",lunch:"Grilled chicken + large mixed greens salad + olive oil + lemon dressing",dinner:"Anti-archaea garlic bone broth (recipe in protocol)",snack:"Handful of walnuts + 1/2 green apple"},
+{day:"Day 4-5",breakfast:"Green antimicrobial smoothie (recipe in protocol)",lunch:"Wild salmon + steamed broccoli + 1/4 cup white rice",dinner:"Sweet potato + bone broth soup (blend until smooth)",snack:"Celery + almond butter"},
+{day:"Day 6-7",breakfast:"Coconut yogurt + blueberries + ground flaxseed + walnuts",lunch:"Turkey lettuce wraps + kimchi + avocado",dinner:"Baked cod + roasted asparagus + sweet potato",snack:"Mixed berries + 2 tbsp pumpkin seeds"},
+{day:"Day 8-10",breakfast:"Collagen smoothie (recipe in protocol)",lunch:"Sardines on sourdough + large salad + fermented vegetables",dinner:"Bone broth + ghee + turmeric (gut repair night)",snack:"Dark chocolate (85%+) 2 squares + almonds"},
+{day:"Day 11-14",breakfast:"2 eggs + kimchi + sauerkraut + sourdough toast",lunch:"Salmon bowl: rice + salmon + avocado + cucumber + ginger",dinner:"Choose your best meal from the protocol + chamomile tea",snack:"Gut-healing smoothie (berries + collagen + almond milk)"}
+];
+var _groceryList=[
+{category:"Proteins",items:["Wild-caught salmon (2 lbs)","Organic eggs (2 dozen)","Bone broth (64oz)","Chicken breast (1 lb)","Ground turkey (1 lb)","Sardines (2 cans)","Cod fillets (1 lb)","Collagen peptides"]},
+{category:"Vegetables",items:["Spinach (2 bags)","Broccoli (2 heads)","Asparagus (2 bunches)","Sweet potatoes (4)","Celery (1 bunch)","Cucumber (3)","Mixed greens (2 containers)","Carrots (1 bag)"]},
+{category:"Fruits",items:["Lemons (6)","Limes (4)","Blueberries (2 pints)","Green apples (4)","Bananas — slightly green (4)","Mixed berries frozen (1 bag)","Avocados (6)"]},
+{category:"Fermented Foods",items:["Sauerkraut — raw, unpasteurized","Kimchi (1 jar)","Coconut yogurt — unsweetened","Apple cider vinegar — with mother"]},
+{category:"Nuts, Seeds & Fats",items:["Walnuts (8oz)","Almonds (8oz)","Pumpkin seeds (8oz)","Ground flaxseed","Almond butter","Extra virgin olive oil","Coconut oil","Ghee"]},
+{category:"Supplements",items:["NAC 500mg","Berberine 500mg","Allicin 450mg","L-Glutamine powder","Zinc Carnosine 75mg","Probiotic 50B CFU multi-strain","Omega-3 fish oil 2000mg","Digestive enzymes","Butyrate 600mg"]},
+{category:"Teas & Herbs",items:["Chamomile tea","Milk thistle tea","Dandelion root tea","Slippery elm bark powder","Marshmallow root","Fresh ginger","Fresh turmeric","Oregano oil capsules","Raw honey","Activated charcoal capsules"]}
+];
+function hr(){
+var e=qe(),
+_s=(0,_.useState)(1),t=_s[0],n=_s[1],
+_s2=(0,_.useState)("protocol"),r=_s2[0],i=_s2[1],
+_s3=(0,_.useState)(!1),a=_s3[0],o=_s3[1],
+_s4=(0,_.useState)(0),s=_s4[0],c=_s4[1],
+_s5=(0,_.useState)(0),_v=_s5[0],_sv=_s5[1],
+d=_accelDays.find(function(x){return x.day===t})||_accelDays[0],
+p=_accelDays.filter(function(x){return O.get("emma_accel_done_"+x.day,!1)}).length,
+_done=O.get("emma_accel_done_"+t,!1);
+(0,_.useEffect)(function(){
+if(!a)return;
+var e=setInterval(function(){
+c(function(n){return n>=6?(clearInterval(e),o(!1),0):n+1});
+},1e3);
+return function(){clearInterval(e)};
+},[a]);
+function _markDone(){O.set("emma_accel_done_"+t,!0);_sv(_v+1)}
+function _renderProtocol(){
+return (0,k.jsxs)("div",{className:"space-y-4",children:[
+(0,k.jsxs)("div",{className:"bg-white rounded-2xl shadow-sm border border-gray-100 p-5 relative overflow-hidden",children:[
+(0,k.jsx)("div",{className:"absolute top-0 left-0 w-1 h-full",style:{background:"linear-gradient(to bottom,#f59e0b,#f97316)"}}),
+(0,k.jsxs)("div",{className:"pl-3",children:[
+(0,k.jsxs)("div",{className:"flex items-center justify-between mb-2",children:[
+(0,k.jsx)("h3",{className:"text-[14px] font-bold text-amber-600",children:"☀️ Morning Protocol"}),
+(0,k.jsx)("span",{className:"text-[10px] font-bold text-amber-500 bg-amber-50 px-2 py-0.5 rounded-full",children:"7:00 AM"})
+]}),
+(0,k.jsx)("p",{className:"text-[13px] text-gray-600 leading-relaxed",children:d.morning})
+]})
+]}),
+(0,k.jsxs)("div",{className:"bg-white rounded-2xl shadow-sm border border-gray-100 p-5 relative overflow-hidden",children:[
+(0,k.jsx)("div",{className:"absolute top-0 left-0 w-1 h-full",style:{background:"linear-gradient(to bottom,#a855f7,#9333ea)"}}),
+(0,k.jsxs)("div",{className:"pl-3",children:[
+(0,k.jsxs)("div",{className:"flex items-center justify-between mb-2",children:[
+(0,k.jsx)("h3",{className:"text-[14px] font-bold text-purple-600",children:"💊 Supplements"}),
+(0,k.jsx)("span",{className:"text-[10px] font-bold text-purple-500 bg-purple-50 px-2 py-0.5 rounded-full",children:"WITH MEALS"})
+]}),
+(0,k.jsx)("p",{className:"text-[13px] text-gray-600 leading-relaxed",children:d.supplement})
+]})
+]}),
+(0,k.jsxs)("div",{className:"bg-white rounded-2xl shadow-sm border border-gray-100 p-5 relative overflow-hidden",children:[
+(0,k.jsx)("div",{className:"absolute top-0 left-0 w-1 h-full",style:{background:"linear-gradient(to bottom,#818cf8,#4f46e5)"}}),
+(0,k.jsxs)("div",{className:"pl-3",children:[
+(0,k.jsxs)("div",{className:"flex items-center justify-between mb-2",children:[
+(0,k.jsx)("h3",{className:"text-[14px] font-bold text-blue-600",children:"🌙 Evening Ritual"}),
+(0,k.jsx)("span",{className:"text-[10px] font-bold text-blue-500 bg-blue-50 px-2 py-0.5 rounded-full",children:"8:00 PM"})
+]}),
+(0,k.jsx)("p",{className:"text-[13px] text-gray-600 leading-relaxed",children:d.evening})
+]})
+]}),
+(0,k.jsxs)("div",{className:"bg-gradient-to-r from-emerald-50 to-teal-50 rounded-2xl p-5 border border-emerald-100",children:[
+(0,k.jsx)("h3",{className:"text-[14px] font-bold text-[#1B6B4A] mb-2",children:"🔬 "+d.focus}),
+(0,k.jsx)("p",{className:"text-[13px] text-gray-600 leading-relaxed",children:d.insight})
+]}),
+a?(0,k.jsxs)("div",{className:"bg-white rounded-2xl shadow-sm border border-purple-100 p-5 text-center",children:[
+(0,k.jsx)("div",{className:"text-2xl font-bold text-purple-600 mb-2",children:s<3?"Breathe In...":s<4?"Hold...":"Exhale..."}),
+(0,k.jsx)("div",{className:"flex justify-center gap-1.5",children:[0,1,2,3,4,5,6].map(function(v){return (0,k.jsx)("div",{className:"w-2.5 h-2.5 rounded-full transition-all "+(v<=s?"bg-purple-500":"bg-gray-200")},v)})})
+]}):(0,k.jsx)("button",{onClick:function(){o(!0);c(0)},className:"w-full py-3.5 bg-purple-600 text-white font-semibold rounded-xl text-[14px] active:bg-purple-700 shadow-lg shadow-purple-500/20",children:"🫁 Start Breathing Exercise"}),
+_done?(0,k.jsx)("div",{className:"py-3 px-4 bg-green-50 rounded-xl text-[#1B6B4A] text-[13px] font-semibold border border-green-200 text-center",children:"✓ Day "+t+" Completed"}):(0,k.jsx)("button",{onClick:_markDone,className:"w-full py-3.5 bg-gradient-to-r from-[#1B6B4A] to-[#236B4A] text-white font-bold rounded-xl text-[14px] active:opacity-90 shadow-lg shadow-[#1B6B4A]/30",children:"✓ Mark Day "+t+" as Complete"})
+]});
 }
+function _renderFoods(){
+var _cats=[
+{cat:_forbiddenFoods[0],emoji:"🚫",bg:"bg-red-50",border:"border-red-200",textColor:"text-red-700",tagBg:"bg-red-100",tagText:"text-red-600"},
+{cat:_forbiddenFoods[1],emoji:"⚠️",bg:"bg-amber-50",border:"border-amber-200",textColor:"text-amber-700",tagBg:"bg-amber-100",tagText:"text-amber-600"},
+{cat:_forbiddenFoods[2],emoji:"✅",bg:"bg-emerald-50",border:"border-emerald-200",textColor:"text-emerald-700",tagBg:"bg-emerald-100",tagText:"text-emerald-600"}
+];
+return (0,k.jsx)("div",{className:"space-y-4",children:_cats.map(function(c,ci){
+return (0,k.jsxs)("div",{className:"bg-white rounded-2xl shadow-sm border border-gray-100 p-5",children:[
+(0,k.jsxs)("h3",{className:"text-[14px] font-bold "+c.textColor+" mb-3",children:[c.emoji," ",c.cat.category]}),
+(0,k.jsx)("div",{className:"space-y-2.5",children:c.cat.items.map(function(item,ii){
+return (0,k.jsxs)("div",{className:c.bg+" rounded-xl p-3 border "+c.border,children:[
+(0,k.jsx)("div",{className:"text-[13px] font-semibold text-gray-800 mb-0.5",children:item.name}),
+(0,k.jsx)("div",{className:"text-[12px] text-gray-500 leading-relaxed",children:item.why})
+]},ii);
+})})
+]},ci);
+})});
+}
+function _renderMeals(){
+return (0,k.jsxs)("div",{className:"space-y-4",children:[
+(0,k.jsx)("div",{className:"bg-gradient-to-r from-[#1B6B4A] to-[#D4874D] rounded-2xl p-4 text-white",children:
+(0,k.jsxs)("div",{children:[
+(0,k.jsx)("h3",{className:"text-[14px] font-bold mb-1",children:"🍽️ 14-Day Meal Plan"}),
+(0,k.jsx)("p",{className:"text-[12px] text-white/80",children:"Optimized nutrition to maximize your gut reset results"})
+]})
+}),
+_mealPlan.map(function(m,mi){
+return (0,k.jsxs)("div",{className:"bg-white rounded-2xl shadow-sm border border-gray-100 p-5",children:[
+(0,k.jsx)("h3",{className:"text-[14px] font-bold text-gray-900 mb-3",children:m.day}),
+(0,k.jsxs)("div",{className:"space-y-3",children:[
+(0,k.jsxs)("div",{children:[(0,k.jsx)("span",{className:"text-[11px] font-bold text-amber-500 uppercase tracking-wide",children:"Breakfast"}),(0,k.jsx)("p",{className:"text-[13px] text-gray-600 mt-0.5",children:m.breakfast})]}),
+(0,k.jsxs)("div",{children:[(0,k.jsx)("span",{className:"text-[11px] font-bold text-green-500 uppercase tracking-wide",children:"Lunch"}),(0,k.jsx)("p",{className:"text-[13px] text-gray-600 mt-0.5",children:m.lunch})]}),
+(0,k.jsxs)("div",{children:[(0,k.jsx)("span",{className:"text-[11px] font-bold text-blue-500 uppercase tracking-wide",children:"Dinner"}),(0,k.jsx)("p",{className:"text-[13px] text-gray-600 mt-0.5",children:m.dinner})]}),
+(0,k.jsxs)("div",{children:[(0,k.jsx)("span",{className:"text-[11px] font-bold text-purple-500 uppercase tracking-wide",children:"Snack"}),(0,k.jsx)("p",{className:"text-[13px] text-gray-600 mt-0.5",children:m.snack})]})
+]})
+]},mi);
+})
+]});
+}
+function _renderGrocery(){
+var _emojis={"Proteins":"🥩","Vegetables":"🥦","Fruits":"🍓","Fermented Foods":"🫚","Nuts, Seeds & Fats":"🥜","Supplements":"💊","Teas & Herbs":"🍵"};
+return (0,k.jsxs)("div",{className:"space-y-4",children:[
+(0,k.jsx)("div",{className:"rounded-2xl p-4 text-white",style:{background:"linear-gradient(to right,#10b981,#14b8a6)"},children:
+(0,k.jsxs)("div",{children:[
+(0,k.jsx)("h3",{className:"text-[14px] font-bold mb-1",children:"🛒 Complete Grocery List"}),
+(0,k.jsx)("p",{className:"text-[12px] text-white/80",children:"Everything you need for the full 14-day protocol"})
+]})
+}),
+_groceryList.map(function(g,gi){
+return (0,k.jsxs)("div",{className:"bg-white rounded-2xl shadow-sm border border-gray-100 p-5",children:[
+(0,k.jsxs)("h3",{className:"text-[14px] font-bold text-gray-900 mb-3",children:[_emojis[g.category]||"📦"," ",g.category]}),
+(0,k.jsx)("div",{className:"space-y-1.5",children:g.items.map(function(item,ii){
+return (0,k.jsxs)("div",{className:"flex items-center space-x-2.5 py-1",children:[
+(0,k.jsx)("div",{className:"w-4 h-4 rounded border-2 border-gray-300 flex-shrink-0"}),
+(0,k.jsx)("span",{className:"text-[13px] text-gray-600",children:item})
+]},ii);
+})})
+]},gi);
+})
+]});
+}
+return (0,k.jsxs)("div",{className:"min-h-dvh bg-[#FAFAF7] pb-24",children:[
+(0,k.jsxs)("div",{className:"bg-gradient-to-br from-[#1B6B4A] via-[#1a5c40] to-[#D4874D] px-4 pt-8 pb-6 text-white",children:[
+(0,k.jsxs)("button",{onClick:function(){e("/")},className:"flex items-center space-x-1 text-[13px] text-white/70 mb-4 active:text-white",children:[(0,k.jsx)(nn,{size:16})," ",(0,k.jsx)("span",{children:"Back"})]}),
+(0,k.jsx)("div",{className:"flex items-center space-x-2 mb-1",children:
+(0,k.jsx)("span",{className:"text-[10px] font-bold text-white/90 bg-white/20 px-2.5 py-0.5 rounded-full uppercase tracking-widest",children:"⚡ 7X ACCELERATOR"})
+}),
+(0,k.jsx)("h1",{className:"text-2xl font-bold",children:"14-Day Gut Reset"}),
+(0,k.jsx)("p",{className:"text-[12px] text-white/70 mt-0.5",children:"Premium intensive protocol — your 7X head start"}),
+(0,k.jsxs)("div",{className:"mt-4",children:[
+(0,k.jsxs)("div",{className:"flex justify-between text-[11px] text-white/80 mb-1.5",children:[
+(0,k.jsxs)("span",{children:[p," of 14 days completed"]}),
+(0,k.jsxs)("span",{children:[Math.round(p/14*100),"%"]})
+]}),
+(0,k.jsx)("div",{className:"w-full h-2 bg-white/20 rounded-full overflow-hidden",children:
+(0,k.jsx)("div",{className:"h-full bg-white rounded-full transition-all duration-500",style:{width:(p/14*100)+"%"}})
+})
+]})
+]}),
+(0,k.jsx)("div",{className:"px-4 -mt-3",children:
+(0,k.jsxs)("div",{className:"bg-white rounded-2xl shadow-lg border border-gray-100 p-4 mb-4",children:[
+(0,k.jsxs)("div",{className:"flex items-center justify-between mb-3",children:[
+(0,k.jsx)("h3",{className:"text-[13px] font-bold text-gray-900",children:"Week 1: Search & Destroy"}),
+(0,k.jsx)("span",{className:"text-[11px] text-gray-400",children:"Days 1-7"})
+]}),
+(0,k.jsx)("div",{className:"grid grid-cols-7 gap-2 mb-4",children:_accelDays.slice(0,7).map(function(x){
+var done=O.get("emma_accel_done_"+x.day,!1);
+return (0,k.jsxs)("button",{onClick:function(){n(x.day);i("protocol")},className:"flex flex-col items-center py-2.5 rounded-xl transition-all "+(t===x.day?"bg-[#1B6B4A] text-white shadow-lg shadow-[#1B6B4A]/30 scale-105":done?"bg-emerald-50 border border-emerald-200 text-[#1B6B4A]":"bg-gray-50 border border-gray-100 text-gray-500"),children:[
+(0,k.jsx)("span",{className:"text-[12px] font-bold",children:x.day}),
+done&&t!==x.day?(0,k.jsx)("span",{className:"text-[8px] mt-0.5",children:"✓"}):null
+]},x.day)
+})}),
+(0,k.jsxs)("div",{className:"flex items-center justify-between mb-3",children:[
+(0,k.jsx)("h3",{className:"text-[13px] font-bold text-gray-900",children:"Week 2: Repair & Rebuild"}),
+(0,k.jsx)("span",{className:"text-[11px] text-gray-400",children:"Days 8-14"})
+]}),
+(0,k.jsx)("div",{className:"grid grid-cols-7 gap-2",children:_accelDays.slice(7,14).map(function(x){
+var done=O.get("emma_accel_done_"+x.day,!1);
+return (0,k.jsxs)("button",{onClick:function(){n(x.day);i("protocol")},className:"flex flex-col items-center py-2.5 rounded-xl transition-all "+(t===x.day?"bg-[#D4874D] text-white shadow-lg shadow-[#D4874D]/30 scale-105":done?"bg-amber-50 border border-amber-200 text-[#D4874D]":"bg-gray-50 border border-gray-100 text-gray-500"),children:[
+(0,k.jsx)("span",{className:"text-[12px] font-bold",children:x.day}),
+done&&t!==x.day?(0,k.jsx)("span",{className:"text-[8px] mt-0.5",children:"✓"}):null
+]},x.day)
+})})
+]})
+}),
+(0,k.jsxs)("div",{className:"px-4 mb-1",children:[
+(0,k.jsxs)("div",{className:"flex items-center space-x-2 mb-3",children:[
+(0,k.jsx)("span",{className:"text-lg",children:t<=7?"🔥":"🛡️"}),
+(0,k.jsxs)("h2",{className:"text-[16px] font-bold text-gray-900",children:["Day ",t,": ",d.focus]})
+]})
+]}),
+(0,k.jsx)("div",{className:"px-4 mb-4",children:
+(0,k.jsx)("div",{className:"flex bg-gray-100 rounded-xl p-1",children:
+[{id:"protocol",label:"📋 Protocol"},{id:"foods",label:"🚫 Foods"},{id:"meals",label:"🍽️ Meals"},{id:"grocery",label:"🛒 List"}].map(function(x){
+return (0,k.jsx)("button",{onClick:function(){i(x.id)},className:"flex-1 py-2 text-[11px] font-semibold rounded-lg transition-all "+(r===x.id?"bg-white text-gray-900 shadow-sm":"text-gray-500"),children:x.label},x.id)
+})
+})
+}),
+(0,k.jsx)("div",{className:"px-4",children:
+r==="protocol"?_renderProtocol():r==="foods"?_renderFoods():r==="meals"?_renderMeals():_renderGrocery()
+}),
+(0,k.jsx)(cr,{})
+]});
+}
+
 function gr() {
   let e = qe(),
     t = O.get(`emma_180_active`, !1),
