@@ -1,3 +1,6 @@
 {
-  "rewrites": []
+  "rewrites": [
+    { "source": "/up1", "destination": "/up1.html" },
+    { "source": "/up2", "destination": "/up2.html" }
+  ]
 }
