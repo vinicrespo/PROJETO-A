@@ -4,6 +4,7 @@
     { "source": "/up2", "destination": "/up2.html" },
     { "source": "/up3", "destination": "/up3.html" },
     { "source": "/up4", "destination": "/up4.html" },
-    { "source": "/thanks", "destination": "/thanks.html" }
+    { "source": "/thanks", "destination": "/thanks.html" },
+    { "source": "/nerverecovery", "destination": "/nerverecovery.html" }
   ]
 }

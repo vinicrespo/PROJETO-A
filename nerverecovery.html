@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>Nerve Recovery App</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--pri:#0D7C66;--pri-d:#0A5E4D;--pri-l:#E6F5F1;--acc:#E8A838;--acc-l:#FEF4E4;--bg:#F7F9FC;--card:#fff;--txt:#1a1a1a;--txt-l:#6B7280;--txt-m:#9CA3AF;--red:#DC2626;--green:#16A34A;--blue:#3B82F6;--purple:#7C3AED;--orange:#EA580C;--rose:#E11D48;--radius:16px;--shadow:0 1px 3px rgba(0,0,0,.06)}
+body{background:var(--bg);font-family:'Inter',system-ui,-apple-system,sans-serif;color:var(--txt);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::-webkit-scrollbar{width:0;background:transparent}
+.app-shell{min-height:100vh;max-width:430px;margin:0 auto;background:var(--bg);position:relative;box-shadow:0 0 40px rgba(0,0,0,.08)}
+.page{padding:20px;padding-bottom:100px;animation:fadeUp .4s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes scaleIn{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:scale(1)}}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
+@keyframes confetti{0%{transform:translateY(-100vh) rotate(0);opacity:1}100%{transform:translateY(100vh) rotate(720deg);opacity:0}}
+@keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+@keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+
+/* Bottom Nav */
+.bottom-nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-top:1px solid #f0f0f0;display:flex;justify-content:space-around;align-items:center;padding:6px 8px 10px;z-index:50}
+.nav-item{display:flex;flex-direction:column;align-items:center;gap:2px;padding:4px 8px;border-radius:12px;cursor:pointer;transition:.2s;color:var(--txt-m);text-decoration:none;-webkit-tap-highlight-color:transparent}
+.nav-item.active{color:var(--pri)}
+.nav-item.active .nav-icon-wrap{background:var(--pri-l)}
+.nav-icon-wrap{padding:6px;border-radius:10px;transition:.2s;display:flex;align-items:center;justify-content:center}
+.nav-label{font-size:9px;font-weight:700}
+.nav-item svg{width:20px;height:20px}
+
+/* Cards */
+.card{background:var(--card);border-radius:var(--radius);border:1px solid #f0f0f0;box-shadow:var(--shadow);padding:20px;margin-bottom:16px}
+.card-sm{padding:16px}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 28px;border-radius:12px;font-weight:700;font-size:15px;border:none;cursor:pointer;transition:.2s;-webkit-tap-highlight-color:transparent}
+.btn-pri{background:var(--pri);color:#fff;box-shadow:0 4px 14px rgba(13,124,102,.25)}
+.btn-pri:hover{background:var(--pri-d)}
+.btn-outline{background:var(--pri-l);color:var(--pri);border:1px solid rgba(13,124,102,.2)}
+.btn-block{width:100%}
+.btn-sm{padding:10px 20px;font-size:13px}
+
+/* Tags */
+.tag{display:inline-flex;align-items:center;padding:3px 8px;border-radius:20px;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.8px}
+
+/* Inputs */
+input[type="email"],input[type="text"],input[type="number"]{width:100%;padding:14px 16px;border-radius:12px;border:1px solid #e5e7eb;font-size:15px;font-family:inherit;outline:none;transition:.2s;background:#fff}
+input:focus{border-color:var(--pri);box-shadow:0 0 0 3px rgba(13,124,102,.12)}
+
+/* Grid */
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.grid-6{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}
+
+/* Utility */
+.flex{display:flex}.flex-col{flex-direction:column}.items-center{align-items:center}.justify-between{justify-content:space-between}.justify-center{justify-content:center}
+.gap-2{gap:8px}.gap-3{gap:12px}.gap-4{gap:16px}
+.text-center{text-align:center}
+.mb-2{margin-bottom:8px}.mb-3{margin-bottom:12px}.mb-4{margin-bottom:16px}.mb-5{margin-bottom:20px}
+.mt-2{margin-top:8px}.mt-4{margin-top:16px}
+.text-xs{font-size:11px}.text-sm{font-size:13px}.text-base{font-size:15px}.text-lg{font-size:18px}.text-xl{font-size:22px}.text-2xl{font-size:26px}
+.font-bold{font-weight:700}.font-black{font-weight:900}.font-medium{font-weight:500}.font-semibold{font-weight:600}
+.text-pri{color:var(--pri)}.text-acc{color:var(--acc)}.text-light{color:var(--txt-l)}.text-muted{color:var(--txt-m)}.text-white{color:#fff}
+.rounded-full{border-radius:9999px}.rounded-xl{border-radius:12px}.rounded-2xl{border-radius:16px}
+.truncate{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.line-clamp-2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.leading-relaxed{line-height:1.65}
+.tracking-wide{letter-spacing:.5px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+
+/* Specific */
+.hero-gradient{background:linear-gradient(135deg,var(--pri) 0%,var(--pri-d) 100%)}
+.acc-gradient{background:linear-gradient(135deg,#FEF4E4,var(--pri-l))}
+.dark-card{background:linear-gradient(135deg,#2D2D2D,#1a1a1a);color:#fff;border:1px solid #333}
+.progress-ring{width:10px;height:10px;border-radius:50%;display:inline-block}
+.calendar-day{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;cursor:pointer;transition:.2s;border:none;background:#f3f4f6;color:var(--txt-m)}
+.calendar-day.completed{background:var(--pri);color:#fff}
+.calendar-day.selected{border:2px solid var(--acc);color:var(--acc);background:#fff;box-shadow:0 0 0 3px rgba(232,168,56,.12)}
+.calendar-day.completed.selected{background:var(--pri);color:#fff;box-shadow:0 0 0 3px rgba(13,124,102,.2)}
+.pain-bar{flex:1;height:32px;border-radius:8px;transition:.3s}
+.pain-bar.filled{background:var(--pri)}
+.pain-bar.empty{background:#e6f5f1;border:1px solid #d0ebe4}
+.habit-btn{padding:14px;border-radius:12px;display:flex;flex-direction:column;align-items:center;gap:6px;border:2px solid transparent;cursor:pointer;transition:.2s;background:#f9fafb}
+.habit-btn.active{background:var(--pri-l);border-color:rgba(13,124,102,.3)}
+.upgrade-card{width:100%;display:flex;align-items:center;justify-content:space-between;padding:12px;border-radius:14px;border:1px solid;cursor:pointer;transition:.2s;background:none;text-align:left}
+.upgrade-card:hover{box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.back-btn{display:inline-flex;align-items:center;gap:4px;font-size:13px;color:var(--txt-l);cursor:pointer;padding:4px 0;border:none;background:none;margin-bottom:16px;font-family:inherit}
+.back-btn:hover{color:var(--txt)}
+.modal-overlay{position:fixed;inset:0;z-index:90;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.35);animation:fadeIn .3s}
+.modal-box{background:#fff;border-radius:24px;padding:24px;box-shadow:0 20px 60px rgba(0,0,0,.2);animation:scaleIn .3s;max-width:360px;margin:16px;max-height:80vh;overflow-y:auto}
+.section-toggle{width:100%;display:flex;align-items:center;justify-content:space-between;padding:16px 20px;cursor:pointer;border:none;background:none;font-family:inherit;text-align:left}
+
+/* Confetti */
+.confetti-piece{position:fixed;top:-20px;width:10px;height:10px;border-radius:2px;animation:confetti 2.5s linear forwards;z-index:100;pointer-events:none}
+
+/* Chat */
+.chat-fab{position:fixed;bottom:80px;right:16px;width:52px;height:52px;border-radius:50%;background:var(--pri);color:#fff;border:none;cursor:pointer;box-shadow:0 4px 20px rgba(13,124,102,.35);display:flex;align-items:center;justify-content:center;z-index:60;transition:.2s}
+.chat-fab:hover{transform:scale(1.08)}
+.chat-panel{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;height:70vh;background:#fff;border-radius:24px 24px 0 0;box-shadow:0 -4px 30px rgba(0,0,0,.12);z-index:70;display:flex;flex-direction:column;animation:slideUp .35s cubic-bezier(.16,1,.3,1)}
+.chat-messages{flex:1;overflow-y:auto;padding:16px}
+.chat-bubble{max-width:85%;padding:12px 16px;border-radius:16px;font-size:13px;line-height:1.5;margin-bottom:8px}
+.chat-bubble.bot{background:var(--pri-l);color:var(--txt);border-bottom-left-radius:4px;align-self:flex-start}
+.chat-option{display:block;width:100%;text-align:left;padding:10px 14px;margin:4px 0;border-radius:12px;border:1px solid #e5e7eb;background:#fff;font-size:12px;font-weight:600;cursor:pointer;transition:.2s;font-family:inherit;color:var(--txt)}
+.chat-option:hover{background:var(--pri-l);border-color:var(--pri)}
+
+/* Top bar */
+.top-bar{background:linear-gradient(90deg,var(--pri),var(--pri-d));padding:8px 16px;display:flex;align-items:center;justify-content:center;gap:8px}
+.top-bar p{font-size:11px;color:#fff;font-weight:600;letter-spacing:.3px}
+
+/* Symptom severity */
+.severity-btn{width:100%;padding:8px;border-radius:8px;border:1px solid #e5e7eb;background:#fff;cursor:pointer;font-size:11px;font-weight:600;transition:.2s;font-family:inherit}
+.severity-btn.s0{color:var(--txt-m)}
+.severity-btn.s1{background:#fef9c3;border-color:#fde047;color:#854d0e}
+.severity-btn.s2{background:#fed7aa;border-color:#fb923c;color:#9a3412}
+.severity-btn.s3{background:#fecaca;border-color:#f87171;color:#991b1b}
+</style>
+</head>
+<body>
+<div class="app-shell" id="app"></div>
+
+<script>
+(function(){
+'use strict';
+
+// ============================================================
+// ICONS (SVG inline)
+// ============================================================
+const IC = {
+  home: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>',
+  chart: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" x2="12" y1="20" y2="10"/><line x1="18" x2="18" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="16"/></svg>',
+  flame: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>',
+  droplet: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></svg>',
+  shield: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>',
+  sparkle: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>',
+  check: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>',
+  checkCircle: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>',
+  circle: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>',
+  arrowRight: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>',
+  chevLeft: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>',
+  chevRight: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>',
+  chevDown: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>',
+  chevUp: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>',
+  x: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>',
+  help: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" x2="12.01" y1="17" y2="17"/></svg>',
+  calendar: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>',
+  activity: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>',
+  heart: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>',
+  award: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>',
+  zap: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>',
+  grid: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>',
+  megaphone: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 18-5v12L3 13v-2z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>',
+  refresh: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>',
+  moon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>',
+  book: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>',
+  cart: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>',
+  msg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>',
+  send: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>',
+  leaf: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 19 2c1 2 2 4.5 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>',
+  clipboard: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg>',
+  target: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>',
+  trophy: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>',
+  camera: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>',
+  utensils: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg>',
+};
+
+function icon(name, size=20) {
+  return `<span style="display:inline-flex;width:${size}px;height:${size}px">${IC[name]||''}</span>`;
+}
+
+// ============================================================
+// STORAGE
+// ============================================================
+const PREFIX = 'nr_';
+const getEmail = () => localStorage.getItem(PREFIX+'email') || 'default';
+const store = {
+  get(key) { try { return JSON.parse(localStorage.getItem(PREFIX+key+'_'+getEmail())); } catch { return null; } },
+  set(key, val) { localStorage.setItem(PREFIX+key+'_'+getEmail(), JSON.stringify(val)); },
+  getGlobal(key) { try { return JSON.parse(localStorage.getItem(PREFIX+key)); } catch { return null; } },
+  setGlobal(key, val) { localStorage.setItem(PREFIX+key, JSON.stringify(val)); }
+};
+
+function getProfile() { return store.get('profile'); }
+function saveProfile(d) { store.set('profile', d); }
+function getProgress() {
+  const d = store.get('progress');
+  if (d) {
+    if (!d.completedDays) d.completedDays = [];
+    if (!d.dailyHabits) d.dailyHabits = {};
+    if (!d.badges) d.badges = [];
+    return d;
+  }
+  return { currentDay:1, streak:0, completedDays:[], dailyHabits:{}, badges:[], phase:1 };
+}
+function saveProgress(d) { store.set('progress', d); }
+function toggleDay(day) {
+  const p = getProgress();
+  if (p.completedDays.includes(day)) {
+    p.completedDays = p.completedDays.filter(d=>d!==day);
+  } else {
+    p.completedDays.push(day);
+    const sorted = [...p.completedDays].sort((a,b)=>a-b);
+    let s=1; for(let i=sorted.length-1;i>0;i--){if(sorted[i]-sorted[i-1]===1)s++;else break;} p.streak=s;
+    checkBadges(p);
+  }
+  saveProgress(p);
+  return p;
+}
+function checkBadges(p) {
+  const c = p.completedDays.length;
+  const defs = [
+    {id:'first_day',cond:c>=1},{id:'week_1',cond:c>=7},{id:'streak_3',cond:p.streak>=3},
+    {id:'streak_7',cond:p.streak>=7},{id:'streak_14',cond:p.streak>=14},
+    {id:'half_way',cond:c>=15},{id:'week_3',cond:c>=21},{id:'complete',cond:c>=30}
+  ];
+  defs.forEach(b=>{if(b.cond&&!p.badges.includes(b.id))p.badges.push(b.id);});
+}
+const BADGES = {
+  first_day:{icon:'🌟',title:'First Step',desc:'Completed your first day!'},
+  week_1:{icon:'🔥',title:'Week Warrior',desc:'7 days completed'},
+  streak_3:{icon:'⚡',title:'On Fire',desc:'3-day streak!'},
+  streak_7:{icon:'💎',title:'Unstoppable',desc:'7-day streak!'},
+  streak_14:{icon:'👑',title:'Nerve Champion',desc:'14-day streak!'},
+  half_way:{icon:'🏔️',title:'Halfway Hero',desc:'15 days done!'},
+  week_3:{icon:'🎯',title:'Almost There',desc:'21 days completed!'},
+  complete:{icon:'🏆',title:'Protocol Master',desc:'30 days completed!'}
+};
+
+function getPainLog() { return store.get('pain') || {date:'',level:0}; }
+function savePainLevel(lvl) {
+  const today = new Date().toISOString().split('T')[0];
+  store.set('pain', {date:today, level:lvl});
+}
+function getJournal() { return store.get('journal') || []; }
+function saveJournalEntry(entry) {
+  const j = getJournal(); j.unshift({...entry, date:new Date().toISOString()}); store.set('journal', j);
+}
+
+// ============================================================
+// PROTOCOL DATA
+// ============================================================
+const PHASES = [
+  {name:'Nerve Priming',range:'Days 1-7',icon:'🧬',color:'from-teal-500 to-emerald-500',desc:'Prepare your body to receive the protocol ingredients and begin dissolving sciatic plaque.'},
+  {name:'Plaque Dissolution',range:'Days 8-14',icon:'🔬',color:'from-green-500 to-teal-600',desc:'Active dissolution of sciatic plaque around your nerve with targeted ingredient combinations.'},
+  {name:'Nerve Repair',range:'Days 15-21',icon:'🛡️',color:'from-emerald-500 to-cyan-600',desc:'Rebuild and strengthen your myelin sheath while accelerating nerve regeneration.'},
+  {name:'Full Recovery',range:'Days 22-30',icon:'⚡',color:'from-cyan-500 to-teal-500',desc:'Maintain your restored nerve health and lock in permanent pain relief.'}
+];
+
+const PROTOCOLS = [
+  {phase:'Nerve Priming',recipe:'600mg Thioctic Acid (Alpha-Lipoic Acid) dissolved in 8oz warm water. Take on empty stomach, 20 min before breakfast.',tip:'Day 1: Thioctic acid begins dissolving the outer layer of sciatic plaque. Stay well hydrated today.'},
+  {phase:'Nerve Priming',recipe:'300mg Benfotiamine capsule with 8oz water + 1/4 tsp turmeric.',tip:'Day 2: Benfotiamine enters your nerve cells 5x faster than regular B1. It starts protecting against plaque damage.'},
+  {phase:'Nerve Priming',recipe:'500mg ALCAR (Acetyl-L-Carnitine) in warm water before breakfast.',tip:'Day 3: ALCAR crosses the blood-brain barrier to energize your nerve cells from the inside out.'},
+  {phase:'Nerve Priming',recipe:'1000mcg Methylcobalamin (sublingual, under tongue for 60 seconds) + Folate 400mcg.',tip:'Day 4: Methylcobalamin starts rebuilding your myelin sheath — the protective coating around your sciatic nerve.'},
+  {phase:'Nerve Priming',recipe:'50mg Pyridoxine (B6) + 300mg Ashwagandha root extract in warm milk or water.',tip:'Day 5: Ashwagandha blocks the signals that trigger sciatic plaque buildup. B6 supports healthy nerve function.'},
+  {phase:'Nerve Priming',recipe:'2000 IU Cholecalciferol (Vitamin D3) + specialized Turmeric extract (500mg curcumin with piperine).',tip:'Day 6: Research shows D3 reduces lower back pain by 55%. The turmeric fights inflammation from spine to legs.'},
+  {phase:'Nerve Priming',recipe:'Sulforaphane-rich Brassica blend: steam 1 cup broccoli sprouts, eat with lemon juice. Take 600mg Thioctic Acid.',tip:'Day 7: Sulforaphane strengthens your nerves\' natural protection. Combined with thioctic acid, this is your plaque-fighting powerhouse day.'},
+  {phase:'Plaque Dissolution',recipe:'600mg Thioctic Acid + 500mg ALCAR + 1000mcg Methylcobalamin (sublingual).',tip:'Day 8: Triple combination targets sciatic plaque from three angles simultaneously. Take 20 min before breakfast.'},
+  {phase:'Plaque Dissolution',recipe:'300mg Benfotiamine + 500mg Curcumin with piperine + 50mg Pyridoxine.',tip:'Day 9: This combination accelerates nerve signal transmission while dissolving inflammation.'},
+  {phase:'Plaque Dissolution',recipe:'600mg Thioctic Acid + 400mcg Folate + 300mg Ashwagandha.',tip:'Day 10: Folate activates the specialized cells responsible for repairing damaged sciatic nerves.'},
+  {phase:'Plaque Dissolution',recipe:'500mg ALCAR + 2000 IU D3 + Broccoli sprout smoothie (1 cup sprouts blended with banana and water).',tip:'Day 11: The smoothie delivers sulforaphane directly while D3 reduces inflammation along your entire nerve path.'},
+  {phase:'Plaque Dissolution',recipe:'Full spectrum day: 600mg Thioctic Acid + 300mg Benfotiamine + 1000mcg Methylcobalamin.',tip:'Day 12: Your plaque should be softening. Many people report reduced tingling by now.'},
+  {phase:'Plaque Dissolution',recipe:'500mg Curcumin with piperine + 300mg Ashwagandha + 50mg Pyridoxine + warm ginger tea.',tip:'Day 13: Ginger amplifies the anti-inflammatory effects. Drink the tea 30 minutes after supplements.'},
+  {phase:'Plaque Dissolution',recipe:'600mg Thioctic Acid + 500mg ALCAR + 400mcg Folate + 2000 IU D3.',tip:'Day 14: End of Phase 2. Your body has been actively dissolving plaque for a full week. Notice your mobility improving.'},
+  {phase:'Nerve Repair',recipe:'1000mcg Methylcobalamin + 300mg Benfotiamine + 500mg ALCAR. Take all sublingual or with minimal water.',tip:'Day 15: Myelin sheath repair begins in earnest. These three ingredients are the building blocks your nerve needs.'},
+  {phase:'Nerve Repair',recipe:'600mg Thioctic Acid + 500mg Curcumin + sulforaphane (steamed broccoli sprouts or supplement).',tip:'Day 16: Continue plaque removal while supporting nerve regeneration. The dual approach accelerates recovery.'},
+  {phase:'Nerve Repair',recipe:'300mg Ashwagandha + 50mg Pyridoxine + 400mcg Folate + chamomile tea before bed.',tip:'Day 17: Nerve repair happens most during sleep. The chamomile tea promotes deeper, more restorative sleep.'},
+  {phase:'Nerve Repair',recipe:'Full protocol: All 10 ingredients at their base doses. Spread across morning and evening.',tip:'Day 18: This is your comprehensive repair day. Morning: Thioctic Acid, ALCAR, Methylcobalamin, Benfotiamine, Pyridoxine. Evening: Ashwagandha, Curcumin, D3, Folate, Sulforaphane.'},
+  {phase:'Nerve Repair',recipe:'600mg Thioctic Acid + 1000mcg Methylcobalamin + 2000 IU D3.',tip:'Day 19: Focus on the core nerve repair trio. Keep hydrated — water helps transport nutrients to your sciatic nerve.'},
+  {phase:'Nerve Repair',recipe:'500mg ALCAR + 300mg Benfotiamine + 300mg Ashwagandha + warm turmeric golden milk before bed.',tip:'Day 20: Golden milk recipe: warm almond milk + 1/2 tsp turmeric + pinch black pepper + cinnamon + honey.'},
+  {phase:'Nerve Repair',recipe:'500mg Curcumin + sulforaphane + 400mcg Folate + 50mg Pyridoxine.',tip:'Day 21: End of nerve repair phase. Your myelin sheath should be significantly stronger. Notice less numbness and tingling.'},
+  {phase:'Full Recovery',recipe:'Maintenance dose: 300mg Thioctic Acid + 500mg ALCAR + 1000mcg Methylcobalamin.',tip:'Day 22: Transitioning to maintenance. Lower thioctic acid dose as plaque removal slows — your nerve is healing.'},
+  {phase:'Full Recovery',recipe:'300mg Benfotiamine + 300mg Ashwagandha + 2000 IU D3.',tip:'Day 23: Continue supporting nerve health while your body consolidates the repairs from the past three weeks.'},
+  {phase:'Full Recovery',recipe:'500mg Curcumin + sulforaphane source + 400mcg Folate.',tip:'Day 24: Anti-inflammatory maintenance. Many people report sleeping through the entire night by now.'},
+  {phase:'Full Recovery',recipe:'Full spectrum maintenance: All 10 ingredients at reduced maintenance doses.',tip:'Day 25: You\'re building a nerve-protective routine that will keep sciatica away permanently.'},
+  {phase:'Full Recovery',recipe:'300mg Thioctic Acid + 1000mcg Methylcobalamin + 50mg Pyridoxine + 300mg Ashwagandha.',tip:'Day 26: Focus on nerve signal optimization. Notice how much easier it is to walk and stand.'},
+  {phase:'Full Recovery',recipe:'500mg ALCAR + 300mg Benfotiamine + 2000 IU D3 + turmeric golden milk.',tip:'Day 27: Keep the golden milk routine — it\'s a powerful nighttime nerve restoration ritual.'},
+  {phase:'Full Recovery',recipe:'Sulforaphane + 500mg Curcumin + 400mcg Folate + 300mg Ashwagandha.',tip:'Day 28: Your nerve protection system is now strong. These ingredients maintain the shield against future plaque buildup.'},
+  {phase:'Full Recovery',recipe:'Core trio maintenance: 300mg Thioctic Acid + 500mg ALCAR + 1000mcg Methylcobalamin.',tip:'Day 29: Almost there. Your sciatic nerve has been recovering for a full month. The pain should be dramatically reduced.'},
+  {phase:'Full Recovery',recipe:'Celebration protocol: Full spectrum of all 10 ingredients. You\'ve completed the 30-day Nerve Recovery Protocol!',tip:'Day 30: Congratulations! You\'ve completed the full protocol. Continue with maintenance doses to keep your sciatic nerve healthy and pain-free.'}
+];
+
+const QUOTES = [
+  "Every step without pain is a victory worth celebrating.",
+  "Your nerves are healing — trust the process.",
+  "Pain is temporary. Recovery is real.",
+  "You didn't come this far to only come this far.",
+  "Small daily actions create massive nerve recovery.",
+  "Your body was designed to heal. You're giving it the tools.",
+  "Freedom from sciatica starts with today's protocol.",
+  "Consistency is the secret to nerve restoration.",
+  "Imagine walking without pain. That's where you're headed.",
+  "Every day on this protocol brings you closer to a pain-free life.",
+  "Your sciatic nerve is repairing itself right now.",
+  "The numbness will fade. The strength will return.",
+  "You are stronger than your sciatica.",
+  "Pain-free mornings are ahead of you.",
+  "Trust your body's ability to heal when given the right nutrients.",
+  "One protocol, one day, one step closer to freedom.",
+  "Your mobility is returning — keep going.",
+  "Sleep without pain is a gift you're earning daily.",
+  "The best investment you've made is in your nerve health.",
+  "You're not just managing pain — you're eliminating its cause."
+];
+
+const DID_YOU_KNOW = [
+  "Your sciatic nerve is the longest and thickest nerve in your body, running from your lower back to your feet.",
+  "Thioctic acid (Alpha-Lipoic Acid) is both water and fat-soluble, meaning it can protect your nerves in ways other antioxidants can't.",
+  "The myelin sheath around your nerves conducts signals at up to 120 meters per second — faster than a speeding car.",
+  "Benfotiamine is absorbed 5 times better than regular vitamin B1, making it far more effective for nerve health.",
+  "Sulforaphane from broccoli sprouts activates over 200 protective genes in your body.",
+  "Your body produces new nerve cells through a process called neurogenesis — the protocol supports this natural process.",
+  "Vitamin D3 receptors exist on every nerve cell in your body, showing how essential it is for nerve health.",
+  "ALCAR (Acetyl-L-Carnitine) can cross the blood-brain barrier to directly energize nerve cells.",
+  "Ashwagandha has been used for over 3,000 years in Ayurvedic medicine to support nerve function.",
+  "Curcumin from turmeric is 400 times more potent than aspirin as an anti-inflammatory.",
+  "Your sciatic nerve contains about 15,000 individual nerve fibers bundled together.",
+  "Folate is essential for DNA repair in nerve cells — without it, damaged nerves can't properly regenerate.",
+  "Methylcobalamin is the active form of B12 that your nerves can use immediately, unlike regular B12.",
+  "Walking just 20 minutes daily can increase blood flow to your sciatic nerve by 40%.",
+  "The numbness and tingling you feel is actually your nerve trying to send signals through damaged myelin."
+];
+
+// ============================================================
+// 7X ACCELERATOR DATA (60 days gut protocol)
+// ============================================================
+const ACCEL_PHASES = [
+  {name:'Gut Reset',range:'Days 1-7',icon:'🧹',desc:'Eliminate harmful bacteria and prepare your gut for rebuilding.'},
+  {name:'Microbiome Rebuilding',range:'Days 8-21',icon:'🦠',desc:'Repopulate with beneficial bacteria using fermented foods and prebiotics.'},
+  {name:'Inflammation Elimination',range:'Days 22-45',icon:'🔥',desc:'Shut down TNF-alpha production and clear nerve inflammation pathways.'},
+  {name:'Maintenance',range:'Days 46-60',icon:'⚡',desc:'Lock in your microbiome gains for permanent nerve protection.'}
+];
+const ACCEL_MORNING = [
+  "1 tbsp apple cider vinegar + 1/4 tsp ginger powder in 8oz warm water. 20 min before breakfast.",
+  "1/2 tsp baking soda + juice of 1/2 lemon in 8oz warm water. Sip slowly on empty stomach.",
+  "Bone broth (1 cup) with 1/4 tsp turmeric and black pepper. Sip like tea.",
+  "Ginger-lemon shot: juice of 1 lemon + 1 inch fresh ginger blended in 4oz water.",
+  "1 tbsp aloe vera juice + 8oz water. Soothes and repairs the gut lining.",
+  "Fennel seed tea: 1 tsp crushed fennel steeped 8 min. Reduces bloating within 30 min.",
+  "1 tbsp chia seeds soaked 10 min in warm lemon water. Internal scrubber.",
+  "Peppermint + chamomile tea blend — steep 5 min. Calms the enteric nervous system.",
+  "1/4 tsp L-glutamine powder + 8oz water. #1 amino acid for gut wall repair.",
+  "Slippery elm bark tea: 1 tsp powder in warm water. Protective gut coating.",
+  "Warm water + 1 tbsp raw honey + 1/4 tsp cinnamon. Antimicrobial and prebiotic.",
+  "Dandelion root coffee: 1 tbsp steeped 10 min. Supports bile flow.",
+  "1 tbsp flaxseed meal + 8oz warm water + lemon squeeze. Gentle fiber detox.",
+  "Marshmallow root tea: 1 tsp steeped 10 min. Coats and heals digestive tract.",
+  "Moringa tea: 1/2 tsp in hot water + lemon. 46 antioxidants in one cup.",
+  "Warm water + 1 tbsp coconut oil + Himalayan salt. Lubricates intestines.",
+  "Probiotic shot: 2oz sauerkraut juice on empty stomach.",
+  "Ginger-turmeric-black pepper shot in 4oz warm water. Triple anti-inflammatory.",
+  "Apple cider vinegar + raw honey + warm water. Gut-healing trifecta.",
+  "Celery juice: 4oz fresh on empty stomach. Rebuilds HCl production.",
+];
+const ACCEL_EVENING = [
+  "Chamomile + valerian root tea 30 min before bed. Activates parasympathetic digestion.",
+  "Golden milk: warm almond milk + turmeric + cinnamon + black pepper.",
+  "Magnesium glycinate: 200mg with warm water. Relaxes gut muscles.",
+  "Warm bone broth with sea salt. Collagen repairs gut overnight.",
+  "Peppermint tea after dinner. Reduces bloating.",
+  "1 tbsp ACV in 4oz warm water after last meal.",
+  "Passionflower tea steeped 7 min. Calms gut-brain axis.",
+  "Warm water + 1 tbsp raw honey. Feeds gut bacteria during sleep.",
+  "Lemon balm tea. Reduces gas and cramping.",
+  "Tart cherry juice: 2oz. Natural melatonin + gut anti-inflammatory.",
+  "Ginger tea with coconut milk. Warms digestive fire for overnight repair.",
+  "1/4 tsp ashwagandha in warm milk. Lowers cortisol that irritates gut.",
+  "Cinnamon tea: 1 stick steeped 10 min. Regulates blood sugar overnight.",
+  "Holy basil (tulsi) tea. Normalizes gut pH.",
+  "Warm water + ground flaxseed. Omega-3s reduce gut inflammation.",
+  "Aloe vera juice: 1 tbsp before bed. Soothes inflammation.",
+  "Lavender + chamomile tea. Calms enteric nervous system.",
+  "Coconut water + sea salt. Rehydrates for gut function.",
+  "Rooibos tea with vanilla. Antispasmodic for nighttime cramping.",
+  "Warm turmeric water + coconut oil. Fat absorbs curcumin 7x better.",
+];
+function getAccelDay(day) {
+  const phase = day<=7?ACCEL_PHASES[0]:day<=21?ACCEL_PHASES[1]:day<=45?ACCEL_PHASES[2]:ACCEL_PHASES[3];
+  const mi = (day-1) % ACCEL_MORNING.length;
+  const ei = (day-1) % ACCEL_EVENING.length;
+  return {phase, morning:ACCEL_MORNING[mi], evening:ACCEL_EVENING[ei]};
+}
+
+// ============================================================
+// NEURAL SHOT DATA (cortisol/NGF protocol)
+// ============================================================
+function getNeuralShotRecipe(weight, age, height) {
+  const w = parseFloat(weight)||160; const a = parseFloat(age)||50; const h = parseFloat(height)||68;
+  const base = w > 180 ? 1.5 : w > 140 ? 1.2 : 1.0;
+  const ageMult = a > 55 ? 1.4 : a > 45 ? 1.2 : 1.0;
+  const dose = (base * ageMult).toFixed(1);
+  return {
+    dose,
+    recipe: `Based on your profile (Age: ${a}, Weight: ${w} lbs, Height: ${h} in), your personalized Neural Shot:\n\n• ${dose} tsp Ashwagandha root powder\n• 1/2 tsp Passionflower extract\n• 1/4 tsp L-Theanine powder\n• 1 tbsp raw honey\n• Juice of 1/2 lemon\n• 6oz warm water\n\nMix all ingredients in warm water. Drink 30 minutes before bed.`,
+    bonuses: [
+      {name:'Deep Sleep Tonic',desc:'2 tbsp tart cherry juice + 1/4 tsp magnesium glycinate powder + 1 tsp raw honey + warm water. Puts you into deep sleep within minutes.'},
+      {name:'Regenerative Night Tea',desc:'Chamomile + valerian root + passionflower blend. Steep 10 minutes. Lowers cortisol and multiplies nerve repair during sleep.'},
+      {name:'Forbidden Relief Cream',desc:'Mix 2 tbsp coconut oil + 5 drops peppermint essential oil + 3 drops eucalyptus oil + 1/4 tsp cayenne powder. Apply to lower back and legs. Activates circulation and reduces inflammation.'}
+    ]
+  };
+}
+
+// ============================================================
+// NERVE SHIELD DATA (from up3 content)
+// ============================================================
+const SHIELD_PROTOCOL = {
+  title: 'Nerve Shield Protocol',
+  desc: 'Advanced protective protocol to prevent sciatic plaque from returning and strengthen your nerve\'s natural defenses.',
+  weeks: [
+    {week:1,title:'Foundation Shield',tasks:[
+      'Take 600mg Alpha-Lipoic Acid + 500mg NAC (N-Acetyl Cysteine) in the morning',
+      'Apply ice pack to lower back for 15 minutes, twice daily',
+      'Perform gentle sciatic nerve flossing stretch (3 sets of 10)',
+      'Eat 2 cups of dark leafy greens (spinach, kale) with meals'
+    ]},
+    {week:2,title:'Nerve Fortification',tasks:[
+      'Add 500mg Magnesium Glycinate before bed',
+      'Take 1000mg Omega-3 (EPA/DHA) with breakfast',
+      'Perform piriformis stretch sequence (morning and evening)',
+      'Drink 2 cups of green tea daily for EGCG nerve protection'
+    ]},
+    {week:3,title:'Deep Protection',tasks:[
+      'Full supplement stack: ALA + NAC + Magnesium + Omega-3 + B-Complex',
+      'Add 30 minutes of gentle walking daily',
+      'Perform full nerve mobility routine (provided in app)',
+      'Increase sulforaphane intake: broccoli sprouts with every meal'
+    ]},
+    {week:4,title:'Permanent Shield',tasks:[
+      'Maintenance supplement protocol (reduced doses)',
+      'Continue daily walking (increase to 45 minutes if comfortable)',
+      'Perform nerve health assessment — rate your pain, numbness, mobility',
+      'Establish your long-term nerve protection routine'
+    ]}
+  ]
+};
+
+// ============================================================
+// SHOPPING LIST
+// ============================================================
+const SHOPPING = [
+  {cat:'Core Supplements',items:['Alpha-Lipoic Acid (Thioctic Acid) 600mg','Benfotiamine 300mg','ALCAR (Acetyl-L-Carnitine) 500mg','Methylcobalamin 1000mcg (sublingual)','Pyridoxine (B6) 50mg','Ashwagandha root extract 300mg','Folate 400mcg','Vitamin D3 (Cholecalciferol) 2000 IU','Turmeric/Curcumin with Piperine 500mg','Sulforaphane supplement or broccoli sprouts']},
+  {cat:'Kitchen Ingredients',items:['Fresh broccoli sprouts','Turmeric powder','Black pepper (piperine source)','Raw honey','Fresh lemons','Fresh ginger root','Almond milk (unsweetened)','Cinnamon sticks/powder','Chamomile tea bags','Green tea']},
+  {cat:'Optional Boosters',items:['Magnesium Glycinate 500mg','NAC (N-Acetyl Cysteine) 500mg','Omega-3 Fish Oil 1000mg','L-Glutamine powder','Passionflower extract','Tart cherry juice','Peppermint essential oil','Coconut oil (extra virgin)','Apple cider vinegar (with mother)','Bone broth (organic)']}
+];
+
+// ============================================================
+// CHATBOT FAQ
+// ============================================================
+const FAQ = {
+  root:{msg:"Hi! 👋 I'm your Nerve Recovery assistant. How can I help?",opts:[
+    {l:"About the Protocol",n:"protocol"},{l:"Ingredients & Shopping",n:"shopping"},{l:"Health & Safety",n:"health"},{l:"Results & Expectations",n:"results"},{l:"App & Technical",n:"app"},{l:"Guarantee & Refund",n:"guarantee"}
+  ]},
+  protocol:{msg:"What would you like to know about the protocol?",opts:[
+    {l:"What is the Nerve Recovery Protocol?",n:"a_what"},{l:"When should I take the ingredients?",n:"a_when"},{l:"Can I adjust the doses?",n:"a_adjust"},{l:"What if I miss a day?",n:"a_miss"},{l:"← Back to main menu",n:"root"}
+  ]},
+  a_what:{msg:"The Nerve Recovery Protocol is a 30-day program using 10 clinically-studied ingredients that work together to dissolve sciatic plaque, repair your myelin sheath, and restore healthy nerve function. Each day has a specific combination designed to progressively rebuild your sciatic nerve health.",opts:[{l:"When should I take it?",n:"a_when"},{l:"← Back",n:"protocol"},{l:"← Main menu",n:"root"}]},
+  a_when:{msg:"Take your morning protocol 20 minutes before breakfast on an empty stomach. This maximizes absorption. Evening ingredients should be taken 30-60 minutes before bed. Always take fat-soluble supplements (D3, curcumin) with a small amount of healthy fat for better absorption.",opts:[{l:"← Back",n:"protocol"},{l:"← Main menu",n:"root"}]},
+  a_adjust:{msg:"The doses in the protocol are optimized for effectiveness, but you can make minor adjustments. If you experience any stomach sensitivity, try taking supplements with a small meal instead of on an empty stomach. Never exceed the recommended doses. If you're on medication, consult your doctor first.",opts:[{l:"← Back",n:"protocol"},{l:"← Main menu",n:"root"}]},
+  a_miss:{msg:"Don't worry! Missing one day won't ruin your progress. Simply continue with the next day's protocol. The program is designed with flexibility in mind — consistency over time matters more than perfection. Just pick up where you left off!",opts:[{l:"← Back",n:"protocol"},{l:"← Main menu",n:"root"}]},
+  shopping:{msg:"The ingredients can be found at pharmacies, health food stores, or online. The Shopping List in the app has everything organized by category. Most ingredients are affordable and widely available. Broccoli sprouts can be grown at home in 3-5 days for maximum freshness.",opts:[{l:"← Main menu",n:"root"}]},
+  health:{msg:"All 10 ingredients in the protocol are natural and have been extensively studied. However, if you're pregnant, nursing, or taking prescription medication (especially blood thinners or diabetes medication), please consult your healthcare provider before starting. The protocol is designed for adults over 30 experiencing sciatic nerve issues.",opts:[{l:"← Main menu",n:"root"}]},
+  results:{msg:"Most people notice subtle improvements in the first week — less tingling, easier movement. Significant pain reduction typically occurs in weeks 2-3. By day 30, many users report dramatically reduced pain and improved mobility. For best results, follow the protocol consistently and maintain healthy habits.",opts:[{l:"← Main menu",n:"root"}]},
+  app:{msg:"The app works on any phone or computer browser. Your data is stored locally on your device — we never collect personal information. You can access it anytime at your purchase URL. If you experience issues, try clearing your browser cache or using a different browser.",opts:[{l:"← Main menu",n:"root"}]},
+  guarantee:{msg:"You're protected by our 180-day money-back guarantee. If for any reason you're not satisfied with the Nerve Recovery App, contact our support team for a full refund — no questions asked. You can even keep the bonus content!",opts:[{l:"← Main menu",n:"root"}]}
+};
+
+// ============================================================
+// ROUTER & STATE
+// ============================================================
+let currentPage = 'auth';
+let state = { selectedDay:1, showCalendar:true, showHelp:false, showChat:false, chatNode:'root', accelDay:1, shieldWeek:0, journalText:'' };
+let dismissedUpdates = [];
+try { dismissedUpdates = JSON.parse(localStorage.getItem(PREFIX+'dismissed')||'[]'); } catch{}
+
+function nav(page, extra) {
+  currentPage = page;
+  if (extra) Object.assign(state, extra);
+  render();
+  window.scrollTo(0,0);
+}
+
+function render() {
+  const app = document.getElementById('app');
+  const email = localStorage.getItem(PREFIX+'email');
+  const profile = getProfile();
+
+  if (!email) { app.innerHTML = renderAuth(); return; }
+  if (!profile || !profile.age) { app.innerHTML = renderOnboarding(); return; }
+
+  let content = '';
+  switch(currentPage) {
+    case 'dashboard': content = renderDashboard(); break;
+    case 'progress': content = renderProgressPage(); break;
+    case 'accelerator': content = renderAccelerator(); break;
+    case 'neuralshot': content = renderNeuralShot(); break;
+    case 'shield': content = renderShield(); break;
+    case 'features': content = renderFeatures(); break;
+    case 'shopping': content = renderShopping(); break;
+    case 'journal': content = renderJournalPage(); break;
+    case 'bonus_tricks': content = renderBonusTricks(); break;
+    case 'bonus_foods': content = renderBonusFoods(); break;
+    default: content = renderDashboard(); currentPage='dashboard';
+  }
+
+  app.innerHTML = renderTopBar() + content + renderBottomNav() + (state.showChat ? renderChatPanel() : renderChatFab());
+  bindEvents();
+}
+
+// ============================================================
+// PAGES
+// ============================================================
+
+function renderAuth() {
+  return `
+  <div style="min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;background:linear-gradient(180deg,var(--pri-l) 0%,#fff 50%,var(--pri-l) 100%)">
+    <div style="width:80px;height:80px;background:var(--pri);border-radius:24px;display:flex;align-items:center;justify-content:center;margin-bottom:24px;box-shadow:0 8px 30px rgba(13,124,102,.3)">
+      <span style="color:#fff">${icon('activity',36)}</span>
+    </div>
+    <h1 class="text-2xl font-black" style="margin-bottom:8px">Nerve Recovery</h1>
+    <p class="text-sm text-light" style="margin-bottom:32px">Enter the email you used to purchase</p>
+    <form onsubmit="handleLogin(event)" style="width:100%;max-width:320px">
+      <input type="email" id="authEmail" placeholder="your@email.com" required style="text-align:center;margin-bottom:12px">
+      <button type="submit" class="btn btn-pri btn-block" style="font-size:16px">Access My Protocol</button>
+    </form>
+    <p class="text-xs text-muted" style="margin-top:20px">Your data stays private on your device</p>
+  </div>`;
+}
+
+function renderOnboarding() {
+  const step = state.onboardStep || 1;
+  const fd = state.onboardData || {name:'',age:'',weight:'',height:''};
+
+  if (step === 1) return `
+  <div style="min-height:100vh;padding:24px;background:linear-gradient(180deg,#fff,var(--pri-l))">
+    <div style="padding-top:40px">
+      <div class="flex gap-2 mb-5">${[1,2,3].map(i=>`<div style="flex:1;height:6px;border-radius:99px;background:${i<=step?'var(--pri)':'#e5e7eb'}"></div>`).join('')}</div>
+      <h1 class="text-2xl font-black mb-2">Let's personalize your protocol</h1>
+      <p class="text-sm text-light mb-5">First, what should we call you?</p>
+      <input type="text" id="obName" placeholder="Your first name" value="${fd.name}" style="margin-bottom:24px">
+      <button class="btn btn-pri btn-block" onclick="onboardNext(1)">Continue ${icon('chevRight',16)}</button>
+    </div>
+  </div>`;
+
+  if (step === 2) return `
+  <div style="min-height:100vh;padding:24px;background:linear-gradient(180deg,#fff,var(--pri-l))">
+    <div style="padding-top:40px">
+      <div class="flex gap-2 mb-5">${[1,2,3].map(i=>`<div style="flex:1;height:6px;border-radius:99px;background:${i<=step?'var(--pri)':'#e5e7eb'}"></div>`).join('')}</div>
+      <h1 class="text-2xl font-black mb-2">About your body</h1>
+      <p class="text-sm text-light mb-5">This helps calculate your personalized dosages.</p>
+      <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:24px">
+        <div><label class="text-xs font-bold text-muted" style="display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:1px">AGE</label>
+        <input type="number" id="obAge" placeholder="e.g. 52" value="${fd.age}"></div>
+        <div class="flex gap-3">
+          <div style="flex:1"><label class="text-xs font-bold text-muted" style="display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:1px">WEIGHT (lbs)</label>
+          <input type="number" id="obWeight" placeholder="e.g. 175" value="${fd.weight}"></div>
+          <div style="flex:1"><label class="text-xs font-bold text-muted" style="display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:1px">HEIGHT (in)</label>
+          <input type="number" id="obHeight" placeholder="e.g. 68" value="${fd.height}"></div>
+        </div>
+      </div>
+      <div class="flex gap-3">
+        <button class="btn btn-outline" onclick="onboardBack()">Back</button>
+        <button class="btn btn-pri" style="flex:1" onclick="onboardNext(2)">Continue ${icon('chevRight',16)}</button>
+      </div>
+    </div>
+  </div>`;
+
+  return `
+  <div style="min-height:100vh;padding:24px;background:linear-gradient(180deg,#fff,var(--pri-l))">
+    <div style="padding-top:40px">
+      <div class="flex gap-2 mb-5">${[1,2,3].map(i=>`<div style="flex:1;height:6px;border-radius:99px;background:${i<=step?'var(--pri)':'#e5e7eb'}"></div>`).join('')}</div>
+      <h1 class="text-2xl font-black mb-2">What are you experiencing?</h1>
+      <p class="text-sm text-light mb-4">Select all that apply — this personalizes your daily tips.</p>
+      <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:24px">
+        ${[{id:'shooting',l:'Shooting Pain Down Leg',e:'⚡'},{id:'numbness',l:'Numbness or Tingling',e:'🦶'},{id:'weakness',l:'Leg/Foot Weakness',e:'🦵'},{id:'sleep',l:'Pain Disrupts Sleep',e:'😴'}].map(it=>`
+        <div onclick="toggleOnboardFlag('${it.id}')" style="display:flex;align-items:center;justify-content:space-between;padding:16px;border-radius:12px;border:2px solid ${(state.onboardFlags||{})[it.id]?'var(--pri)':'#f0f0f0'};background:${(state.onboardFlags||{})[it.id]?'var(--pri-l)':'#fff'};cursor:pointer">
+          <div class="flex items-center gap-3"><span style="font-size:18px">${it.e}</span><span class="font-medium">${it.l}</span></div>
+          <div style="width:24px;height:24px;border-radius:50%;border:2px solid ${(state.onboardFlags||{})[it.id]?'var(--pri)':'#d1d5db'};background:${(state.onboardFlags||{})[it.id]?'var(--pri)':'transparent'};display:flex;align-items:center;justify-content:center">
+            ${(state.onboardFlags||{})[it.id]?'<div style="width:8px;height:8px;border-radius:50%;background:#fff"></div>':''}
+          </div>
+        </div>`).join('')}
+      </div>
+      <p class="text-xs text-muted text-center mb-4">Optional — you can skip this</p>
+      <div class="flex gap-3">
+        <button class="btn btn-outline" onclick="onboardBack()">Back</button>
+        <button class="btn btn-pri" style="flex:1" onclick="finishOnboarding()">${icon('heart',18)} Start My Recovery</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+function renderTopBar() {
+  return `<div class="top-bar">${icon('refresh',13)}<p>Protocol updates validated by specialists</p></div>`;
+}
+
+function renderBottomNav() {
+  const items = [
+    {p:'dashboard',l:'Home',ic:'home'},{p:'progress',l:'Progress',ic:'chart'},
+    {p:'accelerator',l:'7X Accel',ic:'flame'},{p:'neuralshot',l:'Neural',ic:'droplet'},{p:'shield',l:'Shield',ic:'shield'}
+  ];
+  return `<div class="bottom-nav">${items.map(i=>`
+    <a class="nav-item ${currentPage===i.p?'active':''}" onclick="nav('${i.p}')">
+      <div class="nav-icon-wrap">${icon(i.ic)}</div>
+      <span class="nav-label">${i.l}</span>
+    </a>`).join('')}</div>`;
+}
+
+function renderChatFab() {
+  return `<button class="chat-fab" onclick="toggleChat()" aria-label="Help">${icon('msg',22)}</button>`;
+}
+
+function renderChatPanel() {
+  const node = FAQ[state.chatNode] || FAQ.root;
+  return `
+  <div class="modal-overlay" onclick="toggleChat()"></div>
+  <div class="chat-panel" onclick="event.stopPropagation()">
+    <div style="padding:16px;border-bottom:1px solid #f0f0f0;display:flex;align-items:center;justify-content:space-between">
+      <div class="flex items-center gap-2"><div style="width:32px;height:32px;background:var(--pri);border-radius:50%;display:flex;align-items:center;justify-content:center">${icon('msg',16)}</div><span class="font-bold text-sm">Nerve Recovery Assistant</span></div>
+      <button onclick="toggleChat()" style="border:none;background:none;cursor:pointer;padding:4px">${icon('x',20)}</button>
+    </div>
+    <div class="chat-messages" style="display:flex;flex-direction:column">
+      <div class="chat-bubble bot">${node.msg}</div>
+      ${(node.opts||[]).map(o=>`<button class="chat-option" onclick="chatNav('${o.n}')">${o.l}</button>`).join('')}
+    </div>
+  </div>`;
+}
+
+function renderDashboard() {
+  const p = getProfile();
+  const prog = getProgress();
+  const sel = state.selectedDay;
+  const proto = PROTOCOLS[Math.min(Math.max(sel-1,0), PROTOCOLS.length-1)];
+  const completed = prog.completedDays.length;
+  const isCompleted = prog.completedDays.includes(sel);
+  const hour = new Date().getHours();
+  const greeting = hour<12?'Good Morning':hour<18?'Good Afternoon':'Good Evening';
+  const name = p.name?p.name.split(' ')[0]:'';
+  const quote = QUOTES[Math.floor(Date.now()/86400000) % QUOTES.length];
+  const dyk = DID_YOU_KNOW[Math.floor(Date.now()/86400000) % DID_YOU_KNOW.length];
+  const phaseForDay = d => d<=7?PHASES[0]:d<=14?PHASES[1]:d<=21?PHASES[2]:PHASES[3];
+  const curPhase = phaseForDay(completed+1);
+
+  const updates = [
+    {id:'relief-cream',date:'Nov 17',tag:'NEW',tagC:'background:#dcfce7;color:#166534',title:'Forbidden Relief Cream Guide',desc:'Step-by-step guide to prepare the homemade relief cream that activates circulation and reduces nerve inflammation instantly.',action:'neuralshot',actionLabel:'See the Recipe'}
+  ];
+  const latestUpdate = !dismissedUpdates.includes(updates[0].id) ? updates[0] : null;
+
+  return `<div class="page">
+    <!-- Greeting -->
+    <div class="flex justify-between items-center mb-5" style="padding-top:8px">
+      <div>
+        <h1 class="text-2xl font-black">${greeting}${name?', '+name:''}</h1>
+        <p class="text-sm text-light" style="margin-top:2px">Day ${completed+1} of your recovery</p>
+      </div>
+      <div class="flex items-center gap-2">
+        <button onclick="state.showHelp=true;render()" style="padding:8px;border-radius:50%;background:#f9fafb;border:1px solid #f0f0f0;cursor:pointer">${icon('help',18)}</button>
+        <div style="display:flex;align-items:center;gap:6px;background:linear-gradient(135deg,#fff7ed,#fef3c7);padding:6px 12px;border-radius:99px;border:1px solid #fed7aa">
+          <span style="color:#ea580c">${icon('flame',16)}</span>
+          <span class="font-bold text-sm" style="color:#ea580c">${prog.streak}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tools & Extras -->
+    <button onclick="nav('features')" class="card card-sm flex items-center justify-between mb-4" style="width:100%;border:none;cursor:pointer;text-align:left">
+      <div class="flex items-center gap-3">
+        <div style="width:40px;height:40px;background:var(--pri-l);border-radius:12px;display:flex;align-items:center;justify-content:center"><span style="color:var(--pri)">${icon('grid',20)}</span></div>
+        <div><p class="text-sm font-bold">Tools & Extras</p><p class="text-xs text-light">Recipes, journal, diagnostics & more</p></div>
+      </div>
+      <span style="color:var(--txt-m)">${icon('arrowRight',16)}</span>
+    </button>
+
+    <!-- What's New -->
+    ${latestUpdate?`
+    <div class="card card-sm mb-4" style="position:relative;overflow:hidden">
+      <div style="position:absolute;top:0;left:0;width:3px;height:100%;background:linear-gradient(180deg,var(--pri),var(--acc))"></div>
+      <div style="padding-left:12px">
+        <div class="flex items-center justify-between mb-2">
+          <div class="flex items-center gap-2">
+            <span style="color:var(--pri)">${icon('megaphone',13)}</span>
+            <span class="tag" style="${latestUpdate.tagC}">${latestUpdate.tag}</span>
+            <span class="text-xs text-muted font-medium">${latestUpdate.date}</span>
+          </div>
+          <button onclick="dismissUpdate('${latestUpdate.id}')" style="border:none;background:none;cursor:pointer;padding:4px">${icon('x',14)}</button>
+        </div>
+        <h4 class="font-bold text-sm mb-1">${latestUpdate.title}</h4>
+        <p class="text-xs text-light leading-relaxed mb-3">${latestUpdate.desc}</p>
+        <button onclick="nav('${latestUpdate.action}')" style="border:none;background:none;cursor:pointer;display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:var(--pri);font-family:inherit">${latestUpdate.actionLabel} ${icon('arrowRight',13)}</button>
+      </div>
+    </div>`:''}
+
+    <!-- Start Here Card -->
+    <div class="hero-gradient rounded-2xl mb-4" style="padding:20px;position:relative;overflow:hidden">
+      <div style="position:absolute;top:0;right:0;width:160px;height:160px;background:#fff;border-radius:50%;filter:blur(60px);opacity:.05;margin:-40px -40px 0 0"></div>
+      <div style="position:relative;z-index:1">
+        <span class="tag" style="background:rgba(255,255,255,.15);color:rgba(255,255,255,.8);margin-bottom:8px;display:inline-flex">START HERE</span>
+        <h2 class="font-bold text-lg text-white" style="margin-top:8px">Your 30-Day Nerve Recovery Protocol</h2>
+        <p style="color:rgba(255,255,255,.7);font-size:12px;line-height:1.6;margin-top:4px">Follow your daily protocol below. Mark each day complete to build your streak and track your recovery.</p>
+      </div>
+    </div>
+
+    <!-- Phase Progress -->
+    <div class="card mb-4">
+      <div class="flex justify-between items-center mb-3">
+        <h3 class="font-bold text-sm">Your Phase</h3>
+        <span class="text-xs font-bold text-pri">${completed}/30 days</span>
+      </div>
+      <div class="flex gap-2 mb-3">${PHASES.map((_,i)=>{
+        const ps=[0,7,14,21][i], pe=[7,14,21,30][i];
+        const pp=Math.min(Math.max((completed-ps)/(pe-ps),0),1);
+        const active=completed>=ps&&completed<pe, done=completed>=pe;
+        return `<div style="flex:1"><div style="height:8px;border-radius:99px;overflow:hidden;background:${done||active?'#e5e7eb':'#f3f4f6'}"><div style="height:100%;border-radius:99px;background:var(--pri);width:${done?100:active?pp*100:0}%;transition:width .7s"></div></div></div>`;
+      }).join('')}</div>
+      <div class="flex items-center gap-2">
+        <span style="font-size:18px">${curPhase.icon}</span>
+        <div><p class="text-xs font-bold">${curPhase.name}</p><p style="font-size:10px;color:var(--txt-m)">${curPhase.range}</p></div>
+      </div>
+    </div>
+
+    <!-- 30-Day Calendar -->
+    <div class="card mb-4" style="padding:0;overflow:hidden">
+      <button class="section-toggle" onclick="state.showCalendar=!state.showCalendar;render()">
+        <h3 class="font-bold text-sm flex items-center gap-2"><span style="color:var(--pri)">${icon('calendar',16)}</span> 30-Day Calendar</h3>
+        <div class="flex items-center gap-2">
+          <span class="text-xs font-bold text-muted">${completed}/30</span>
+          ${state.showCalendar?icon('chevUp',16):icon('chevDown',16)}
+        </div>
+      </button>
+      ${state.showCalendar?`<div style="padding:0 20px 20px"><div class="grid-6" style="place-items:center">${Array.from({length:30},(_,i)=>i+1).map(i=>{
+        const ic=prog.completedDays.includes(i), is=sel===i;
+        return `<button class="calendar-day${ic?' completed':''}${is?' selected':''}" onclick="selectDay(${i})">${ic?icon('check',14):i}</button>`;
+      }).join('')}</div></div>`:''}
+    </div>
+
+    <!-- Daily Protocol -->
+    <div class="card mb-4">
+      <div class="flex justify-between items-center mb-4">
+        <h2 class="font-bold">Day ${sel} Protocol</h2>
+        <span class="tag" style="background:var(--pri);color:#fff">${proto.phase}</span>
+      </div>
+      <div style="background:var(--pri-l);border-radius:12px;padding:16px;margin-bottom:16px;border:1px solid #d0ebe4">
+        <p class="text-sm font-semibold leading-relaxed">${proto.recipe}</p>
+      </div>
+      <div style="margin-bottom:20px">
+        <h3 class="text-xs font-bold text-muted" style="text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">Today's Tip</h3>
+        <p class="text-sm text-light leading-relaxed" style="border-left:2px solid var(--acc);padding-left:12px">${proto.tip}</p>
+      </div>
+      <button class="btn btn-block ${isCompleted?'btn-outline':'btn-pri'}" onclick="markDay(${sel})">
+        ${isCompleted?icon('checkCircle',20):icon('circle',20)}
+        ${isCompleted?`Day ${sel} Completed ✓`:`Mark Day ${sel} as Done`}
+      </button>
+    </div>
+
+    <!-- Pain Tracker -->
+    <div class="card mb-4">
+      <div class="flex justify-between items-center mb-3">
+        <h3 class="font-bold text-sm flex items-center gap-2"><span style="color:var(--pri)">${icon('activity',16)}</span> Pain Level Today</h3>
+        <span class="text-xs font-bold" style="color:var(--pri)">${getPainLog().level||0}/10</span>
+      </div>
+      <div class="flex gap-1 mb-3">${Array.from({length:10},(_,i)=>`<div class="pain-bar ${i<(getPainLog().level||0)?'filled':'empty'}"></div>`).join('')}</div>
+      <div class="flex gap-2">
+        <button class="btn btn-sm btn-outline" style="flex:1" onclick="adjustPain(-1)">Less Pain</button>
+        <button class="btn btn-sm btn-outline" style="flex:1" onclick="adjustPain(1)">More Pain</button>
+      </div>
+    </div>
+
+    <!-- Daily Habits -->
+    <div class="card mb-4">
+      <div class="flex justify-between items-center mb-3">
+        <h3 class="font-bold text-sm">Daily Habits</h3>
+        <span class="text-xs text-muted font-bold">${Object.values(prog.dailyHabits).filter(Boolean).length}/3</span>
+      </div>
+      <div class="grid-3">${[
+        {id:'protocol',l:'Protocol',ic:'activity',c:'var(--pri)'},{id:'walk',l:'20min Walk',ic:'heart',c:'#16a34a'},{id:'stretch',l:'Stretches',ic:'sparkle',c:'var(--acc)'}
+      ].map(h=>`<button class="habit-btn ${prog.dailyHabits[h.id]?'active':''}" onclick="toggleHabit('${h.id}')">
+        <span style="color:${prog.dailyHabits[h.id]?'var(--pri)':h.c}">${icon(h.ic,18)}</span>
+        <span style="font-size:10px;font-weight:700;color:${prog.dailyHabits[h.id]?'var(--pri)':'var(--txt-l)'}">${h.l}</span>
+      </button>`).join('')}</div>
+    </div>
+
+    <!-- Weekly Summary -->
+    <div class="card mb-4">
+      <h3 class="font-bold text-sm mb-3 flex items-center gap-2"><span style="color:var(--pri)">${icon('calendar',16)}</span> Weekly Summary</h3>
+      <div class="grid-4">${[
+        {v:completed,l:'Days Done',bg:'var(--pri-l)',c:'var(--pri)'},
+        {v:prog.streak,l:'Streak',bg:'#fff7ed',c:'#ea580c'},
+        {v:10-(getPainLog().level||5),l:'Pain Reduction',bg:'#eff6ff',c:'#2563eb'},
+        {v:prog.badges.length,l:'Badges',bg:'#faf5ff',c:'#7c3aed'}
+      ].map(s=>`<div class="text-center" style="padding:8px;background:${s.bg};border-radius:12px"><p style="font-size:18px;font-weight:900;color:${s.c}">${s.v}</p><p style="font-size:9px;font-weight:700;color:var(--txt-l)">${s.l}</p></div>`).join('')}</div>
+    </div>
+
+    <!-- Motivational Quote -->
+    <div class="acc-gradient rounded-2xl mb-4" style="padding:16px;border:1px solid rgba(13,124,102,.1)">
+      <p class="text-sm text-center leading-relaxed" style="color:var(--txt-l);font-style:italic">"${quote}"</p>
+    </div>
+
+    <!-- Active Upgrades -->
+    <div class="card mb-4">
+      <h3 class="font-bold text-sm mb-3 flex items-center gap-2"><span style="color:var(--acc)">${icon('zap',16)}</span> Your Active Upgrades</h3>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <button class="upgrade-card" onclick="nav('accelerator')" style="background:linear-gradient(135deg,#ecfdf5,#d1fae5);border-color:#a7f3d0">
+          <div class="flex items-center gap-3"><div style="width:32px;height:32px;background:#a7f3d0;border-radius:8px;display:flex;align-items:center;justify-content:center"><span style="color:#059669">${icon('flame',16)}</span></div><div style="text-align:left"><p class="text-xs font-bold">7X Accelerator</p><p style="font-size:10px;color:var(--txt-l)">60-day gut health protocol</p></div></div>
+          <div class="flex items-center gap-2"><span class="tag" style="background:#a7f3d0;color:#059669">ACTIVE</span>${icon('arrowRight',14)}</div>
+        </button>
+        <button class="upgrade-card" onclick="nav('neuralshot')" style="background:linear-gradient(135deg,#ede9fe,#ddd6fe);border-color:#c4b5fd">
+          <div class="flex items-center gap-3"><div style="width:32px;height:32px;background:#c4b5fd;border-radius:8px;display:flex;align-items:center;justify-content:center"><span style="color:#7c3aed">${icon('droplet',16)}</span></div><div style="text-align:left"><p class="text-xs font-bold">Neural Shot</p><p style="font-size:10px;color:var(--txt-l)">Cortisol & NGF protocol</p></div></div>
+          <div class="flex items-center gap-2"><span class="tag" style="background:#c4b5fd;color:#7c3aed">ACTIVE</span>${icon('arrowRight',14)}</div>
+        </button>
+        <button class="upgrade-card" onclick="nav('shield')" style="background:linear-gradient(135deg,#fce7f3,#fbcfe8);border-color:#f9a8d4">
+          <div class="flex items-center gap-3"><div style="width:32px;height:32px;background:#f9a8d4;border-radius:8px;display:flex;align-items:center;justify-content:center"><span style="color:#db2777">${icon('shield',16)}</span></div><div style="text-align:left"><p class="text-xs font-bold">Nerve Shield</p><p style="font-size:10px;color:var(--txt-l)">4-week protective protocol</p></div></div>
+          <div class="flex items-center gap-2"><span class="tag" style="background:#f9a8d4;color:#db2777">ACTIVE</span>${icon('arrowRight',14)}</div>
+        </button>
+      </div>
+    </div>
+
+    <!-- Did You Know -->
+    <div class="acc-gradient rounded-2xl mb-4" style="padding:20px;border:1px solid rgba(13,124,102,.15)">
+      <h3 class="font-bold text-sm mb-2 flex items-center gap-2"><span style="color:var(--acc)">${icon('sparkle',14)}</span> Did You Know?</h3>
+      <p class="text-sm text-light leading-relaxed">${dyk}</p>
+    </div>
+
+    <!-- Bonus Content -->
+    <h3 class="font-bold text-sm mb-3" style="padding:0 4px">Bonus Content</h3>
+    <div class="grid-2 mb-4">${[
+      {ic:'cart',l:'Shopping List',p:'shopping',bg:'#ecfdf5',c:'#059669',bc:'#a7f3d0'},
+      {ic:'book',l:'My Journal',p:'journal',bg:'#fdf2f8',c:'#db2777',bc:'#f9a8d4'},
+      {ic:'zap',l:'3 Pain Tricks',p:'bonus_tricks',bg:'#fff7ed',c:'#ea580c',bc:'#fed7aa'},
+      {ic:'utensils',l:'5 Worst Foods',p:'bonus_foods',bg:'#ede9fe',c:'#7c3aed',bc:'#c4b5fd'}
+    ].map(it=>`<button onclick="nav('${it.p}')" style="background:${it.bg};border:1px solid ${it.bc};padding:16px;border-radius:16px;display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer"><span style="color:${it.c}">${icon(it.ic,20)}</span><span class="text-xs font-bold" style="color:${it.c}">${it.l}</span></button>`).join('')}</div>
+
+    <!-- Badges -->
+    ${prog.badges.length?`
+    <div class="card mb-4">
+      <h3 class="font-bold text-sm mb-3 flex items-center gap-2"><span style="color:var(--acc)">${icon('award',16)}</span> Your Badges</h3>
+      <div class="flex" style="flex-wrap:wrap;gap:8px">${prog.badges.map(id=>{const b=BADGES[id];return b?`<div class="acc-gradient" style="padding:8px 12px;border-radius:12px;display:flex;align-items:center;gap:8px;border:1px solid rgba(232,168,56,.2)"><span style="font-size:18px">${b.icon}</span><span class="text-xs font-bold">${b.title}</span></div>`:''}).join('')}</div>
+    </div>`:''}
+
+  </div>
+  ${state.showHelp?renderHelpModal():''}`;
+}
+
+function renderHelpModal() {
+  return `<div class="modal-overlay" onclick="state.showHelp=false;render()">
+    <div class="modal-box" onclick="event.stopPropagation()">
+      <div class="flex justify-between items-center mb-4">
+        <h2 class="font-bold text-lg">How to Use Nerve Recovery</h2>
+        <button onclick="state.showHelp=false;render()" style="border:none;background:none;cursor:pointer">${icon('x',20)}</button>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        ${[
+          {t:'Step 1: Start with Day 1',d:'Your <b>30-Day Calendar</b> is your main protocol. Each day has specific ingredients and combinations. Follow in order.',bg:'var(--pri-l)',c:'var(--pri)'},
+          {t:'Step 2: Track Your Progress',d:'Below your daily protocol, track your <b>pain level</b> and <b>daily habits</b> (protocol, walking, stretches). Build your streak!',bg:'#eff6ff',c:'#2563eb'},
+          {t:'Step 3: Use Your Upgrades',d:'Access your <b>7X Accelerator</b> (gut health), <b>Neural Shot</b> (cortisol), and <b>Nerve Shield</b> (protection) in the bottom menu.',bg:'#fff7ed',c:'#ea580c'},
+          {t:'Step 4: Explore Bonuses',d:'Check the <b>Shopping List</b>, <b>Journal</b>, <b>3 Pain Tricks</b>, and <b>5 Worst Foods</b> guides in Bonus Content.',bg:'#faf5ff',c:'#7c3aed'}
+        ].map(s=>`<div style="background:${s.bg};border-radius:12px;padding:16px"><h3 class="font-bold text-sm mb-1" style="color:${s.c}">${s.t}</h3><p class="text-sm text-light leading-relaxed">${s.d}</p></div>`).join('')}
+      </div>
+      <button onclick="state.showHelp=false;render()" class="btn btn-pri btn-block" style="margin-top:16px">Got it!</button>
+    </div>
+  </div>`;
+}
+
+function renderProgressPage() {
+  const prog = getProgress();
+  const c = prog.completedDays.length;
+  const pct = Math.round(c/30*100);
+  return `<div class="page">
+    <button class="back-btn" onclick="nav('dashboard')">${icon('chevLeft',18)} Back</button>
+    <h1 class="text-2xl font-black mb-2">Your Progress</h1>
+    <p class="text-sm text-light mb-5">Track your nerve recovery journey</p>
+
+    <div class="card mb-4 text-center">
+      <div style="width:120px;height:120px;border-radius:50%;background:conic-gradient(var(--pri) ${pct*3.6}deg, #e5e7eb ${pct*3.6}deg);display:flex;align-items:center;justify-content:center;margin:0 auto 16px">
+        <div style="width:96px;height:96px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;flex-direction:column">
+          <span class="text-2xl font-black text-pri">${pct}%</span>
+          <span class="text-xs text-muted">Complete</span>
+        </div>
+      </div>
+      <div class="grid-3">${[
+        {v:c,l:'Days Done'},{v:prog.streak,l:'Current Streak'},{v:prog.badges.length,l:'Badges'}
+      ].map(s=>`<div><p class="text-lg font-black text-pri">${s.v}</p><p class="text-xs text-muted">${s.l}</p></div>`).join('')}</div>
+    </div>
+
+    <div class="card mb-4">
+      <h3 class="font-bold text-sm mb-3">Phase Breakdown</h3>
+      ${PHASES.map((ph,i)=>{
+        const ps=[0,7,14,21][i], pe=[7,14,21,30][i];
+        const done=prog.completedDays.filter(d=>d>ps&&d<=pe).length;
+        const total=pe-ps;
+        return `<div class="flex items-center gap-3 mb-3"><span style="font-size:18px">${ph.icon}</span><div style="flex:1"><div class="flex justify-between mb-1"><span class="text-xs font-bold">${ph.name}</span><span class="text-xs text-muted">${done}/${total}</span></div><div style="height:6px;border-radius:99px;background:#e5e7eb;overflow:hidden"><div style="height:100%;width:${done/total*100}%;background:var(--pri);border-radius:99px"></div></div></div></div>`;
+      }).join('')}
+    </div>
+
+    ${prog.badges.length?`<div class="card mb-4">
+      <h3 class="font-bold text-sm mb-3">Earned Badges</h3>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">${prog.badges.map(id=>{const b=BADGES[id];return b?`<div style="background:var(--acc-l);padding:10px 14px;border-radius:12px;display:flex;align-items:center;gap:8px;border:1px solid rgba(232,168,56,.2)"><span style="font-size:20px">${b.icon}</span><div><p class="text-xs font-bold">${b.title}</p><p style="font-size:10px;color:var(--txt-l)">${b.desc}</p></div></div>`:''}).join('')}</div>
+    </div>`:''}
+  </div>`;
+}
+
+function renderAccelerator() {
+  const day = state.accelDay||1;
+  const data = getAccelDay(day);
+  const accelProg = store.getGlobal('accel_prog')||{};
+  const done = accelProg[day]||{};
+  return `<div class="page">
+    <button class="back-btn" onclick="nav('dashboard')">${icon('chevLeft',18)} Back</button>
+    <h1 class="text-2xl font-black mb-1">7X Accelerator</h1>
+    <p class="text-sm text-light mb-5">60-Day Gut Remodeling Protocol</p>
+
+    <div class="dark-card rounded-2xl mb-4" style="padding:20px;position:relative;overflow:hidden">
+      <div style="position:absolute;top:0;right:0;width:120px;height:120px;background:var(--acc);border-radius:50%;filter:blur(60px);opacity:.1;margin:-30px -30px 0 0"></div>
+      <div style="position:relative;z-index:1" class="flex items-center justify-between">
+        <div class="flex items-center gap-2"><span style="font-size:24px">${data.phase.icon}</span><div><h2 class="font-bold text-sm" style="color:var(--acc)">${data.phase.name}</h2><p style="font-size:10px;color:var(--txt-m)">${data.phase.range}</p></div></div>
+        <span class="text-2xl font-black" style="color:var(--acc)">Day ${day}</span>
+      </div>
+    </div>
+
+    <div class="flex items-center justify-between mb-4">
+      <button class="btn btn-sm btn-outline" onclick="state.accelDay=Math.max(1,${day}-1);render()" ${day<=1?'disabled':''}>${icon('chevLeft',16)} Prev</button>
+      <span class="font-bold text-sm">Day ${day} of 60</span>
+      <button class="btn btn-sm btn-outline" onclick="state.accelDay=Math.min(60,${day}+1);render()" ${day>=60?'disabled':''}>Next ${icon('chevRight',16)}</button>
+    </div>
+
+    <div class="card mb-4">
+      <h3 class="font-bold text-sm mb-2" style="color:var(--pri)">☀️ Morning Protocol</h3>
+      <p class="text-sm leading-relaxed">${data.morning}</p>
+      <button class="btn btn-sm btn-block ${done.morning?'btn-outline':'btn-pri'}" style="margin-top:12px" onclick="toggleAccelTask(${day},'morning')">${done.morning?'✓ Done':'Mark Complete'}</button>
+    </div>
+
+    <div class="card mb-4">
+      <h3 class="font-bold text-sm mb-2" style="color:var(--purple)">🌙 Evening Protocol</h3>
+      <p class="text-sm leading-relaxed">${data.evening}</p>
+      <button class="btn btn-sm btn-block ${done.evening?'btn-outline':'btn-pri'}" style="margin-top:12px" onclick="toggleAccelTask(${day},'evening')">${done.evening?'✓ Done':'Mark Complete'}</button>
+    </div>
+
+    <div class="card mb-4">
+      <h3 class="font-bold text-sm mb-3">Bonus: Goodbye Numbness in 21 Days</h3>
+      <p class="text-sm text-light leading-relaxed mb-3">This complementary program targets the tingling and numbness in your feet, toes, and legs with specific nerve-stimulating exercises and nutrient combinations.</p>
+      <div style="background:var(--pri-l);border-radius:12px;padding:12px">
+        <p class="text-xs font-bold mb-1">Today's Numbness Exercise:</p>
+        <p class="text-sm">${['Toe curls: 3 sets of 15 — curl and spread toes to stimulate nerve endings','Ankle circles: 20 each direction — improves blood flow to sciatic nerve','Heel walks: Walk on heels for 30 seconds, 5 times — activates tibial nerve','Marble pickup: Use toes to pick up 10 small objects — fine motor nerve training','Calf raises: 3 sets of 12 — pumps blood through lower leg nerve pathways','Foot rolling: Roll tennis ball under foot for 2 minutes each — myofascial release','Balance stand: 30 seconds each foot on pillow — proprioceptive nerve training'][day%7]}</p>
+      </div>
+    </div>
+  </div>`;
+}
+
+function renderNeuralShot() {
+  const p = getProfile();
+  const shot = getNeuralShotRecipe(p.weight, p.age, p.height);
+  return `<div class="page">
+    <button class="back-btn" onclick="nav('dashboard')">${icon('chevLeft',18)} Back</button>
+    <h1 class="text-2xl font-black mb-1">Neural Shot</h1>
+    <p class="text-sm text-light mb-5">Cortisol & NGF Restoration Protocol</p>
+
+    <div style="background:linear-gradient(135deg,#ede9fe,#ddd6fe);border-radius:16px;padding:20px;margin-bottom:16px;border:1px solid #c4b5fd">
+      <h3 class="font-bold text-sm mb-2" style="color:var(--purple)">🧪 Your Personalized Neural Shot</h3>
+      <pre style="font-size:13px;line-height:1.6;white-space:pre-wrap;font-family:inherit;color:var(--txt)">${shot.recipe}</pre>
+    </div>
+
+    <div class="card mb-4">
+      <h3 class="font-bold text-sm mb-2">Why Cortisol Matters</h3>
+      <p class="text-sm text-light leading-relaxed">When cortisol is out of balance (common in adults over 40), nerve regeneration slows down and sciatic plaque builds more aggressively. The Neural Shot rebalances cortisol so your body can regenerate nerves while you sleep.</p>
+    </div>
+
+    <h3 class="font-bold text-sm mb-3">Included Bonuses</h3>
+    ${shot.bonuses.map(b=>`
+    <div class="card mb-3">
+      <h4 class="font-bold text-sm mb-2" style="color:var(--pri)">${b.name}</h4>
+      <p class="text-sm text-light leading-relaxed">${b.desc}</p>
+    </div>`).join('')}
+  </div>`;
+}
+
+function renderShield() {
+  const sw = state.shieldWeek||0;
+  const week = SHIELD_PROTOCOL.weeks[sw];
+  const shieldProg = store.getGlobal('shield_prog')||{};
+  const done = shieldProg[sw]||{};
+  return `<div class="page">
+    <button class="back-btn" onclick="nav('dashboard')">${icon('chevLeft',18)} Back</button>
+    <h1 class="text-2xl font-black mb-1">${SHIELD_PROTOCOL.title}</h1>
+    <p class="text-sm text-light mb-5">${SHIELD_PROTOCOL.desc}</p>
+
+    <div class="flex gap-2 mb-4">${SHIELD_PROTOCOL.weeks.map((_,i)=>`<button class="btn btn-sm ${i===sw?'btn-pri':'btn-outline'}" onclick="state.shieldWeek=${i};render()">Week ${i+1}</button>`).join('')}</div>
+
+    <div style="background:linear-gradient(135deg,#fce7f3,#fbcfe8);border-radius:16px;padding:20px;margin-bottom:16px;border:1px solid #f9a8d4">
+      <h3 class="font-bold mb-1" style="color:#db2777">${week.title}</h3>
+      <p class="text-xs text-light">Week ${sw+1} of 4</p>
+    </div>
+
+    <div class="card mb-4">
+      <h3 class="font-bold text-sm mb-3">Daily Tasks</h3>
+      ${week.tasks.map((t,i)=>`
+      <div class="flex items-center gap-3 mb-3" style="cursor:pointer" onclick="toggleShieldTask(${sw},${i})">
+        <div style="width:28px;height:28px;border-radius:50%;border:2px solid ${done[i]?'var(--pri)':'#d1d5db'};background:${done[i]?'var(--pri)':'transparent'};display:flex;align-items:center;justify-content:center;flex-shrink:0">
+          ${done[i]?`<span style="color:#fff">${icon('check',14)}</span>`:''}
+        </div>
+        <p class="text-sm ${done[i]?'':'text-light'}" style="${done[i]?'text-decoration:line-through;opacity:.6':''}">${t}</p>
+      </div>`).join('')}
+    </div>
+  </div>`;
+}
+
+function renderFeatures() {
+  const items = [
+    {t:'Shopping List',d:'All ingredients organized by category — supplements, kitchen items, and optional boosters.',p:'shopping',ic:'cart',bg:'#ecfdf5',c:'#059669',bc:'#a7f3d0'},
+    {t:'My Journal',d:'Track your daily recovery notes, pain observations, and milestones.',p:'journal',ic:'book',bg:'#fdf2f8',c:'#db2777',bc:'#f9a8d4'},
+    {t:'3 Tricks to Reduce Nerve Pain',d:'Three powerful natural methods for immediate nerve pain relief.',p:'bonus_tricks',ic:'zap',bg:'#fff7ed',c:'#ea580c',bc:'#fed7aa',tag:'NEW'},
+    {t:'5 Worst Foods for Sciatica',d:'Hidden dietary villains that secretly aggravate your sciatica.',p:'bonus_foods',ic:'utensils',bg:'#ede9fe',c:'#7c3aed',bc:'#c4b5fd',tag:'NEW'}
+  ];
+  return `<div class="page">
+    <button class="back-btn" onclick="nav('dashboard')">${icon('chevLeft',18)} Back</button>
+    <h1 class="text-2xl font-black mb-1">Tools & Extras</h1>
+    <p class="text-sm text-light mb-5">Additional features to support your recovery</p>
+    <div style="display:flex;flex-direction:column;gap:10px">${items.map(it=>`
+      <button onclick="nav('${it.p}')" style="width:100%;display:flex;align-items:center;padding:14px;border-radius:16px;border:1px solid ${it.bc};background:${it.bg};cursor:pointer;text-align:left">
+        <div style="width:40px;height:40px;border-radius:12px;background:rgba(255,255,255,.7);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span style="color:${it.c}">${icon(it.ic,20)}</span></div>
+        <div style="flex:1;margin-left:12px;min-width:0">
+          <div class="flex items-center gap-2"><p class="text-sm font-bold truncate">${it.t}</p>${it.tag?`<span class="tag" style="background:var(--pri);color:#fff">${it.tag}</span>`:''}</div>
+          <p class="text-xs text-light line-clamp-2" style="margin-top:2px">${it.d}</p>
+        </div>
+        <span style="color:var(--txt-m);flex-shrink:0;margin-left:8px">${icon('arrowRight',16)}</span>
+      </button>`).join('')}</div>
+  </div>`;
+}
+
+function renderShopping() {
+  return `<div class="page">
+    <button class="back-btn" onclick="nav('features')">${icon('chevLeft',18)} Back</button>
+    <h1 class="text-2xl font-black mb-1">Shopping List</h1>
+    <p class="text-sm text-light mb-5">Everything you need for the protocol</p>
+    ${SHOPPING.map(cat=>`
+    <div class="card mb-4">
+      <h3 class="font-bold text-sm mb-3">${cat.cat}</h3>
+      ${cat.items.map(it=>`<div class="flex items-center gap-3 mb-2"><div style="width:6px;height:6px;border-radius:50%;background:var(--pri);flex-shrink:0"></div><p class="text-sm">${it}</p></div>`).join('')}
+    </div>`).join('')}
+  </div>`;
+}
+
+function renderJournalPage() {
+  const entries = getJournal();
+  return `<div class="page">
+    <button class="back-btn" onclick="nav('features')">${icon('chevLeft',18)} Back</button>
+    <h1 class="text-2xl font-black mb-1">Recovery Journal</h1>
+    <p class="text-sm text-light mb-5">Track your daily observations</p>
+    <div class="card mb-4">
+      <textarea id="journalInput" placeholder="How are you feeling today? Any changes in pain, mobility, sleep?" style="width:100%;min-height:100px;border:1px solid #e5e7eb;border-radius:12px;padding:12px;font-family:inherit;font-size:14px;resize:vertical;outline:none">${state.journalText||''}</textarea>
+      <button class="btn btn-pri btn-block" style="margin-top:12px" onclick="addJournal()">Save Entry</button>
+    </div>
+    ${entries.length?`<h3 class="font-bold text-sm mb-3">Previous Entries</h3>
+    ${entries.slice(0,20).map(e=>`<div class="card card-sm mb-3"><p class="text-xs text-muted mb-1">${new Date(e.date).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})}</p><p class="text-sm leading-relaxed">${e.text}</p></div>`).join('')}`:'<p class="text-sm text-muted text-center">No entries yet. Start journaling your recovery!</p>'}
+  </div>`;
+}
+
+function renderBonusTricks() {
+  return `<div class="page">
+    <button class="back-btn" onclick="nav('features')">${icon('chevLeft',18)} Back</button>
+    <h1 class="text-2xl font-black mb-1">3 Tricks to Naturally Reduce Nerve Pain</h1>
+    <p class="text-sm text-light mb-5">Powerful natural methods for immediate relief</p>
+
+    <div class="card mb-4">
+      <h3 class="font-bold mb-2" style="color:var(--pri)">Trick #1: The Forbidden Foods</h3>
+      <p class="text-sm text-light leading-relaxed mb-3">Doctors rarely warn you about foods that secretly inflame your nerves and keep you in constant pain. Many people eat these daily without knowing.</p>
+      <div style="background:var(--pri-l);border-radius:12px;padding:14px">
+        <p class="text-sm font-semibold mb-2">Foods to avoid immediately:</p>
+        <ul style="list-style:none;padding:0;margin:0">
+          ${['Refined sugar — spikes inflammation by 340%','Processed seed oils (canola, soybean) — toxic to nerve cells','Excessive gluten — triggers autoimmune nerve inflammation','Artificial sweeteners — neurotoxic to sciatic nerve endings','Fried foods — accelerate plaque formation around nerves'].map(f=>`<li class="text-sm mb-2" style="padding-left:16px;position:relative"><span style="position:absolute;left:0;color:var(--red)">✕</span> ${f}</li>`).join('')}
+        </ul>
+      </div>
+    </div>
+
+    <div class="card mb-4">
+      <h3 class="font-bold mb-2" style="color:var(--pri)">Trick #2: The 5,000-Year Pain Relief Method</h3>
+      <p class="text-sm text-light leading-relaxed mb-3">This ancient method activates your body's own natural morphine — endorphins — through specific pressure points along the sciatic nerve pathway.</p>
+      <div style="background:var(--acc-l);border-radius:12px;padding:14px">
+        <p class="text-sm font-semibold mb-2">The 60-Second Technique:</p>
+        <ol style="padding-left:20px;margin:0">${['Find the piriformis point: 2 inches below your hip bone, outer buttock','Apply firm pressure with thumb or tennis ball for 30 seconds','Slowly increase pressure while breathing deeply','Release slowly over 10 seconds','Repeat 3 times on each side'].map(s=>`<li class="text-sm mb-1">${s}</li>`).join('')}</ol>
+      </div>
+    </div>
+
+    <div class="card mb-4">
+      <h3 class="font-bold mb-2" style="color:var(--pri)">Trick #3: The Hidden Vitamin Deficiency</h3>
+      <p class="text-sm text-light leading-relaxed mb-3">80% of people with nerve pain are severely deficient in Vitamin B12 (Methylcobalamin). The strange reason? Most people can't absorb it from regular supplements or food after age 40.</p>
+      <div style="background:#ede9fe;border-radius:12px;padding:14px">
+        <p class="text-sm font-semibold mb-2">The Solution:</p>
+        <p class="text-sm leading-relaxed">Use sublingual Methylcobalamin (not cyanocobalamin). Place 1000mcg under your tongue and let it dissolve for 60 seconds. This bypasses the digestive system entirely, allowing direct absorption into your bloodstream and nerve cells. Take daily on an empty stomach for maximum effect.</p>
+      </div>
+    </div>
+  </div>`;
+}
+
+function renderBonusFoods() {
+  const foods = [
+    {name:'Sugar (22 lbs/Year Average)',desc:'Americans consume an average of 22 pounds of sugar per year. Sugar creates toxic plaque around your sciatic nerve, feeds inflammatory bacteria, and blocks nerve regeneration. Even "natural" sugars in excess trigger the same damage.',tip:'Replace with: raw honey (small amounts), stevia, monk fruit'},
+    {name:'Nightshade Vegetables',desc:'The vegetables your doctor recommends may be secretly poisoning your nerves with dangerous alkaloids. Tomatoes, peppers, potatoes, and eggplant contain solanine — a compound that increases nerve inflammation in sensitive individuals.',tip:'Test by eliminating for 2 weeks, then reintroduce one at a time'},
+    {name:'Processed Seed Oils',desc:'The white poison hidden in 80% of processed foods. Canola, soybean, corn, and sunflower oils are destroying your nerves\' protective coating faster than aging itself. They oxidize at room temperature, creating free radicals.',tip:'Replace with: extra virgin olive oil, coconut oil, avocado oil'},
+    {name:'Morning Coffee (On Empty Stomach)',desc:'Your innocent morning habit increases inflammation by 340% and puts crushing pressure on your spine within hours. Coffee on an empty stomach spikes cortisol, which directly inflames your sciatic nerve.',tip:'Solution: eat breakfast first, then coffee. Or switch to green tea.'},
+    {name:'Processed Deli Meats',desc:'Loaded with nitrates, sodium, and preservatives that trigger systemic inflammation. Studies show daily processed meat consumption doubles the risk of nerve-related pain conditions.',tip:'Replace with: fresh-cooked chicken, turkey, or wild-caught fish'}
+  ];
+  return `<div class="page">
+    <button class="back-btn" onclick="nav('features')">${icon('chevLeft',18)} Back</button>
+    <h1 class="text-2xl font-black mb-1">The 5 Worst Foods for Sciatica</h1>
+    <p class="text-sm text-light mb-5">Hidden dietary villains aggravating your condition</p>
+    ${foods.map((f,i)=>`
+    <div class="card mb-4">
+      <div class="flex items-center gap-2 mb-2"><span style="width:28px;height:28px;border-radius:50%;background:#fecaca;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;color:#991b1b">${i+1}</span><h3 class="font-bold text-sm">${f.name}</h3></div>
+      <p class="text-sm text-light leading-relaxed mb-3">${f.desc}</p>
+      <div style="background:#ecfdf5;border-radius:10px;padding:12px;border:1px solid #a7f3d0"><p class="text-xs font-bold" style="color:#059669">💡 ${f.tip}</p></div>
+    </div>`).join('')}
+  </div>`;
+}
+
+// ============================================================
+// EVENT HANDLERS
+// ============================================================
+window.handleLogin = function(e) {
+  e.preventDefault();
+  const email = document.getElementById('authEmail').value;
+  if (!email.includes('@')) return;
+  localStorage.setItem(PREFIX+'email', email);
+  state.onboardStep = 1;
+  state.onboardData = {name:'',age:'',weight:'',height:''};
+  state.onboardFlags = {};
+  render();
+};
+
+window.onboardNext = function(step) {
+  if (step === 1) {
+    const name = document.getElementById('obName')?.value||'';
+    if (!name.trim()) return;
+    state.onboardData.name = name;
+    state.onboardStep = 2;
+  } else if (step === 2) {
+    const age = document.getElementById('obAge')?.value||'';
+    const weight = document.getElementById('obWeight')?.value||'';
+    const height = document.getElementById('obHeight')?.value||'';
+    if (!age || !weight) return;
+    state.onboardData.age = age;
+    state.onboardData.weight = weight;
+    state.onboardData.height = height;
+    state.onboardStep = 3;
+  }
+  render();
+};
+
+window.onboardBack = function() {
+  state.onboardStep = Math.max(1, (state.onboardStep||1) - 1);
+  render();
+};
+
+window.toggleOnboardFlag = function(id) {
+  if (!state.onboardFlags) state.onboardFlags = {};
+  state.onboardFlags[id] = !state.onboardFlags[id];
+  render();
+};
+
+window.finishOnboarding = function() {
+  saveProfile({...state.onboardData, flags:state.onboardFlags||{}});
+  saveProgress({currentDay:1,streak:0,completedDays:[],dailyHabits:{},badges:[],phase:1});
+  currentPage = 'dashboard';
+  render();
+};
+
+window.nav = nav;
+window.selectDay = function(d) { state.selectedDay = d; render(); };
+window.markDay = function(d) { toggleDay(d); render(); };
+window.adjustPain = function(dir) {
+  const cur = getPainLog().level||0;
+  const next = Math.max(0, Math.min(10, cur+dir));
+  savePainLevel(next);
+  render();
+};
+window.toggleHabit = function(id) {
+  const p = getProgress();
+  p.dailyHabits[id] = !p.dailyHabits[id];
+  saveProgress(p);
+  render();
+};
+window.toggleChat = function() { state.showChat = !state.showChat; state.chatNode='root'; render(); };
+window.chatNav = function(n) { state.chatNode = n; render(); };
+window.dismissUpdate = function(id) {
+  dismissedUpdates.push(id);
+  localStorage.setItem(PREFIX+'dismissed', JSON.stringify(dismissedUpdates));
+  render();
+};
+window.toggleAccelTask = function(day, task) {
+  const p = store.getGlobal('accel_prog')||{};
+  if (!p[day]) p[day] = {};
+  p[day][task] = !p[day][task];
+  store.setGlobal('accel_prog', p);
+  render();
+};
+window.toggleShieldTask = function(week, idx) {
+  const p = store.getGlobal('shield_prog')||{};
+  if (!p[week]) p[week] = {};
+  p[week][idx] = !p[week][idx];
+  store.setGlobal('shield_prog', p);
+  render();
+};
+window.addJournal = function() {
+  const el = document.getElementById('journalInput');
+  if (!el || !el.value.trim()) return;
+  saveJournalEntry({text:el.value.trim()});
+  state.journalText = '';
+  render();
+};
+
+function bindEvents() {}
+
+// ============================================================
+// INIT
+// ============================================================
+const email = localStorage.getItem(PREFIX+'email');
+const profile = getProfile();
+if (email && profile && profile.age) currentPage = 'dashboard';
+else if (email) { currentPage = 'onboarding'; state.onboardStep = 1; state.onboardData = {name:'',age:'',weight:'',height:''}; state.onboardFlags = {}; }
+else currentPage = 'auth';
+
+const prog = getProgress();
+state.selectedDay = Math.min(prog.completedDays.length + 1, 30);
+
+render();
+})();
+</script>
+</body>
+</html>
