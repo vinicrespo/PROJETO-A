@@ -917,9 +917,9 @@ function renderAccelerator() {
     </div>
 
     <div class="flex items-center justify-between mb-4">
-      <button class="btn btn-sm btn-outline" onclick="state.accelDay=Math.max(1,${day}-1);render()" ${day<=1?'disabled':''}>${icon('chevLeft',16)} Prev</button>
+      <button class="btn btn-sm btn-outline" onclick="accelNav(${day-1})" ${day<=1?'disabled':''}>${icon('chevLeft',16)} Prev</button>
       <span class="font-bold text-sm">Day ${day} of 60</span>
-      <button class="btn btn-sm btn-outline" onclick="state.accelDay=Math.min(60,${day}+1);render()" ${day>=60?'disabled':''}>Next ${icon('chevRight',16)}</button>
+      <button class="btn btn-sm btn-outline" onclick="accelNav(${day+1})" ${day>=60?'disabled':''}>Next ${icon('chevRight',16)}</button>
     </div>
 
     <div class="card mb-4">
@@ -1205,6 +1205,10 @@ window.addJournal = function() {
   state.journalText = '';
   render();
 };
+
+window.state = state;
+window.render = render;
+window.accelNav = function(d) { state.accelDay = Math.max(1, Math.min(60, d)); render(); };
 
 function bindEvents() {}
 
